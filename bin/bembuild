@@ -1,0 +1,4 @@
+#!/usr/bin/env narwhal
+
+require('../lib/bembuild').main();
+
