@@ -1,4 +1,4 @@
-var level = require('bem/level/simple');
+var level = require('bem/levels/simple');
 for (var n in level) exports[n] = level[n];
 exports.techs = {
     'css': true,
