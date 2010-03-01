@@ -29,5 +29,28 @@ exports.blocks = [
                 name: 'elem2'
             }
         ]
+    },
+    {
+        name: 'second-block',
+        mods: [
+            {
+                name: 'mod2',
+                vals: ['21', '22']
+            }
+        ],
+        elems: [
+            {
+                name: 'elem2',
+                mods: [
+                    {
+                        name: 'mod22',
+                        vals: ['221', '222']
+                    }
+                ]
+            },
+            {
+                name: 'elem3'
+            }
+        ]
     }
 ];
