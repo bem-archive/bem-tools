@@ -29,6 +29,10 @@
         {
             "name": "Sergey Berezhnoy",
             "url": "http://github.com/veged/"
+        },
+        {
+            "name": "Sergey Belov",
+            "url": "http://github.com/arikon/"
         }
     ],
     "dependencies": []
