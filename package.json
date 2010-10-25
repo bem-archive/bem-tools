@@ -1,39 +1,18 @@
 {
-    "name": "bem-tools",
-    "author": {
-        "name": "Sergey Berezhnoy",
-        "url": "http://github.com/veged/"
-    },
+    "name" : "bem",
     "description": "BEM Tools",
-    "keywords": [
-        "tools",
-        "bem"
-    ],
-    "version": [
-        "0",
-        "0",
-        "1"
-    ],
-    "descriptorUrl": "http://github.com/veged/bem-tools/raw/narwhal/package.json",
-    "packageUrl": "http://github.com/veged/bem-tools/zipball/narwhal",
-    "packageArchive": "zip",
-    "source": {
-        "type": "github",
-        "user": "veged",
-        "packageName": "bem-tools",
-        "descriptorUrl": "http://github.com/veged/bem-tools/raw/narwhal/package.json",
-        "url": "http://github.com/veged/bem-tools/zipball/narwhal",
-        "archive": "zip"
+    "version" : "0.0.2",
+    "homepage": "http://github.com/bem",
+    "author" : "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
+    "contributors" : [],
+    "repository" : {
+        "type" : "git",
+        "url" : "http://github.com/bem/bem-tools.git"
     },
-    "contributors": [
-        {
-            "name": "Sergey Berezhnoy",
-            "url": "http://github.com/veged/"
-        },
-        {
-            "name": "Sergey Belov",
-            "url": "http://github.com/arikon/"
-        }
-    ],
-    "dependencies": []
+    "directories" : { "lib" : "./lib" },
+    "bin" : { "bem" : "./bin/bem" },
+    "dependencies" : {
+    },
+    "engines" : { "node" : ">=0.2.0" },
+    "licenses" : [ { "type" : "AS IS" } ]
 }
