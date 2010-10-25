@@ -8,7 +8,7 @@ test:
 
 	-rm -rf tests/level5
 	./bin/bem create level -o tests -l tests/level2/.bem/level.js -t css -t css1 -n js -n js1 level5
-	#./bin/bem create block -l tests/level5 first-block
+	./bin/bem create block -l tests/level5 first-block
 	#./bin/bem create elem -l tests/level5 -b second-block -n css1 elem2
 	#./bin/bem create mod -l tests/level5 -b second-block mod2
 	#./bin/bem create mod -l tests/level5 -b second-block -e elem2 -v 221 -v 222 mod22
