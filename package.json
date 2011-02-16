@@ -1,9 +1,25 @@
 {
     "name" : "bem",
-    "description": "BEM Tools",
-    "version" : "0.0.2",
-    "homepage": "http://github.com/bem",
-    "author" : "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
+    "description" : "BEM Tools",
+    "version" : "0.0.3",
+    "homepage" : "http://github.com/bem/bem-tools",
+    "author" : {
+        "name": "Sergey Berezhnoy",
+        "email" : "veged@mail.ru",
+        "web" : "http://github.com/veged"
+    },
+    "maintainers" : [
+        {
+            "name": "Sergey Berezhnoy",
+            "email" : "veged@mail.ru",
+            "web" : "http://github.com/veged"
+        },
+        {
+            "name": "Sergey Belov",
+            "email" : "peimei@ya.ru",
+            "web" : "http://github.com/arikon"
+        }
+    ],
     "contributors" : [],
     "repository" : {
         "type" : "git",
@@ -13,6 +29,6 @@
     "bin" : { "bem" : "./bin/bem" },
     "dependencies" : {
     },
-    "engines" : { "node" : ">=0.2.0" },
+    "engines" : [ "node ~0.4.0" ],
     "licenses" : [ { "type" : "AS IS" } ]
 }
