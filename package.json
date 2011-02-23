@@ -27,6 +27,7 @@
     },
     "directories" : { "lib" : "./lib" },
     "bin" : { "bem" : "./bin/bem" },
+    "main" : "./lib/bem.js",
     "dependencies" : {
     },
     "engines" : [ "node ~0.4.0" ],
