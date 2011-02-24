@@ -14,6 +14,19 @@ vows.describe('level').addBatch({
             assert.isArray(defs);
             assert.isEmpty(defs);
         },
+        ".resolveTechPath('../../techs/test.js') resolves": function(level) {
+            assert.equal(level.resolveTechPath('../../techs/test.js'), absolute('./data/techs/test.js'));
+        },
+        ".resolveTechPath('/path/to/techs/test.js') resolves": function(level) {
+            var path = absolute('./data/techs/test.js');
+            assert.equal(level.resolveTechPath(path), path);
+        },
+        ".resolveTechPath('data/techs/test.js') resolves": function(level) {
+            var path = 'data/techs/test.js';
+            require.paths.unshift(__dirname);
+            assert.equal(level.resolveTechPath(path), path);
+            require.paths.shift();
+        },
         "matchers are compliant to getters": testCompliances()
     }
 
