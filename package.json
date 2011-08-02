@@ -1,7 +1,7 @@
 {
     "name" : "bem",
     "description" : "BEM Tools",
-    "version" : "0.0.11",
+    "version" : "0.0.12",
     "homepage" : "http://github.com/bem/bem-tools",
     "author" : {
         "name": "Sergey Berezhnoy",
@@ -35,6 +35,6 @@
     "main" : "./lib/bem.js",
     "dependencies" : {
     },
-    "engines" : [ "node ~0.4.0" ],
+    "engines" : [ "node >=0.4.0 <0.6.0" ],
     "licenses" : [ { "type" : "AS IS" } ]
 }
