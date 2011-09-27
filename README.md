@@ -2,25 +2,25 @@
 Работа с файлами, написанными по БЭМ-методу.
 
 ## Установка
-Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) и [npm](http://npmjs.org/).
-После этого достаточно `npm install bem xjst ometajs`.
+Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) и [npm 1.x](http://npmjs.org/).
+После этого достаточно `npm install -g bem xjst ometajs`.
 
-#### Установка на MacOSX
 
- * Установить [Xcode](http://h.yandex.net/?http%3A%2F%2Fru.wikipedia.org%2Fwiki%2FXcode)
- с установочного диска или с [сайта Apple](http://h.yandex.net/?http%3A%2F%2Fdeveloper.apple.com%2Ftools%2Fxcode%2F)
- * Установить [homebrew](http://h.yandex.net/?https%3A%2F%2Fgithub.com%2Fmxcl%2Fhomebrew)
+ * Установить [nodejs](http://nodejs.org)
 
-        ruby -e "$(curl -fsSL https://gist.github.com/raw/323731/install_homebrew.rb)"
- * Установить [nodejs](http://h.yandex.net/?http%3A%2F%2Fnodejs.org%2F)
+        https://github.com/joyent/node/wiki/Installation
 
-        brew install node
- * Установить [npm](http://h.yandex.net/?http%3A%2F%2Fnpmjs.org%2F)
+ * Установить [npm](http://npmjs.org)
 
-        curl http://npmjs.org/install.sh | sh
- * Установить [bem-tools](http://h.yandex.net/?https%3A%2F%2Fgithub.com%2Fbem%2Fbem-tools)
+        curl http://npmjs.org/install.sh | sudo sh
 
-        npm install bem xjst ometajs
+ * После установки сконфигурируйте `NODE_PATH`:
+
+        echo 'export NODE_PATH="'$(npm root -g):$NODE_PATH'"'>>  ~/.bashrc && . ~/.bashrc
+
+ * Установить [bem-tools](https://github.com/bem/bem-tools)
+
+        sudo npm install -g bem xjst ometajs
 
 ## Использование
 Всю информацию о параметрах использования можно получить с помощью `bem --help`.
