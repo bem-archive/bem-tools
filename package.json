@@ -34,7 +34,8 @@
     "bin" : { "bem" : "./bin/bem" },
     "main" : "./lib/bem.js",
     "dependencies" : {
-        "coa" : ">= 0.1.1"
+        "coa" : ">= 0.1.1",
+        "q" : ">= 0.7.1"
     },
     "engines" : [ "node ~0.4.0" ],
     "licenses" : [ { "type" : "AS IS" } ]
