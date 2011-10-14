@@ -1,12 +1,12 @@
 var vows = require('vows'),
     assert = require('assert'),
-    Tech = require('../lib/tech').Tech;
+    Tech = require('../lib/old-tech').Tech;
 
 vows.describe('tech').addBatch({
 
-    "Tech.createTech('../lib/techs/css') /* bem bundled tech */": {
+    "new Tech('../lib/techs/css')": {
         topic: function() {
-            return Tech.createTech(require.resolve('../lib/techs/css'));
+            return new Tech(require.resolve('../lib/techs/css'));
         },
         ".getTechName() equals to 'css'": function(tech) {
             assert.equal(tech.getTechName(), 'css');
@@ -22,9 +22,9 @@ vows.describe('tech').addBatch({
         }
     },
 
-    "Tech.createTech('../lib/techs/default', 'def') /* default tech with custom name */": {
+    "new Tech('../lib/techs/default', 'def')": {
         topic: function() {
-            return Tech.createTech(require.resolve('../lib/techs/default'), 'def');
+            return new Tech(require.resolve('../lib/techs/default'), 'def');
         },
         ".getTechName() equals to 'def'": function(tech) {
             assert.equal(tech.getTechName(), 'def');
@@ -40,9 +40,9 @@ vows.describe('tech').addBatch({
         }
     },
 
-    "Tech.createTech('./data/techs/test.js') /* custom tech */": {
+    "new Tech('./data/techs/test.js')": {
         topic: function() {
-            return Tech.createTech(require.resolve('./data/techs/test.js'));
+            return new Tech(require.resolve('./data/techs/test.js'));
         },
         ".getTechName() equals to 'test.js'": function(tech) {
             assert.equal(tech.getTechName(), 'test.js');
