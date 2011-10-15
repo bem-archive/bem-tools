@@ -13,7 +13,7 @@ test: FORCE
 	./bin/bem create mod -l tests/level5 -b second-block mod2
 	./bin/bem create mod -l tests/level5 -b second-block -e elem2 -v 221 -v 222 mod22
 
-	./bin/bem build -d tests/decl.js -o tests -n bla -t deps.js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
+	./bin/bem build -d tests/decl.js -o tests -n bla -t deps.js -t ie.css -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 	./bin/bem build -d tests/bla.deps.js -o tests -n bla -t css -t js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 
 .PHONY: FORCE
