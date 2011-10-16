@@ -38,6 +38,9 @@
         "q" : ">= 0.7.1",
         "inherit" : ">= 1.0.0"
     },
+    "devDependencies" : {
+        "vows" : ">= 0.5.11"
+    },
     "engines" : [ "node ~0.4.0" ],
     "licenses" : [ { "type" : "AS IS" } ]
 }
