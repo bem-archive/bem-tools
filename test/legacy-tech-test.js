@@ -1,12 +1,12 @@
 var vows = require('vows'),
     assert = require('assert'),
-    Tech = require('../lib/old-tech').Tech;
+    Tech = require('../lib/legacy-tech.js').Tech;
 
 vows.describe('tech').addBatch({
 
-    "new Tech('./data/old-techs/css')": {
+    "new Tech('../lib/legacy-techs/css')": {
         topic: function() {
-            return new Tech(require.resolve('./data/old-techs/css'));
+            return new Tech(require.resolve('../lib/legacy-techs/css'));
         },
         ".getTechName() equals to 'css'": function(tech) {
             assert.equal(tech.getTechName(), 'css');
@@ -17,14 +17,14 @@ vows.describe('tech').addBatch({
         ".matchSuffix('.css') returns true": function(tech) {
             assert.isTrue(tech.matchSuffix('.css'));
         },
-        ".getTechRelativePath() resolves to 'bem/lib/techs/css'": function(tech) {
-            assert.equal(tech.getTechRelativePath(), 'bem/test/data/old-techs/css');
+        ".getTechRelativePath() resolves to 'bem/lib/legacy-techs/css'": function(tech) {
+            assert.equal(tech.getTechRelativePath(), 'bem/lib/legacy-techs/css');
         }
     },
 
-    "new Tech('./data/old-techs/default', 'def')": {
+    "new Tech('../lib/legacy-techs/default', 'def')": {
         topic: function() {
-            return new Tech(require.resolve('./data/old-techs/default'), 'def');
+            return new Tech(require.resolve('../lib/legacy-techs/default'), 'def');
         },
         ".getTechName() equals to 'def'": function(tech) {
             assert.equal(tech.getTechName(), 'def');
@@ -35,8 +35,8 @@ vows.describe('tech').addBatch({
         ".matchSuffix('.def') returns true": function(tech) {
             assert.isTrue(tech.matchSuffix('.def'));
         },
-        ".getTechRelativePath() resolves to 'bem/test/data/old-techs/default'": function(tech) {
-            assert.equal(tech.getTechRelativePath(), 'bem/test/data/old-techs/default');
+        ".getTechRelativePath() resolves to 'bem/lib/legacy-techs/default'": function(tech) {
+            assert.equal(tech.getTechRelativePath(), 'bem/lib/legacy-techs/default');
         }
     },
 
