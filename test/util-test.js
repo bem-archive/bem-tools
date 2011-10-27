@@ -11,8 +11,8 @@ vows.describe('util').addBatch({
         "'css' resolves to 'bem/lib/techs/css'": function(topic) {
             assert.equal(topic('css'), 'bem/lib/techs/css');
         },
-        "'custom' resolves to 'bem/lib/techs/default'": function(topic) {
-            assert.equal(topic('custom'), 'bem/lib/techs/default');
+        "'custom' resolves to 'bem/lib/tech'": function(topic) {
+            assert.equal(topic('custom'), 'bem/lib/tech');
         }
     },
 

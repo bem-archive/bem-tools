@@ -6,14 +6,14 @@ var vows = require('vows'),
 function testBaseTech(techPath, techAlias) {
     var batch = {},
         techName = PATH.basename(techPath),
-        absTechPath = PATH.resolve(__dirname, techPath),
-        relTechPath = PATH.normalize(techPath);
+        absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
+        relTechPath = techPath;
 
     if(/^\.\.\/lib\//.test(techPath)) {
-        absTechPath = relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
+        relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
 
-        // 'default' tech identified by '' relative path
-        if(techName == 'default') relTechPath = '';
+        // default tech identified by '' relative path
+        if(techName == 'tech') relTechPath = '';
     }
 
     techAlias = techAlias || techName;
@@ -104,6 +104,6 @@ function testBaseTech(techPath, techAlias) {
 vows.describe('tech')
     .addBatch(testBaseTech('../lib/techs/js'))
     .addBatch(testBaseTech('../lib/techs/css'))
-    .addBatch(testBaseTech('../lib/techs/default', 'def'))
+    .addBatch(testBaseTech('../lib/tech', 'def'))
     .addBatch(testBaseTech('./data/techs/test.js'))
     .export(module);
