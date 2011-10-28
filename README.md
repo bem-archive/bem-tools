@@ -1,10 +1,9 @@
 # БЭМ-инструменты
-Работа с файлами, написанными по БЭМ-методу.
+Работа с файлами, написанными по [БЭМ-методу](http://bem.github.com/bem-method/html/all.ru.html).
 
 ## Установка
-Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) и [npm 1.x](http://npmjs.org/).
-После этого достаточно `npm install -g bem xjst ometajs`.
-
+Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) или выше и [npm 1.x](http://npmjs.org/).
+После этого достаточно `npm -g install bem`.
 
  * Установить [nodejs](http://nodejs.org)
 
@@ -16,11 +15,23 @@
 
  * После установки сконфигурируйте `NODE_PATH`:
 
-        echo 'export NODE_PATH="'$(npm root -g):$NODE_PATH'"'>>  ~/.bashrc && . ~/.bashrc
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
+
+    или
+
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
  * Установить [bem-tools](https://github.com/bem/bem-tools)
 
-        sudo npm install -g bem xjst ometajs
+        sudo npm -g install bem
+
+### bem-bl
+
+Если вы планируете использовать `bem` вместе с библиотекой блоков
+[bem-bl](https://github.com/bem/bem-bl), установите так же
+[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometajs).
+
+    sudo npm -g xjst ometajs
 
 ## Использование
 Всю информацию о параметрах использования можно получить с помощью `bem --help`.
@@ -38,16 +49,16 @@
 
 ##### Уровень переопределения
 
-Уровень переопределения это директория, в которой хранятся реализации
-блоков и служебная директория .bem (опциональна).
+Уровень переопределения -- это директория, в которой хранятся реализации
+блоков и служебная директория `.bem`.
 
 В `.bem` хранятся настройки этого уровня переопределения:
 
  * соглашения об именовании
- * шоткаты технологий
+ * ссылки на модули технологий
 
-Пример настройки шоткатов технологий (уровень blocks-desktop библиотеки
-блоков bem-bl):
+Пример настройки ссылок на модули технологий (уровень blocks-desktop
+библиотеки блоков bem-bl):
 
     https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
 
@@ -57,7 +68,7 @@
 
 ###### Создание уровня для страницы
 
-В терминах `bem-tools` страницы -- это тоже блоки, директория со страницами
+В терминах `bem-tools` страницы тоже блоки, директория со страницами
 является уровнем переопределения. Создать такую директорию можно так:
 
     bem create level pages
@@ -67,7 +78,7 @@
 Команда `bem create level` позволяет использовать существующий уровень переопределения
 в качестве прототипа для создаваемого уровня.
 
-    bem create level -l bem-bl/blocks-desktop/.bem/level.js blocks
+    bem create level -l bem-bl/blocks-desktop blocks
 
 ##### Блок
 
@@ -77,7 +88,7 @@
 
     bem create block b-my-block
 
-По умолчанию блок создаётся с набором файлов для всех дефолтных технологий (`bemhtml`, `css`, `js`).
+По умолчанию блок создаётся с набором файлов для всех технологий по-умолчанию (`bemhtml`, `css`, `js`).
 
 ###### Создание блока в определённой технологии
 
@@ -85,27 +96,29 @@
 
     bem create block -t deps.js b-my-block
         // Создаст реализацию в технологии deps.js помимо дефолтных
+
     bem create block -T css b-my-block
         // Создаст только технологию CSS для блока
+
     bem create block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js b-my-block
         // Флаг -T удобно использовать, если нужно добавить новую технологию для уже существующего блока
 
-В качестве значения флага может быть указан шоткат технологии (например, `css`) или путь
-до шаблона технологии.
-Шоткаты технологий могут быть указаны в .bem/level.js уровня переопределения.
+В качестве значения флага может быть указано название технологии (например, `css`)
+или путь до модуля технологии.
+
+Названия технологий могут быть указаны в файле `.bem/level.js` уровня переопределения.
 Например, https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
 
-Примеры реализации шаблонов для ращличных технологий можно увидеть
-в репозитории:
+Примеры реализации модулей технологий можно увидеть в репозитории:
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
 
 #### bem build
 
-С помощью `bem build` можно собирать файлы страниц для различных
-технологий, основываясь на декларации страницы.
+С помощью команды `bem build` можно собирать файлы страниц для различных технологий,
+основываясь на декларации страницы.
 
-###### Создание файла bemdecl.js по bemjson-декларации страницы
+##### Создание файла bemdecl.js по bemjson-декларации страницы
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -113,12 +126,12 @@
         -d pages/index/index.bemjson.js -t bemdecl.js \
         -o pages/index -n index
 
-Значением флага -t может быть как шоткат технологии, так и полный путь
-до js-шаблона технологии. В этом js-шаблоне указано, как именно по декларации
-собирается конечный файл.
-Например, шаблон для `deps.js`: https://github.com/bem/bem-tools/blob/8be03b70aab21814d324718dfda0b774eeeee29f/lib/techs/deps.js.js
+Значением флага -t может быть как название технологии, так и полный путь до модуля
+технологии. В этом модуле указано, как именно по декларации собирается конечный файл.
 
-###### Создание файла deps.js по bemdecl.js
+Например, модуль для `deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
+
+##### Создание файла deps.js по bemdecl.js
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -133,6 +146,7 @@
         -l blocks -l pages/index/blocks \
         -d pages/index/index.deps.js -t css \
         -o pages/index -n index
+
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
         -l blocks -l pages/index/blocks \
@@ -144,11 +158,12 @@
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
         -l blocks -l pages/index/blocks \
-        -d pages/index/index.bemhtml.js -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
+        -d pages/index/index.bemhtml.js \
+        -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
         -o pages/index -n index
 
 Пример построения страниц при помощи `bem build` есть в демонстрационном
-проекте на блоках `bem-bl`: https://github.com/toivonen/bem-bl-test/blob/b99a25adf3a9bdbb6453cfd173ede6bee70ebfc1/GNUmakefile
+проекте на блоках `bem-bl`: https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile
 
 #### bem decl
 
