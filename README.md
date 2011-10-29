@@ -231,6 +231,7 @@
 Например:
 ```js
 exports.baseTechPath = require.resolve('bem/lib/techs/css');
+
 ```
 
 ##### Для продвинутых
