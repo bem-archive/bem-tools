@@ -203,3 +203,9 @@
         -d pages/common/common.deps.js \
         -o bundles/heavy-block/heavy-block.bundle.js
 
+### Модули технологий
+
+#### API
+
+Смотрите документацию в исходном файле [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+
