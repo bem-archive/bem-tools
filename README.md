@@ -209,3 +209,7 @@
 
 Смотрите документацию в исходном файле [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
+##### Примеры модулей технологий
+
+ * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
+ * [bem-bl/blocks-common/i-bem/bem/techs/](https://github.com/bem/bem-bl/tree/master/blocks-common/i-bem/bem/techs)
