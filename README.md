@@ -209,6 +209,66 @@
 
 Смотрите документацию в исходном файле [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
+#### Создание модуля технологии
+
+Существует три способа написания модулей технологии: очень простой, простой и для продвинутых.
+
+Во всех описанных ниже способах из методов можно обратиться к объекту технологии через `this`,
+а через `this.__base(...)` можно вызвать метод одного из базовых классов. Это является следствием
+использование модуля [inherit](https://github.com/dfilatov/node-inherit) для органиазации
+наследования.
+
+##### Очень простой способ
+Способ заключается в том, что вы создаёте обычный CommonJS модуль, из
+которого экспортируете несколько функций, которые перекроют методы базового
+класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+
+##### Простой способ
+В простом способе к экспортируемым функциям добавляется переменная `baseTechPath`, в которой
+содержится абсолютный путь до расширяемого модуля технологии. По умолчанию расширяется базовый
+класс `Tech`.
+
+Например:
+```js
+exports.baseTechPath = require.resolve('bem/lib/techs/css');
+```
+
+##### Для продвинутых
+Если вам нужен полный контроль, вы можете создать модуль, экспортирующий готовый класс технологии `Tech`.
+
+```js
+var INHERIT = require('inherit'),
+    BaseTech = require('bem/lib/tech').Tech;
+
+exports.Tech = INHERIT(BaseTech, {
+
+    create: function(prefix, vars, force) {
+        // do some creation work
+    },
+
+    build: function(prefixes, outputDir, outputName) {
+        // organize own build process
+    }
+
+});
+```
+
+Если в качестве базовой технологии вы хотите использовать одну из существующих технологий,
+написанных в простом стиле, воспользуйтесь функцией `getTechClass()` модуля `bem/lib/tech`
+для получения класса этой технологии.
+
+```js
+var INHERIT = require('inherit'),
+    getTechClass = require('bem/lib/tech').getTechClass,
+    BaseTech = getTechClass(require.resolve('path/to/tech/module'));
+
+exports.Tech = INHERIT(BaseTech, {
+
+    // your overrides go here
+
+});
+```
+
 ##### Примеры модулей технологий
 
  * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
