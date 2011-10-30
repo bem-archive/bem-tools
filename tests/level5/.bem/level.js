@@ -1,7 +1,10 @@
-var level = require('../../level2/.bem/level.js');
-for (var n in level) exports[n] = level[n];
-exports.techs = exports.techs || {};
-exports.techs['css'] = 'bem/lib/techs/css';
-exports.techs['css1'] = '';
-delete exports.techs['js'];
-delete exports.techs['js1'];
+exports.baseLevelPath = require.resolve('../../level2/.bem/level.js');
+exports.getTechs = function() {
+    var techs;
+    techs = techs || this.__base();
+    techs['css'] = 'bem/lib/techs/css';
+    techs['css1'] = '';
+    delete techs['js'];
+    delete techs['js1'];
+    return techs;
+};

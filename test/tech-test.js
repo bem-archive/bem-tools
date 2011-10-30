@@ -1,61 +1,109 @@
 var vows = require('vows'),
     assert = require('assert'),
-    Tech = require('../lib/tech').Tech;
+    PATH = require('../lib/path'),
+    createTech = require('../lib/tech').createTech;
 
-vows.describe('tech').addBatch({
+function testBaseTech(techPath, techAlias) {
+    var batch = {},
+        techName = PATH.basename(techPath),
+        absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
+        relTechPath = techPath;
 
-    "Tech('../lib/techs/css') /* bem bundled tech */": {
-        topic: function() {
-            return new Tech(require.resolve('../lib/techs/css'));
-        },
-        ".getTechName() equals to 'css'": function(tech) {
-            assert.equal(tech.getTechName(), 'css');
-        },
-        ".fileByPrefix('file') equals to 'file.css'": function(tech) {
-            assert.equal(tech.fileByPrefix('file'), 'file.css');
-        },
-        ".matchSuffix('.css') returns true": function(tech) {
-            assert.isTrue(tech.matchSuffix('.css'));
-        },
-        ".getTechRelativePath() resolves to 'bem/lib/techs/css'": function(tech) {
-            assert.equal(tech.getTechRelativePath(), 'bem/lib/techs/css');
-        }
-    },
+    if(/^\.\.\/lib\//.test(techPath)) {
+        relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
 
-    "Tech('../lib/techs/default', 'def') /* default tech with custom name */": {
-        topic: function() {
-            return new Tech(require.resolve('../lib/techs/default'), 'def');
-        },
-        ".getTechName() equals to 'def'": function(tech) {
-            assert.equal(tech.getTechName(), 'def');
-        },
-        ".fileByPrefix('file') equals to 'file.def'": function(tech) {
-            assert.equal(tech.fileByPrefix('file'), 'file.def');
-        },
-        ".matchSuffix('.def') returns true": function(tech) {
-            assert.isTrue(tech.matchSuffix('.def'));
-        },
-        ".getTechRelativePath() resolves to '' (empty string)": function(tech) {
-            assert.equal(tech.getTechRelativePath(), '');
-        }
-    },
-
-    "Tech('./data/techs/test.js') /* custom tech */": {
-        topic: function() {
-            return new Tech(require.resolve('./data/techs/test.js'));
-        },
-        ".getTechName() equals to 'test.js'": function(tech) {
-            assert.equal(tech.getTechName(), 'test.js');
-        },
-        ".fileByPrefix('file') equals to 'file.test.js'": function(tech) {
-            assert.equal(tech.fileByPrefix('file'), 'file.test.js');
-        },
-        ".matchSuffix('.test.js') returns true": function(tech) {
-            assert.isTrue(tech.matchSuffix('.test.js'));
-        },
-        ".getTechRelativePath('./') resolves to 'data/techs/test.js'": function(tech) {
-            assert.equal(tech.getTechRelativePath(__dirname), 'data/techs/test.js');
-        }
+        // default tech identified by '' relative path
+        if(techName == 'tech') relTechPath = '';
     }
 
-}).export(module);
+    techAlias = techAlias || techName;
+
+    batch["Tech.createTech('" + techPath + "')"] = {
+
+        topic: function() {
+            return createTech(require.resolve(techPath),
+                techAlias == techName ? null : techAlias);
+        },
+
+        // meta data
+        ".getTechName()": function(tech) {
+            assert.equal(tech.getTechName(), techAlias);
+        },
+
+        ".getSuffixes()" : {
+
+            topic: function(tech) {
+                return tech.getSuffixes();
+            },
+
+            "returns array": function(suffixes) {
+                assert.instanceOf(suffixes, Array);
+            },
+
+            "returns all suffixes": function(suffixes) {
+                assert.deepEqual(suffixes, [techAlias]);
+            }
+
+        },
+
+        ".matchSuffix()": function(tech) {
+            tech.getSuffixes().forEach(function(suffix) {
+                assert.isTrue(tech.matchSuffix(suffix));
+                assert.isTrue(tech.matchSuffix('.' + suffix));
+            });
+        },
+
+        ".getTechPath()": function(tech) {
+            assert.equal(tech.getTechPath(), absTechPath);
+        },
+
+        ".getTechRelativePath()": function(tech) {
+            assert.equal(tech.getTechRelativePath(__dirname), relTechPath);
+        },
+
+        // create
+        ".create()": {},
+
+        ".getCreateResult()": {},
+
+        ".getCreateResults()": function(tech) {
+            var res = tech.getCreateResults('test', { BlockName: 'b-test' });
+            tech.getSuffixes().forEach(function(suffix) {
+                assert.include(res, suffix);
+            });
+        },
+
+        ".storeCreateResult()": {},
+
+        ".storeCreateResults()": {},
+
+        ".readContent()": {},
+
+        ".readAllContent()": function(tech) {
+            var res = tech.readAllContent('test');
+            tech.getSuffixes().forEach(function(suffix) {
+                assert.include(res, suffix);
+            });
+        },
+
+        // build
+        ".build()": {},
+
+        ".getBuildResult()": {},
+
+        ".getBuildResults()": {},
+
+        ".storeBuildResult()": {},
+
+        ".storeBuildResults()": {}
+
+    };
+    return batch;
+}
+
+vows.describe('tech')
+    .addBatch(testBaseTech('../lib/techs/js'))
+    .addBatch(testBaseTech('../lib/techs/css'))
+    .addBatch(testBaseTech('../lib/tech', 'def'))
+    .addBatch(testBaseTech('./data/techs/test.js'))
+    .export(module);

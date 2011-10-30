@@ -1,13 +1,13 @@
 var vows = require('vows'),
     assert = require('assert'),
     myPath = require('../lib/path'),
-    Level = require('../lib/level').Level;
+    createLevel = require('../lib/level').createLevel;
 
 vows.describe('level').addBatch({
 
     "Level('data/level1') /* default simple level */": {
         topic: function() {
-            return new Level(absolute('data/level1'));
+            return createLevel(absolute('data/level1'));
         },
         ".getDefaultTechs() returns empty array": function(level) {
             var defs = level.getDefaultTechs();

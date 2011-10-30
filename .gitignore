@@ -1,3 +1,4 @@
 .idea
+*.iml
 .*.swp
 node_modules
