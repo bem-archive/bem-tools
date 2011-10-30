@@ -23,11 +23,11 @@
 
  * Установить [bem-tools](https://github.com/bem/bem-tools)
 
-        sudo npm -g install bem@stable
+        sudo npm -g install bem
 
  * Для установки самой последней версии [bem-tools](https://github.com/bem/bem-tools) воспользуйтесь командой
 
-        sudo npm -g install bem
+        sudo npm -g install bem@unstable
 
 ### bem-bl
 
