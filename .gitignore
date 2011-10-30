@@ -1,4 +1,4 @@
-.idea
+.idea/
 *.iml
 .*.swp
-node_modules
+node_modules/
