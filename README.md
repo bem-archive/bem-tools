@@ -41,6 +41,24 @@
 Всю информацию о параметрах использования можно получить с помощью `bem --help`.
 Для информации о конкретной команде и подкомманде: `bem COMMAND --help` и `bem COMMAND SUBCOMMAND --help`.
 
+### Shell completion
+
+#### bash
+
+Если вы используете `bash` и у вас установлен пакет `bash-completion`, выполните следующую команду и перелогиньтесь:
+
+    bem completion > /path/to/etc/bash_completion.d/bem
+
+Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`:
+
+    bem completion > ~/.bashrc
+
+#### zsh
+
+Если вы используете `zsh`, можете добавить вывод `bem completion` себе в `.zshrc`, после чего перелогиньтесь:
+
+    bem completion > ~/.zshrc
+
 ### Консольные команды
 #### bem create
 
