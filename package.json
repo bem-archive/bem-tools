@@ -6,26 +6,40 @@
     "author" : {
         "name": "Sergey Berezhnoy",
         "email" : "veged@mail.ru",
-        "web" : "http://github.com/veged"
+        "url" : "http://github.com/veged"
     },
     "maintainers" : [
         {
             "name": "Sergey Berezhnoy",
             "email" : "veged@mail.ru",
-            "web" : "http://github.com/veged"
+            "url" : "http://github.com/veged"
         },
         {
             "name": "Sergey Belov",
             "email" : "peimei@ya.ru",
-            "web" : "http://github.com/arikon"
+            "url" : "http://github.com/arikon"
+        }
+    ],
+    "contributors" : [
+        {
+            "name": "Sergey Berezhnoy",
+            "email" : "veged@mail.ru",
+            "url" : "http://github.com/veged"
+        },
+        {
+            "name": "Sergey Belov",
+            "email" : "peimei@ya.ru",
+            "url" : "http://github.com/arikon"
         },
         {
             "name": "Varvara Stepanova",
             "email" : "toivonen@toivonen.ru",
-            "web" : "http://github.com/toivonen"
+            "url" : "http://github.com/toivonen"
         }
     ],
-    "contributors" : [],
+    "bugs" : {
+        "url" : "http://github.com/bem/bem-tools/issues"
+    },
     "repository" : {
         "type" : "git",
         "url" : "http://github.com/bem/bem-tools.git"
