@@ -1,69 +1,53 @@
 {
-    "name" : "bem",
-    "description" : "BEM Tools",
-    "version" : "0.1.2",
-    "homepage" : "http://github.com/bem/bem-tools",
-    "author" : {
-        "name": "Sergey Berezhnoy",
-        "email" : "veged@mail.ru",
-        "url" : "http://github.com/veged"
-    },
-    "maintainers" : [
-        {
-            "name": "Sergey Berezhnoy",
-            "email" : "veged@mail.ru",
-            "url" : "http://github.com/veged"
-        },
-        {
-            "name": "Sergey Belov",
-            "email" : "peimei@ya.ru",
-            "url" : "http://github.com/arikon"
-        }
-    ],
-    "contributors" : [
-        {
-            "name": "Sergey Berezhnoy",
-            "email" : "veged@mail.ru",
-            "url" : "http://github.com/veged"
-        },
-        {
-            "name": "Sergey Belov",
-            "email" : "peimei@ya.ru",
-            "url" : "http://github.com/arikon"
-        },
-        {
-            "name": "Varvara Stepanova",
-            "email" : "toivonen@toivonen.ru",
-            "url" : "http://github.com/toivonen"
-        }
-    ],
-    "bugs" : {
-        "url" : "http://github.com/bem/bem-tools/issues"
-    },
-    "repository" : {
-        "type" : "git",
-        "url" : "http://github.com/bem/bem-tools.git"
-    },
-    "directories" : { "lib" : "./lib" },
-    "bin" : { "bem" : "./bin/bem" },
-    "main" : "./lib/bem.js",
-    "dependencies" : {
-        "coa" : ">= 0.1.1",
-        "q" : ">= 0.7.1",
-        "qq" : ">= 0.3.3",
-        "q-wrap" : ">= 0.0.1",
-        "inherit" : ">= 1.0.0",
-        "extend" : ">= 1.0.0"
-    },
-    "devDependencies" : {
-        "vows" : ">= 0.5.11"
-    },
-    "engines" : {
-        "node": ">= 0.4.0 <0.7.0"
-    },
-    "licenses" : [ { "type" : "AS IS" } ],
-    "preferGlobal" : true,
-    "publishConfig" : {
-        "tag" : "unstable"
+  "name": "bem",
+  "description": "BEM Tools",
+  "version": "0.1.3",
+  "homepage": "http://github.com/bem/bem-tools",
+  "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
+  "maintainers": [
+    "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
+    "Sergey Belov <peimei@ya.ru> (http://github.com/arikon)"
+  ],
+  "contributors": [
+    "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
+    "Sergey Belov <peimei@ya.ru> (http://github.com/arikon)",
+    "Varvara Stepanova <toivonen@toivonen.ru> (http://github.com/toivonen)"
+  ],
+  "bugs": {
+    "url": "http://github.com/bem/bem-tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bem/bem-tools.git"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "bin": {
+    "bem": "./bin/bem"
+  },
+  "main": "./lib/bem.js",
+  "dependencies": {
+    "coa" : ">= 0.1.1",
+    "q" : ">= 0.7.1",
+    "qq" : ">= 0.3.3",
+    "q-wrap" : ">= 0.0.1",
+    "inherit" : ">= 1.0.0",
+    "extend" : ">= 1.0.0"
+  },
+  "devDependencies": {
+    "vows": ">= 0.5.11"
+  },
+  "engines": {
+    "node": ">= 0.4.0 <0.7.0"
+  },
+  "licenses": [
+    {
+      "type": "AS IS"
     }
+  ],
+  "preferGlobal": true,
+  "publishConfig": {
+    "tag": "unstable"
+  }
 }
