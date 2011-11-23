@@ -298,3 +298,22 @@ exports.Tech = INHERIT(BaseTech, {
 
  * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
  * [bem-bl/blocks-common/i-bem/bem/techs/](https://github.com/bem/bem-bl/tree/master/blocks-common/i-bem/bem/techs)
+
+### Использование через API
+
+В версии 0.2.0 появилась возможность использовать команды `bem-tools` через API.
+
+Модуль `bem` экспортирует объект основной команды, у которого есть свойство `api`.
+Использовать его можно так:
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    techs = ['css', 'js'],
+    blocks = ['b-block1', 'b-block2'];
+
+Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
+    console.log('Create blocks: %s', blocks.join(', '));
+});
+```
