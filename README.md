@@ -35,7 +35,7 @@
 [bem-bl](https://github.com/bem/bem-bl), установите так же
 [xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometajs).
 
-    sudo npm -g xjst ometajs
+    sudo npm -g install xjst ometajs
 
 ## Использование
 Всю информацию о параметрах использования можно получить с помощью `bem --help`.
