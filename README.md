@@ -321,7 +321,9 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 });
 ```
 
-Все команды принимают два аргумента:
+Как видно из примера, можно обращаться ко всем командам `bem-tools`, в том числе вложенным.
+
+Команды принимают два аргумента:
 
  * **Object** `opts` опции команды
  * **Object** `args` аргументы команды
@@ -338,7 +340,7 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 
 ###### Опции
 
- * **String** `outputDir` директория для записи результата
+ * **String** `outputDir` директория для записи результата, по умолчанию текущая
  * **String** `level` «прототип» уровня переопределения
  * **Boolean** `force` принудительно создать уровень, даже если он существует
 
@@ -346,13 +348,28 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 
  * **Array** `names` имена создаваемых уровней переопределения
 
+###### Пример использования
+
+```js
+var PATH = require('path'),
+    Q = require('q'),
+    BEM = require('bem').api,
+
+    outputDir = PATH.join(__dirname, 'levels'),
+    levels = ['blocks-common', 'blocks-desktop'];
+
+Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function() {
+    console.log('Create levels %s at %s', levels.join(', '), outputDir);
+});
+```
+
 ##### BEM.create.block()
 
 Создание блока.
 
 ###### Опции
 
- * **String** `levelDir` директория уровня переопределения
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
  * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
  * **Array** `forceTech` использовать только указанные технологии
  * **Array** `noTech` исключить указанные технологии из использования
@@ -362,12 +379,26 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 
  * **Array** `names` имена создаваемых блоков
 
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    addTechs = ['bemhtml'],
+    blocks = ['b-header'];
+
+Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
+    console.log('Create blocks: %s', blocks.join(', '));
+});
+```
+
 ##### BEM.create.elem()
 Создание элемента.
 
 ###### Опции
 
- * **String** `levelDir` директория уровня переопределения
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
  * **String** `blockName` имя блока (обязательный параметр)
  * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
  * **Array** `forceTech` использовать только указанные технологии
@@ -378,12 +409,27 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 
  * **Array** `names` имена создаваемых элементов
 
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    addTechs = ['bemhtml', 'title.txt'],
+    block = 'b-header',
+    elems = ['logo'];
+
+Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }), function() {
+    console.log('Create elems %s of block %s', elems.join(', '), block);
+});
+```
+
 ##### BEM.create.mod()
-Создание модификатора блока или элемента.
+Создание модификатора блока или иодификатора элемента.
 
 ###### Опции
 
- * **String** `levelDir` директория уровня переопределения
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
  * **String** `blockName` имя блока (обязательный параметр)
  * **String** `elemName` имя элемента
  * **Array** `modVal` значения модификатора
@@ -395,6 +441,27 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 ###### Аргументы
 
  * **Array** `names` имена создаваемых модификаторов
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    forceTechs = ['css'],
+    block = 'b-header',
+    elem = 'logo',
+    mods = ['lang'],
+    vals = ['ru', 'en'];
+
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
+    console.log('Create mod %s of block %s with vals %s', elems.join(', '), block, vals.join(', '));
+});
+
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: elems }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', elems.join(', '), elem, block, vals.join(', '));
+});
+```
 
 #### BEM.build()
 Сборка файлов.
