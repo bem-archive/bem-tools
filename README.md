@@ -394,6 +394,7 @@ Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
 ```
 
 ##### BEM.create.elem()
+
 Создание элемента.
 
 ###### Опции
@@ -425,6 +426,7 @@ Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }
 ```
 
 ##### BEM.create.mod()
+
 Создание модификатора блока или иодификатора элемента.
 
 ###### Опции
@@ -464,13 +466,52 @@ Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem
 ```
 
 #### BEM.build()
+
 Сборка файлов.
 
+###### Опции
+
+ * **String** `outputDir` директория для записи результата, по умолчанию текущая
+ * **String** `outputName` имя (префикс имени файла) для записи результата
+ * **String** `declaration` имя файла декларации использования (обязательный параметр)
+ * **Array** `level` уровень переопределения
+ * **Array** `tech` собирать файлы указанных технологий
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    decl = 'page.deps.js',
+    outputDir = 'build',
+    outputName = 'page',
+    levels = ['blocks-common', 'blocks-desktop'],
+    techs = ['css', 'js'];
+
+Q.when(
+    BEM.build({
+        outputDir: outputDir,
+        outputName: outputName,
+        declaration: decl,
+        level: levels,
+        tech: techs
+    }),
+    function() {
+        console.log('Finished build of techs %s for levels %s. Result in %s/%s.* files.',
+            techs.join(', '), levels.join(', '), outputDir, outputName);
+    }
+);
+```
+
 #### BEM.decl
+
 Команды для работы с декларациями использования.
 
 ##### BEM.decl.merge()
+
 Объединение деклараций.
 
 ##### BEM.decl.subtract()
+
 Вычитание деклараций.
