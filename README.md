@@ -241,11 +241,13 @@
 наследования.
 
 ##### Очень простой способ
+
 Способ заключается в том, что вы создаёте обычный CommonJS модуль, из
 которого экспортируете несколько функций, которые перекроют методы базового
 класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
 ##### Простой способ
+
 В простом способе к экспортируемым функциям добавляется переменная `baseTechPath`, в которой
 содержится абсолютный путь до расширяемого модуля технологии. По умолчанию расширяется базовый
 класс `Tech`.
@@ -259,6 +261,7 @@ exports.baseTechPath = require.resolve('bem/lib/techs/css');
 ```
 
 ##### Для продвинутых
+
 Если вам нужен полный контроль, вы можете создать модуль, экспортирующий готовый класс технологии `Tech`.
 
 ```js
@@ -298,3 +301,227 @@ exports.Tech = INHERIT(BaseTech, {
 
  * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
  * [bem-bl/blocks-common/i-bem/bem/techs/](https://github.com/bem/bem-bl/tree/master/blocks-common/i-bem/bem/techs)
+
+### Использование через API
+
+В версии 0.2.0 появилась возможность использовать команды `bem-tools` через API.
+
+Модуль `bem` экспортирует объект основной команды, у которого есть свойство `api`.
+Использовать его можно так:
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    techs = ['css', 'js'],
+    blocks = ['b-block1', 'b-block2'];
+
+Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
+    console.log('Create blocks: %s', blocks.join(', '));
+});
+```
+
+Как видно из примера, можно обращаться ко всем командам `bem-tools`, в том числе вложенным.
+
+Команды принимают два аргумента:
+
+ * **Object** `opts` опции команды
+ * **Object** `args` аргументы команды
+
+Возвращают объект типа `Q.promise`.
+
+#### BEM.create
+
+Команды для создания БЭМ-сущностей.
+
+##### BEM.create.level()
+
+Создание уровня переопределения.
+
+###### Опции
+
+ * **String** `outputDir` директория для записи результата, по умолчанию текущая
+ * **String** `level` «прототип» уровня переопределения
+ * **Boolean** `force` принудительно создать уровень, даже если он существует
+
+###### Аргументы
+
+ * **Array** `names` имена создаваемых уровней переопределения
+
+###### Пример использования
+
+```js
+var PATH = require('path'),
+    Q = require('q'),
+    BEM = require('bem').api,
+
+    outputDir = PATH.join(__dirname, 'levels'),
+    levels = ['blocks-common', 'blocks-desktop'];
+
+Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function() {
+    console.log('Create levels %s at %s', levels.join(', '), outputDir);
+});
+```
+
+##### BEM.create.block()
+
+Создание блока.
+
+###### Опции
+
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
+ * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
+ * **Array** `forceTech` использовать только указанные технологии
+ * **Array** `noTech` исключить указанные технологии из использования
+ * **Boolean** `force` принудительно создавать файлы блока
+
+###### Аргументы
+
+ * **Array** `names` имена создаваемых блоков
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    addTechs = ['bemhtml'],
+    blocks = ['b-header'];
+
+Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
+    console.log('Create blocks: %s', blocks.join(', '));
+});
+```
+
+##### BEM.create.elem()
+
+Создание элемента.
+
+###### Опции
+
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
+ * **String** `blockName` имя блока (обязательный параметр)
+ * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
+ * **Array** `forceTech` использовать только указанные технологии
+ * **Array** `noTech` исключить указанные технологии из использования
+ * **Boolean** `force` принудительно создавать файлы элемента
+
+###### Аргументы
+
+ * **Array** `names` имена создаваемых элементов
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    addTechs = ['bemhtml', 'title.txt'],
+    block = 'b-header',
+    elems = ['logo'];
+
+Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }), function() {
+    console.log('Create elems %s of block %s', elems.join(', '), block);
+});
+```
+
+##### BEM.create.mod()
+
+Создание модификатора блока или иодификатора элемента.
+
+###### Опции
+
+ * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
+ * **String** `blockName` имя блока (обязательный параметр)
+ * **String** `elemName` имя элемента
+ * **Array** `modVal` значения модификатора
+ * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
+ * **Array** `forceTech` использовать только указанные технологии
+ * **Array** `noTech` исключить указанные технологии из использования
+ * **Boolean** `force` принудительно создавать файлы модификатора
+
+###### Аргументы
+
+ * **Array** `names` имена создаваемых модификаторов
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    forceTechs = ['css'],
+    block = 'b-header',
+    elem = 'logo',
+    mods = ['lang'],
+    vals = ['ru', 'en'];
+
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
+    console.log('Create mod %s of block %s with vals %s', elems.join(', '), block, vals.join(', '));
+});
+
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: elems }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', elems.join(', '), elem, block, vals.join(', '));
+});
+```
+
+#### BEM.build()
+
+Сборка файлов.
+
+###### Опции
+
+ * **String** `outputDir` директория для записи результата, по умолчанию текущая
+ * **String** `outputName` имя (префикс имени файла) для записи результата
+ * **String** `declaration` имя файла декларации использования (обязательный параметр)
+ * **Array** `level` уровень переопределения
+ * **Array** `tech` собирать файлы указанных технологий
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    decl = 'page.deps.js',
+    outputDir = 'build',
+    outputName = 'page',
+    levels = ['blocks-common', 'blocks-desktop'],
+    techs = ['css', 'js'];
+
+Q.when(
+    BEM.build({
+        outputDir: outputDir,
+        outputName: outputName,
+        declaration: decl,
+        level: levels,
+        tech: techs
+    }),
+    function() {
+        console.log('Finished build of techs %s for levels %s. Result in %s/%s.* files.',
+            techs.join(', '), levels.join(', '), outputDir, outputName);
+    }
+);
+```
+
+#### BEM.decl
+
+Команды для работы с декларациями использования.
+
+##### BEM.decl.merge()
+
+Объединение деклараций.
+
+###### Опции
+
+ * **String** `output` файл для записи результата, по умолчанию STDOUT
+ * **Array** `declaration` имя файла декларации использования (обязательный параметр)
+
+##### BEM.decl.subtract()
+
+Вычитание деклараций.
+
+###### Опции
+
+ * **String** `output` файл для записи результата, по умолчанию STDOUT
+ * **Array** `declaration` имя файла декларации использования (обязательный параметр)

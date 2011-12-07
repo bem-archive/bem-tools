@@ -1,4 +1,5 @@
-test: FORCE
+.PHONY: test
+test:
 	-rm -rf tests/level4
 	./bin/bem create level -o tests -l simple -T css -T js -t xsl level4
 	./bin/bem create block -l tests/level4 -T css -T js -t xsl first-block
@@ -16,4 +17,7 @@ test: FORCE
 	./bin/bem build -d tests/decl.js -o tests -n bla -t deps.js -t ie.css -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 	./bin/bem build -d tests/bla.deps.js -o tests -n bla -t css -t js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 
-.PHONY: FORCE
+RSYNC_ARIKON=arikon.dev.tools.yandex.net:/home/arikon/projects/bem/bem-tools
+.PHONY: rsync-arikon
+rsync-arikon:
+	rsync -az -e ssh --delete ./ $(RSYNC_ARIKON)
