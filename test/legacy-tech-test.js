@@ -53,8 +53,8 @@ vows.describe('tech').addBatch({
         ".matchSuffix('.test.js') returns true": function(tech) {
             assert.isTrue(tech.matchSuffix('.test.js'));
         },
-        ".getTechRelativePath('./') resolves to 'data/techs/test.js'": function(tech) {
-            assert.equal(tech.getTechRelativePath(__dirname), 'data/techs/test.js');
+        ".getTechRelativePath('./') resolves to './data/techs/test.js'": function(tech) {
+            assert.equal(tech.getTechRelativePath(__dirname), './data/techs/test.js');
         }
     }
 

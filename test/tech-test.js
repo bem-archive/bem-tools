@@ -1,4 +1,5 @@
-var vows = require('vows'),
+var Q = require('q'),
+    vows = require('vows'),
     assert = require('assert'),
     PATH = require('../lib/path'),
     createTech = require('../lib/tech').createTech;
@@ -66,11 +67,26 @@ function testBaseTech(techPath, techAlias) {
 
         ".getCreateResult()": {},
 
-        ".getCreateResults()": function(tech) {
-            var res = tech.getCreateResults('test', { BlockName: 'b-test' });
-            tech.getSuffixes().forEach(function(suffix) {
-                assert.include(res, suffix);
-            });
+        ".getCreateResults()": {
+            topic: function(tech) {
+                var _this = this;
+                Q.when(
+                    tech.getCreateResults('test', { BlockName: 'b-test' }),
+                    function(res) {
+                        _this.callback(null, res, tech.getSuffixes());
+                    },
+                    function(err) {
+                        _this.callback(err);
+                    }
+                );
+            },
+
+            "contains results for all suffixes": function(err, res, suffixes) {
+                assert.isNull(err);
+                suffixes.forEach(function(suffix) {
+                    assert.include(res, suffix);
+                });
+            }
         },
 
         ".storeCreateResult()": {},
@@ -79,11 +95,26 @@ function testBaseTech(techPath, techAlias) {
 
         ".readContent()": {},
 
-        ".readAllContent()": function(tech) {
-            var res = tech.readAllContent('test');
-            tech.getSuffixes().forEach(function(suffix) {
-                assert.include(res, suffix);
-            });
+        ".readAllContent()": {
+            topic: function(tech) {
+                var _this = this;
+                Q.when(
+                    tech.readAllContent('test'),
+                    function(res) {
+                        _this.callback(null, res, tech.getSuffixes());
+                    },
+                    function(err) {
+                        _this.callback(err);
+                    }
+                );
+            },
+
+            "contains results for all suffixes": function(err, res, suffixes) {
+                assert.isNull(err);
+                suffixes.forEach(function(suffix) {
+                    assert.include(res, suffix);
+                });
+            }
         },
 
         // build
