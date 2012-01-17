@@ -1,25 +1,25 @@
 var vows = require('vows'),
     assert = require('assert'),
-    myPath = require('../lib/path');
+    PATH = require('../lib/path');
 
 function absolute(path) {
-    return myPath.absolute(path, __dirname);
+    return PATH.absolute(path, __dirname);
 }
 
 vows.describe('path').addBatch({
 
     'relative() call with params': {
         topic: function() {
-            return myPath.relative;
+            return PATH.relative;
         },
         "('./', './data/') resolves to 'data/'": function(topic) {
-            assert.equal(topic(absolute('./'), absolute('./data/')), 'data/');
+            assert.equal(topic(absolute('./'), absolute('./data/')), PATH.unixToOs('data/'));
         },
         "('./data/', '../lib') resolves to '../lib'": function(topic) {
-            assert.equal(topic(absolute('./data/'), absolute('../lib')), '../../lib');
+            assert.equal(topic(absolute('./data/'), absolute('../lib')), PATH.unixToOs('../../lib'));
         },
         "('./file.js', '../lib') resolves to '../lib'": function(topic) {
-            assert.equal(topic(absolute('./file.js'), absolute('../lib')), '../lib');
+            assert.equal(topic(absolute('./file.js'), absolute('../lib')), PATH.unixToOs('../lib'));
         }
     }
 
