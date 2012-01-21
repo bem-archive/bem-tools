@@ -51,13 +51,13 @@
 
 Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`:
 
-    bem completion > ~/.bashrc
+    bem completion >> ~/.bashrc
 
 #### zsh
 
 Если вы используете `zsh`, можете добавить вывод `bem completion` себе в `.zshrc`, после чего перелогиньтесь:
 
-    bem completion > ~/.zshrc
+    bem completion >> ~/.zshrc
 
 ### Консольные команды
 #### bem create
