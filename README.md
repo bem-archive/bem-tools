@@ -1,5 +1,3 @@
-[russian version](blob/nodejs/README.ru.md)
-
 # Bem tools
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
