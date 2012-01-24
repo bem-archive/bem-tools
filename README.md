@@ -1,146 +1,147 @@
-# БЭМ-инструменты
-Работа с файлами, написанными по [БЭМ-методу](http://bem.github.com/bem-method/html/all.ru.html).
+# Bem tools
+Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
-## Установка
-Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) или выше и [npm 1.x](http://npmjs.org/).
-После этого достаточно `npm -g install bem`.
+## Install
+You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
+Then run `npm -g install bem`.
 
- * Установить [nodejs](http://nodejs.org)
+ * Install [nodejs](http://nodejs.org)
 
         https://github.com/joyent/node/wiki/Installation
 
- * Установить [npm](http://npmjs.org)
+ * Install [npm](http://npmjs.org)
 
         curl http://npmjs.org/install.sh | sudo sh
 
- * После установки сконфигурируйте `NODE_PATH`:
+ * Configure `NODE_PATH` after installing:
 
         echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
 
-    или
+    or
 
         echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
- * Установить [bem-tools](https://github.com/bem/bem-tools)
+ * Install [bem-tools](https://github.com/bem/bem-tools)
 
         sudo npm -g install bem
 
- * Для установки самой последней версии [bem-tools](https://github.com/bem/bem-tools) воспользуйтесь командой
+ * Use this command [bem-tools](https://github.com/bem/bem-tools) to install the latest version
 
         sudo npm -g install bem@unstable
 
 ### bem-bl
 
-Если вы планируете использовать `bem` вместе с библиотекой блоков
-[bem-bl](https://github.com/bem/bem-bl), установите так же
-[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometajs).
+If you are going tp use `bem` for
+[bem-bl](https://github.com/bem/bem-bl) block library, you should also install
+[xjst](https://github.com/veged/xjst) or [ometajs](https://github.com/veged/ometajs).
 
     sudo npm -g install xjst ometajs
 
-## Использование
-Всю информацию о параметрах использования можно получить с помощью `bem --help`.
-Для информации о конкретной команде и подкомманде: `bem COMMAND --help` и `bem COMMAND SUBCOMMAND --help`.
+## Usage
+Get the list of commands with `bem --help`.
+To read about commands and subcommands use `bem COMMAND --help` or `bem COMMAND SUBCOMMAND --help`.
 
 ### Shell completion
 
 #### bash
 
-Если вы используете `bash` и у вас установлен пакет `bash-completion`, выполните следующую команду и перелогиньтесь:
+If you use `bash` and `bash-completion`, run the following command:
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
-Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`:
+and restart bash.
+
+If you don't use `bash-completion`, you can add `bem completion` to your `.bashrc`:
 
     bem completion >> ~/.bashrc
 
 #### zsh
 
-Если вы используете `zsh`, можете добавить вывод `bem completion` себе в `.zshrc`, после чего перелогиньтесь:
+If you use `zsh`, you can add `bem completion` to your `.zshrc`:
 
     bem completion >> ~/.zshrc
 
-### Консольные команды
+then restart.
+
+### Commands
 #### bem create
 
-С помошью `bem create` можно создавать сущности:
+You can create entities using `bem create`:
 
- * уровни переопределения
- * блоки
- * элементы
- * модификаторы
+ * levels of defenition
+ * blocks
+ * elements
+ * modifiers
 
-##### Уровень переопределения
+##### Level of defenition
 
-Уровень переопределения -- это директория, в которой хранятся реализации
-блоков и служебная директория `.bem`.
+Level of defenition is a directory that hold blocks and служебная directiry `.bem`.
 
-В `.bem` хранятся настройки этого уровня переопределения:
+A `.bem` directory holds options for a current level:
 
- * соглашения об именовании
- * ссылки на модули технологий
+ * naming convention
+ * links to the technologies
 
-Пример настройки ссылок на модули технологий (уровень blocks-desktop
-библиотеки блоков bem-bl):
+Here there is an example of technologies' links (this is `blocks-desktop` level of
+bem-bl block library):
 
-    https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
+    https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
-###### Создание уровня переопределения blocks в текущей директории:
+###### Create new level of defenition named `blocks` under current directory:
 
     bem create level blocks
 
-###### Создание уровня для страницы
+###### Create a level for pages
 
-В терминах `bem-tools` страницы тоже блоки, директория со страницами
-является уровнем переопределения. Создать такую директорию можно так:
+In `bem-tools` terms pages are blocks too. A directory which holds pages is a level of
+defenition itself. To create such a directory run this:
 
     bem create level pages
 
-###### Создание уровня переопределения на основе существующего
+###### Create a level based on an existing one
 
-Команда `bem create level` позволяет использовать существующий уровень переопределения
-в качестве прототипа для создаваемого уровня.
+`bem create level` allows to use an existing level as a prototype for a level it creates.
 
     bem create level -l bem-bl/blocks-desktop blocks
 
-##### Блок
+##### Block
 
-Блок -- это директория с файлами реализаций в различных технологиях.
+Block is a directory that holds block's implementation, some files with different
+technologies.
 
-###### Создание блока
+###### Create a new block
 
     bem create block b-my-block
 
-По умолчанию блок создаётся с набором файлов для всех технологий по-умолчанию (`bemhtml`, `css`, `js`).
+By defult, a block has several techs: (`bemhtml`, `css`, `js`).
 
-###### Создание блока в определённой технологии
+###### Create a new block using concrete tech
 
-Использование флагов -t (-T) позволяет создавать файлы блока нужных технологий:
+Flags -t (-T) are to create files of technologies you need:
 
     bem create block -t deps.js b-my-block
-        // Создаст реализацию в технологии deps.js помимо дефолтных
+        // Creates a block implementation in deps.js technology, ecxept of default techs.
 
     bem create block -T css b-my-block
-        // Создаст только технологию CSS для блока
+        // Creates only CSS technology for a block
 
     bem create block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js b-my-block
-        // Флаг -T удобно использовать, если нужно добавить новую технологию для уже существующего блока
+        // -T flag is useful when you need to add a new tech to the block existed
 
-В качестве значения флага может быть указано название технологии (например, `css`)
-или путь до модуля технологии.
+The value of this flag may be either tech's name (e.g `css`) or a path to tech module.
 
-Названия технологий могут быть указаны в файле `.bem/level.js` уровня переопределения.
-Например, https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
+Tech names may be listes in `.bem/level.js` file of a level.
+E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
-Примеры реализации модулей технологий можно увидеть в репозитории:
+You can find the examples of tech modules in the repo:
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
 
 #### bem build
 
-С помощью команды `bem build` можно собирать файлы страниц для различных технологий,
-основываясь на декларации страницы.
+`bem build` command is to build page file in different techs, according to page declaration.
 
-##### Создание файла bemdecl.js по bemjson-декларации страницы
+##### Create bemdecl.js file from page's bemjson
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -148,12 +149,12 @@
         -d pages/index/index.bemjson.js -t bemdecl.js \
         -o pages/index -n index
 
-Значением флага -t может быть как название технологии, так и полный путь до модуля
-технологии. В этом модуле указано, как именно по декларации собирается конечный файл.
+You can use either tech's name or a path to its module as a valut of -t flag. This
+module says how to build a final file from a declaration.
 
-Например, модуль для `deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
+E.g., this is a module for`deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
 
-##### Создание файла deps.js по bemdecl.js
+##### Create deps.js file from bemdecl.js
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -161,7 +162,7 @@
         -d pages/index/index.bemdecl.js -t deps.js \
         -o pages/index -n index
 
-###### Создание js и css файлов страниц по deps.js
+###### Create js and css files for a page from deps.js
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -175,7 +176,7 @@
         -d pages/index/index.deps.js -t js \
         -o pages/index -n index
 
-###### Создание сборки с шаблонами bemhtml.js по файлу deps.js
+###### Create bemhtml.js template for a page from deps.js
 
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
@@ -184,27 +185,27 @@
         -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
         -o pages/index -n index
 
-Пример построения страниц при помощи `bem build` есть в демонстрационном
-проекте на блоках `bem-bl`: https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile
+There is an example how pages are built using `bem build` in our test project that uses
+`bem-bl` block library: https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile
 
 #### bem decl
 
-`bem decl` позволяет работать с файлами деклараций, а именно:
+`bem decl` is to work with declaration files. Thus,
 
- * объединять несколько деклараций в одну
- * «вычитать» декларации, то есть получать разницу между ними
+ * to merge two or more decls into one
+ * «subtract» decls
 
-Для всех подкоманд `bem decl` в качестве входных деклараций (ключ `-d`) могут выступать
-файлы как в формате `bemdecl.json`, так и файлы в формате `deps.js`.
+All subcommands of `bem decl` can take as input declaration
+either `bemdecl.js` or `deps.js` formats (via `-d` flag).
 
-На выходе (ключ `-o`) всегда получается файл в формате `deps.js`.
+Ouput data (`-o` flag) always is in `deps.js` format.
 
 ##### bem decl merge
 
-`bem decl merge` объединяет несколько деклараций в одну. Она бывает полезна в ситуациях,
-когда, например, вам нужно собрать общую сборку для нескольких страниц.
+`bem decl merge` is to merge two or more decls into one. It is useful if you need, for example, to build
+one file for several pages.
 
-###### Создание декларации для всех страниц
+###### Create a decl for all page
 
     bem decl merge \
         -d pages/index/index.deps.js \
@@ -214,45 +215,43 @@
 
 ##### bem decl subtract
 
-`bem decl subtract` «вычитает» из первой указанной декларации все остальные. Она полезна
-в ситуациях, когда, например, вам нужно сделать бандл, которые будет догружатся на страницу
-по требованию.
+`bem decl subtract` is to «subtract» all the next decls from a first one.
+You may use it to create a bundle that you request by application.
 
-###### Создание декларации для подгружаемого по требованию «тяжёлого» блока
+###### Create a decl for a "heavy" block requested by application
 
     bem decl subtract \
         -d bundles/heavy-block/heavy-block.deps.js \
         -d pages/common/common.deps.js \
         -o bundles/heavy-block/heavy-block.bundle.js
 
-### Модули технологий
+### Tech modules
 
 #### API
 
-Смотрите документацию в исходном файле [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
-#### Создание модуля технологии
+#### Creating tech module
 
-Существует три способа написания модулей технологии: очень простой, простой и для продвинутых.
+There are three ways to write a tech module: very simple, simple and advanced.
 
-Во всех описанных ниже способах из методов можно обратиться к объекту технологии через `this`,
-а через `this.__base(...)` можно вызвать метод одного из базовых классов. Это является следствием
-использование модуля [inherit](https://github.com/dfilatov/node-inherit) для органиазации
-наследования.
+Whatever manner you use you can get a tech object from `this`. Any base class is
+available from `this.__base(...)`. Thanks for [inherit](https://github.com/dfilatov/node-inherit)
+module that organizes inheritance here.
 
-##### Очень простой способ
+##### Very simple way
 
-Способ заключается в том, что вы создаёте обычный CommonJS модуль, из
-которого экспортируете несколько функций, которые перекроют методы базового
-класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+You need only to create reegular CommonJS module and export some of its
+functions to redefine them. By default all functions are from the base class
+written in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
-##### Простой способ
+##### Simple way
 
-В простом способе к экспортируемым функциям добавляется переменная `baseTechPath`, в которой
-содержится абсолютный путь до расширяемого модуля технологии. По умолчанию расширяется базовый
-класс `Tech`.
+Besided function to export, you can use `baseTechPath` variable to define an
+absolute path to a tech module you are extending. By defaukt you are
+extending `Tech` class.
 
-Например:
+For example:
 
 ```js
 
@@ -260,9 +259,10 @@ exports.baseTechPath = require.resolve('bem/lib/techs/css');
 
 ```
 
-##### Для продвинутых
+##### Advanced way
 
-Если вам нужен полный контроль, вы можете создать модуль, экспортирующий готовый класс технологии `Tech`.
+If you need a total control, you can create a module that exports
+the whole `Tech` class.
 
 ```js
 var INHERIT = require('inherit'),
@@ -281,9 +281,9 @@ exports.Tech = INHERIT(BaseTech, {
 });
 ```
 
-Если в качестве базовой технологии вы хотите использовать одну из существующих технологий,
-написанных в простом стиле, воспользуйтесь функцией `getTechClass()` модуля `bem/lib/tech`
-для получения класса этой технологии.
+When you need to base your tech on an existing one written in a simple way use
+`getTechClass()` function from `bem/lib/tech` module
+to get its class.
 
 ```js
 var INHERIT = require('inherit'),
@@ -297,17 +297,17 @@ exports.Tech = INHERIT(BaseTech, {
 });
 ```
 
-##### Примеры модулей технологий
+##### Examples of tech modules
 
  * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
  * [bem-bl/blocks-common/i-bem/bem/techs/](https://github.com/bem/bem-bl/tree/master/blocks-common/i-bem/bem/techs)
 
-### Использование через API
+### API usage
 
-В версии 0.2.0 появилась возможность использовать команды `bem-tools` через API.
+Starting from 0.2.0 version it is possible to use `bem-tools` from API.
 
-Модуль `bem` экспортирует объект основной команды, у которого есть свойство `api`.
-Использовать его можно так:
+`bem` module expoerts the object of a command that has an `api` property.
+It is to use in this way:
 
 ```js
 var Q = require('q'),
@@ -321,34 +321,34 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 });
 ```
 
-Как видно из примера, можно обращаться ко всем командам `bem-tools`, в том числе вложенным.
+The example above shows that you can use all the commands (including subcommands).
 
-Команды принимают два аргумента:
+A command get two args:
 
- * **Object** `opts` опции команды
- * **Object** `args` аргументы команды
+ * **Object** `opts` command options
+ * **Object** `args` command arguments
 
-Возвращают объект типа `Q.promise`.
+It returns an object of `Q.promise` type.
 
 #### BEM.create
 
-Команды для создания БЭМ-сущностей.
+COmmands to create BEM entities.
 
 ##### BEM.create.level()
 
-Создание уровня переопределения.
+Creating a level of defenition.
 
-###### Опции
+###### Options
 
- * **String** `outputDir` директория для записи результата, по умолчанию текущая
- * **String** `level` «прототип» уровня переопределения
- * **Boolean** `force` принудительно создать уровень, даже если он существует
+ * **String** `outputDir` a directory of output (current directory by default)
+ * **String** `level` a «prototype» of the level
+ * **Boolean** `force` key to force level's creating if it already exists
 
-###### Аргументы
+###### Arguments
 
- * **Array** `names` имена создаваемых уровней переопределения
+ * **Array** `names` Namef of levels you are creating
 
-###### Пример использования
+###### Example
 
 ```js
 var PATH = require('path'),
@@ -365,21 +365,21 @@ Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function()
 
 ##### BEM.create.block()
 
-Создание блока.
+Creating a block.
 
-###### Опции
+###### Options
 
- * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы блока
+ * **String** `levelDir` A directory of block's level. (Current directory by default)
+ * **Array** `addTech` Add the techs listed
+ * **Array** `forceTech` Use these techs only
+ * **Array** `noTech` Exclude these techs
+ * **Boolean** `force` Force files creating
 
-###### Аргументы
+###### Arguments
 
- * **Array** `names` имена создаваемых блоков
+ * **Array** `names` List of block names
 
-###### Пример использования
+###### Example
 
 ```js
 var Q = require('q'),
@@ -395,22 +395,22 @@ Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
 
 ##### BEM.create.elem()
 
-Создание элемента.
+Creating an element.
 
-###### Опции
+###### Options
 
- * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
- * **String** `blockName` имя блока (обязательный параметр)
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы элемента
+ * **String** `levelDir` A directory of level. (Current directory by default)
+ * **String** `blockName` A name of element's block (required)
+ * **Array** `addTech` Add the techs listed
+ * **Array** `forceTech` Use only the techs listed
+ * **Array** `noTech` Exclude the techs listed
+ * **Boolean** `force` Force creating element's files (to rewrite them)
 
-###### Аргументы
+###### Arguments
 
- * **Array** `names` имена создаваемых элементов
+ * **Array** `names` List of element names
 
-###### Пример использования
+###### Example
 
 ```js
 var Q = require('q'),
@@ -427,24 +427,24 @@ Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }
 
 ##### BEM.create.mod()
 
-Создание модификатора блока или иодификатора элемента.
+Creating a modifier for a block or an element.
 
-###### Опции
+###### Options
 
- * **String** `levelDir` директория уровня переопределения, по умолчанию текущая
- * **String** `blockName` имя блока (обязательный параметр)
- * **String** `elemName` имя элемента
- * **Array** `modVal` значения модификатора
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы модификатора
+ * **String** `levelDir` Level directory (current directory by default)
+ * **String** `blockName` Block name of this modifier (required)
+ * **String** `elemName` Element name
+ * **Array** `modVal` Modifier vaue
+ * **Array** `addTech` Ad the techs listed
+ * **Array** `forceTech` Use only the techs listed
+ * **Array** `noTech` Exclude the techs listed
+ * **Boolean** `force` Force creating modifier files (rewrite)
 
-###### Аргументы
+###### Arguments
 
- * **Array** `names` имена создаваемых модификаторов
+ * **Array** `names` List of modifier
 
-###### Пример использования
+###### Example
 
 ```js
 var Q = require('q'),
@@ -467,17 +467,17 @@ Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem
 
 #### BEM.build()
 
-Сборка файлов.
+Build files from blocks.
 
-###### Опции
+###### Options
 
- * **String** `outputDir` директория для записи результата, по умолчанию текущая
- * **String** `outputName` имя (префикс имени файла) для записи результата
- * **String** `declaration` имя файла декларации использования (обязательный параметр)
- * **Array** `level` уровень переопределения
- * **Array** `tech` собирать файлы указанных технологий
+ * **String** `outputDir` An output directory (current directory by default)
+ * **String** `outputName` A filename (its prefix) for output
+ * **String** `declaration` A filename of input declaration (required)
+ * **Array** `level` List of levels to use
+ * **Array** `tech` List of techs to build
 
-###### Пример использования
+###### Example
 
 ```js
 var Q = require('q'),
@@ -506,22 +506,22 @@ Q.when(
 
 #### BEM.decl
 
-Команды для работы с декларациями использования.
+Commands to work with declarations.
 
 ##### BEM.decl.merge()
 
-Объединение деклараций.
+Merging two or more declarations into one.
 
-###### Опции
+###### Options
 
- * **String** `output` файл для записи результата, по умолчанию STDOUT
- * **Array** `declaration` имя файла декларации использования (обязательный параметр)
+ * **String** `output` A file for output result. By default output is in STDOUT
+ * **Array** `declaration` List of filenames for declarations (required)
 
 ##### BEM.decl.subtract()
 
-Вычитание деклараций.
+Subtracting the next declarations from the first one.
 
-###### Опции
+###### Options
 
- * **String** `output` файл для записи результата, по умолчанию STDOUT
- * **Array** `declaration` имя файла декларации использования (обязательный параметр)
+ * **String** `output` A file for output result. By default output is in STDOUT
+ * **Array** `declaration` List of filenames for declarations (required)
