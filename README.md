@@ -1,37 +1,20 @@
 # Bem tools
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
-## Install
+## Installation
 You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
-Then run `npm -g install bem`.
-
- * Install [nodejs](http://nodejs.org)
-
-        https://github.com/joyent/node/wiki/Installation
-
- * Install [npm](http://npmjs.org)
-
-        curl http://npmjs.org/install.sh | sudo sh
-
- * Configure `NODE_PATH` after installing:
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
-
-    or
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
  * Install [bem-tools](https://github.com/bem/bem-tools)
 
         sudo npm -g install bem
 
- * Use this command [bem-tools](https://github.com/bem/bem-tools) to install the latest version
+ * Use this command [bem-tools](https://github.com/bem/bem-tools) to install the development version
 
         sudo npm -g install bem@unstable
 
 ### bem-bl
 
-If you are going tp use `bem` for
+If you are going to use `bem` with
 [bem-bl](https://github.com/bem/bem-bl) block library, you should also install
 [xjst](https://github.com/veged/xjst) or [ometajs](https://github.com/veged/ometajs).
 
@@ -45,13 +28,14 @@ To read about commands and subcommands use `bem COMMAND --help` or `bem COMMAND 
 
 #### bash
 
-If you use `bash` and `bash-completion`, run the following command:
+To make completions for bem-tools available in your bash, run following
+command ( ensure that you have bash-completion installed, first ). Run this
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
 and restart bash.
 
-If you don't use `bash-completion`, you can add `bem completion` to your `.bashrc`:
+If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc`:
 
     bem completion >> ~/.bashrc
 
@@ -66,7 +50,7 @@ then restart.
 ### Commands
 #### bem create
 
-You can create entities using `bem create`:
+You can create following entities using `bem create`:
 
  * levels of defenition
  * blocks
@@ -75,14 +59,14 @@ You can create entities using `bem create`:
 
 ##### Level of defenition
 
-Level of defenition is a directory that hold blocks and служебная directiry `.bem`.
+Level of defenition is a directory that hold blocks and an utility directiry `.bem`.
 
-A `.bem` directory holds options for a current level:
+A `.bem` directory holds configuration of a current level:
 
  * naming convention
  * links to the technologies
 
-Here there is an example of technologies' links (this is `blocks-desktop` level of
+An example of technologies' links (this is `blocks-desktop` level of
 bem-bl block library):
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
@@ -93,7 +77,7 @@ bem-bl block library):
 
 ###### Create a level for pages
 
-In `bem-tools` terms pages are blocks too. A directory which holds pages is a level of
+In `bem-tools` terms pages are blocks as well and a directory which holds pages is a level of
 defenition itself. To create such a directory run this:
 
     bem create level pages
@@ -113,7 +97,7 @@ technologies.
 
     bem create block b-my-block
 
-By defult, a block has several techs: (`bemhtml`, `css`, `js`).
+By default, a block has several techs: (`bemhtml`, `css`, `js`).
 
 ###### Create a new block using concrete tech
 
@@ -130,7 +114,7 @@ Flags -t (-T) are to create files of technologies you need:
 
 The value of this flag may be either tech's name (e.g `css`) or a path to tech module.
 
-Tech names may be listes in `.bem/level.js` file of a level.
+Tech names may be listed in `.bem/level.js` file of a level.
 E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
 You can find the examples of tech modules in the repo:
@@ -139,7 +123,7 @@ You can find the examples of tech modules in the repo:
 
 #### bem build
 
-`bem build` command is to build page file in different techs, according to page declaration.
+`bem build` command builds page files in different techs, according to a page declaration.
 
 ##### Create bemdecl.js file from page's bemjson
 
@@ -149,10 +133,10 @@ You can find the examples of tech modules in the repo:
         -d pages/index/index.bemjson.js -t bemdecl.js \
         -o pages/index -n index
 
-You can use either tech's name or a path to its module as a valut of -t flag. This
+You can use either tech's name or a path to its module as a value of -t flag. This
 module says how to build a final file from a declaration.
 
-E.g., this is a module for`deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
+E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
 
 ##### Create deps.js file from bemdecl.js
 
@@ -195,17 +179,17 @@ There is an example how pages are built using `bem build` in our test project th
  * to merge two or more decls into one
  * «subtract» decls
 
-All subcommands of `bem decl` can take as input declaration
-either `bemdecl.js` or `deps.js` formats (via `-d` flag).
+All subcommands of `bem decl` can take either bemdecl.js or deps.js as input declaration formats.
+as input declaration (via `-d` flag).
 
-Ouput data (`-o` flag) always is in `deps.js` format.
+Ouput data (`-o` flag) is always in `deps.js` format.
 
 ##### bem decl merge
 
 `bem decl merge` is to merge two or more decls into one. It is useful if you need, for example, to build
 one file for several pages.
 
-###### Create a decl for all page
+###### Create a decl for all the pages
 
     bem decl merge \
         -d pages/index/index.deps.js \
@@ -215,7 +199,7 @@ one file for several pages.
 
 ##### bem decl subtract
 
-`bem decl subtract` is to «subtract» all the next decls from a first one.
+`bem decl subtract` is to «subtract» all next decls from the first one.
 You may use it to create a bundle that you request by application.
 
 ###### Create a decl for a "heavy" block requested by application
@@ -236,19 +220,19 @@ Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tool
 There are three ways to write a tech module: very simple, simple and advanced.
 
 Whatever manner you use you can get a tech object from `this`. Any base class is
-available from `this.__base(...)`. Thanks for [inherit](https://github.com/dfilatov/node-inherit)
+available from `this.__base(...)`. Thanks to [inherit](https://github.com/dfilatov/node-inherit)
 module that organizes inheritance here.
 
 ##### Very simple way
 
-You need only to create reegular CommonJS module and export some of its
-functions to redefine them. By default all functions are from the base class
-written in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+You only need to create regular CommonJS module and export some of its
+functions to redefine them. By default all functions from the base class are put
+in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
 
 ##### Simple way
 
-Besided function to export, you can use `baseTechPath` variable to define an
-absolute path to a tech module you are extending. By defaukt you are
+Besides function, you can also export `baseTechPath` variable to define an
+absolute path to a tech module you are extending. By default you are
 extending `Tech` class.
 
 For example:
@@ -306,7 +290,7 @@ exports.Tech = INHERIT(BaseTech, {
 
 Starting from 0.2.0 version it is possible to use `bem-tools` from API.
 
-`bem` module expoerts the object of a command that has an `api` property.
+`bem` module exports the object of a command that has an `api` property.
 It is to use in this way:
 
 ```js
@@ -323,7 +307,7 @@ Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
 
 The example above shows that you can use all the commands (including subcommands).
 
-A command get two args:
+A command accepts two args:
 
  * **Object** `opts` command options
  * **Object** `args` command arguments
@@ -332,11 +316,11 @@ It returns an object of `Q.promise` type.
 
 #### BEM.create
 
-COmmands to create BEM entities.
+Commands to create BEM entities.
 
 ##### BEM.create.level()
 
-Creating a level of defenition.
+Creates a level of defenition.
 
 ###### Options
 
@@ -365,7 +349,7 @@ Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function()
 
 ##### BEM.create.block()
 
-Creating a block.
+Creates a block.
 
 ###### Options
 
