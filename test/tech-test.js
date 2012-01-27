@@ -10,6 +10,7 @@ function testBaseTech(techPath, techAlias) {
         absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
         relTechPath = techPath;
 
+    // NOTE: techPath will be always in unix format
     if(/^\.\.\/lib\//.test(techPath)) {
         relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
 
@@ -59,7 +60,7 @@ function testBaseTech(techPath, techAlias) {
         },
 
         ".getTechRelativePath()": function(tech) {
-            assert.equal(tech.getTechRelativePath(__dirname), relTechPath);
+            assert.equal(tech.getTechRelativePath(__dirname), PATH.unixToOs(relTechPath));
         },
 
         // create

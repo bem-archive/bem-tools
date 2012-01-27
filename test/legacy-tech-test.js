@@ -1,6 +1,7 @@
 var vows = require('vows'),
     assert = require('assert'),
-    Tech = require('../lib/legacy-tech.js').Tech;
+    Tech = require('../lib/legacy-tech.js').Tech,
+    PATH = require('../lib/path');
 
 vows.describe('tech').addBatch({
 
@@ -18,7 +19,7 @@ vows.describe('tech').addBatch({
             assert.isTrue(tech.matchSuffix('.css'));
         },
         ".getTechRelativePath() resolves to 'bem/lib/legacy-techs/css'": function(tech) {
-            assert.equal(tech.getTechRelativePath(), 'bem/lib/legacy-techs/css');
+            assert.equal(tech.getTechRelativePath(), PATH.unixToOs('bem/lib/legacy-techs/css'));
         }
     },
 
@@ -36,7 +37,7 @@ vows.describe('tech').addBatch({
             assert.isTrue(tech.matchSuffix('.def'));
         },
         ".getTechRelativePath() resolves to 'bem/lib/legacy-techs/default'": function(tech) {
-            assert.equal(tech.getTechRelativePath(), 'bem/lib/legacy-techs/default');
+            assert.equal(tech.getTechRelativePath(), PATH.unixToOs('bem/lib/legacy-techs/default'));
         }
     },
 
@@ -54,7 +55,7 @@ vows.describe('tech').addBatch({
             assert.isTrue(tech.matchSuffix('.test.js'));
         },
         ".getTechRelativePath('./') resolves to './data/techs/test.js'": function(tech) {
-            assert.equal(tech.getTechRelativePath(__dirname), './data/techs/test.js');
+            assert.equal(tech.getTechRelativePath(__dirname), PATH.unixToOs('./data/techs/test.js'));
         }
     }
 
