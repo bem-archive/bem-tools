@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -29,11 +29,10 @@
   "main": "./lib/bem.js",
   "dependencies": {
     "coa": "~0.3.2",
-    "q": "~0.7.1",
-    "qq": "~0.3.3",
+    "q": "~0.7.2",
+    "qq": "0.3.3",
     "q-wrap": "~0.0.1",
-    "inherit": "~1.0.0",
-    "extend": "~1.0.0"
+    "inherit": "~1.0.0"
   },
   "devDependencies": {
     "vows": ">= 0.5.11"
