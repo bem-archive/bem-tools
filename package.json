@@ -32,8 +32,7 @@
     "q": "~0.7.2",
     "qq": "0.3.3",
     "q-wrap": "~0.0.1",
-    "inherit": "~1.0.0",
-    "extend": "~1.0.0"
+    "inherit": "~1.0.0"
   },
   "devDependencies": {
     "vows": ">= 0.5.11"
