@@ -221,7 +221,7 @@ http://localhost:8080/pages/about/main.css URL.
 The default TCP port the server is listening to is 8080. You can change it with the --port (-p) parameter.
 
 When the server gets a request for some *.html file it will look for appropriate BEMJOSN and BEMHTML files, apply one
-to another and return the result.
+to another and return the result if both files do exist. The contents of the *.html file will be returned otherwise.
 
 ### Tech modules
 
