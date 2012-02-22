@@ -223,6 +223,10 @@ The default TCP port the server is listening to is 8080. You can change it with 
 When the server gets a request for some *.html file it will look for appropriate BEMJOSN and BEMHTML files, apply one
 to another and return the result if both files do exist. The contents of the *.html file will be returned otherwise.
 
+When requested URL corresponds to a directory server checks for index.html file in it and returns the content. If file is
+not found, index.bemhtml.js and index.bemjson.js are checked for existance and the result of the template application is
+returned. Otherwise the directory listing is returned.
+
 ### Tech modules
 
 #### API
