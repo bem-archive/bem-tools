@@ -33,10 +33,10 @@
     "qq": "0.3.3",
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
-    "borschik": "0.0.6"
+    "borschik": "~0.0.6"
   },
   "devDependencies": {
-    "vows": ">= 0.5.11"
+    "vows": "~0.5.11"
   },
   "engines": {
     "node": ">= 0.4.0 <0.7.0"
