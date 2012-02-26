@@ -27,7 +27,7 @@
   "bin": {
     "bem": "./bin/bem"
   },
-  "main": "./lib/bem.js",
+  "main": "./lib/coa",
   "dependencies": {
     "coa": "~0.3.2",
     "q": "~0.7.2",
