@@ -32,9 +32,11 @@
     "coa": "~0.3.2",
     "q": "~0.7.2",
     "qq": "0.3.3",
+    "q-fs": "0.1",
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
-    "borschik": "~0.0.6"
+    "borschik": "~0.0.6",
+    "samurai": "https://github.com/afelix/samurai/tarball/master"
   },
   "devDependencies": {
     "vows": "~0.5.11"
