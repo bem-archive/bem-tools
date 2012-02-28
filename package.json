@@ -33,7 +33,7 @@
     "q": "~0.7.2",
     "qq": "0.3.3",
     "q-fs": "0.1",
-    "q-http": "https://github.com/arikon/q-http/tarball/master",
+    "q-http": "https://github.com/arikon/q-http/tarball/patch-1",
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
     "borschik": "~0.0.6",
