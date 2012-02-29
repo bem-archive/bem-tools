@@ -1,4 +1,4 @@
-# Bem tools
+# BEM Tools
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
