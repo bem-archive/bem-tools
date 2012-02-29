@@ -16,7 +16,7 @@ You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.
 
 If you are going to use `bem` with
 [bem-bl](https://github.com/bem/bem-bl) block library, you should also install
-[xjst](https://github.com/veged/xjst) or [ometajs](https://github.com/veged/ometajs).
+[XJST](https://github.com/veged/xjst) and [OmetaJS](https://github.com/veged/ometajs).
 
     sudo npm -g install xjst ometajs
 
@@ -29,7 +29,7 @@ To read about commands and subcommands use `bem COMMAND --help` or `bem COMMAND 
 #### bash
 
 To make completions for bem-tools available in your bash, run following
-command ( ensure that you have bash-completion installed, first ). Run this
+command (ensure that you have bash-completion installed, first). Run this
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
