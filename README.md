@@ -214,17 +214,17 @@ You may use it to create a bundle that you request by application.
 `bem server` starts a web server which serves static files, dynamic html generated form the BEMHTML and BEMJSON on the
 fly, and pipes js and css files through borschik.
 
-By default document root is the current directory. You can change that with the --project (-r) parameter. So if you have
-pages/about/main.css file in the project folder it will be accessible with a browser using
+By default document root is the current directory. You can change that with the `--project` (`-r`) parameter. So if you have
+`pages/about/main.css` file in the project folder it will be accessible with a browser using
 http://localhost:8080/pages/about/main.css URL.
 
-The default TCP port the server is listening to is 8080. You can change it with the --port (-p) parameter.
+The default TCP port the server is listening to is 8080. You can change it with the `--port` (`-p`) parameter.
 
-When the server gets a request for some *.html file it will look for appropriate BEMJOSN and BEMHTML files, apply one
-to another and return the result if both files do exist. The contents of the *.html file will be returned otherwise.
+When the server gets a request for some `*.html` file it will look for appropriate BEMJOSN and BEMHTML files, apply one
+to another and return the result if both files do exist. The contents of the `*.html` file will be returned otherwise.
 
 When requested URL corresponds to a directory server checks for index.html file in it and returns the content. If file is
-not found, index.bemhtml.js and index.bemjson.js are checked for existance and the result of the template application is
+not found, `index.bemhtml.js` and `index.bemjson.js` are checked for existance and the result of the template application is
 returned. Otherwise the directory listing is returned.
 
 ### Tech modules
