@@ -216,7 +216,7 @@ fly, and pipes js and css files through borschik.
 
 By default document root is the current directory. You can change that with the `--project` (`-r`) parameter. So if you have
 `pages/about/main.css` file in the project folder it will be accessible with a browser using
-http://localhost:8080/pages/about/main.css URL.
+[http://localhost:8080/pages/about/main.css](http://localhost:8080/pages/about/main.css) URL.
 
 The default TCP port the server is listening to is 8080. You can change it with the `--port` (`-p`) parameter.
 
