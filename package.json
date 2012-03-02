@@ -40,7 +40,10 @@
     "samurai": "https://github.com/afelix/samurai/tarball/master"
   },
   "devDependencies": {
-    "vows": "~0.5.11"
+    "vows": "~0.6.2"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/vows --spec"
   },
   "engines": {
     "node": ">= 0.4.0 <0.7.0"
