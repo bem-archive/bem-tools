@@ -1,4 +1,4 @@
-# BEM Tools
+# BEM Tools [![Build Status](https://secure.travis-ci.org/bem/bem-tools.png?branch=nodejs)](http://travis-ci.org/bem/bem-tools)
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
