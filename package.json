@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -34,7 +34,7 @@
     "qq": "0.3.3",
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
-    "borschik": "~0.0.6"
+    "borschik": "~0.0.7"
   },
   "devDependencies": {
     "vows": "~0.6.2"
