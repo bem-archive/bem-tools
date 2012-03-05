@@ -9,3 +9,5 @@ branches:
   only:
     - nodejs
     - server
+
+after_install: "ln -s . node_modules/bem"
