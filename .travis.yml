@@ -10,4 +10,4 @@ branches:
     - nodejs
     - server
 
-after_install: "ln -s .. node_modules/bem && ls -la node_modules"
+before_script: "ln -s .. node_modules/bem && ls -la node_modules"
