@@ -527,3 +527,7 @@ Subtracting the next declarations from the first one.
 
  * **String** `output` A file for output result. By default output is in STDOUT
  * **Array** `declaration` List of filenames for declarations (required)
+
+<!-- Yandex.Metrika counter -->
+<img src="//mc.yandex.ru/watch/12831025" style="position:absolute; left:-9999px;" alt="" />
+<!-- /Yandex.Metrika counter -->
