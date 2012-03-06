@@ -3,11 +3,10 @@ language: node_js
 node_js:
   - 0.4
   - 0.6
-  - 0.7
 
 branches:
   only:
     - nodejs
     - server
 
-after_install: "ln -s . node_modules/bem"
+before_script: "ln -s .. node_modules/bem && ls -la node_modules"
