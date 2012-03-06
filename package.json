@@ -36,7 +36,7 @@
     "q-http": "~0.1.13",
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
-    "borschik": "~0.0.6",
+    "borschik": "~0.0.7",
     "samurai": "https://github.com/afelix/samurai/tarball/master"
   },
   "devDependencies": {
