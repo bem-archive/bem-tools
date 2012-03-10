@@ -37,7 +37,7 @@
     "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
     "borschik": "~0.0.7",
-    "apw": "https://github.com/afelix/samurai/tarball/master"
+    "apw": "https://github.com/bem/apw/tarball/master"
   },
   "devDependencies": {
     "vows": "~0.6.2"
