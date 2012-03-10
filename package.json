@@ -30,11 +30,10 @@
   "main": "./lib/index",
   "dependencies": {
     "coa": "~0.3.2",
-    "q": "~0.7.2",
-    "qq": "0.3.3",
+    "q": "~0.8.2",
+    "qq": "~0.3.4",
     "q-fs": "0.1",
     "q-http": "~0.1.13",
-    "q-wrap": "~0.0.1",
     "inherit": "~1.0.0",
     "borschik": "~0.0.7",
     "apw": "https://github.com/bem/apw/tarball/master"
