@@ -3,7 +3,7 @@ var vows = require('vows'),
     DEPS = require('../lib/techs/deps.js'),
     Deps = DEPS.Deps2,
     DepsItem = DEPS.DepsItem2,
-    depsVows = vows.describe('deps');
+    depsVows = vows.describe('Deps');
 
 function assertDepsParse(deps, expected) {
     return function () {
@@ -13,7 +13,7 @@ function assertDepsParse(deps, expected) {
 
 depsVows.addBatch({
 
-    'Deps parsing:': {
+    'parsing:': {
 
         'old format with names': {
 
@@ -75,7 +75,13 @@ depsVows.addBatch({
             'block with shouldDeps and mustDeps': assertDepsParse(
                 [ { block: 'b1', shouldDeps: [ { block: 'b2', mustDeps: 'b3' }, 'b3' ] } ],
                 [ { block: 'b1' }, { block: 'b3' }, { block: 'b2' } ]
+            ),
+
+            'simple blocks': assertDepsParse(
+                [ 'b1', 'b2' ],
+                [ { block: 'b1' }, { block: 'b2' } ]
             )
+
         },
 
         'new format with techs': {
@@ -90,6 +96,22 @@ depsVows.addBatch({
             )
         }
 
+    },
+
+    'clone': {
+        topic: function() {
+            var deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']),
+                deps2 = deps1.clone();
+            return [deps1, deps2];
+        },
+
+        '.items': function(deps) {
+            assert.deepEqual(deps[1].items, deps[0].items)
+        },
+
+        '.itemsByOrder': function(deps) {
+            assert.deepEqual(deps[1].itemsByOrder, deps[0].itemsByOrder)
+        }
     }
 
 });
