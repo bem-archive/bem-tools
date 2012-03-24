@@ -220,7 +220,7 @@ By default document root is the current directory. You can change that with the 
 
 The default TCP port the server is listening to is 8080. You can change it with the `--port` (`-p`) parameter.
 
-When the server gets a request for some `*.html` file it will look for appropriate BEMJOSN and BEMHTML files, apply one
+When the server gets a request for some `*.html` file it will look for appropriate BEMJSON and BEMHTML files, apply one
 to another and return the result if both files do exist. The contents of the `*.html` file will be returned otherwise.
 
 When requested URL corresponds to a directory server checks for index.html file in it and returns the content. If file is
