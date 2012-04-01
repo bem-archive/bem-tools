@@ -94,6 +94,16 @@ depsVows.addBatch({
                 [ { block: 'b1', elem: 'e1' } ],
                 [ { block: 'b1', elem: 'e1' } ]
             )
+        },
+
+        'noDeps': {
+            'block': assertDepsParse(
+                [
+                    { block: 'b1', shouldDeps: [ 'b2', 'b3' ], mustDeps: [ 'b0', 'b4' ] },
+                    { block: 'b1', noDeps: ['b2', 'b4'] }
+                ],
+                [ { block: 'b0' }, { block: 'b1' }, { block: 'b3' } ]
+            )
         }
 
     },
