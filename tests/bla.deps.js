@@ -6,6 +6,9 @@ exports.deps = [
         "block": "dep-block"
     },
     {
+        "block": "dep-block2"
+    },
+    {
         "block": "first-block",
         "elem": "elem1"
     },
