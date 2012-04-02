@@ -6,9 +6,6 @@ exports.deps = [
         "block": "dep-block"
     },
     {
-        "block": "dep-block2"
-    },
-    {
         "block": "first-block",
         "elem": "elem1"
     },
@@ -121,3 +118,13 @@ exports.deps = [
         "val": "22"
     }
 ];
+exports.depsByTechs = {
+    "": {
+        "t3": [
+            {
+                "tech": "t3",
+                "block": "dep-block33"
+            }
+        ]
+    }
+};

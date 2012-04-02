@@ -1,8 +1,8 @@
 var vows = require('vows'),
     assert = require('assert'),
     DEPS = require('../lib/techs/deps.js'),
-    Deps = DEPS.Deps2,
-    DepsItem = DEPS.DepsItem2,
+    Deps = DEPS.Deps,
+    DepsItem = DEPS.DepsItem,
     depsVows = vows.describe('Deps');
 
 function assertDepsParse(deps, expected) {
@@ -19,12 +19,12 @@ depsVows.addBatch({
 
             'block': assertDepsParse(
                 [ { name: 'b1' } ],
-                [ { block: 'b1' } ]
+                { '': { '': [ { block: 'b1' } ] } }
             ),
 
             'block with elem': assertDepsParse(
                 [ { name: 'b1', elems: [ { name: 'e1' } ] } ],
-                [ { block: 'b1' }, { block: 'b1', elem: 'e1' } ]
+                { '': { '': [ { block: 'b1' }, { block: 'b1', elem: 'e1' } ] } }
             ),
 
             'block with elem with mods with vals': assertDepsParse(
@@ -33,13 +33,13 @@ depsVows.addBatch({
                         { name: 'e1', mods: [
                             { name: 'm1', vals: [ 'v1', 'v2' ] } ] } ] }
                 ],
-                [
+                { '': { '': [
                     { block: 'b1' },
                     { block: 'b1', elem: 'e1' },
                     { block: 'b1', elem: 'e1', mod: 'm1' },
                     { block: 'b1', elem: 'e1', mod: 'm1', val: 'v1' },
                     { block: 'b1', elem: 'e1', mod: 'm1', val: 'v2' }
-                ]
+                ] } }
             ),
 
             'block with mods with vals and with elems': assertDepsParse(
@@ -50,13 +50,13 @@ depsVows.addBatch({
                         { name: 'm2', val: 'v2' }
                     ]
                 } ],
-                [
+                { '': { '': [
                     { block: 'b1' },
                     { block: 'b1', elem: 'e1' },
                     { block: 'b1', elem: 'e2' },
                     { block: 'b1', mod: 'm1', val: 'v1' },
                     { block: 'b1', mod: 'm2', val: 'v2' }
-                ]
+                ] } }
             )
 
         },
@@ -64,22 +64,22 @@ depsVows.addBatch({
         'new format': {
             'block': assertDepsParse(
                 [ { block: 'b1' } ],
-                [ { block: 'b1' } ]
+                { '': { '': [ { block: 'b1' } ] } }
             ),
 
             'elem': assertDepsParse(
                 [ { block: 'b1', elem: 'e1' } ],
-                [ { block: 'b1', elem: 'e1' } ]
+                { '': { '': [ { block: 'b1', elem: 'e1' } ] } }
             ),
 
             'block with shouldDeps and mustDeps': assertDepsParse(
                 [ { block: 'b1', shouldDeps: [ { block: 'b2', mustDeps: 'b3' }, 'b3' ] } ],
-                [ { block: 'b1' }, { block: 'b3' }, { block: 'b2' } ]
+                { '': { '': [ { block: 'b1' }, { block: 'b3' }, { block: 'b2' } ] } }
             ),
 
             'simple blocks': assertDepsParse(
                 [ 'b1', 'b2' ],
-                [ { block: 'b1' }, { block: 'b2' } ]
+                { '': { '': [ { block: 'b1' }, { block: 'b2' } ] } }
             )
 
         },
@@ -87,12 +87,39 @@ depsVows.addBatch({
         'new format with techs': {
             'block': assertDepsParse(
                 [ { tech: 't1', block: 'b1' } ],
-                [ { tech: 't1', block: 'b1' } ]
+                { 't1': { 't1': [ { tech: 't1', block: 'b1' } ] } }
             ),
 
             'elem': assertDepsParse(
                 [ { block: 'b1', elem: 'e1' } ],
-                [ { block: 'b1', elem: 'e1' } ]
+                { '': { '': [ { block: 'b1', elem: 'e1' } ] } }
+            ),
+
+            'block with tech': assertDepsParse(
+                { block: 'b1', tech: 't1', shouldDeps: [ 'b2', 'b3' ], mustDeps: [ 'b0', 'b4' ] },
+                { 't1': { 't1': [
+                    { block: 'b0', tech: 't1' },
+                    { block: 'b4', tech: 't1' },
+                    { block: 'b1', tech: 't1' },
+                    { block: 'b2', tech: 't1' },
+                    { block: 'b3', tech: 't1' }
+                ] } }
+            ),
+
+            'block with techs': assertDepsParse(
+                { block: 'b1', tech: 't1', shouldDeps: { block: 'b2', tech: 't2' } },
+                { 't1': {
+                    't1': [ { block: 'b1', tech: 't1' } ],
+                    't2': [ { block: 'b2', tech: 't2' } ]
+                } }
+            ),
+
+            'block with techs': assertDepsParse(
+                { block: 'b1', shouldDeps: { block: 'b2', tech: 't2', shouldDeps: { block: 'b3' } } },
+                { '': {
+                    '': [ { block: 'b1' } ],
+                    't2': [ { block: 'b2', tech: 't2' }, { block: 'b3', tech: 't2' } ]
+                } }
             )
         },
 
@@ -102,7 +129,7 @@ depsVows.addBatch({
                     { block: 'b1', shouldDeps: [ 'b2', 'b3' ], mustDeps: [ 'b0', 'b4' ] },
                     { block: 'b1', noDeps: ['b2', 'b4'] }
                 ],
-                [ { block: 'b0' }, { block: 'b1' }, { block: 'b3' } ]
+                { '': { '': [ { block: 'b0' }, { block: 'b1' }, { block: 'b3' } ] } }
             )
         }
 
