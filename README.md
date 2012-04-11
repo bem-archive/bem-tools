@@ -59,7 +59,7 @@ You can create following entities using `bem create`:
 
 ##### Level of defenition
 
-Level of defenition is a directory that hold blocks and an utility directiry `.bem`.
+Level of defenition is a directory that holds blocks and an utility directiry `.bem`.
 
 A `.bem` directory holds configuration of a current level:
 
