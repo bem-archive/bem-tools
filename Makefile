@@ -17,6 +17,8 @@ test:
 	./bin/bem build -d tests/decl.js -o tests -n bla -t deps.js -t ie.css -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 	./bin/bem build -d tests/bla.deps.js -o tests -n bla -t css -t js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 
+	./bin/bem decl subtract -o tests/deps-subtract.deps.js -d tests/deps-subtract-1.deps.js -d tests/deps-subtract-2.deps.js
+
 RSYNC_ARIKON=arikon.dev.tools.yandex.net:/home/arikon/projects/bem/bem-tools
 .PHONY: rsync-arikon
 rsync-arikon:
