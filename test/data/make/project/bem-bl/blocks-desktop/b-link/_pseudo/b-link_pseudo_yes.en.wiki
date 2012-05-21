@@ -1,2 +1,0 @@
-﻿A ##pseudo## modifier is to mark a link that does not open on another page.
-It has a dashed underline.
