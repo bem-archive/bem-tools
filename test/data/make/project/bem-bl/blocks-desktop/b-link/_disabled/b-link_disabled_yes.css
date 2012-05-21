@@ -1,0 +1,10 @@
+.b-link_disabled_yes,
+.b-link_disabled_yes:hover,
+a.b-link_disabled_yes:link,
+a.b-link_disabled_yes:visited
+{
+    outline: 0;
+    cursor: default !important;
+
+    color: #ddd !important;
+}

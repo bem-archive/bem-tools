@@ -1,0 +1,1 @@
+Плагин, реализующий $.isEmptyObject для jQuery < 1.4 

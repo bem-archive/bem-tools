@@ -1,0 +1,1 @@
+Debounce and throttle function's decorator plugin 1.0.6

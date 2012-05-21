@@ -1,0 +1,16 @@
+{
+    "block": "b-nojs",
+    "content":
+        {
+            "tag": "b",
+            "content": {
+                "tag": "i",
+                "content": [
+                    { "elem": "eee", "content":
+                        { "tag": "b", "content": "blalba" } },
+                    { "block": "b2", "elem": "eee", "content":
+                        { "tag": "b", "content": "blalba" } }
+                    ]
+            }
+        }
+}

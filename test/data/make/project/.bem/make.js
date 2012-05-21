@@ -1,0 +1,3 @@
+MAKE.decl('Arch', {
+	libraries: {}
+});
