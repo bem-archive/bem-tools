@@ -3,8 +3,10 @@ var assert = require('assert'),
     PATH = require('path'),
     FS = require('fs'),
     Q = require('q'),
+    _ = require('underscore'),
     QFS = require('q-fs'),
 
+    BEMUTIL = require('../lib/util'),
     BEM = require('bem').api,
 
     projectPath = PATH.resolve('./test/data/make/project'),
@@ -65,6 +67,25 @@ describe('bem', function() {
                 .fail(done)
                 .end();
         });
+
+        it('clean removes build artifacts', function(done) {
+            this.timeout(0);
+
+            BEM.make({root: buildPath, verbosity: 'error', method: 'clean'})
+                .then(function() {
+                    return Q.all([
+                        dirHasOnly(PATH.join(buildPath, 'pages/example'), ['example.bemjson.js']),
+                        dirHasOnly(PATH.join(buildPath, 'pages/client'), ['client.bemjson.js'])
+                    ])
+                    .spread(function(example, client) {
+                        if (!(example && client)) throw new Error('build artifacts exist');
+
+                        done();
+                    })
+                })
+                .fail(done)
+                .end();
+        });
     });
 });
 
@@ -119,4 +140,11 @@ function collectTimestamps(root) {
     .then(function() {
         return list;
     });
+}
+
+function dirHasOnly(dir, files) {
+    return BEMUTIL.getFilesAsync(dir)
+        .then(function(dirFiles) {
+            return _.union(files, dirFiles).length === files.length;
+        });
 }
