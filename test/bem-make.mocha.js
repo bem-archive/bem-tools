@@ -12,20 +12,21 @@ var assert = require('assert'),
     buildPath = PATH.resolve('./test-make-temp');
 
 describe('bem', function() {
-
-    before(function(done){
-        prepareProject()
-            .then(done);
-    });
-
     describe('make', function() {
+
+        before(function(done){
+            prepareProject()
+                .then(done)
+                .end();
+        });
 
         it('completes successfully', function(done) {
             this.timeout(0);
 
             BEM.make({root: buildPath, verbosity: 'error'})
                 .then(done)
-                .fail(done);
+                .fail(done)
+                .end();
         });
 
         it('creates proper artifacts', function(done) {
@@ -39,8 +40,31 @@ describe('bem', function() {
                 .then(function(result) {
                     done(result && new Error(result));
                 })
-                .fail(done);
-        })
+                .fail(done)
+                .end();
+        });
+
+        it('does not rebuild anything on next build with no changes made to the files', function(done) {
+            collectTimestamps(buildPath)
+                .then(function(timestamps) {
+                    return BEM.make({root: buildPath, verbosity: 'error'})
+                        .then(function() {
+                            return collectTimestamps(buildPath);
+                        })
+                        .then(function(newTimestamps){
+                            var mismatches = Object.keys(newTimestamps)
+                                .filter(function(ts) {
+                                    return newTimestamps[ts] !== timestamps[ts];
+                                });
+
+                            if (mismatches.length > 0) throw new Error('There are modified files:\n' + mismatches.join('\n'));
+
+                            done();
+                        });
+                })
+                .fail(done)
+                .end();
+        });
     });
 });
 
@@ -73,4 +97,26 @@ function command(cmd, options, resolveWithOutput) {
     });
 
     return d.promise;
+}
+
+function collectTimestamps(root) {
+    var list = {};
+
+    return QFS.listTree(root, function(path, stat) {
+        return PATH.basename(path)[0] !== '.' &&
+            Q.when(stat.isFile(), function(isFile) {
+                if (isFile) {
+                    return QFS.lastModified(path)
+                        .then(function(modified) {
+                            list[path] = modified;
+                            return true;
+                        });
+                }
+
+                return false;
+            });
+    })
+    .then(function() {
+        return list;
+    });
 }
