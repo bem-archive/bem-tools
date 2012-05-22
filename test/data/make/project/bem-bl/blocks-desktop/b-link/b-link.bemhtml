@@ -1,0 +1,17 @@
+block b-link {
+
+    tag: 'a'
+
+    attrs: {
+
+        var ctx = this.ctx,
+            a = { href: ctx.url },
+            props = ['title', 'target'], p;
+
+        while(p = props.pop()) ctx[p] && (a[p] = ctx[p]);
+
+        return a;
+
+    }
+
+}

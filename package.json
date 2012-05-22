@@ -42,10 +42,11 @@
     "winston": ">= 0.5.0"
   },
   "devDependencies": {
-    "vows": "~0.6.2"
+    "vows": "~0.6.2",
+    "mocha": "~1.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/vows --spec"
+    "test": "./node_modules/.bin/vows --spec && ./node_modules/.bin/mocha --ignore-leaks --reporter list test/*.mocha.js  -t 0"
   },
   "engines": {
     "node": ">= 0.6.0"
