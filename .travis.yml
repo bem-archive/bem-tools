@@ -4,8 +4,7 @@ node_js:
   - 0.6
 
 branches:
-  only:
-    - nodejs
-    - server
+  except:
+    - master
 
 before_script: "ln -s .. node_modules/bem && ls -la node_modules"
