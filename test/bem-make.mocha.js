@@ -47,6 +47,8 @@ describe('bem', function() {
         });
 
         it('does not rebuild anything on next build with no changes made to the files', function(done) {
+            this.timeout(0);
+
             collectTimestamps(buildPath)
                 .then(function(timestamps) {
                     return BEM.make({root: buildPath, verbosity: 'error'})
@@ -63,6 +65,34 @@ describe('bem', function() {
 
                             done();
                         });
+                })
+                .fail(done)
+                .end();
+        });
+
+        it('rebuilds missing artifacts on consequent build', function(done) {
+            this.timeout(0);
+
+            Q.all(['pages/example/example.html',
+             'pages/example/example.css',
+             'pages/client/client.html',
+             'pages/client/client.css'].map(function(file) {
+                    return QFS.remove(PATH.join(buildPath, file));
+                }))
+                .then(function() {
+                    return BEM.make({root: buildPath, verbosity: 'error'});
+                })
+                .then(function() {
+                    return command(
+                            UTIL.format(
+                                'find %s -type file -exec diff -q {} %s/{} \\; 2>&1',
+                                '.',
+                                PATH.relative(referencePath, buildPath)),
+                            {cwd: referencePath},
+                            true)
+                })
+                .then(function(result) {
+                    done(result && new Error(result));
                 })
                 .fail(done)
                 .end();
