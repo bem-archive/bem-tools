@@ -116,6 +116,50 @@ describe('bem', function() {
                 .fail(done)
                 .end();
         });
+
+        it('builds two targets', function(done) {
+            this.timeout(0);
+
+            prepareProject()
+                .then(function(){
+                    return BEM.make({
+                        root: buildPath,
+                        verbosity: 'error'
+                        },
+                        {
+                            targets: ['pages/example/_example.css', 'pages/client/client.html']
+                        });
+                })
+                .then(function(){
+                    return Q.all([
+                        dirHasOnly(
+                            PATH.join(buildPath, 'pages/example'),
+                            ['example.bemjson.js', '_example.css', 'example.bemdecl.js', 'example.css',
+                             'example.css.meta.js', 'example.deps.js', 'example.deps.js.meta.js']),
+                        dirHasOnly(
+                            PATH.join(buildPath, 'pages/client'),
+                            ['client.bemjson.js', 'client.bemhtml.js', 'client.deps.js.meta.js', 'client.bemdecl.js',
+                            'client.bemhtml.js.meta.js', 'client.deps.js', 'client.html'])
+                    ])
+                    .spread(function(example, client) {
+                        if (!(example && client)) throw new Error('set of build artifacts differs from expected');
+                    })
+                })
+                .then(function() {
+                    return command(
+                            UTIL.format(
+                                'diff -rq %s %s 2>&1 | grep -v ^O; true',
+                                '.',
+                                PATH.relative(referencePath, buildPath)),
+                            {cwd: referencePath},
+                            true)
+                })
+                .then(function(result) {
+                    done(result && new Error(result));
+                })
+                .fail(done)
+                .end();
+        })
     });
 });
 
@@ -175,6 +219,7 @@ function collectTimestamps(root) {
 function dirHasOnly(dir, files) {
     return BEMUTIL.getFilesAsync(dir)
         .then(function(dirFiles) {
-            return _.union(files, dirFiles).length === files.length;
+            return dirFiles.length === files.length &&
+                _.union(files, dirFiles).length === files.length;
         });
 }
