@@ -34,7 +34,7 @@ describe('bem', function() {
         it('creates proper artifacts', function(done) {
             return command(
                     UTIL.format(
-                        'find %s -type file -exec diff -q {} %s/{} \\; 2>&1',
+                        'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                         '.',
                         PATH.relative(referencePath, buildPath)),
                     {cwd: referencePath},
@@ -85,7 +85,7 @@ describe('bem', function() {
                 .then(function() {
                     return command(
                             UTIL.format(
-                                'find %s -type file -exec diff -q {} %s/{} \\; 2>&1',
+                                'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                                 '.',
                                 PATH.relative(referencePath, buildPath)),
                             {cwd: referencePath},
