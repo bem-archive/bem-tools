@@ -159,7 +159,7 @@ describe('bem', function() {
                 })
                 .fail(done)
                 .end();
-        })
+        });
     });
 });
 
