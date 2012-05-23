@@ -20,7 +20,7 @@ describe('bem', function() {
         before(function(done){
             prepareProject()
                 .then(function() {
-                    return BEM.server({root: buildPath, verbosity: 'info'});
+                    return BEM.server({root: buildPath, verbosity: 'error'});
                 })
                 .then(done)
                 .end();
@@ -31,13 +31,34 @@ describe('bem', function() {
         it('builds html page on request', function(done) {
             this.timeout(30000);
 
-            req('pages/example/example.html')
-                .then(function(res){
-                    assert.equal(res.status, 200, 'response status is 200');
-                    done();
+            reqAndValidate('pages/example/example.html')
+                .then(function(result) {
+                    done(result && new Error(result));
                 })
                 .end();
         });
+
+        it('handles simultaneous requests', function(done) {
+            this.timeout(300000);
+
+            var pages = ['pages/example/example.html', 'pages/example/example.css', 'pages/example/_example.css',
+             'pages/example/example.js', 'pages/example/_example.ie.css', 'pages/example/_example.js',
+            'pages/client/client.html', 'pages/client/client.css', 'pages/client/_client.css',
+            'pages/client/client.js', 'pages/client/_client.ie.css', 'pages/client/_client.js'];
+
+            Q.all(pages.map(function(p) {
+                return reqAndValidate(p);
+            }))
+            .then(function(all) {
+                var err = '';
+                all.forEach(function(result) {
+                    if (result) err += result + '\n';
+                })
+
+                done(err && new Error(err));
+            })
+            .end();
+        })
 
     });
 });
@@ -69,6 +90,8 @@ function command(cmd, options, resolveWithOutput) {
         output += data;
     });
 
+    if (options && options.stdin) cp.stdin.end(options.stdin);
+
     return d.promise;
 }
 
@@ -82,4 +105,19 @@ function req(path) {
         });
 
     return d.promise;
+}
+
+function reqAndValidate(path) {
+    return req(path)
+        .then(function(res){
+            assert.equal(res.status, 200, 'response status is 200');
+
+            return res;
+        })
+        .then(function(res){
+            return command(UTIL.format('diff -q %s/%s -', referencePath, path), {stdin: res.text}, true);
+        })
+        .then(function(result) {
+            return result;
+        });
 }
