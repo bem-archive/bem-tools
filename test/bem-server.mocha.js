@@ -7,8 +7,7 @@ var assert = require('assert'),
     QFS = require('q-fs'),
     SA = require('superagent'),
 
-    BEMUTIL = require('../lib/util'),
-    BEM = require('bem').api,
+    BEM = require('../lib/coa').api,
 
     projectPath = PATH.resolve('./test/data/make/project'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
@@ -38,28 +37,42 @@ describe('bem', function() {
                 .end();
         });
 
-        it('handles simultaneous requests', function(done) {
-            this.timeout(300000);
+        for(var i = 1; i <= 10; i++) {
+            it('handles simultaneous requests (iteration ' + i +')', function(done) {
+                this.timeout(300000);
 
-            var pages = ['pages/example/example.html', 'pages/example/example.css', 'pages/example/_example.css',
-             'pages/example/example.js', 'pages/example/_example.ie.css', 'pages/example/_example.js',
-            'pages/client/client.html', 'pages/client/client.css', 'pages/client/_client.css',
-            'pages/client/client.js', 'pages/client/_client.ie.css', 'pages/client/_client.js'];
+                var pages = ['pages/example/example.html', 'pages/example/example.css', 'pages/example/_example.css',
+                 'pages/example/example.js', 'pages/example/_example.ie.css', 'pages/example/_example.js',
+                'pages/client/client.html', 'pages/client/client.css', 'pages/client/_client.css',
+                'pages/client/client.js', 'pages/client/_client.ie.css', 'pages/client/_client.js'];
 
-            Q.all(pages.map(function(p) {
-                return reqAndValidate(p);
-            }))
-            .then(function(all) {
-                var err = '';
-                all.forEach(function(result) {
-                    if (result) err += result + '\n';
+                Q.all([
+                    Q.all(pages.map(function(p) {
+                        return reqAndValidate(p);
+                    })),
+
+                    Q.all(pages.map(function(p) {
+                        var d = Q.defer();
+                        setTimeout(function() {
+                            reqAndValidate(p)
+                                .then(function(res) {
+                                    d.resolve(res);
+                                });
+                        }, 700);
+
+                        return d.promise;
+                    }))])
+                .spread(function(all1, all2) {
+                    var err;
+                    all1.concat(all2).forEach(function(result) {
+                        if (result) err = err||'' + result + '\n';
+                    })
+
+                    done(err && new Error(err));
                 })
-
-                done(err && new Error(err));
-            })
-            .end();
-        })
-
+                .end();
+            });
+        }
     });
 });
 
