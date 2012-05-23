@@ -59,7 +59,7 @@ You can create following entities using `bem create`:
 
 ##### Level of defenition
 
-Level of defenition is a directory that hold blocks and an utility directiry `.bem`.
+Level of defenition is a directory that holds blocks and an utility directiry `.bem`.
 
 A `.bem` directory holds configuration of a current level:
 
@@ -527,3 +527,7 @@ Subtracting the next declarations from the first one.
 
  * **String** `output` A file for output result. By default output is in STDOUT
  * **Array** `declaration` List of filenames for declarations (required)
+
+<!-- Yandex.Metrika counter -->
+<img src="//mc.yandex.ru/watch/12831025" style="position:absolute; left:-9999px;" alt="" />
+<!-- /Yandex.Metrika counter -->

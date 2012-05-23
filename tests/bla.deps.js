@@ -118,3 +118,13 @@ exports.deps = [
         "val": "22"
     }
 ];
+exports.depsByTechs = {
+    "": {
+        "t3": [
+            {
+                "tech": "t3",
+                "block": "dep-block33"
+            }
+        ]
+    }
+};
