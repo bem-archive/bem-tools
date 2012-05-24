@@ -7,7 +7,7 @@ var assert = require('assert'),
     QFS = require('q-fs'),
 
     BEMUTIL = require('../lib/util'),
-    BEM = require('bem').api,
+    BEM = require('../lib/coa').api,
 
     projectPath = PATH.resolve('./test/data/make/project'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
