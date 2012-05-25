@@ -48,7 +48,7 @@
     "mocha": "~1.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/vows --spec && ./node_modules/.bin/mocha --ignore-leaks --reporter list test/*.mocha.js  -t 0"
+    "test": "./node_modules/.bin/vows --spec; ./node_modules/.bin/mocha test/*.mocha.js"
   },
   "engines": {
     "node": ">= 0.6.0"
