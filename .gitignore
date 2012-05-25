@@ -1,4 +1,6 @@
 .idea/
 *.iml
 .*.swp
+*.log
 node_modules/
+test-make-temp/
