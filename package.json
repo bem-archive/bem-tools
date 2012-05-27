@@ -30,7 +30,7 @@
   "main": "./lib/index",
   "dependencies": {
     "coa": "~0.3.2",
-    "q": "~0.8.2",
+    "q": "~0.8.5",
     "qq": "~0.3.4",
     "q-fs": "0.1",
     "q-http": "~0.1.13",
@@ -40,7 +40,7 @@
     "xjst": "~0.2.21",
     "ometajs": "~2.1.10",
     "borschik": "~0.0.9",
-    "apw": "~0.3.1",
+    "apw": "~0.3.2",
     "winston": ">= 0.5.0"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "mocha": "~1.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/vows --spec && ./node_modules/.bin/mocha --ignore-leaks --reporter list test/*.mocha.js  -t 0"
+    "test": "./node_modules/.bin/vows --spec; ./node_modules/.bin/mocha test/*.mocha.js"
   },
   "engines": {
     "node": ">= 0.6.0"
