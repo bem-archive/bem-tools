@@ -1,6 +1,6 @@
 var vows = require('vows'),
     assert = require('assert'),
-    myPath = require('../lib/path'),
+    PATH = require('../lib/path'),
     bemUtil = require('../lib/util'),
     createLevel = require('../lib/level').createLevel;
 
@@ -32,13 +32,85 @@ vows.describe('level').addBatch({
         },
         */
 
+        ".matchAny()": function(level) {
+            assert.deepEqual(level.matchAny(PATH.resolve(level.dir, 'block/block.css')), {
+                block: 'block',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/block.css'), {
+                block: 'block',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/_mod/block_mod.css'), {
+                block: 'block',
+                mod: 'mod',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/_mod/block_mod_val.css'), {
+                block: 'block',
+                mod: 'mod',
+                val: 'val',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/__elem/block__elem.css'), {
+                block: 'block',
+                elem: 'elem',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/__elem/_mod/block__elem_mod.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/__elem/_mod/block__elem_mod_val.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val',
+                suffix: '.css',
+                tech: 'css'
+            });
+            assert.deepEqual(level.matchAny('block/__elem/_mod/block__elem_mod_val.custom'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val',
+                suffix: '.custom',
+                tech: undefined
+            });
+        },
+
+        ".getDeclByIntrospection()": function(level) {
+            assert.deepEqual(level.getDeclByIntrospection(), [ {
+                name: 'first-block',
+                elems: [ {
+                    name: 'elem1',
+                    mods: [ {
+                        name: 'mod2',
+                        techs: [ { name: 'css' } ],
+                        vals: [ {
+                            name: '3',
+                            techs: [ { name: 'js' } ]
+                        } ]
+                    } ]
+                } ]
+            } ]);
+        },
+
         "matchers are compliant to getters": testCompliances()
     }
 
 }).export(module);
 
 function absolute(path) {
-    return myPath.absolute(path, __dirname);
+    return PATH.absolute(path, __dirname);
 }
 
 function testCompliances() {
