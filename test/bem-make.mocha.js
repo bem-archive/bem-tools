@@ -1,5 +1,4 @@
-var assert = require('assert'),
-    UTIL = require('util'),
+var UTIL = require('util'),
     PATH = require('path'),
     FS = require('fs'),
     Q = require('q'),

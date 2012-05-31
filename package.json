@@ -45,7 +45,8 @@
   },
   "devDependencies": {
     "vows": "~0.6.2",
-    "mocha": "~1.0.0"
+    "mocha": "~1.0.0",
+    "superagent": "~0.4.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/vows --spec; ./node_modules/.bin/mocha test/*.mocha.js"
