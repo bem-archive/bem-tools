@@ -13,6 +13,17 @@ var assert = require('assert'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
     buildPath = PATH.resolve('./test-make-temp');
 
+/**
+ * Mocha BDD interface.
+ *
+ * @name describe @function
+ * @name it @function
+ * @name before @function
+ * @name after @function
+ * @name beforeEach @function
+ * @name afterEach @function
+ */
+
 describe('bem', function() {
     describe('make', function() {
 
