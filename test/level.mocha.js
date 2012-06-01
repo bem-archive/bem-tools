@@ -73,13 +73,7 @@ describe('level', function() {
 
         describe(".getPath()", function() {
             it("block/block, css", function() {
-                assert.equal(level.getPath('block/block', 'css'), PATH.resolve(level.dir, 'block/block.css'));
-            });
-        });
-
-        describe(".getRelPath()", function() {
-            it("block/block, css", function() {
-                assert.equal(level.getRelPath('block/block', 'css'), 'block/block.css');
+                assert.equal(level.getPath('block/block', 'css'), 'block/block.css');
             });
         });
 
