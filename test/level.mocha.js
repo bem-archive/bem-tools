@@ -17,14 +17,16 @@ var assert = require('chai').assert,
 
 describe('level', function() {
 
-    describe("Level('data/level1') /* simple level */", function() {
+    describe("Level('data/level1') /* generic level */", function() {
 
         var level = createLevel(absolute('data/level1'));
 
-        it(".getDefaultTechs() returns empty array", function() {
-            var defs = level.getDefaultTechs();
-            assert.isArray(defs);
-            assert.lengthOf(defs, 0);
+        describe(".getDefaultTechs()", function() {
+            it("returns empty array", function() {
+                var defs = level.getDefaultTechs();
+                assert.isArray(defs);
+                assert.lengthOf(defs, 0);
+            });
         });
 
         /*
@@ -44,6 +46,54 @@ describe('level', function() {
             assert.equal(level.resolveTechPath(absolute(path)), path);
         });
         */
+
+        describe(".getByObj()", function() {
+            it("block, elem, mod, val", function() {
+                var item = {
+                    block: 'block',
+                    elem: 'elem',
+                    mod: 'mod',
+                    val: 'val'
+                };
+                assert.equal(level.getByObj(item), PATH.resolve(level.dir, 'block/__elem/_mod/block__elem_mod_val'));
+            });
+        });
+
+        describe(".getRelByObj()", function() {
+            it("block, elem, mod, val", function() {
+                var item = {
+                    block: 'block',
+                    elem: 'elem',
+                    mod: 'mod',
+                    val: 'val'
+                };
+                assert.equal(level.getRelByObj(item), 'block/__elem/_mod/block__elem_mod_val');
+            });
+        });
+
+        describe(".getPath()", function() {
+            it("block/block, css", function() {
+                assert.equal(level.getPath('block/block', 'css'), PATH.resolve(level.dir, 'block/block.css'));
+            });
+        });
+
+        describe(".getRelPath()", function() {
+            it("block/block, css", function() {
+                assert.equal(level.getRelPath('block/block', 'css'), 'block/block.css');
+            });
+        });
+
+        describe(".getPathByObj()", function() {
+            it("block: block", function() {
+                assert.equal(level.getPathByObj({ block: 'block' }, 'css'), PATH.resolve(level.dir, 'block/block.css'));
+            });
+        });
+
+        describe(".getRelPathByObj()", function() {
+            it("block: block", function() {
+                assert.equal(level.getRelPathByObj({ block: 'block' }, 'css'), 'block/block.css');
+            });
+        });
 
         describe(".matchAny()", function() {
 
@@ -126,21 +176,23 @@ describe('level', function() {
 
         });
 
-        it(".getDeclByIntrospection()", function() {
-            assert.deepEqual(level.getDeclByIntrospection(), [ {
-                name: 'first-block',
-                elems: [ {
-                    name: 'elem1',
-                    mods: [ {
-                        name: 'mod2',
-                        techs: [ { name: 'css' } ],
-                        vals: [ {
-                            name: '3',
-                            techs: [ { name: 'js' } ]
+        describe(".getDeclByIntrospection()", function() {
+            it("returns correct introspection", function() {
+                assert.deepEqual(level.getDeclByIntrospection(), [ {
+                    name: 'first-block',
+                    elems: [ {
+                        name: 'elem1',
+                        mods: [ {
+                            name: 'mod2',
+                            techs: [ { name: 'css' } ],
+                            vals: [ {
+                                name: '3',
+                                techs: [ { name: 'js' } ]
+                            } ]
                         } ]
                     } ]
-                } ]
-            } ]);
+                } ]);
+            });
         });
 
         describe(".match-*()", function() {
@@ -152,14 +204,14 @@ describe('level', function() {
                 match = level.match(matcher, level.getRel(matcher, args));
 
                 it(UTIL.format("matcher '%s' complies to getter", matcher), function() {
-                    for(var key in match) {
+                    Object.keys(match).forEach(function(key) {
                         assert.isString(match[key]);
                         if(key == 'suffix') {
                             assert.equal(match[key], '');
-                            continue;
+                            return;
                         }
                         assert.equal(match[key], key);
-                    }
+                    });
                 });
 
             });
