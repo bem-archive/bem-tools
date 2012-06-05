@@ -120,6 +120,30 @@ You can find the examples of tech modules in the repo:
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
 
+###### Create element
+
+Create element named `elem` for block `b-my-block`
+
+    bem create elem -b b-my-block elem
+
+###### Create modifier of block or element
+
+Create modifier named `mod` for block `b-my-block`
+
+    bem create mod -b b-my-block mod
+
+Create modifier named `mod` having value `val` for block `b-my-block`
+
+    bem create mod -b b-my-block mod -v val
+
+Create modifier named `mod` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod
+
+Create modifier named  `mod` having value `val` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod -v val
+
 #### bem build
 
 `bem build` command builds page files in different techs, according to a page declaration.
