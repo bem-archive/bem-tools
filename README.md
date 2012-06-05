@@ -67,7 +67,7 @@ A `.bem` directory holds configuration of a current level:
  * links to the technologies
 
 An example of technologies' links (this is `blocks-desktop` level of
-bem-bl block library):
+`bem-bl` block library):
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
@@ -86,12 +86,11 @@ defenition itself. To create such a directory run this:
 
 `bem create level` allows to use an existing level as a prototype for a level it creates.
 
-    bem create level -l bem-bl/blocks-desktop blocks
+    bem create level --level bem-bl/blocks-desktop blocks
 
 ##### Block
 
-Block is a directory that holds block's implementation, some files with different
-technologies.
+Block is a bunch of files in different technologies that hold block's implementation.
 
 ###### Create a new block
 
