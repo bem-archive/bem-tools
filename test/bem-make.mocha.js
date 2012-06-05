@@ -8,6 +8,8 @@ var UTIL = require('util'),
     BEMUTIL = require('../lib/util'),
     BEM = require('../lib/coa').api,
 
+    C = require('./common'),
+
     projectPath = PATH.resolve('./test/data/make/project'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
     buildPath = PATH.resolve('./test-make-temp');
@@ -16,7 +18,7 @@ describe('bem', function() {
     describe('make', function() {
 
         before(function(done){
-            prepareProject()
+            C.prepareProject(projectPath, buildPath)
                 .then(done)
                 .end();
         });
@@ -31,7 +33,7 @@ describe('bem', function() {
         });
 
         it('creates proper artifacts', function(done) {
-            return command(
+            return C.command(
                     UTIL.format(
                         'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                         '.',
@@ -82,7 +84,7 @@ describe('bem', function() {
                     return BEM.make({root: buildPath, verbosity: 'error'});
                 })
                 .then(function() {
-                    return command(
+                    return C.command(
                             UTIL.format(
                                 'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                                 '.',
@@ -119,7 +121,7 @@ describe('bem', function() {
         it('builds two targets', function(done) {
             this.timeout(0);
 
-            prepareProject()
+            C.prepareProject(projectPath, buildPath)
                 .then(function(){
                     return BEM.make({
                         root: buildPath,
@@ -145,7 +147,7 @@ describe('bem', function() {
                     })
                 })
                 .then(function() {
-                    return command(
+                    return C.command(
                             UTIL.format(
                                 'diff -rq %s %s 2>&1 | grep -v ^O; true',
                                 '.',
@@ -162,36 +164,6 @@ describe('bem', function() {
     });
 });
 
-
-function prepareProject() {
-    return QFS.exists(buildPath)
-        .then(function(exists) {
-            return exists && command(UTIL.format('rm -rf %s', buildPath));
-        })
-        .then(function() {
-            return command(UTIL.format('cp -r %s %s', projectPath, buildPath));
-        });
-}
-
-function command(cmd, options, resolveWithOutput) {
-    var d = Q.defer(),
-        output = '',
-        cp  = require('child_process').exec(cmd, options);
-
-    cp.on('exit', function (code) {
-        code === 0? d.resolve(resolveWithOutput && output?output:null): d.reject(new Error(UTIL.format('%s failed: %s', cmd, output)));
-    });
-
-    cp.stderr.on('data', function (data) {
-        output += data;
-    });
-
-    cp.stdout.on('data', function (data) {
-        output += data;
-    });
-
-    return d.promise;
-}
 
 function collectTimestamps(root) {
     var list = {};
