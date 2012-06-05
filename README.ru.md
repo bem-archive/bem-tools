@@ -135,6 +135,30 @@
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
 
+###### Создание элемента блока
+
+Создание элемента `elem` для блока `b-my-block`
+
+    bem create elem -b b-my-block elem
+
+###### Создание модификатора блока или элемента
+
+Создание модификатора `mod` для блока `b-my-block`
+
+    bem create mod -b b-my-block mod
+
+Создание модификатора `mod` в значении `val` для блока `b-my-block`
+
+    bem create mod -b b-my-block mod -v val
+
+Создание модификатора `mod` для элемента `elem` блока `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod
+
+Создание модификатора `mod` в значении `val` для элемента `elem` блока `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod -v val
+
 #### bem build
 
 С помощью команды `bem build` можно собирать файлы страниц для различных технологий,
