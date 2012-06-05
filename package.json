@@ -44,12 +44,11 @@
     "winston": ">= 0.5.0"
   },
   "devDependencies": {
-    "vows": "~0.6.2",
     "mocha": "~1.0.0",
     "chai": "~1.0.3"
   },
   "scripts": {
-    "test": "./node_modules/.bin/vows --spec; ./node_modules/.bin/mocha test/*.mocha.js"
+    "test": "./node_modules/.bin/mocha"
   },
   "engines": {
     "node": ">= 0.6.0"
