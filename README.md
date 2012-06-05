@@ -144,6 +144,34 @@ Create modifier named  `mod` having value `val` for element `elem` of block `b-m
 
     bem create mod -b b-my-block -e elem mod -v val
 
+###### Create any BEM entity using `bem create` command only
+
+You can create any BEM entities or bunches of them using `bem create` command.
+
+Create blocks named `b-block1` and `b-block2`
+
+    bem create -b b-block1 -b b-block2
+
+Create elements named `elem1` and `elem2` for block `b-block`
+
+    bem create -b b-block -e elem1 -e elem2
+
+Create modifier names `mod` of block `b-block`
+
+    bem create -b b-block -m mod
+
+Create modifier named `mod` of block `b-block` having values `val1` and `val2`
+
+    bem create -b b-block -m mod -v val1 -v val2
+
+Create modifier named `mod` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod
+
+Create modifier named `mod` having values `val1` and `val2` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod -v val1 -v val2
+
 #### bem build
 
 `bem build` command builds page files in different techs, according to a page declaration.
