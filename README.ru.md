@@ -159,6 +159,34 @@
 
     bem create mod -b b-my-block -e elem mod -v val
 
+###### Создание произвольной БЭМ сущности используя только команду `bem create`
+
+При момощи команды `bem create` можно создавать произвольные БЭМ сущности или даже наборы сущностей.
+
+Создание блоков `b-block1` и `b-block2`
+
+    bem create -b b-block1 -b b-block2
+
+Создание элементов `elem1` и `elem2` для блока `b-block`
+
+    bem create -b b-block -e elem1 -e elem2
+
+Создание модификатора `mod` блока `b-block`
+
+    bem create -b b-block -m mod
+
+Создание модификатор `mod` блока `b-block` в значениях `val1` и `val2`
+
+    bem create -b b-block -m mod -v val1 -v val2
+
+Создание модификатора `mod` элемента `elem` блока `b-block`
+
+    bem create -b b-block -e elem -m mod
+
+Создание модификатора `mod` в значениях `val1` и `val2` для элемента `elem` блока `b-block`
+
+    bem create -b b-block -e elem -m mod -v val1 -v val2
+
 #### bem build
 
 С помощью команды `bem build` можно собирать файлы страниц для различных технологий,
