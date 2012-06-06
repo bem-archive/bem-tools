@@ -1,6 +1,6 @@
 var assert = require('chai').assert,
-    Tech = require('../lib/legacy-tech.js').Tech,
-    PATH = require('../lib/path');
+    Tech = require(process.env.COVER? '../lib-cov/legacy-tech' : '../lib/legacy-tech').Tech,
+    PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path');
 
 /**
  * Mocha BDD interface.
@@ -15,9 +15,12 @@ var assert = require('chai').assert,
 
 describe('legacy tech', function() {
 
+    var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/',
+        lib = process.env.COVER? '../lib-cov/' : '../lib/';
+
     describe("new Tech('../lib/legacy-techs/css')", function() {
 
-        var tech = new Tech(require.resolve('../lib/legacy-techs/css'));
+        var tech = new Tech(require.resolve(lib + 'legacy-techs/css'));
 
         it(".getTechName() equals to 'css'", function() {
             assert.equal(tech.getTechName(), 'css');
@@ -39,7 +42,7 @@ describe('legacy tech', function() {
 
     describe("new Tech('../lib/legacy-techs/default', 'def')", function() {
 
-        var tech = new Tech(require.resolve('../lib/legacy-techs/default'), 'def');
+        var tech = new Tech(require.resolve(lib + 'legacy-techs/default'), 'def');
 
         it(".getTechName() equals to 'def'", function() {
             assert.equal(tech.getTechName(), 'def');
@@ -54,7 +57,7 @@ describe('legacy tech', function() {
         });
 
         it(".getTechRelativePath() resolves to 'bem/lib/legacy-techs/default'", function() {
-            assert.equal(tech.getTechRelativePath(), PATH.unixToOs('bem/lib/legacy-techs/default'));
+            assert.equal(tech.getTechRelativePath(), PATH.unixToOs(bemLib + 'legacy-techs/default'));
         });
 
     });
