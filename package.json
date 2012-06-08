@@ -45,6 +45,13 @@
   "engines": {
     "node": ">= 0.4.0 <0.7.0"
   },
+  "npm2debian": {
+    "bash-completion": {
+      "bem": {
+        "script": "./bin/bem completion"
+      }
+    }
+  },
   "licenses": [
     {
       "type": "AS IS"
