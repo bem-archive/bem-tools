@@ -155,6 +155,26 @@ describe('Deps', function() {
 
     });
 
+    describe('serialize:', function() {
+
+        describe('empty deps serialize to {}', function() {
+
+            var empty = {};
+
+            it('empty deps object: new Deps()', function() {
+                assert.deepEqual(new Deps().serialize(), empty);
+            });
+
+            it('empty object: {}', assertDepsParse({}, empty));
+
+            it('empty array: []', assertDepsParse([], empty));
+
+            it('undefined', assertDepsParse(undefined, empty));
+
+        });
+
+    });
+
     describe('clone', function() {
 
         var deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']),
