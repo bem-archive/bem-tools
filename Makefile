@@ -15,7 +15,7 @@ test:
 	./bin/bem create mod -l tests/level5 -b second-block -e elem2 -v 221 -v 222 mod22
 
 	./bin/bem build -d tests/decl.js -o tests -n bla -t deps.js -t ie.css -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
-	./bin/bem build -d tests/bla.deps.js -o tests -n bla -t css -t js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
+	./bin/bem build -d tests/bla.deps.js -o tests -n bla -t css -t js -t i18n -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 
 	./bin/bem decl subtract -o tests/deps-subtract.deps.js -d tests/deps-subtract-1.deps.js -d tests/deps-subtract-2.deps.js
 	./bin/bem decl merge -o tests/deps-merge.deps.js -d tests/deps-merge-1.deps.js -d tests/deps-merge-2.deps.js
