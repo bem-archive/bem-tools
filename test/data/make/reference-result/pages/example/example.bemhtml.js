@@ -1951,4 +1951,6 @@ var BEMHTML = (function(exports) {
         return;
     }
     return exports;
-})(typeof exports === "undefined" ? {} : exports);;BEMHTML = (function(xjst) { return function() { return xjst.apply.call([this]); }; }(BEMHTML));
+})(typeof exports === "undefined" ? {} : exports);
+BEMHTML = (function(xjst) { return function() { return xjst.apply.call([this]); }; }(BEMHTML));
+typeof exports === "undefined" || (exports.BEMHTML = BEMHTML);

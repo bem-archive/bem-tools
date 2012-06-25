@@ -2,17 +2,23 @@ var BEM = require('bem'),
     Q = BEM.require('q'),
     PATH = require('path'),
     SYS = require('util'),
-    FS = require('fs'),
-    XJST = require('xjst');
+    XJST = require('xjst'),
+
+    readFile = BEM.require('./util').readFile;
 
 exports.getBuildResultChunk = function(relPath, path, suffix) {
 
-    return [
-        '/* ' + path + ': start */',
-        FS.readFileSync(path),
-        '/* ' + path + ': end */',
-        '\n'
-    ].join('\n');
+    return readFile(path)
+        .then(function(c) {
+
+            return [
+                '/* ' + path + ': start */',
+                c,
+                '/* ' + path + ': end */',
+                '\n'
+            ].join('\n');
+
+        });
 
 };
 
@@ -72,8 +78,9 @@ exports.getBuildResult = function(prefixes, suffix, outputDir, outputName) {
                 throw new Error("xjst to js compilation failed");
             }
 
-            // TODO: поддержать работу с шаблоном как с CommonJS-модулем, через `BEMHTML = require('tpl.bemhtml.js').apply`
-            return 'var BEMHTML = ' + xjstJS + ';BEMHTML = (function(xjst) { return function() { return xjst.apply.call([this]); }; }(BEMHTML));';
+            return 'var BEMHTML = ' + xjstJS + '\n'
+                + 'BEMHTML = (function(xjst) { return function() { return xjst.apply.call([this]); }; }(BEMHTML));\n'
+                + 'typeof exports === "undefined" || (exports.BEMHTML = BEMHTML);';
 
         });
 
@@ -91,6 +98,6 @@ exports.getSuffixes = function() {
     return ['bemhtml'];
 };
 
-exports.getDependencies = function() {
-    return ['deps.js'];
+exports.getBuildSuffixes = function() {
+    return ['bemhtml.js'];
 };
