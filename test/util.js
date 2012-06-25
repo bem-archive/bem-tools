@@ -18,11 +18,11 @@ describe('util', function() {
     describe('getBemTechPath()', function() {
 
         it("'css' resolves to 'bem/lib/techs/css'", function() {
-            assert.equal(U.getBemTechPath('css'), PATH.unixToOs('bem/lib/techs/css'));
+            assert.equal(U.getBemTechPath('css'), PATH.unixToOs('bem/lib/techs/css.js'));
         });
 
         it("'custom' resolves to 'bem/lib/tech'", function() {
-            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs('bem/lib/tech'));
+            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs('bem/lib/tech.js'));
         });
 
     });

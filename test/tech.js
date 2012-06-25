@@ -18,11 +18,11 @@ function testBaseTech(techPath, techAlias) {
 
     var techName = PATH.basename(techPath),
         absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
-        relTechPath = techPath;
+        relTechPath = techPath + '.js';
 
     // NOTE: techPath will be always in unix format
     if(/^\.\.\/lib\//.test(techPath)) {
-        relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
+        relTechPath = relTechPath.replace(/^\.\.\/lib\//, 'bem/lib/');
 
         // default tech identified by '' relative path
         if(techName == 'tech') relTechPath = '';
