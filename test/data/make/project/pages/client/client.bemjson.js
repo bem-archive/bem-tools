@@ -4,10 +4,10 @@
     title: 'Client-side template work',
     head: [
         { elem: 'css', url: '_client.css'},
-        { elem: 'css', url: '_client.ie.css', ie: true },
+        { elem: 'css', url: '_client', ie: true },
         { block: 'i-jquery', elem: 'core' },
-        { elem: 'js', url: 'client.bemhtml.js' },
-        { elem: 'js', url: 'client.js' }
+        { elem: 'js', url: '_client.bemhtml.js' },
+        { elem: 'js', url: '_client.js' }
     ],
     content: ''
 })
