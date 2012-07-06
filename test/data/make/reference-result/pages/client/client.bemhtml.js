@@ -1,11 +1,11 @@
 var BEMHTML = (function(exports) {
-    var __r8, __r10, __r12, __r14, __r16, __r18, __r20, __r22, __r24, __r26;
+    var __r8, __r10, __r12, __r14, __r16, __r18, __r20, __r22, __r24, __r26, __r33, __r34;
     exports.apply = apply;
     function apply() {
         return $79.call(this);
     }
     function $3() {
-        var BEM = {}, toString = Object["prototype"]["toString"], SHORT_TAGS = {
+        var BEM_ = {}, toString = Object["prototype"]["toString"], SHORT_TAGS = {
             area: 1,
             base: 1,
             br: 1,
@@ -85,7 +85,7 @@ var BEMHTML = (function(exports) {
                     if (mods) {
                         var modName;
                         for (modName in mods) {
-                            if (mods.hasOwnProperty(modName)) {
+                            if (mods.hasOwnProperty(modName) && mods[modName] && mods[modName]["length"]) {
                                 var modVal = mods[modName];
                                 res.push(" ");
                                 elem ? buildElemClass(block, elem, modName, modVal, res) : buildBlockClass(block, modName, modVal, res);
@@ -106,7 +106,7 @@ var BEMHTML = (function(exports) {
                     return buffer ? res : res.join("");
                 }
             };
-        })(BEM);
+        })(BEM_);
         var buildEscape = function() {
             var ts = {
                 '"': "&quot;",
@@ -177,7 +177,7 @@ var BEMHTML = (function(exports) {
                 xmlEscape: buildEscape("[&<>]"),
                 attrEscape: buildEscape('["&<>]')
             },
-            BEM: BEM,
+            BEM: BEM_,
             isFirst: function() {
                 return this["position"] === 1;
             },
@@ -207,17 +207,17 @@ var BEMHTML = (function(exports) {
         if (!!this["ctx"]["_wrap"] === false) {
             if (!!this["mods"]["inner"] === false) {
                 "";
-                var __r41 = this["_mode"];
+                var __r44 = this["_mode"];
                 this["_mode"] = "";
-                var __r42 = this["ctx"];
+                var __r45 = this["ctx"];
                 this["ctx"] = {
                     elem: "inner",
                     content: this["ctx"]["content"],
                     _wrap: true
                 };
                 $79.call(this);
-                this["_mode"] = __r41;
-                this["ctx"] = __r42;
+                this["_mode"] = __r44;
+                this["ctx"] = __r45;
                 "";
                 undefined;
                 undefined;
@@ -281,7 +281,7 @@ var BEMHTML = (function(exports) {
         return;
     }
     function $21() {
-        var _this = this, BEM = _this["BEM"], v = this["ctx"], buf = this["_buf"], tag;
+        var _this = this, BEM_ = _this["BEM"], v = this["ctx"], buf = this["_buf"], tag;
         tag = ("", __r8 = this["_mode"], this["_mode"] = "tag", __r9 = $79.call(this), this["_mode"] = __r8, "", __r9);
         typeof tag != "undefined" || (tag = v["tag"]);
         typeof tag != "undefined" || (tag = "div");
@@ -290,7 +290,7 @@ var BEMHTML = (function(exports) {
             if (this["block"] && v["js"] !== false) {
                 js = ("", __r12 = this["_mode"], this["_mode"] = "js", __r13 = $79.call(this), this["_mode"] = __r12, "", __r13);
                 js = js ? this["_"].extend(v["js"], js === true ? {} : js) : v["js"] === true ? {} : v["js"];
-                js && ((jsParams = {})[BEM["INTERNAL"].buildClass(this["block"], v["elem"])] = js);
+                js && ((jsParams = {})[BEM_["INTERNAL"].buildClass(this["block"], v["elem"])] = js);
             } else {
                 undefined;
             }
@@ -304,7 +304,7 @@ var BEMHTML = (function(exports) {
             if (isBEM || cls) {
                 buf.push(' class="');
                 if (isBEM) {
-                    BEM["INTERNAL"].buildClasses(this["block"], v["elem"], v["elemMods"] || v["mods"], buf);
+                    BEM_["INTERNAL"].buildClasses(this["block"], v["elem"], v["elemMods"] || v["mods"], buf);
                     var mix = ("", __r18 = this["_mode"], this["_mode"] = "mix", __r19 = $79.call(this), this["_mode"] = __r18, "", __r19);
                     v["mix"] && (mix = mix ? mix.concat(v["mix"]) : v["mix"]);
                     if (mix) {
@@ -313,9 +313,9 @@ var BEMHTML = (function(exports) {
                             mixItem = mix[i++];
                             hasItem = mixItem["block"] || mixItem["elem"], block = mixItem["block"] || _this["block"];
                             hasItem && buf.push(" ");
-                            BEM["INTERNAL"][hasItem ? "buildClasses" : "buildModsClasses"](block, mixItem["elem"] || (mixItem["block"] ? undefined : _this["elem"]), mixItem["elemMods"] || mixItem["mods"], buf);
+                            BEM_["INTERNAL"][hasItem ? "buildClasses" : "buildModsClasses"](block, mixItem["elem"] || (mixItem["block"] ? undefined : _this["elem"]), mixItem["elemMods"] || mixItem["mods"], buf);
                             if (mixItem["js"]) {
-                                (jsParams || (jsParams = {}))[BEM["INTERNAL"].buildClass(block, mixItem["elem"])] = mixItem["js"] === true ? {} : mixItem["js"];
+                                (jsParams || (jsParams = {}))[BEM_["INTERNAL"].buildClass(block, mixItem["elem"])] = mixItem["js"] === true ? {} : mixItem["js"];
                                 addJSInitClass || (addJSInitClass = block && !mixItem["elem"]);
                             } else {
                                 undefined;
@@ -602,17 +602,17 @@ var BEMHTML = (function(exports) {
                     if (!!this["ctx"]["_wrap"] === false) {
                         if (!!this["mods"]["inner"] === false) {
                             "";
-                            var __r41 = this["_mode"];
+                            var __r44 = this["_mode"];
                             this["_mode"] = "";
-                            var __r42 = this["ctx"];
+                            var __r45 = this["ctx"];
                             this["ctx"] = {
                                 elem: "inner",
                                 content: this["ctx"]["content"],
                                 _wrap: true
                             };
                             $79.call(this);
-                            this["_mode"] = __r41;
-                            this["ctx"] = __r42;
+                            this["_mode"] = __r44;
+                            this["ctx"] = __r45;
                             "";
                             undefined;
                             undefined;
@@ -1123,9 +1123,9 @@ var BEMHTML = (function(exports) {
     function $45() {
         this["_buf"].push("<!DOCTYPE html>");
         "";
-        var __r35 = this["_mode"];
+        var __r36 = this["_mode"];
         this["_mode"] = "";
-        var __r36 = this["ctx"];
+        var __r37 = this["ctx"];
         this["ctx"] = {
             tag: "html",
             cls: "i-ua_js_no i-ua_css_standard",
@@ -1158,8 +1158,8 @@ var BEMHTML = (function(exports) {
             } ]
         };
         this.apply();
-        this["_mode"] = __r35;
-        this["ctx"] = __r36;
+        this["_mode"] = __r36;
+        this["ctx"] = __r37;
         "";
         return;
     }
@@ -1423,9 +1423,9 @@ var BEMHTML = (function(exports) {
         if (!!this["elem"] === false) {
             this["_buf"].push("<!DOCTYPE html>");
             "";
-            var __r35 = this["_mode"];
+            var __r36 = this["_mode"];
             this["_mode"] = "";
-            var __r36 = this["ctx"];
+            var __r37 = this["ctx"];
             this["ctx"] = {
                 tag: "html",
                 cls: "i-ua_js_no i-ua_css_standard",
@@ -1458,8 +1458,8 @@ var BEMHTML = (function(exports) {
                 } ]
             };
             this.apply();
-            this["_mode"] = __r35;
-            this["ctx"] = __r36;
+            this["_mode"] = __r36;
+            this["ctx"] = __r37;
             "";
             return;
         } else {
@@ -1477,27 +1477,48 @@ var BEMHTML = (function(exports) {
     function $60() {
         if (!this["ctx"].hasOwnProperty("ie") === false) {
             if (!!this["ctx"]["_ieCommented"] === false) {
-                var hideRule = !this["ctx"]["ie"] ? [ "gt IE 7", "<!-->", "<!--" ] : [ this["ctx"]["ie"], "", "" ];
-                "";
-                var __r37 = this["_mode"];
-                this["_mode"] = "";
-                var __r38 = this["ctx"], __r39 = __r38["_ieCommented"];
-                __r38["_ieCommented"] = true;
-                var __r40 = this["ctx"];
-                this["ctx"] = [ "<!--[if " + hideRule[0] + "]>", hideRule[1], this["ctx"], hideRule[2], "<![endif]-->" ];
-                this.apply();
-                this["_mode"] = __r37;
-                __r38["_ieCommented"] = __r39;
-                this["ctx"] = __r40;
-                "";
+                var ie = this["ctx"]["ie"];
+                if (ie === true) {
+                    "";
+                    var __r38 = this["_mode"];
+                    this["_mode"] = "";
+                    var __r39 = this["ctx"];
+                    this["ctx"] = [ 6, 7, 8, 9 ].map(function(v) {
+                        return {
+                            elem: "css",
+                            url: this["ctx"]["url"] + ".ie" + v + ".css",
+                            ie: "IE " + v
+                        };
+                    }, this);
+                    this.apply();
+                    this["_mode"] = __r38;
+                    this["ctx"] = __r39;
+                    "";
+                } else {
+                    var hideRule = !ie ? [ "gt IE 7", "<!-->", "<!--" ] : ie == "!IE" ? [ ie, "<!-->", "<!--" ] : [ ie, "", "" ];
+                    {
+                        "";
+                        var __r40 = this["_mode"];
+                        this["_mode"] = "";
+                        var __r41 = this["ctx"], __r42 = __r41["_ieCommented"];
+                        __r41["_ieCommented"] = true;
+                        var __r43 = this["ctx"];
+                        this["ctx"] = [ "<!--[if " + hideRule[0] + "]>", hideRule[1], this["ctx"], hideRule[2], "<![endif]-->" ];
+                        this.apply();
+                        this["_mode"] = __r40;
+                        __r41["_ieCommented"] = __r42;
+                        this["ctx"] = __r43;
+                        "";
+                    }
+                }
                 return;
             } else {
                 if (!!this["elem"] === false) {
                     this["_buf"].push("<!DOCTYPE html>");
                     "";
-                    var __r35 = this["_mode"];
+                    var __r36 = this["_mode"];
                     this["_mode"] = "";
-                    var __r36 = this["ctx"];
+                    var __r37 = this["ctx"];
                     this["ctx"] = {
                         tag: "html",
                         cls: "i-ua_js_no i-ua_css_standard",
@@ -1530,8 +1551,8 @@ var BEMHTML = (function(exports) {
                         } ]
                     };
                     this.apply();
-                    this["_mode"] = __r35;
-                    this["ctx"] = __r36;
+                    this["_mode"] = __r36;
+                    this["ctx"] = __r37;
                     "";
                     return;
                 } else {
@@ -1546,9 +1567,9 @@ var BEMHTML = (function(exports) {
             if (!!this["elem"] === false) {
                 this["_buf"].push("<!DOCTYPE html>");
                 "";
-                var __r35 = this["_mode"];
+                var __r36 = this["_mode"];
                 this["_mode"] = "";
-                var __r36 = this["ctx"];
+                var __r37 = this["ctx"];
                 this["ctx"] = {
                     tag: "html",
                     cls: "i-ua_js_no i-ua_css_standard",
@@ -1581,8 +1602,8 @@ var BEMHTML = (function(exports) {
                     } ]
                 };
                 this.apply();
-                this["_mode"] = __r35;
-                this["ctx"] = __r36;
+                this["_mode"] = __r36;
+                this["ctx"] = __r37;
                 "";
                 return;
             } else {
@@ -1592,6 +1613,35 @@ var BEMHTML = (function(exports) {
                     return $21.call(this);
                 }
             }
+        }
+    }
+    function $74() {
+        var __t = this["_mode"];
+        if (__t === "tag") {
+            return $14.call(this);
+        } else if (__t === "content") {
+            return $5.call(this);
+        } else if (__t === "attrs") {
+            return $14.call(this);
+        } else if (__t === "js") {
+            return $14.call(this);
+        } else if (__t === "bem") {
+            return $14.call(this);
+        } else if (__t === "default") {
+            return "", __r33 = this["_mode"], this["_mode"] = "", __r34 = this["ctx"], this["ctx"] = {
+                block: "b-page",
+                elem: "js",
+                url: "//yandex.st/jquery/1.7.2/jquery.min.js"
+            }, __r35 = $74.call(this), this["_mode"] = __r33, this["ctx"] = __r34, "", __r35;
+            return;
+        } else if (__t === "mix") {
+            return $14.call(this);
+        } else if (__t === "jsAttr") {
+            return $14.call(this);
+        } else if (__t === "cls") {
+            return $14.call(this);
+        } else {
+            return $33.call(this);
         }
     }
     function $79() {
@@ -1876,41 +1926,7 @@ var BEMHTML = (function(exports) {
             } else if (__t === "head") {
                 return $38.call(this);
             } else if (__t === "core") {
-                var __t = this["_mode"];
-                if (__t === "tag") {
-                    return $14.call(this);
-                } else if (__t === "content") {
-                    return $5.call(this);
-                } else if (__t === "attrs") {
-                    return $14.call(this);
-                } else if (__t === "js") {
-                    return $14.call(this);
-                } else if (__t === "bem") {
-                    return $14.call(this);
-                } else if (__t === "default") {
-                    "";
-                    var __r33 = this["_mode"];
-                    this["_mode"] = "";
-                    var __r34 = this["ctx"];
-                    this["ctx"] = {
-                        block: "b-page",
-                        elem: "js",
-                        url: "//yandex.st/jquery/1.6.2/jquery.min.js"
-                    };
-                    this.apply();
-                    this["_mode"] = __r33;
-                    this["ctx"] = __r34;
-                    "";
-                    return;
-                } else if (__t === "mix") {
-                    return $14.call(this);
-                } else if (__t === "jsAttr") {
-                    return $14.call(this);
-                } else if (__t === "cls") {
-                    return $14.call(this);
-                } else {
-                    return $33.call(this);
-                }
+                return $74.call(this);
             } else {
                 return $38.call(this);
             }

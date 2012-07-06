@@ -544,11 +544,13 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
          * @protected
          * @type Object
          */
-        _this.params = $.extend(_this.getDefaultParams(), params);
+        _this.params = null;
 
         initImmediately !== false?
-            _this._init() :
-            _this.afterCurrentEvent(_this._init);
+            _this._init(params) :
+            _this.afterCurrentEvent(function() {
+                _this._init(params);
+            });
 
     },
 
@@ -556,11 +558,16 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
      * Инициализирует блок
      * @private
      */
-    _init : function() {
+    _init : function(params) {
 
-        return this
-            .setMod('js', 'inited')
-            .trigger('init');
+        if(!this.hasMod('js', 'inited')) {
+            this.params = $.extend(this.getDefaultParams(), params);
+            this
+                .setMod('js', 'inited')
+                .trigger('init');
+        }
+
+        return this;
 
     },
 
@@ -1555,7 +1562,7 @@ function initBlock(blockName, domElem, params, forceLive, callback) {
 
     var uniqId = params.uniqId;
     if(uniqIdToBlock[uniqId]) {
-        return uniqIdToBlock[uniqId]._init();
+        return uniqIdToBlock[uniqId]._init(params);
     }
 
     uniqIdToDomElems[uniqId] = uniqIdToDomElems[uniqId]?
@@ -2464,7 +2471,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
             $.each(getParams(this), function(blockName, blockParams) {
                 if(blockParams.uniqId) {
                     var block = uniqIdToBlock[blockParams.uniqId];
-                    block && block.destruct(true);
+                    block? block.destruct(true) : delete uniqIdToDomElems[blockParams.uniqId];
                 }
             });
             cleanupDomNode(this);
@@ -2736,7 +2743,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
         blocks[blockName].on(event, function(e) {
             var blocks = e.block[findFnName](name);
             callback && blocks.forEach(function(block) {
-                callback.call(block);
+                callback.call(block, e);
             });
         });
         return this;
@@ -2922,7 +2929,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
      */
     liveCtxUnbind : function(ctx, e, fn, fnCtx) {
 
-        return this._liveCtxBind(ctx, e, fn, fnCtx);
+        return this._liveCtxUnbind(ctx, e, fn, fnCtx);
 
     },
 
@@ -2939,7 +2946,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
     _liveCtxUnbind : function(ctx, e, fn, fnCtx) {
 
         var _this = this,
-            storage = liveEventCtxStorage[e =_this.buildEventName(e)];
+            storage = liveEventCtxStorage[e =_this._buildCtxEventName(e)];
 
         if(storage) {
             ctx.each(function() {
