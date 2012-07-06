@@ -3097,6 +3097,24 @@ String.prototype.trim || (String.prototype.trim = function () {
 $(function() {
     BEM.DOM.init();
 });
+BEM.DOM.decl('b-page', {
+    onSetMod : {
+        'js' : function() {
+            BEM.DOM.update(this.domElem, BEMHTML.apply(
+                {
+                    block: 'b-link',
+                    mods : { pseudo : 'yes', togcolor : 'yes', color: 'green' },
+                    url: '#',
+                    target: '_blank',
+                    title: 'Click me',
+                    content : 'This pseudo link changes its color after click'
+                }
+            ));
+            BEM.DOM.init(this.domElem);
+        }
+    }
+});
+
 /**
  * leftClick event plugin
  *
@@ -3180,4 +3198,4 @@ BEM.DOM.decl({ name: 'b-link', modName: 'togcolor', modVal: 'yes'}, {
 })();
 
 
-BEM.I18N.lang('ru');
+BEM.I18N.lang('en');
