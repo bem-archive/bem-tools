@@ -16,7 +16,7 @@ You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.
 
 If you are going to use `bem` with
 [bem-bl](https://github.com/bem/bem-bl) block library, you should also install
-[XJST](https://github.com/veged/xjst) and [OmetaJS](https://github.com/veged/ometajs).
+[XJST](https://github.com/veged/xjst) and [OmetaJS](https://github.com/veged/ometa-js).
 
     sudo npm -g install xjst ometajs
 
