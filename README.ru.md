@@ -33,7 +33,7 @@
 
 Если вы планируете использовать `bem` вместе с библиотекой блоков
 [bem-bl](https://github.com/bem/bem-bl), установите так же
-[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometajs).
+[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometa-js).
 
     sudo npm -g install xjst ometajs
 
