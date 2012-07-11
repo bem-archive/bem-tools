@@ -3,7 +3,8 @@ var assert = require('chai').assert,
     PATH = require('path'),
     QFS = require('q-fs'),
 
-    SymlinkLibraryNode = require('../lib/nodes').SymlinkLibraryNode;
+    SymlinkLibraryNode = require('../lib/nodes/lib');
+
 
 /**
  * Mocha BDD interface.
@@ -20,7 +21,7 @@ describe('nodes', function() {
 
     describe('new SymlinkLibraryNode()', function() {
 
-        var node = new SymlinkLibraryNode({
+        var node = new SymlinkLibraryNode.SymlinkLibraryNode({
                 root: PATH.resolve(__dirname, 'data'),
                 target: 'symlink',
                 relative: 'lib'
