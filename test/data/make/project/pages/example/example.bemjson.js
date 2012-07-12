@@ -3,9 +3,9 @@
     title: 'Pseudo link',
     head: [
         { elem: 'css', url: '_example.css'},
-        { elem: 'css', url: '_example.ie.css', ie: 'lt IE 8' },
+        { elem: 'css', url: '_example', ie: true },
         { block: 'i-jquery', elem: 'core' },
-        { elem: 'js', url: 'example.js' }
+        { elem: 'js', url: '_example.js' }
     ],
     content: [
         {
