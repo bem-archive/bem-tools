@@ -11,6 +11,7 @@ var assert = require('assert'),
 
     projectPath = PATH.resolve('./test/data/make/project'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
+    mergedReferencePath = PATH.resolve('./test/data/make/merged-reference-result'),
     buildPath = PATH.resolve('./test-make-temp');
 
 /**
@@ -171,6 +172,31 @@ describe('bem', function() {
                 .fail(done)
                 .end();
         });
+
+        it('builds merged bundle', function(done) {
+            prepareProjectWithMergedBuild()
+                .then(function(){
+                    return BEM.make({
+                        root: buildPath,
+                        verbosity: 'error'
+                    });
+                })
+                .then(function(){
+                    return command(
+                            UTIL.format(
+                                'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
+                                '.',
+                                PATH.relative(mergedReferencePath, buildPath)),
+                            {cwd: mergedReferencePath},
+                            true);
+                })
+                .then(function(result) {
+                    done(result && new Error(result));
+                })
+                .fail(done)
+                .end();
+        });
+
     });
 });
 
@@ -182,6 +208,13 @@ function prepareProject() {
         })
         .then(function() {
             return command(UTIL.format('cp -r %s %s', projectPath, buildPath));
+        });
+}
+
+function prepareProjectWithMergedBuild() {
+    return prepareProject()
+        .then(function() {
+            return command(UTIL.format('cp -f %s/.bem/mergedmake.js %s/.bem/make.js', buildPath, buildPath));
         });
 }
 
