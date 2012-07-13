@@ -35,7 +35,7 @@ describe('legacy tech', function() {
         });
 
         it(".getTechRelativePath() resolves to 'bem/lib/legacy-techs/css'", function() {
-            assert.equal(tech.getTechRelativePath(), PATH.unixToOs('bem/lib/legacy-techs/css'));
+            assert.equal(tech.getTechRelativePath(), PATH.unixToOs(process.env.COVER? 'bem/lib-cov/legacy-techs/css' : 'bem/lib/legacy-techs/css'));
         });
 
     });
