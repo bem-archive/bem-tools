@@ -20,8 +20,8 @@ test-cover: lib-cov test
 	@echo
 	@echo Open ./coverage.html file in your browser
 
-.PHONY: test
-test:
+.PHONY: tests
+tests:
 	-rm -rf tests/level4
 	$(BEM) create level -o tests -l simple -T css -T js -t xsl level4
 	$(BEM) create block -l tests/level4 -T css -T js -t xsl first-block
