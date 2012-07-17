@@ -27,7 +27,6 @@
   "bin": {
     "bem": "./bin/bem"
   },
-  "main": "./lib/index",
   "dependencies": {
     "coa": "~0.3.5",
     "q": "~0.8.5",
