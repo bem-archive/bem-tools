@@ -121,6 +121,12 @@ exports.deps = [
         "block": "b-link",
         "mod": "color",
         "val": "green"
+    },
+    {
+        "block": "b-icon"
+    },
+    {
+        "block": "b-logo"
     }
 ];
 exports.depsByTechs = {

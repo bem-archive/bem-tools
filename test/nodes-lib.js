@@ -3,8 +3,7 @@ var assert = require('chai').assert,
     PATH = require('path'),
     QFS = require('q-fs'),
 
-    LibNodes = require('../lib/nodes/lib');
-
+    LibNodes = require(process.env.COVER? '../lib-cov/nodes/lib' : '../lib/nodes/lib');
 
 /**
  * Mocha BDD interface.

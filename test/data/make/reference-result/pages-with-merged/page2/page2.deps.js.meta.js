@@ -6,8 +6,5 @@
     "../../bem-bl/blocks-common/i-bem/__dom/i-bem__dom.deps.js",
     "../../bem-bl/blocks-desktop/b-page/b-page.deps.js",
     "../../blocks/b-page/b-page.deps.js",
-    "blocks/b-page/b-page.deps.js",
-    "../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo.deps.js",
-    "../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.deps.js",
-    "../../blocks/b-link/_togcolor/b-link_togcolor_yes.deps.js"
+    "../../bem-bl/blocks-desktop/b-logo/b-logo.deps.js"
 ])

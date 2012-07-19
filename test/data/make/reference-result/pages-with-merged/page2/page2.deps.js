@@ -78,49 +78,10 @@ exports.deps = [
         "block": "b-link"
     },
     {
-        "block": "i-jquery",
-        "elem": "leftclick"
+        "block": "b-icon"
     },
     {
-        "block": "b-link",
-        "mod": "pseudo"
-    },
-    {
-        "block": "b-link",
-        "mod": "pseudo",
-        "val": "yes"
-    },
-    {
-        "block": "b-link",
-        "elem": "inner"
-    },
-    {
-        "block": "b-link",
-        "mod": "pseudo",
-        "val": "no"
-    },
-    {
-        "block": "b-link",
-        "mod": "togcolor"
-    },
-    {
-        "block": "b-link",
-        "mod": "togcolor",
-        "val": "yes"
-    },
-    {
-        "block": "b-link",
-        "mod": "color"
-    },
-    {
-        "block": "b-link",
-        "mod": "color",
-        "val": "red"
-    },
-    {
-        "block": "b-link",
-        "mod": "color",
-        "val": "green"
+        "block": "b-logo"
     }
 ];
 exports.depsByTechs = {
