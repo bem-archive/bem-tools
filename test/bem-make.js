@@ -185,13 +185,6 @@ function prepareProject() {
         });
 }
 
-function prepareProjectWithMergedBuild() {
-    return prepareProject()
-        .then(function() {
-            return command(UTIL.format('cp -f %s/.bem/mergedmake.js %s/.bem/make.js', buildPath, buildPath));
-        });
-}
-
 function command(cmd, options, resolveWithOutput) {
     var d = Q.defer(),
         output = '',
