@@ -589,7 +589,7 @@ To verify that your changes do not break existing functionality we recommend to 
 
 ### Running autotests with test coverage report
 
-You can check the level of the code covergae by tests using the command: 
+You can check the level of the code coverage by tests using the command: 
 
     make test-cover
 
