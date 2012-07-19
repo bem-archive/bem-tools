@@ -11,7 +11,6 @@ var assert = require('assert'),
 
     projectPath = PATH.resolve('./test/data/make/project'),
     referencePath = PATH.resolve('./test/data/make/reference-result'),
-    mergedReferencePath = PATH.resolve('./test/data/make/merged-reference-result'),
     buildPath = PATH.resolve('./test-make-temp');
 
 /**
