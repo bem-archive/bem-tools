@@ -231,7 +231,7 @@ returned. Otherwise the directory listing is returned.
 
 #### API
 
-Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
 
 #### Creating tech module
 
@@ -245,7 +245,7 @@ module that organizes inheritance here.
 
 You only need to create regular CommonJS module and export some of its
 functions to redefine them. By default all functions from the base class are put
-in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
 
 ##### Simple way
 
