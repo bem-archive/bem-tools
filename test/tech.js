@@ -1,7 +1,7 @@
 var Q = require('q'),
     assert = require('chai').assert,
-    PATH = require('../lib/path'),
-    createTech = require('../lib/tech').createTech;
+    PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path'),
+    createTech = require(process.env.COVER? '../lib-cov/tech' : '../lib/tech').createTech;
 
 /**
  * Mocha BDD interface.
@@ -16,13 +16,15 @@ var Q = require('q'),
 
 function testBaseTech(techPath, techAlias) {
 
-    var techName = PATH.basename(techPath),
+    var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/',
+        techName = PATH.basename(techPath),
         absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
-        relTechPath = techPath;
+        relTechPath = techPath,
+        re = process.env.COVER? /^\.\.\/lib-cov\// : /^\.\.\/lib\//;
 
     // NOTE: techPath will be always in unix format
-    if(/^\.\.\/lib\//.test(techPath)) {
-        relTechPath = techPath.replace(/^\.\.\/lib\//, 'bem/lib/');
+    if(re.test(techPath)) {
+        relTechPath = techPath.replace(re, bemLib);
 
         // default tech identified by '' relative path
         if(techName == 'tech') relTechPath = '';
@@ -148,9 +150,11 @@ function testBaseTech(techPath, techAlias) {
 
 describe('tech', function() {
 
-    testBaseTech('../lib/techs/js');
-    testBaseTech('../lib/techs/css');
-    testBaseTech('../lib/tech', 'def');
+    var lib = process.env.COVER? '../lib-cov/' : '../lib/';
+
+    testBaseTech(lib + 'techs/js');
+    testBaseTech(lib + 'techs/css');
+    testBaseTech(lib + 'tech', 'def');
     testBaseTech('./data/techs/test.js');
 
 });
