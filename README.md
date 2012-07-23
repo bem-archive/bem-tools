@@ -67,7 +67,7 @@ A `.bem` directory holds configuration of a current level:
  * links to the technologies
 
 An example of technologies' links (this is `blocks-desktop` level of
-bem-bl block library):
+`bem-bl` block library):
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
@@ -86,12 +86,11 @@ defenition itself. To create such a directory run this:
 
 `bem create level` allows to use an existing level as a prototype for a level it creates.
 
-    bem create level -l bem-bl/blocks-desktop blocks
+    bem create level --level bem-bl/blocks-desktop blocks
 
 ##### Block
 
-Block is a directory that holds block's implementation, some files with different
-technologies.
+Block is a bunch of files in different technologies that hold block's implementation.
 
 ###### Create a new block
 
@@ -120,6 +119,58 @@ E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 You can find the examples of tech modules in the repo:
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
+
+###### Create element
+
+Create element named `elem` for block `b-my-block`
+
+    bem create elem -b b-my-block elem
+
+###### Create modifier of block or element
+
+Create modifier named `mod` for block `b-my-block`
+
+    bem create mod -b b-my-block mod
+
+Create modifier named `mod` having value `val` for block `b-my-block`
+
+    bem create mod -b b-my-block mod -v val
+
+Create modifier named `mod` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod
+
+Create modifier named  `mod` having value `val` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod -v val
+
+###### Create any BEM entity using `bem create` command only
+
+You can create any BEM entities or bunches of them using `bem create` command.
+
+Create blocks named `b-block1` and `b-block2`
+
+    bem create -b b-block1 -b b-block2
+
+Create elements named `elem1` and `elem2` for block `b-block`
+
+    bem create -b b-block -e elem1 -e elem2
+
+Create modifier names `mod` of block `b-block`
+
+    bem create -b b-block -m mod
+
+Create modifier named `mod` of block `b-block` having values `val1` and `val2`
+
+    bem create -b b-block -m mod -v val1 -v val2
+
+Create modifier named `mod` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod
+
+Create modifier named `mod` having values `val1` and `val2` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod -v val1 -v val2
 
 #### bem build
 
@@ -220,7 +271,7 @@ By default document root is the current directory. You can change that with the 
 
 The default TCP port the server is listening to is 8080. You can change it with the `--port` (`-p`) parameter.
 
-When the server gets a request for some `*.html` file it will look for appropriate BEMJOSN and BEMHTML files, apply one
+When the server gets a request for some `*.html` file it will look for appropriate BEMJSON and BEMHTML files, apply one
 to another and return the result if both files do exist. The contents of the `*.html` file will be returned otherwise.
 
 When requested URL corresponds to a directory server checks for index.html file in it and returns the content. If file is
@@ -527,6 +578,22 @@ Subtracting the next declarations from the first one.
 
  * **String** `output` A file for output result. By default output is in STDOUT
  * **Array** `declaration` List of filenames for declarations (required)
+
+## Contribute to development 
+
+### Executing autotests 
+
+To verify that your changes do not break existing functionality we recommend to run autotests and check that all of them pass. You can do that by executing the following command in the root of the project:
+
+    mocha 
+
+### Running autotests with test coverage report
+
+You can check the level of the code coverage by tests using the command: 
+
+    make test-cover
+
+Then open coverage.html file in a browser. Code lines which have not been executed during the tests run will be marked red.
 
 <!-- Yandex.Metrika counter -->
 <img src="//mc.yandex.ru/watch/12831025" style="position:absolute; left:-9999px;" alt="" />
