@@ -6,21 +6,18 @@ body {
     font-family: Arial;
 }
 
-.panel {
-    border-right: solid 1px;
-    display: block;
-}
-
-#snapshots {
+.b-snapshots {
     position: absolute;
+    display: block;
     width: 10%;
     height: 100%;
     background-color: #d9d9d9;
+    border-right: solid 1px;
     overflow-y: auto;
     overflow-x: visible;
 }
 
-#snapshots .header {
+.b-snapshots_header {
     position: fixed;
     height: 20px;
     width: 150px;
@@ -30,35 +27,35 @@ body {
     opacity: 0.8;
 }
 
-#snapshots #list {
+.b-snapshots_list {
     float: left;
     font: 12px sans-serif;
 }
 
-#snapshots ul {
+.b-snapshots_list_ul {
     padding-top: 20px;
     padding-left: 0px;
     list-style-type: none;
 }
 
-#snapshots ul li a {
+.b-snapshots_list_ul_li_a {
     text-decoration: none;
     color: #000000;
     display: block;
     padding: 4px;
 }
 
-#snapshots ul li a:hover {
+.b-snapshots_list_ul_li_a:hover {
     color: #e9e9e9;
     background-color: #393812 !important;
 
 }
 
-#snapshots ul li:nth-child(odd) {
+.b-snapshots_list_ul_li:nth-child(odd) {
     background-color: #e9e9e9;
 }
 
-#archpanel {
+.b-archpanel {
     position: absolute;
     margin-left: 10%;
     overflow: auto;
@@ -67,7 +64,7 @@ body {
     z-index: -1;
 }
 
-#controls {
+.b-controls {
     position: absolute;
     width: 200px;
     margin-left: 10%;
