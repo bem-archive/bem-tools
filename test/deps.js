@@ -1,5 +1,5 @@
 var assert = require('chai').assert,
-    DEPS = require('../lib/techs/deps.js.js'),
+    DEPS = require(process.env.COVER? '../lib-cov/techs/deps.js.js' : '../lib/techs/deps.js.js'),
     Deps = DEPS.Deps,
     DepsItem = DEPS.DepsItem;
 

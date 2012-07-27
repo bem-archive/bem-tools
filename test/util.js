@@ -1,6 +1,6 @@
 var assert = require('chai').assert,
-    U = require('../lib/util'),
-    PATH = require('../lib/path');
+    U = require(process.env.COVER? '../lib-cov/util' : '../lib/util'),
+    PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path');
 
 /**
  * Mocha BDD interface.
@@ -15,14 +15,16 @@ var assert = require('chai').assert,
 
 describe('util', function() {
 
+    var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/';
+
     describe('getBemTechPath()', function() {
 
         it("'css' resolves to 'bem/lib/techs/css'", function() {
-            assert.equal(U.getBemTechPath('css'), PATH.unixToOs('bem/lib/techs/css.js'));
+            assert.equal(U.getBemTechPath('css'), PATH.unixToOs(bemLib + 'techs/css.js'));
         });
 
         it("'custom' resolves to 'bem/lib/tech'", function() {
-            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs('bem/lib/tech.js'));
+            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech.js'));
         });
 
     });

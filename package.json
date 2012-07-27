@@ -27,7 +27,6 @@
   "bin": {
     "bem": "./bin/bem"
   },
-  "main": "./lib/index",
   "dependencies": {
     "coa": "~0.3.5",
     "q": "~0.8.5",
@@ -40,7 +39,7 @@
     "xjst": "0.2.21",
     "ometajs": "~2.1.10",
     "borschik": "~0.0.10",
-    "apw": "~0.3.4",
+    "apw": "~0.3.5",
     "winston": ">= 0.5.0",
     "memorystream": ">= 0.1.1",
     "csso": "~1.2.14",
@@ -48,11 +47,14 @@
     "dom-js": "*"
   },
   "devDependencies": {
-    "mocha": "~1.0.0",
-    "chai": "~1.0.3"
+    "mocha-coverjs": "*",
+    "mocha": "~1.3.0",
+    "chai": "~1.0.3",
+    "coverjs": "https://github.com/afelix/CoverJS/tarball/master"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "make test",
+    "test-cover": "make test-cover"
   },
   "engines": {
     "node": ">= 0.6.0"
