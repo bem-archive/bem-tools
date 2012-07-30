@@ -1,3 +1,5 @@
+var PATH = require('path');
+
 // Build i18n files
 MAKE.decl('BundleNode', {
 
@@ -19,6 +21,32 @@ MAKE.decl('BundleNode', {
             this['create-js-optimizer-node'](tech, this.ctx.arch.getNode(f), bundleNode);
         }, this);
 
+    }
+
+});
+
+
+// Build merged bundle
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+
+        if (PATH.basename(this.level.dir) === 'pages-with-merged') return [
+            'bemdecl.js',
+            'deps.js'
+        ];
+
+        return this.__base();
+
+    }
+
+});
+
+
+MAKE.decl('BundlesLevelNode', {
+
+    buildMergedBundle: function() {
+        return PATH.relative(this.root, this.getPath()) === 'pages-with-merged';
     }
 
 });
