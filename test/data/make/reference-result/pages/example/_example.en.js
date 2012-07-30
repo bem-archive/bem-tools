@@ -3180,4 +3180,4 @@ BEM.DOM.decl({ name: 'b-link', modName: 'togcolor', modVal: 'yes'}, {
 })();
 
 
-BEM.I18N.lang('ru');
+BEM.I18N.lang('en');

@@ -11,6 +11,9 @@
 /*borschik:include:../../bem-bl/blocks-common/i-bem/__dom/i-bem__dom.js*/
 /*borschik:include:../../bem-bl/blocks-common/i-ecma/__string/i-ecma__string.js*/
 /*borschik:include:../../bem-bl/blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js*/
+/*borschik:include:blocks/b-page/b-page.js*/
 /*borschik:include:../../bem-bl/blocks-common/i-jquery/__leftclick/i-jquery__leftclick.js*/
 /*borschik:include:../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js*/
 /*borschik:include:../../blocks/b-link/_togcolor/b-link_togcolor_yes.js*/
+
+BEM.I18N.lang('ru');

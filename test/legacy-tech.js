@@ -13,7 +13,7 @@ var assert = require('chai').assert,
  * @name afterEach @function
  */
 
-describe('legacy tech', function() {
+describe('legacy tech modules', function() {
 
     var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/',
         lib = process.env.COVER? '../lib-cov/' : '../lib/';

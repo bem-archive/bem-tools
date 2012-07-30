@@ -1,7 +1,9 @@
 var Q = require('q'),
     assert = require('chai').assert,
     PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path'),
-    createTech = require(process.env.COVER? '../lib-cov/tech' : '../lib/tech').createTech;
+    TECH = require(process.env.COVER? '../lib-cov/tech' : '../lib/tech'),
+    createTech = TECH.createTech,
+    getTechClass = TECH.getTechClass;
 
 /**
  * Mocha BDD interface.
@@ -14,17 +16,121 @@ var Q = require('q'),
  * @name afterEach @function
  */
 
+describe('tech', function() {
+
+    describe('getTechClass()', function() {
+
+        var testTech = require.resolve(PATH.resolve(__dirname, 'data/techs/test-tech.js'));
+
+        it('for path', function() {
+
+            // tech class
+            var T = getTechClass(testTech),
+
+                // tech object
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+
+        });
+
+        it('for module object', function() {
+
+            // tech class
+            var T = getTechClass({ test: true }),
+
+                // tech object
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+
+        });
+
+        it('for module with baseTechPath property', function() {
+
+            // tech class
+            var T = getTechClass({
+                    baseTechPath: testTech,
+                    test2: true
+                }),
+
+                // tech object
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+            assert.isTrue(o.test2);
+
+        });
+
+        it('for module with baseTechName property', function() {
+
+            // level mock with resolveTech() implementation only
+            var level = {
+                        resolveTech: function() {
+                            return testTech;
+                        }
+                    },
+
+                // tech class
+                T = getTechClass({
+                        baseTechName: 'base',
+                        test2: true
+                    }, level),
+
+                // tech object
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+            assert.isTrue(o.test2);
+
+        });
+
+        it('for module with baseTech property', function() {
+
+            // tech class
+            var T = getTechClass({
+                        baseTech: getTechClass({ test: true }),
+                        test2: true
+                    }),
+
+                // tech object
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+            assert.isTrue(o.test2);
+
+        });
+
+        it('for module with techMixin property', function() {
+
+            var T = getTechClass({
+                        baseTech: getTechClass({ test: true }),
+                        techMixin: {
+                            test2: true
+                        }
+                    }),
+                o = new T('tech', 'tech');
+
+            assert.isTrue(o.test);
+            assert.isTrue(o.test2);
+
+        });
+
+    });
+
+});
+
 function testBaseTech(techPath, techAlias) {
 
     var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/',
         techName = PATH.basename(techPath),
         absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
-        relTechPath = techPath,
+        relTechPath = techPath + '.js',
         re = process.env.COVER? /^\.\.\/lib-cov\// : /^\.\.\/lib\//;
 
     // NOTE: techPath will be always in unix format
     if(re.test(techPath)) {
-        relTechPath = techPath.replace(re, bemLib);
+        relTechPath = relTechPath.replace(re, bemLib);
 
         // default tech identified by '' relative path
         if(techName == 'tech') relTechPath = '';
@@ -148,7 +254,7 @@ function testBaseTech(techPath, techAlias) {
 
 }
 
-describe('tech', function() {
+describe('tech modules', function() {
 
     var lib = process.env.COVER? '../lib-cov/' : '../lib/';
 
