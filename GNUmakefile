@@ -5,6 +5,12 @@ JSCOV = ./node_modules/coverjs/bin/coverjs
 .PHONY: all
 all:
 
+.PHONY: clean
+clean:
+	-rm -rf test-make-temp
+	-rm -rf lib-cov
+	-rm -rf coverage.html
+
 .PHONY: test
 test:
 	$(MOCHA)
