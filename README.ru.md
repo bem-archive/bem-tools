@@ -2,7 +2,7 @@
 Работа с файлами, написанными по [БЭМ-методу](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Установка
-Вам потребуется [NodeJS 0.4.x](http://nodejs.org/) или выше и [npm 1.x](http://npmjs.org/).
+Вам потребуется [NodeJS 0.6+](http://nodejs.org/) или выше и [npm 1.x](http://npmjs.org/).
 После этого достаточно `npm -g install bem`.
 
  * Установить [nodejs](http://nodejs.org)

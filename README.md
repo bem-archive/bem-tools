@@ -2,7 +2,7 @@
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
-You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
+You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
 
  * Install [bem-tools](https://github.com/bem/bem-tools)
 
