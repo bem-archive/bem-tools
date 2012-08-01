@@ -1,6 +1,7 @@
 var assert = require('chai').assert,
-    Tech = require(process.env.COVER? '../lib-cov/legacy-tech' : '../lib/legacy-tech').Tech,
-    PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path');
+    BEM = require('..'),
+    Tech = BEM.require('./legacy-tech').Tech,
+    PATH = BEM.require('./path');
 
 /**
  * Mocha BDD interface.

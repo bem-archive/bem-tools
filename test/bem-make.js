@@ -6,12 +6,11 @@ var assert = require('assert'),
     _ = require('underscore'),
     QFS = require('q-fs'),
 
-    BEMUTIL = require(process.env.COVER? '../lib-cov/util' : '../lib/util'),
-    BEM = require(process.env.COVER? '../lib-cov/coa' : '../lib/coa').api,
+    BEM = require('..'),
 
-    projectPath = PATH.resolve('./test/data/make/project'),
-    referencePath = PATH.resolve('./test/data/make/reference-result'),
-    buildPath = PATH.resolve('./test-make-temp');
+    projectPath = PATH.resolve(__dirname, 'data/make/project'),
+    referencePath = PATH.resolve(__dirname, 'data/make/reference-result'),
+    buildPath = PATH.resolve(__dirname, '../test-make-temp');
 
 /**
  * Mocha BDD interface.
@@ -36,7 +35,7 @@ describe('bem', function() {
         it('completes successfully', function(done) {
             this.timeout(0);
 
-            BEM.make({root: buildPath, verbosity: 'error'})
+            BEM.api.make({root: buildPath, verbosity: 'error'})
                 .then(done)
                 .fail(done)
                 .end();
@@ -62,7 +61,7 @@ describe('bem', function() {
 
             collectTimestamps(buildPath)
                 .then(function(timestamps) {
-                    return BEM.make({root: buildPath, verbosity: 'error'})
+                    return BEM.api.make({root: buildPath, verbosity: 'error'})
                         .then(function() {
                             return collectTimestamps(buildPath);
                         })
@@ -91,7 +90,7 @@ describe('bem', function() {
                     return QFS.remove(PATH.join(buildPath, file));
                 }))
                 .then(function() {
-                    return BEM.make({root: buildPath, verbosity: 'error'});
+                    return BEM.api.make({root: buildPath, verbosity: 'error'});
                 })
                 .then(function() {
                     return command(
@@ -112,7 +111,7 @@ describe('bem', function() {
         it('clean removes build artifacts', function(done) {
             this.timeout(0);
 
-            BEM.make({root: buildPath, verbosity: 'error', method: 'clean'})
+            BEM.api.make({root: buildPath, verbosity: 'error', method: 'clean'})
                 .then(function() {
                     return Q.all([
                         dirHasOnly(PATH.join(buildPath, 'pages/example'), ['example.bemjson.js']),
@@ -133,7 +132,7 @@ describe('bem', function() {
 
             prepareProject()
                 .then(function(){
-                    return BEM.make({
+                    return BEM.api.make({
                         root: buildPath,
                         verbosity: 'error'
                         },
@@ -228,7 +227,7 @@ function collectTimestamps(root) {
 }
 
 function dirHasOnly(dir, files) {
-    return BEMUTIL.getFilesAsync(dir)
+    return BEM.util.getFilesAsync(dir)
         .then(function(dirFiles) {
             return dirFiles.length === files.length &&
                 _.union(files, dirFiles).length === files.length;

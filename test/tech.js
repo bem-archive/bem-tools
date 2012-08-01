@@ -1,7 +1,8 @@
 var Q = require('q'),
     assert = require('chai').assert,
-    PATH = require(process.env.COVER? '../lib-cov/path' : '../lib/path'),
-    TECH = require(process.env.COVER? '../lib-cov/tech' : '../lib/tech'),
+    BEM = require('..'),
+    PATH = BEM.require('./path'),
+    TECH = BEM.require('./tech'),
     createTech = TECH.createTech,
     getTechClass = TECH.getTechClass;
 
