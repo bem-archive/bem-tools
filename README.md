@@ -422,7 +422,7 @@ Creates a block.
 
 ###### Options
 
- * **String** `levelDir` A directory of block's level. (Current directory by default)
+ * **String** `level` A directory of block's level. (Current directory by default)
  * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use these techs only
  * **Array** `noTech` Exclude these techs
@@ -452,7 +452,7 @@ Creating an element.
 
 ###### Options
 
- * **String** `levelDir` A directory of level. (Current directory by default)
+ * **String** `level` A directory of level. (Current directory by default)
  * **String** `blockName` A name of element's block (required)
  * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use only the techs listed
@@ -484,7 +484,7 @@ Creating a modifier for a block or an element.
 
 ###### Options
 
- * **String** `levelDir` Level directory (current directory by default)
+ * **String** `level` Level directory (current directory by default)
  * **String** `blockName` Block name of this modifier (required)
  * **String** `elemName` Element name
  * **Array** `modVal` Modifier vaue
