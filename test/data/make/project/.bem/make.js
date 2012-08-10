@@ -31,7 +31,7 @@ MAKE.decl('BundleNode', {
 
     getTechs: function() {
 
-        if (PATH.basename(this.level.dir) === 'pages-with-merged') return [
+        if (this.levelPath() === 'pages-with-merged') return [
             'bemdecl.js',
             'deps.js'
         ];
@@ -46,7 +46,7 @@ MAKE.decl('BundleNode', {
 MAKE.decl('BundlesLevelNode', {
 
     buildMergedBundle: function() {
-        return PATH.relative(this.root, this.getPath()) === 'pages-with-merged';
+        return this.levelPath() === 'pages-with-merged';
     }
 
 });
