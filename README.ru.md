@@ -916,7 +916,7 @@ Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }
 
 ##### BEM.create.mod()
 
-Создание модификатора блока или иодификатора элемента.
+Создание модификатора блока или модификатора элемента.
 
 ###### Опции
 
