@@ -416,6 +416,43 @@ Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function()
 });
 ```
 
+##### BEM.create()
+
+Creates BEM entities: blocks, elems, modifiers and their values.
+
+###### Options
+
+ * **String** `level` Level directory (current directory by default)
+ * **Array** `block` Block name (required)
+ * **Array** `elem` Element name
+ * **Array** `mod` Modifier name
+ * **Array** `val` Modifier value
+ * **Array** `addTech` Add the techs listed
+ * **Array** `forceTech` Use only the techs listed
+ * **Array** `noTech` Exclude the techs listed
+ * **Boolean** `force` Force creating BEM entities files (rewrite)
+
+###### Example
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    forceTechs = ['css'],
+    block = 'b-header',
+    elem = 'logo',
+    mods = ['lang'],
+    vals = ['ru', 'en'];
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
+});
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, elem: elem, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
+});
+```
+
 ##### BEM.create.block()
 
 Creates a block.

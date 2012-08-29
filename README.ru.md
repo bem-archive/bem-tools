@@ -852,6 +852,43 @@ Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function()
 });
 ```
 
+##### BEM.create()
+
+Создание БЭМ сущностей: блоков, элементов, модификаторов или их значений.
+
+###### Опции
+
+ * **String** `level` директория уровня переопределения, по умолчанию текущая
+ * **Array** `block` имя блока (обязательный параметр)
+ * **Array** `elem` имя элемента
+ * **Array** `mod` имя модификатора
+ * **Array** `val` значение модификатора
+ * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
+ * **Array** `forceTech` использовать только указанные технологии
+ * **Array** `noTech` исключить указанные технологии из использования
+ * **Boolean** `force` принудительно создавать файлы модификатора
+
+###### Пример использования
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    forceTechs = ['css'],
+    block = 'b-header',
+    elem = 'logo',
+    mods = ['lang'],
+    vals = ['ru', 'en'];
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
+});
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, elem: elem, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
+});
+```
+
 ##### BEM.create.block()
 
 Создание блока.
