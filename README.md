@@ -487,8 +487,8 @@ Creating a modifier for a block or an element.
  * **String** `level` Level directory (current directory by default)
  * **String** `blockName` Block name of this modifier (required)
  * **String** `elemName` Element name
- * **Array** `modVal` Modifier vaue
- * **Array** `addTech` Ad the techs listed
+ * **Array** `modVal` Modifier value
+ * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use only the techs listed
  * **Array** `noTech` Exclude the techs listed
  * **Boolean** `force` Force creating modifier files (rewrite)
@@ -510,11 +510,11 @@ var Q = require('q'),
     vals = ['ru', 'en'];
 
 Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
-    console.log('Create mod %s of block %s with vals %s', elems.join(', '), block, vals.join(', '));
+    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
 });
 
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: elems }), function() {
-    console.log('Create mod %s of elem %s of block %s with vals %s', elems.join(', '), elem, block, vals.join(', '));
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: mods }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
 });
 ```
 
