@@ -282,37 +282,63 @@ returned. Otherwise the directory listing is returned.
 
 #### API
 
-Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+Look for the documentation in the source code [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
 
 #### Creating tech module
 
-There are three ways to write a tech module: very simple, simple and advanced.
+There are many ways to write a tech module.
 
-Whatever manner you use you can get a tech object from `this`. Any base class is
-available from `this.__base(...)`. Thanks to [inherit](https://github.com/dfilatov/node-inherit)
-module that organizes inheritance here.
+Whatever manner you choose you can refer to the tech object from methods using `this`.
+Any base method is available using `this.__base(...)` call. Tech class can be referenced
+using `this.__class`. Thanks to [inherit](https://github.com/dfilatov/node-inherit) module
+that helps us to organize inheritance here.
 
-##### Very simple way
+##### Trivial way
 
-You only need to create regular CommonJS module and export some of its
-functions to redefine them. By default all functions from the base class are put
-in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+You only need to declare regular CommonJS module and export some of its
+functions to redefine them. By default your tech will derive from base `Tech` class
+defined in module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+
+```js
+exports.getCreateResult = function(...) {
+    // your code goes here
+};
+```
+
+You can also group all methods in `techMixin` object. This is a recommended way.
+
+```js
+exports.techMixin = {
+
+    getCreateResult: function(...) {
+        // your code goes here
+    }
+
+};
+```
 
 ##### Simple way
 
 Besides function, you can also export `baseTechPath` variable to define an
-absolute path to a tech module you are extending. By default you are
-extending `Tech` class.
-
-For example:
+absolute path to a tech module you are extending. Or you can
 
 ```js
+var BEM = require('bem');
 
-exports.baseTechPath = require.resolve('bem/lib/techs/css');
-
+exports.baseTechPath = BEM.require.resolve('./techs/css');
 ```
 
-##### Advanced way
+You can also derive from tech module by its name using `baseTechName` variable.
+Base class will be chosen in the context of level where tech module will be used.
+
+```js
+exports.baseTechName = 'css';
+```
+
+In this example new tech will derive from `css` tech declared on level in file
+`.bem/level.js`.
+
+##### Hardcore way
 
 If you need a total control, you can create a module that exports
 the whole `Tech` class.
@@ -334,14 +360,14 @@ exports.Tech = INHERIT(BaseTech, {
 });
 ```
 
-When you need to base your tech on an existing one written in a simple way use
-`getTechClass()` function from `bem/lib/tech` module
-to get its class.
+If you need to base your tech on an existing one written in a simple way use
+`getTechClass()` function to get its class. We recommend to use `getTechClass()`
+function all the time to not depend on tech implementation.
 
 ```js
 var INHERIT = require('inherit'),
-    getTechClass = require('bem/lib/tech').getTechClass,
-    BaseTech = getTechClass(require.resolve('path/to/tech/module'));
+    BEM = require('bem'),
+    BaseTech = BEM.getTechClass(require.resolve('path/to/tech/module'));
 
 exports.Tech = INHERIT(BaseTech, {
 
