@@ -563,15 +563,28 @@ Build files from blocks.
 
  * **String** `outputDir` An output directory (current directory by default)
  * **String** `outputName` A filename (its prefix) for output
+ * **Level** `outputLevel` Output level for BEM entity to create
+ * **String** `block` Block name
+ * **String** `elem` Element name
+ * **String** `mod` Modifier name
+ * **String** `val` Modifier name
  * **String** `declaration` A filename of input declaration (required)
  * **Array** `level` List of levels to use
  * **Array** `tech` List of techs to build
+
+You should use one of the following to specify output prefix:
+
+ * `outputName` to specify full path-prefix
+ * `outputDir` plus `outputName` to specify directory path and file prefix (they will be joined for you)
+ * `outputLevel` plus properties describing BEM entity: `block`, `elem`, `mod` and `val` (path-prefix will
+   be constructed for you using level file mapping scheme)
 
 ###### Example
 
 ```js
 var Q = require('q'),
-    BEM = require('bem').api,
+    B = require('bem'),
+    BEM = B.api,
 
     decl = 'page.deps.js',
     outputDir = 'build',
@@ -579,6 +592,7 @@ var Q = require('q'),
     levels = ['blocks-common', 'blocks-desktop'],
     techs = ['css', 'js'];
 
+// use outputDir and outputName options
 Q.when(
     BEM.build({
         outputDir: outputDir,
@@ -590,6 +604,20 @@ Q.when(
     function() {
         console.log('Finished build of techs %s for levels %s. Result in %s/%s.* files.',
             techs.join(', '), levels.join(', '), outputDir, outputName);
+    }
+);
+
+// use outputLevel option
+var level = B.createLevel('path/to/level'),
+    block = 'page';
+Q.when(
+    BEM.build({
+        outputLevel: level,
+        block: block
+    }),
+    function() {
+        console.log('Finished build of techs %s for levels %s. Result in %s.* files.',
+            techs.join(', '), levels.join(', '), level.getRelByObj({ block: block }));
     }
 );
 ```

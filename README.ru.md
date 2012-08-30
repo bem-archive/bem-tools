@@ -999,15 +999,28 @@ Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem
 
  * **String** `outputDir` директория для записи результата, по умолчанию текущая
  * **String** `outputName` имя (префикс имени файла) для записи результата
+ * **Level** `outputLevel` объект уровня переопределения, на котором нужно создать файлы БЭМ сущности
+ * **String** `block` название блока
+ * **String** `elem` название элемента
+ * **String** `mod` название модификатора
+ * **String** `val` значение модификатора
  * **String** `declaration` имя файла декларации использования (обязательный параметр)
  * **Array** `level` уровень переопределения
  * **Array** `tech` собирать файлы указанных технологий
+
+Вы можете использовать один из следующих вариантов для задания префикса для сохранения результата сборки:
+
+ * `outputName` для задания полного пути-префикса
+ * `outputDir` плюс `outputName` для задания пути для директории и префикса файлов (они будут склеены автоматически)
+ * `outputLevel` плюс свойста, описывающие БЭМ сущность: `block`, `elem`, `mod` и `val` (путь-префикс будет построен
+   автоматически на базе правил маппинга сущностей в файлы, заданных для уровня)
 
 ###### Пример использования
 
 ```js
 var Q = require('q'),
-    BEM = require('bem').api,
+    B = require('bem'),
+    BEM = B.api,
 
     decl = 'page.deps.js',
     outputDir = 'build',
@@ -1015,6 +1028,7 @@ var Q = require('q'),
     levels = ['blocks-common', 'blocks-desktop'],
     techs = ['css', 'js'];
 
+// используем outputDir и outputName
 Q.when(
     BEM.build({
         outputDir: outputDir,
@@ -1026,6 +1040,20 @@ Q.when(
     function() {
         console.log('Finished build of techs %s for levels %s. Result in %s/%s.* files.',
             techs.join(', '), levels.join(', '), outputDir, outputName);
+    }
+);
+
+// используем outputLevel
+var level = B.createLevel('path/to/level'),
+    block = 'page';
+Q.when(
+    BEM.build({
+        outputLevel: level,
+        block: block
+    }),
+    function() {
+        console.log('Finished build of techs %s for levels %s. Result in %s.* files.',
+            techs.join(', '), levels.join(', '), level.getRelByObj({ block: block }));
     }
 );
 ```
