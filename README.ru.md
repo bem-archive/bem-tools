@@ -713,6 +713,11 @@ MAKE.decl('BundlesLevelNode', {
 
 Режимом по умолчанию является development. Установка `YENV` в значение production переключит его соответственно.
 
+Значения переменных окружения можно выставлять в `.bem/make.js`, например
+
+```js
+process.env.YENV = 'production';
+```
 
 ### Модули технологий
 

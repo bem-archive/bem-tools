@@ -699,6 +699,12 @@ and `blocks/block2.css`. `_index.css` will be created with the content of both `
 
 The default mode is development. To use the production mode set `YENV` to `production`.
 
+Environment variables can be set in `.bem/make.js`, for example
+
+```js
+process.env.YENV = 'production';
+```
+
 ### Tech modules
 
 #### API
