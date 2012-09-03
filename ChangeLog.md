@@ -1,17 +1,45 @@
 bem-tools changelog
 ===================
 
-xx.xx.2012, Version 0.5.14 (unstable)
+XX.XX.XXXX, Version 0.5.X (unstable)
 ------------------------------------
 
-xx.xx.2012, Version 0.5.13 (unstable)
+- bem: Add `;` after each include in js-based techs (`js` and `js-i`) (Closes #210)
+- docs: Add russian and english docs for `bem make` / `bem server` feature
+- docs: Add more info on `--chdir`, `-C` option on `bem create *` commands (See #204)
+- docs: Add `BEM.create()` docs: russian and english (Closes #192)
+- docs: Document API changes in `BEM.build()` (Closes #193)
+- docs: Document extensions in tech modules API (Closes #194)
+- docs: Add russian docs for `.bem/level.js` config (See #38)
+- API: Implement `include()` and `includeSync()` in `.bem/make.js` files (Closes #209)
+
+24.08.2012, Version 0.5.14 (unstable)
 ------------------------------------
 
-xx.xx.2012, Version 0.5.12 (unstable)
+- bem: Get rid of `Q` deprecation warnings (Closes #200)
+- bem make: Node of type `MergedBundle` depends on all nodes of type `BundleNode` on the same level (Closes #206)
+- package: Depend on `q ~0.8.8` and `apw ~0.3.6`
+
+11.08.2012, Version 0.5.13 (unstable)
 ------------------------------------
 
-xx.xx.2012, Version 0.5.11 (unstable)
+- bem make: Create directory `.bem/snapshots` if it doesn't exist before writting a snapshot (Closes #201)
+- bem make: Implement `clean()` method of `BemCreateNode`
+- bem make: `getLevels()` method of `BundleNode` fixed to avoid putting undefined level into the resulting
+  array (Closes #203)
+- API: Add `getLevelPath()` helper method to `BlockNode` and `LevelNode` classes (Closes #190)
+
+07.08.2012, Version 0.5.12 (unstable)
 ------------------------------------
+
+- bem make: Forward errors from `borschik` with prefix `borschik: ` in `BorschikNode`
+- bem make: Store output file name in `this.output` property to use later in the logs in `BorschikNode`
+- package: Depends on `borschik ~0.0.11`
+
+02.08.2012, Version 0.5.11 (unstable)
+------------------------------------
+
+- ... TODO ...
 
 13.06.2012, Version 0.5.10 (unstable)
 ------------------------------------
