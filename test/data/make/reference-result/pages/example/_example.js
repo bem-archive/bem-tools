@@ -108,7 +108,7 @@ $.inheritSelf = function(base, props, staticProps) {
 
 };
 
-})(jQuery);
+})(jQuery);;
 /**
  * Identify plugin
  *
@@ -141,7 +141,7 @@ $.identify = function(obj, onlyGet) {
 
 };
 
-})(jQuery);
+})(jQuery);;
 (function($) {
 
 $.isEmptyObject || ($.isEmptyObject = function(obj) {
@@ -150,7 +150,7 @@ $.isEmptyObject || ($.isEmptyObject = function(obj) {
     });
 
 })(jQuery);
-
+;
 /**
  * Debounce and throttle function's decorator plugin 1.0.6
  *
@@ -219,7 +219,7 @@ $.extend({
 
 });
 
-})(jQuery);
+})(jQuery);;
 /**
  * Observable plugin
  *
@@ -420,7 +420,7 @@ var storageExpando = '__' + +new Date + 'storage',
 
 $.observable = $.inherit(Observable, Observable);
 
-})(jQuery);
+})(jQuery);;
 /** @requires jquery.inherit */
 /** @requires jquery.isEmptyObject */
 /** @requires jquery.identify */
@@ -1145,7 +1145,7 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 });
 
 })(jQuery);
-
+;
 (function() {
 
 /**
@@ -1162,7 +1162,7 @@ Object.keys || (Object.keys = function(obj) {
     return res;
 });
 
-})();
+})();;
 (function() {
 
 var ptp = Array.prototype,
@@ -1285,7 +1285,7 @@ Array.isArray || (Array.isArray = function(obj) {
     return toStr.call(obj) === '[object Array]';
 });
 
-})();
+})();;
 (function() {
 
 var slice = Array.prototype.slice;
@@ -1301,7 +1301,7 @@ Function.prototype.bind || (Function.prototype.bind = function(ctx) {
 
 });
 
-})();
+})();;
 /** @fileOverview модуль для внутренних BEM-хелперов */
 /** @requires BEM */
 
@@ -1459,7 +1459,7 @@ BEM.INTERNAL = {
 
 }
 
-})(BEM, jQuery);
+})(BEM, jQuery);;
 /** @requires BEM */
 /** @requires BEM.INTERNAL */
 
@@ -3077,7 +3077,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
 });
 
 })(BEM, jQuery);
-
+;
 (function() {
 
 String.prototype.trim || (String.prototype.trim = function () {
@@ -3092,11 +3092,11 @@ String.prototype.trim || (String.prototype.trim = function () {
 
 });
 
-})();
+})();;
 /* дефолтная инициализация */
 $(function() {
     BEM.DOM.init();
-});
+});;
 /**
  * leftClick event plugin
  *
@@ -3136,7 +3136,7 @@ var leftClick = $.event.special.leftclick = {
 
 };
 
-})(jQuery);
+})(jQuery);;
 BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
 
     _onClick : function(e) {
@@ -3162,7 +3162,7 @@ BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
     }
 
 });
-
+;
 /** @requires BEM */
 /** @requires BEM.DOM */
 
@@ -3178,6 +3178,6 @@ BEM.DOM.decl({ name: 'b-link', modName: 'togcolor', modVal: 'yes'}, {
 });
 
 })();
-
+;
 
 BEM.I18N.lang('ru');
