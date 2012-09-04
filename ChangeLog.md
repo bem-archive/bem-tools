@@ -39,7 +39,45 @@ XX.XX.XXXX, Version 0.5.X (unstable)
 02.08.2012, Version 0.5.11 (unstable)
 ------------------------------------
 
-- ... TODO ...
+- bem: Implement various strategies for mass IO operations in `Tech.filterPrefixes()` and `BemBuildNode.isValid()` (Closes #167)
+- bem: Fix referencing techs by name
+- bem: Allow use of `module.exports = ...` in files read by `util.readDecl()`
+- bem: `util.getBemTechPath()` returns full tech path now, with extension
+- bem: Add `-T` option as an alias for `-t`, `--tech` for `bem build` command
+- bem: Add `--output-level` and `--block`, `--elem`, `--mod`, `--val` options for `bem build` command to build BEM
+  entities on bundle levels
+- bem: Allow using `require()` in decl-like files (Closes #172)
+- bem: Add inspector server feature to `bem make` and `bem server` commands
+- bem: Do not create new class from `LegacyTech` and legacy tech module content mixin in `getTechClass()` (potential bug fix)
+- bem: Bugfix: `bem decl subtract` creates empty `*.deps.js` file (Closes #170)
+- deps.js tech: Fix serializing of empty deps
+- deps.js tech: Fix twice expansion of deps (Closes #163)
+- bem make: Allow build triggering using final file names in case when tech produces many files (Closes #172)
+- bem make: When `BEM_IO_STRATEGY === 'callback'` and `meta` was empty promise would never resolve
+- bem make: Add merged bundle support
+- bem server: Listen on file socket on `--socket` option, configure socket path using `--socket-path` option
+  and socket permissions using `--socket-mode` option (Closes #166)
+- docs: Document API changes in `BEM.create.block()`, `BEM.create.elem()` and `BEM.create.mod()` of version 0.5.x (Closes #161)
+- docs: Declare dependency on NodeJS 0.6+
+- API: Add third `level` optional argument to `getTechClass()` function of `tech` method
+- API: Add third `level` optional argument to `createTech()` function of `tech` method
+- API: Add `getCreateSuffixes()` and `getBuildSuffixes()` to `Tech` class to let build system to deal with techs like
+  `bemhtml` more correct
+- API: Add `util.removePath(path)` function to remove file and dir paths, but not recursively
+- API: Add `util.readJsonJs(path)` function to read and eval JSON-JS files
+- API: Add `util.symbolicLink(link, target, force)` function
+- API: Add `util.lpad()` alias to `util.pad()`, add `util.rsplit(string, sep, maxsplit)` function
+- API: Add `getContext()` method to `LegacyTech` class as a proxy to `this.techObj.getContext()`
+- API: Add `getBuildResultChunk()` method to `LegacyTech` class as a proxy to `this.techObj.outFile()`
+- API: Wait for `opts.declaration` to load before call to `this.techObj.build()` in `LegacyTech` class
+- tests: Add tests for serializing empty deps in `deps.js tech`
+- tests: Use `bem-bl` as git submodule for tests data (Closes #176)
+- tests: Add tests that additionally build `i18n` and `i18n.js` techs for bundles
+- tests: Add tests for merged bundle build
+- tests: Add tests for `getTechClass()` function of `tech` module
+- package: Add `dom-js` dependency for i18n tests (Closes #172)
+- package: Add `clean` target to `GNUmakefile`
+- package: Depend on `coverjs >= 0.0.7-aplha` (Closes #191)
 
 13.06.2012, Version 0.5.10 (unstable)
 ------------------------------------
