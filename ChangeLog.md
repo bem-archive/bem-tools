@@ -12,6 +12,7 @@ XX.XX.XXXX, Version 0.5.X (unstable)
 - docs: Document extensions in tech modules API (Closes #194)
 - docs: Add russian docs for `.bem/level.js` config (See #38)
 - API: Implement `include()` and `includeSync()` in `.bem/make.js` files (Closes #209)
+- package: Depends on `csso ~1.2.17` (some critical bug fixes)
 
 24.08.2012, Version 0.5.14 (unstable)
 ------------------------------------
