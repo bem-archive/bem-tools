@@ -2,7 +2,7 @@
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
-You need [NodeJS 0.4.x](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
+You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
 
  * Install [bem-tools](https://github.com/bem/bem-tools)
 
@@ -67,7 +67,7 @@ A `.bem` directory holds configuration of a current level:
  * links to the technologies
 
 An example of technologies' links (this is `blocks-desktop` level of
-bem-bl block library):
+`bem-bl` block library):
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
@@ -86,12 +86,11 @@ defenition itself. To create such a directory run this:
 
 `bem create level` allows to use an existing level as a prototype for a level it creates.
 
-    bem create level -l bem-bl/blocks-desktop blocks
+    bem create level --level bem-bl/blocks-desktop blocks
 
 ##### Block
 
-Block is a directory that holds block's implementation, some files with different
-technologies.
+Block is a bunch of files in different technologies that hold block's implementation.
 
 ###### Create a new block
 
@@ -120,6 +119,58 @@ E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 You can find the examples of tech modules in the repo:
 
     https://github.com/bem/bem-tools/tree/nodejs/lib/techs
+
+###### Create element
+
+Create element named `elem` for block `b-my-block`
+
+    bem create elem -b b-my-block elem
+
+###### Create modifier of block or element
+
+Create modifier named `mod` for block `b-my-block`
+
+    bem create mod -b b-my-block mod
+
+Create modifier named `mod` having value `val` for block `b-my-block`
+
+    bem create mod -b b-my-block mod -v val
+
+Create modifier named `mod` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod
+
+Create modifier named  `mod` having value `val` for element `elem` of block `b-my-block`
+
+    bem create mod -b b-my-block -e elem mod -v val
+
+###### Create any BEM entity using `bem create` command only
+
+You can create any BEM entities or bunches of them using `bem create` command.
+
+Create blocks named `b-block1` and `b-block2`
+
+    bem create -b b-block1 -b b-block2
+
+Create elements named `elem1` and `elem2` for block `b-block`
+
+    bem create -b b-block -e elem1 -e elem2
+
+Create modifier names `mod` of block `b-block`
+
+    bem create -b b-block -m mod
+
+Create modifier named `mod` of block `b-block` having values `val1` and `val2`
+
+    bem create -b b-block -m mod -v val1 -v val2
+
+Create modifier named `mod` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod
+
+Create modifier named `mod` having values `val1` and `val2` for element `elem` of block `b-block`
+
+    bem create -b b-block -e elem -m mod -v val1 -v val2
 
 #### bem build
 
@@ -209,59 +260,512 @@ You may use it to create a bundle that you request by application.
         -d pages/common/common.deps.js \
         -o bundles/heavy-block/heavy-block.bundle.js
 
-#### bem server
+##### bem make
+`make` command implements the build process of the BEM projects. You don't have to write your own scripts or makefiles (for GNU make or other build system) to build your BEM project.
 
-`bem server` starts a web server which serves static files, dynamic html generated form the BEMHTML and BEMJSON on the
-fly, and pipes js and css files through borschik.
+During the build `bem make`
 
-By default document root is the current directory. You can change that with the `--project` (`-r`) parameter. So if you have
-`pages/about/main.css` file in the project folder it will be accessible with a browser using
-[http://localhost:8080/pages/about/main.css](http://localhost:8080/pages/about/main.css) URL.
+ * fetches the block libraries
+ * builds the levels content
+ * builds the bundles
+ * generates the templates (`bemhtml`)
+ * generates `html` from `bemjson.js`
+ * generates the static content files (`js`, `css`)
+ * expands the `@import` derectives in `css` files (`borschik`)
+ * expands the `borschik:link:include` directives  in `js` files (`borschik`)
+ * optimizes `css` files using `csso`
+ * optimizes `js` files using `uglifyjs`
 
-The default TCP port the server is listening to is 8080. You can change it with the `--port` (`-p`) parameter.
+##### bem server
 
-When the server gets a request for some `*.html` file it will look for appropriate BEMJOSN and BEMHTML files, apply one
-to another and return the result if both files do exist. The contents of the `*.html` file will be returned otherwise.
+`bem server` command runs a development server. It makes the project files being accessible via the http protocol.
+This includes the files which are generated during the build process. So the server can be useful when you develop the
+static pages using the bem method. You just edit the files, refresh the browser and get updated page. All the files
+which are affected by your changes will be rebuilt automatically.
+In the case your project has no static pages you can configure your backend server and production environment to retrieve
+the stylesheets and scripts from the bem server. bem server accepts connections via normal TCP socket and via UNIX domain socket.
 
-When requested URL corresponds to a directory server checks for index.html file in it and returns the content. If file is
-not found, `index.bemhtml.js` and `index.bemjson.js` are checked for existance and the result of the template application is
-returned. Otherwise the directory listing is returned.
+By default the current directory is considered as the project root. You can change it using the --project (-r) option.
+
+Default TCP port is 8080. You can change it using the --port (-p) option.
+
+When requested URL is mapped to a directory, the server will check if there is an index.html file or it's possible to build it.
+In the case one of these is true the content of the file will be returned to browser. The directory content listing will be returned
+otherwise.
+
+##### Build configuration
+
+There is a default build behavior programmed in the build system. The configuration files allow to adjust it a little or change it completely.
+To make `bem make` work you should have `.bem/level.js` file within your levels. It should contain function getTechs, which returns object with tech definitions used on the level.
+And it should have function getConfig:
+
+```js
+var extend = require('bem/lib/util').extend;
+
+exports.getTechs = function() {
+    return {
+        'bemjson.js': '',
+        'js': 'js-i',
+        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'priv.js': '../../.bem/techs/priv.js',
+        'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html'
+    };
+};
+
+exports.getConfig = function() {
+
+    return extend({}, this.__base() || {}, {
+
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../blocks'
+        ])
+
+    });
+
+};
+```
+
+getTechs() returns an object with used techs. object properties (for example 'bemjson.js', 'js', 'bemhtml.js') define the
+tech names, object values specify the paths to the appropriate tech files ('', 'js-i', '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js').
+A path can be relative or absolute, it can be empty, or it can specify just a file name. When latter case is used the
+tech will be considered being standard (included with bem tools) and the file will be looked up in the `[bem]/lib/techs` folder.
+
+getConfig function returns an object with bundleBuildLevels property, containing the array of the used block levels.
+
+Another (optional) configuration file is `.bem/make.js' located in the project root. Core of the build system is a graph
+of nodes, each of which executes own part of the whole build process. `make.js` allows you to adjust nodes behavior and change build graph.
+There are several standard node types:
+ * Node - base node, implements basic functionality. All other nodes are inherited from this one
+ * LibraryNode - retrieves external libraries
+ * LevelNode - inspects the contents of a level and constructs graph branch accordingly to build the level
+ * BundlesLevelNode - inherits from `LevelNode` and builds the bundles levels
+ * BundleNode - constructs graph branch for a bundle
+ * MergedBundleNode - builds merged bundle (aka common bundle)
+ * BorschikNode - processes files with the `borschik` utility, `csso` and `uglifyjs`
+ * Arch - builds initial graph, which by default consists of `LibraryNode`, `BundlesLevelNode` and `LevelNode` nodes
+
+To alter build system behavior for your project you need to alter behavior of the nodes. This can be achieved by adding `MAKE.decl()` calls in the `.bem/make` file. `MAKE.decl()` is a helper
+function which accepts two arguments. First one is the node name which we want to change, second - an object with overriding methods.
+
+```js
+MAKE.decl('BundleNode', {
+
+});
+```
+
+Node classes have some fundamental methods, which take care about the build process:
+ * isValid - validates the node - indicates is there a need to rebuild it or not. If node artifacts were built during
+  previous build and dependency nodes were not rebuilt after that, the node is considered being valid. In other words
+  if you changed a file after first build then only the nodes which depend on this file will be rebuilt during the
+  consequent build.
+ * make - implements the build logic for the node.
+ * run - node entry point. In the default implementation it executes isValid method and in case it returns false the make method will be executed next.
+ * clean - removes the build artifacts for the node.
+
+##### Sample configuration files for some typical tasks
+
+###### Build of static html, css, js, bemhtml templates on the level `pages`. Bemjson file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from bem-bl.
+
+`pages/.bem/level.js`
+```js
+var extend = require('bem/lib/util').extend;
+
+exports.getTechs = function() {
+
+    return {
+        'bemjson.js': '',
+        'bemdecl.js': 'bemdecl.js',
+        'deps.js': 'deps.js',
+        'js': 'js-i',
+        'css': 'css',
+        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html.js'
+    };
+
+};
+
+exports.getConfig = function() {
+
+    return extend({}, this.__base() || {}, {
+
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../blocks'
+        ])
+
+    });
+
+};
+```
+
+`.bem/make.js`
+```js
+MAKE.decl('Arch', {
+
+    getLibraries: function() {
+
+        return {
+            'bem-bl': {
+                type: 'git',
+                url: 'git://github.com/bem/bem-bl.git'
+            }
+        };
+
+    }
+
+});
+
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml.js',
+            'css',
+            'js',
+            'html'
+        ];
+    }
+
+});
+```
+
+
+###### Build of css, js, bemhtml tamples on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from bem-bl.
+
+`pages/.bem/level.js`
+```js
+var extend = require('bem/lib/util').extend;
+
+exports.getTechs = function() {
+
+    return {
+        'bemdecl.js': 'bemdecl.js',
+        'deps.js': 'deps.js',
+        'js': 'js-i',
+        'css': 'css',
+        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
+    };
+
+};
+
+exports.getConfig = function() {
+
+    return extend({}, this.__base() || {}, {
+
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../blocks'
+        ])
+
+    });
+
+};
+```
+
+`.bem/make.js`
+```js
+MAKE.decl('Arch', {
+
+    getLibraries: function() {
+
+        return {
+            'bem-bl': {
+                type: 'git',
+                url: 'git://github.com/bem/bem-bl.git'
+            }
+        };
+
+    }
+
+});
+
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml.js',
+            'css',
+            'js'
+        ];
+    }
+
+});
+```
+
+###### The block libraries
+
+The block libraries are not used by default. To use a library add the following code to `.bem/make.js`:
+
+```js
+MAKE.decl('Arch', {
+    getLibraries: function() {
+
+        return {
+            'bem-bl': {
+                type: 'git',
+                url: 'git://github.com/bem/bem-bl.git'
+            }
+        };
+    }
+});
+```
+
+
+Здесь:
+ * 'Arch' - node class name which we want to override. Arch builds initial build graph.
+ * getLibraries - a method of the Arch class, which returns the associative array of the used block libraries.
+ * 'bem-bl' — the name of the library and the folder where it will be copied to.
+ * type - the type of the library source. We use git in the example, so the library will be checked out of a git repository.
+ Possible values are: 'git', 'svn', 'symlink'. svn works the same as git, but with svn repositories. symlink -
+ creates in the project folder a symbolic link to the library folder. The library path is specified by the `relative` property.
+ * url - URL to the svn/git repository
+
+Also you can use shorter code:
+
+```js
+MAKE.decl('Arch', {
+    libraries: {
+        'bem-bl': {
+            type: 'git',
+            url: 'git://github.com/bem/bem-bl.git'
+        }
+    }
+});
+```
+
+###### Block levels
+
+The folders in the project root matching the `blocks*` mask are considered being block level. You can change this using the following code:
+
+```js
+MAKE.decl('Arch', {
+    blocksLevelsRegexp:  /regular expression/,
+});
+```
+
+The regular expression will be used to match the folders in the project root. The folder which match will be used as block levels.
+
+If you need some logic for the levels selection you can achieve that by overriding the `createBlocksLevelsNodes` method:
+
+```js
+MAKE.decl('Arch', {
+    createBlocksLevelsNodes: function(parent, children) {
+        // Create the LevelNode instance
+        var node1 = new LevelNode(...);
+        // Add it into the graph
+        this.arch.setNode(node1, parent, children);
+
+        var node2 = new LevelNode(...);
+        this.arch.setNode(node2, parent, children);
+
+        // return an array with the Ids of the created nodes
+        return [node1.getId(), node2.getId()];
+    }
+});
+```
+
+###### The bundles and the pages
+
+The folders in the project root matching the `pages*` abd `bundles*` masks are considered being bundle level. You can change this using the following code:
+
+```js
+MAKE.decl('Arch', {
+    bundlesLevelsRegexp: /regular expression/,
+});
+```
+
+And for complex logic:
+
+```js
+MAKE.decl('Arch', {
+    createBundlesLevelsNodes: function(parent, children) {
+        // Create the BundleLevelNode instance
+        var node1 = new BundleLevelNode(...);
+        // Add it into the graph
+        this.arch.setNode(node1, parent, children);
+
+        var node2 = new BundleLevelNode(...);
+        this.arch.setNode(node2, parent, children);
+
+        // return an array with the Ids of the created nodes
+        return [node1.getId(), node2.getId()];
+    }
+});
+```
+
+
+For every bundle the following target files are built by default:
+
+ * `.bemhtml.js`
+ * `.html`
+ * `.css`
+ * `.ie.css`
+ * `.js`
+ * `_*.css`
+ * `_*.ie.css`
+ * `_*.js`
+
+and the intermediate:
+
+ * `.bemdecl.js`
+ * `.deps.js`
+ * `.deps.js.deps.js`
+ * `.bemhtml.js.meta.js`
+ * `.js.meta.js`
+ * `.css.meta.js`
+ * `.ie.css.meta.js`
+
+`.bemjson.js` file is considered as a source file. If it does not exist, `.bemdecl.js` is used then. If `.bemdecl.js`
+ does not exist too, `.deps.js` will be used. For the cases when `.bemjson.js` does not exist static html will not be built.
+
+To change the list of the file techs to use, add the following code into `.bem/make.js`:
+
+```js
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+        return [
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml.js',
+            'css',
+            'js',
+            'priv.js'
+        ];
+    }
+});
+```
+
+**IMPORTANT:** Techs in the list should be in the order of dependency on each other.  Tech B, which depends on A, should go **bellow** A. The source file tech should also be in the list, for example `bemjson.js`.
+
+###### The merged bundles
+The merged bundle — bundle which include the declarations of all bundles on the level. So for example css in the merged bundle will contain the styles from all of the bundles.
+
+The following code will enable the build of the merged bundles for all levels:
+
+```js
+MAKE.decl('BundlesLevelNode', {
+    buildMergedBundle: function() {
+        return true;
+    }
+});
+```
+
+If you need the merged bundle for the selected levels only (for `pages-desktop` level in the example):
+
+```js
+var PATH = require('path');
+
+MAKE.decl('BundlesLevelNode', {
+    buildMergedBundle: function() {
+        if (this.getLevelPath() === 'pages-desktop') return true;
+
+        return false;
+    }
+});
+```
+
+The getLevelPath() method returns the relative path for the level. We can use it to decide should we enable some special logic for current level or not.
+
+To change the merged bundle name use the code:
+```js
+MAKE.decl('BundlesLevelNode', {
+
+    mergedBundleName: function() {
+        return 'mymergedbundle';
+    }
+
+});
+```
+
+##### Production and Development builds
+By changing the `YENV` environment variable value, you can switch between the production and development builds.
+In production mode static files are processed with the `borschik` utility. It expands the include directives and puts the
+result content in the file with the `_` prefix. For example, `index.css` has the directives to include `blocks/block1.css`
+and `blocks/block2.css`. `_index.css` will be created with the content of both `block1.css` and `block2.css`. Also the
+`css` files are optimized with the `csso` utility, the `js` files are optimized with `uglifyjs`. In development mode
+`borschik` is used only, no optimizations take the place.
+
+The default mode is development. To use the production mode set `YENV` to `production`.
+
+Environment variables can be set in `.bem/make.js`, for example
+
+```js
+process.env.YENV = 'production';
+```
 
 ### Tech modules
 
 #### API
 
-Look for a documentation in source [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+Look for the documentation in the source code [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
 
 #### Creating tech module
 
-There are three ways to write a tech module: very simple, simple and advanced.
+There are many ways to write a tech module.
 
-Whatever manner you use you can get a tech object from `this`. Any base class is
-available from `this.__base(...)`. Thanks to [inherit](https://github.com/dfilatov/node-inherit)
-module that organizes inheritance here.
+Whatever manner you choose you can refer to the tech object from methods using `this`.
+Any base method is available using `this.__base(...)` call. Tech class can be referenced
+using `this.__class`. Thanks to [inherit](https://github.com/dfilatov/node-inherit) module
+that helps us to organize inheritance here.
 
-##### Very simple way
+##### Trivial way
 
-You only need to create regular CommonJS module and export some of its
-functions to redefine them. By default all functions from the base class are put
-in `Tech` module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+You only need to declare regular CommonJS module and export some of its
+functions to redefine them. By default your tech will derive from base `Tech` class
+defined in module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+
+```js
+exports.getCreateResult = function(...) {
+    // your code goes here
+};
+```
+
+You can also group all methods in `techMixin` object. This is a recommended way.
+
+```js
+exports.techMixin = {
+
+    getCreateResult: function(...) {
+        // your code goes here
+    }
+
+};
+```
 
 ##### Simple way
 
 Besides function, you can also export `baseTechPath` variable to define an
-absolute path to a tech module you are extending. By default you are
-extending `Tech` class.
-
-For example:
+absolute path to a tech module you are extending. Or you can
 
 ```js
+var BEM = require('bem');
 
-exports.baseTechPath = require.resolve('bem/lib/techs/css');
-
+exports.baseTechPath = BEM.require.resolve('./techs/css');
 ```
 
-##### Advanced way
+You can also derive from tech module by its name using `baseTechName` variable.
+Base class will be chosen in the context of level where tech module will be used.
+
+```js
+exports.baseTechName = 'css';
+```
+
+In this example new tech will derive from `css` tech declared on level in file
+`.bem/level.js`.
+
+##### Hardcore way
 
 If you need a total control, you can create a module that exports
 the whole `Tech` class.
@@ -283,14 +787,14 @@ exports.Tech = INHERIT(BaseTech, {
 });
 ```
 
-When you need to base your tech on an existing one written in a simple way use
-`getTechClass()` function from `bem/lib/tech` module
-to get its class.
+If you need to base your tech on an existing one written in a simple way use
+`getTechClass()` function to get its class. We recommend to use `getTechClass()`
+function all the time to not depend on tech implementation.
 
 ```js
 var INHERIT = require('inherit'),
-    getTechClass = require('bem/lib/tech').getTechClass,
-    BaseTech = getTechClass(require.resolve('path/to/tech/module'));
+    BEM = require('bem'),
+    BaseTech = BEM.getTechClass(require.resolve('path/to/tech/module'));
 
 exports.Tech = INHERIT(BaseTech, {
 
@@ -365,13 +869,50 @@ Q.when(BEM.create.level({ outputDir: outputDir }, { names: levels }), function()
 });
 ```
 
+##### BEM.create()
+
+Creates BEM entities: blocks, elems, modifiers and their values.
+
+###### Options
+
+ * **String** `level` Level directory (current directory by default)
+ * **Array** `block` Block name (required)
+ * **Array** `elem` Element name
+ * **Array** `mod` Modifier name
+ * **Array** `val` Modifier value
+ * **Array** `addTech` Add the techs listed
+ * **Array** `forceTech` Use only the techs listed
+ * **Array** `noTech` Exclude the techs listed
+ * **Boolean** `force` Force creating BEM entities files (rewrite)
+
+###### Example
+
+```js
+var Q = require('q'),
+    BEM = require('bem').api,
+
+    forceTechs = ['css'],
+    block = 'b-header',
+    elem = 'logo',
+    mods = ['lang'],
+    vals = ['ru', 'en'];
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
+});
+
+Q.when(BEM.create({ forceTechs: forceTechs, block: block, elem: elem, mod: mods, val: vals }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
+});
+```
+
 ##### BEM.create.block()
 
 Creates a block.
 
 ###### Options
 
- * **String** `levelDir` A directory of block's level. (Current directory by default)
+ * **String** `level` A directory of block's level. (Current directory by default)
  * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use these techs only
  * **Array** `noTech` Exclude these techs
@@ -401,7 +942,7 @@ Creating an element.
 
 ###### Options
 
- * **String** `levelDir` A directory of level. (Current directory by default)
+ * **String** `level` A directory of level. (Current directory by default)
  * **String** `blockName` A name of element's block (required)
  * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use only the techs listed
@@ -433,11 +974,11 @@ Creating a modifier for a block or an element.
 
 ###### Options
 
- * **String** `levelDir` Level directory (current directory by default)
+ * **String** `level` Level directory (current directory by default)
  * **String** `blockName` Block name of this modifier (required)
  * **String** `elemName` Element name
- * **Array** `modVal` Modifier vaue
- * **Array** `addTech` Ad the techs listed
+ * **Array** `modVal` Modifier value
+ * **Array** `addTech` Add the techs listed
  * **Array** `forceTech` Use only the techs listed
  * **Array** `noTech` Exclude the techs listed
  * **Boolean** `force` Force creating modifier files (rewrite)
@@ -459,11 +1000,11 @@ var Q = require('q'),
     vals = ['ru', 'en'];
 
 Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
-    console.log('Create mod %s of block %s with vals %s', elems.join(', '), block, vals.join(', '));
+    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
 });
 
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: elems }), function() {
-    console.log('Create mod %s of elem %s of block %s with vals %s', elems.join(', '), elem, block, vals.join(', '));
+Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: mods }), function() {
+    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
 });
 ```
 
@@ -475,15 +1016,28 @@ Build files from blocks.
 
  * **String** `outputDir` An output directory (current directory by default)
  * **String** `outputName` A filename (its prefix) for output
+ * **Level** `outputLevel` Output level for BEM entity to create
+ * **String** `block` Block name
+ * **String** `elem` Element name
+ * **String** `mod` Modifier name
+ * **String** `val` Modifier name
  * **String** `declaration` A filename of input declaration (required)
  * **Array** `level` List of levels to use
  * **Array** `tech` List of techs to build
+
+You should use one of the following to specify output prefix:
+
+ * `outputName` to specify full path-prefix
+ * `outputDir` plus `outputName` to specify directory path and file prefix (they will be joined for you)
+ * `outputLevel` plus properties describing BEM entity: `block`, `elem`, `mod` and `val` (path-prefix will
+   be constructed for you using level file mapping scheme)
 
 ###### Example
 
 ```js
 var Q = require('q'),
-    BEM = require('bem').api,
+    B = require('bem'),
+    BEM = B.api,
 
     decl = 'page.deps.js',
     outputDir = 'build',
@@ -491,6 +1045,7 @@ var Q = require('q'),
     levels = ['blocks-common', 'blocks-desktop'],
     techs = ['css', 'js'];
 
+// use outputDir and outputName options
 Q.when(
     BEM.build({
         outputDir: outputDir,
@@ -502,6 +1057,20 @@ Q.when(
     function() {
         console.log('Finished build of techs %s for levels %s. Result in %s/%s.* files.',
             techs.join(', '), levels.join(', '), outputDir, outputName);
+    }
+);
+
+// use outputLevel option
+var level = B.createLevel('path/to/level'),
+    block = 'page';
+Q.when(
+    BEM.build({
+        outputLevel: level,
+        block: block
+    }),
+    function() {
+        console.log('Finished build of techs %s for levels %s. Result in %s.* files.',
+            techs.join(', '), levels.join(', '), level.getRelByObj({ block: block }));
     }
 );
 ```
@@ -527,6 +1096,22 @@ Subtracting the next declarations from the first one.
 
  * **String** `output` A file for output result. By default output is in STDOUT
  * **Array** `declaration` List of filenames for declarations (required)
+
+## Contribute to development 
+
+### Executing autotests 
+
+To verify that your changes do not break existing functionality we recommend to run autotests and check that all of them pass. You can do that by executing the following command in the root of the project:
+
+    mocha 
+
+### Running autotests with test coverage report
+
+You can check the level of the code coverage by tests using the command: 
+
+    make test-cover
+
+Then open coverage.html file in a browser. Code lines which have not been executed during the tests run will be marked red.
 
 <!-- Yandex.Metrika counter -->
 <img src="//mc.yandex.ru/watch/12831025" style="position:absolute; left:-9999px;" alt="" />

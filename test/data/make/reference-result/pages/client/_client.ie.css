@@ -1,0 +1,64 @@
+/* client.css begin */
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.css begin */
+.b-link_pseudo_yes
+{
+    color: #1a3dc1;
+}
+
+.i-ua_js_yes .b-link_pseudo_yes
+{
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.i-ua_js_yes .b-link_pseudo_yes .b-link__inner
+{
+    text-decoration: none;
+
+    color: inherit;
+    border-bottom: 1px dotted;
+}
+
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.css end */
+
+/* ../../blocks/b-link/_pseudo/b-link_pseudo_yes.css begin */
+a.b-link_pseudo_yes:hover
+{
+    color: blue !important;
+}
+
+/* ../../blocks/b-link/_pseudo/b-link_pseudo_yes.css end */
+
+/* ../../blocks/b-link/_color/b-link_color_red.css begin */
+.b-link_color_red
+{
+    color: red;
+}
+
+/* ../../blocks/b-link/_color/b-link_color_red.css end */
+
+/* ../../blocks/b-link/_color/b-link_color_green.css begin */
+.b-link_color_green
+{
+    color: green;
+}
+
+/* ../../blocks/b-link/_color/b-link_color_green.css end */
+
+
+/* client.css end */
+
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.ie.css begin */
+.i-ua_js_yes .b-link_pseudo_yes
+{
+    zoom: 1;
+}
+
+.i-ua_js_yes .b-link_pseudo_yes,
+.i-ua_js_yes .b-link_pseudo_yes .b-link__inner
+{
+    position: relative;
+}
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.ie.css end */
+
