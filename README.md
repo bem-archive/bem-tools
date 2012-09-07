@@ -293,7 +293,7 @@ When requested URL is mapped to a directory, the server will check if there is a
 In the case one of these is true the content of the file will be returned to browser. The directory content listing will be returned
 otherwise.
 
-##### Build configuration
+#### Build configuration
 
 There is a default build behavior programmed in the build system. The configuration files allow to adjust it a little or change it completely.
 To make `bem make` work you should have `.bem/level.js` file within your levels. It should contain function getTechs, which returns object with tech definitions used on the level.
