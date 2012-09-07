@@ -1,10 +1,11 @@
 bem-tools changelog
 ===================
 
-XX.XX.XXXX, Version 0.5.X (unstable)
+07.09.2012, Version 0.5.15 (unstable)
 ------------------------------------
 
 - bem: Add `;` after each include in js-based techs (`js` and `js-i`) (Closes #210)
+- bem make: Bugfix: Use `Q.when()` to call base `alterArch()` method in `BundlesLevelNode` (Closes #216)
 - docs: Add russian and english docs for `bem make` / `bem server` feature
 - docs: Add more info on `--chdir`, `-C` option on `bem create *` commands (See #204)
 - docs: Add `BEM.create()` docs: russian and english (Closes #192)
