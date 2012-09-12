@@ -13,7 +13,7 @@ var assert = require('chai').assert,
  */
 
 function absolute(path) {
-    return PATH.absolute(path, __dirname);
+    return PATH.resolve(__dirname, path);
 }
 
 describe('path', function() {
@@ -21,15 +21,15 @@ describe('path', function() {
     describe('relative() call with params', function() {
 
         it("('./', './data/') resolves to 'data/'", function() {
-            assert.equal(PATH.relative(absolute('./'), absolute('./data/')), PATH.unixToOs('data/'));
+            assert.equal(PATH.relative(absolute('./'), absolute('./data/')), PATH.unixToOs('data'));
         });
 
         it("('./data/', '../lib') resolves to '../lib'", function() {
             assert.equal(PATH.relative(absolute('./data/'), absolute('../lib')), PATH.unixToOs('../../lib'));
         });
 
-        it("('./file.js', '../lib') resolves to '../lib'", function() {
-            assert.equal(PATH.relative(absolute('./file.js'), absolute('../lib')), PATH.unixToOs('../lib'));
+        it("('./file.js', '../lib') resolves to '../../lib'", function() {
+            assert.equal(PATH.relative(absolute('./file.js'), absolute('../lib')), PATH.unixToOs('../../lib'));
         });
 
     });
