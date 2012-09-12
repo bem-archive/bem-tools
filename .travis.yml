@@ -7,6 +7,6 @@ node_js:
 
 matrix:
   allow_failures:
-    node_js: 0.9
+    - node_js: 0.9
 
 before_script: "ln -s .. node_modules/bem && ls -la node_modules && git submodule init && git submodule update"
