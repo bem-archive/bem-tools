@@ -52,17 +52,17 @@ command (ensure that you have bash-completion installed, first). Run this
 
 and restart bash.
 
-If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc`:
+If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc` and reload:
 
     bem completion >> ~/.bashrc
+    source ~/.bashrc
 
 #### zsh
 
-If you use `zsh`, you can add `bem completion` to your `.zshrc`:
+If you use `zsh`, you can add `bem completion` to your `.zshrc` and reload:
 
     bem completion >> ~/.zshrc
-
-then restart.
+    source ~/.zshrc
 
 ### Commands
 #### bem create
