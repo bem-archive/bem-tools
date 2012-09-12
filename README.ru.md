@@ -49,9 +49,10 @@
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
-Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`:
+Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`, а затем перезагрузить:
 
     bem completion >> ~/.bashrc
+    source ~/.bashrc
 
 #### zsh
 
