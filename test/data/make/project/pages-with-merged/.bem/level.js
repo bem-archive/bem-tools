@@ -5,7 +5,7 @@ exports.getTechs = function() {
         'bemjson.js': '',
         'bemdecl.js': 'bemdecl.js',
         'deps.js': 'deps.js',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'js': 'js-i.js'
     };
 };
