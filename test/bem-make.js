@@ -145,11 +145,11 @@ describe('bem', function() {
                         dirHasOnly(
                             PATH.join(buildPath, 'pages/example'),
                             ['example.bemjson.js', '_example.css', 'example.bemdecl.js', 'example.css',
-                             'example.css.meta.js', 'example.deps.js', 'example.deps.js.meta.js']),
+                             'example.deps.js']),
                         dirHasOnly(
                             PATH.join(buildPath, 'pages/client'),
-                            ['client.bemjson.js', 'client.bemhtml.js', 'client.deps.js.meta.js', 'client.bemdecl.js',
-                            'client.bemhtml.meta.js', 'client.deps.js', 'client.html'])
+                            ['client.bemjson.js', 'client.bemhtml.js', 'client.bemdecl.js',
+                            'client.deps.js', 'client.html'])
                     ])
                     .spread(function(example, client) {
                         if (!(example && client)) throw new Error('set of build artifacts differs from expected');
