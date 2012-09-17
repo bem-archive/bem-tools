@@ -191,6 +191,58 @@ describe('Deps', function() {
 
     });
 
+    describe('subtract', function() {
+        var deps1 = new DEPS.Deps().parse([
+                { block: 'b1' },
+                { block: 'b2' },
+                { block: 'b3' }
+            ]),
+
+            deps2 = new DEPS.Deps().parse([
+                    { block: 'b1' },
+                    { block: 'b3' },
+                    { block: 'b4' }
+                ]);
+
+        deps1.subtract(deps2);
+
+        it('works correctly', function() {
+            assert.deepEqual(deps1.serialize(), {
+                '': {
+                    '': [
+                        {block: 'b2'}
+                    ]
+                }
+            })
+        });
+    });
+
+    describe('intersect', function() {
+        var deps1 = new DEPS.Deps().parse([
+                { block: 'b1' },
+                { block: 'b2' },
+                { block: 'b3' }
+            ]),
+
+            deps2 = new DEPS.Deps().parse([
+                    { block: 'b1' },
+                    { block: 'b3' },
+                    { block: 'b4' }
+                ]);
+
+        deps1.intersect(deps2);
+
+        it('works correctly', function() {
+            assert.deepEqual(deps1.serialize(), {
+                '': {
+                    '': [
+                        {block: 'b1'},
+                        {block: 'b3'}
+                    ]
+                }
+            })
+        });
+    });
 
     describe('DepsItem', function() {
 
