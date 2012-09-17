@@ -190,6 +190,28 @@ describe('level', function() {
             });
         });
 
+        describe(".createIntrospector() default introspector call", function() {
+            it("returns correct introspection", function() {
+                assert.deepEqual(level.createIntrospector()(), [
+                    {
+                        block: 'first-block',
+                        elem: 'elem1',
+                        mod: 'mod2',
+                        suffix: '.css',
+                        tech: 'css'
+                    },
+                    {
+                        block: 'first-block',
+                        elem: 'elem1',
+                        mod: 'mod2',
+                        val: '3',
+                        suffix: '.js',
+                        tech: 'js'
+                    }
+                ]);
+            });
+        });
+
         describe(".match-*()", function() {
             level.matchOrder().forEach(function(matcher) {
 
