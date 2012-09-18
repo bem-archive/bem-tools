@@ -3,6 +3,23 @@ Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-
 
 ## Installation
 You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
+After this it suffices `npm -g install bem`.
+
+ * Install [nodejs](http://nodejs.org)
+
+        https://github.com/joyent/node/wiki/Installation
+
+ * Install [npm](http://npmjs.org)
+
+        curl http://npmjs.org/install.sh | sudo sh
+
+ * After installation configure `NODE_PATH`:
+
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
+
+    or
+
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
  * Install [bem-tools](https://github.com/bem/bem-tools)
 
@@ -35,17 +52,17 @@ command (ensure that you have bash-completion installed, first). Run this
 
 and restart bash.
 
-If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc`:
+If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc` and reload:
 
     bem completion >> ~/.bashrc
+    source ~/.bashrc
 
 #### zsh
 
-If you use `zsh`, you can add `bem completion` to your `.zshrc`:
+If you use `zsh`, you can add `bem completion` to your `.zshrc` and reload:
 
     bem completion >> ~/.zshrc
-
-then restart.
+    source ~/.zshrc
 
 ### Commands
 #### bem create
