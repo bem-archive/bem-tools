@@ -192,56 +192,70 @@ describe('Deps', function() {
     });
 
     describe('subtract', function() {
+
         var deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
-                { block: 'b3' }
+                { block: 'b3' },
+                { block: 'b5' }
             ]),
 
             deps2 = new DEPS.Deps().parse([
-                    { block: 'b1' },
-                    { block: 'b3' },
-                    { block: 'b4' }
-                ]);
+                { block: 'b1' },
+                { block: 'b3' },
+                { block: 'b4' }
+            ]),
 
-        deps1.subtract(deps2);
+            deps3 = new DEPS.Deps().parse([
+                { block: 'b5' }
+            ]);
+
+        deps1.subtract(deps2).subtract(deps3);
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
                 '': {
-                    '': [
-                        {block: 'b2'}
-                    ]
+                    '': [ { block: 'b2' } ]
                 }
-            })
+            });
         });
+
     });
 
     describe('intersect', function() {
+
         var deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
-                { block: 'b3' }
+                { block: 'b3' },
+                { block: 'b5' }
             ]),
 
             deps2 = new DEPS.Deps().parse([
-                    { block: 'b1' },
-                    { block: 'b3' },
-                    { block: 'b4' }
-                ]);
+                { block: 'b3' },
+                { block: 'b1' },
+                { block: 'b4' }
+            ]),
 
-        deps1.intersect(deps2);
+            deps3 = new DEPS.Deps().parse([
+                { block: 'b3' },
+                { block: 'b6' },
+                { block: 'b1' }
+            ]);
+
+        deps1.intersect(deps2).intersect(deps3);
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
                 '': {
                     '': [
-                        {block: 'b1'},
-                        {block: 'b3'}
+                        { block: 'b1' },
+                        { block: 'b3' }
                     ]
                 }
-            })
+            });
         });
+
     });
 
     describe('DepsItem', function() {
