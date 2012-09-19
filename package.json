@@ -74,7 +74,7 @@
   ],
   "preferGlobal": true,
   "publishConfig": {
-    "tag": "unstable"
+    "tag": "stable"
   },
   "optionalDependencies": {}
 }
