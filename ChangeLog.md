@@ -1,7 +1,41 @@
 bem-tools changelog
 ===================
 
-07.09.2012, Version 0.5.15 (unstable)
+19.09.2012, Version 0.5.16 (stable)
+-----------------------------------
+
+- bem: Require errors in .bem/level.js were masked (Closes #223)
+- bem: Add `.git` to ignorable paths during introspection
+- bem: Skip `blocks/` level directory during introspection in `nested` level
+- bem: Introduce `bem decl intersect` command (Closes #219)
+- bem make: Install library dependencies after checkout (Closes #224)
+- bem make: Do not install dependencies when `npmPackages = false` (Closes #229)
+- bem make: Ability to configure list of techs to optimize, see `BundleNode.getOptimizerTechs()` (Closes #231)
+- bem make: `Rename bemhtml.js` tech to `bemhtml`, fix this in your `.bem/make.js` files
+- bem make: Use non interactive mode for `svn` commands in `SvnLibraryNode` (Closes #221)
+- bem make: Store `*.meta.js` files in `<project-root>/.bem/cache/` directory (Closes #232)
+- bem make: Fixed bug in the inspector preventing it to work properly in FF (Closes #240)
+- docs: Translate into english chapter about level.js (Closes #38)
+- docs: Updated english docs in installation topic (@fliptheweb, #225)
+- docs: Add `CONTRIBUTING.md`
+- docs: Add `LICENSE` (we use MIT)
+- API: Expose `__filename` and `__dirname` vars in `.bem/make.js` files
+- API: Add `util.exec()` promised function to execute commands
+- API: Remove `relative()` function from `lib/path.js` in favor of that in node 0.6+ (Closes #226)
+- API: Refactor introspection logic (Pull #237)
+  - Add `createIntrospector()` method to `Level` class to create custom introspectors (see jsdoc)
+  - Refactor `getDeclByIntrospection()` to use `createIntrospector()`
+  - Add `getItemsByIntrospection()` method to `Level` class, that returns array of BEM entities in techs
+- API: Refactor `LevelNode` (Pull #238)
+  - Lazy level object creation
+  - Use `getItemsByIntrospection()` to collect BEM items to build
+  - Unify actualization of blocks and elems in `BundleLevelNode`
+- tests: Cover introspection logic
+- tests: Cover `deps.intersect()` and `deps.subtract()`
+- tests: Cover building of bundles-as-elements
+- package: Support node 0.8.x (Closes #220)
+
+07.09.2012, Version 0.5.15 (stable)
 ------------------------------------
 
 - bem: Add `;` after each include in js-based techs (`js` and `js-i`) (Closes #210)
