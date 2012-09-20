@@ -74,7 +74,7 @@
   ],
   "preferGlobal": true,
   "publishConfig": {
-    "tag": "stable"
+    "tag": "latest"
   },
   "optionalDependencies": {}
 }
