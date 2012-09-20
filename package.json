@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.5.15",
+  "version": "0.5.16",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -68,12 +68,13 @@
   },
   "licenses": [
     {
-      "type": "AS IS"
+      "type": "MIT",
+      "url": "http://github.com/bem/bem-tools/raw/master/LICENSE"
     }
   ],
   "preferGlobal": true,
   "publishConfig": {
-    "tag": "unstable"
+    "tag": "latest"
   },
   "optionalDependencies": {}
 }
