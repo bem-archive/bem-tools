@@ -135,7 +135,7 @@
 
 Примеры реализации модулей технологий можно увидеть в репозитории:
 
-    https://github.com/bem/bem-tools/tree/nodejs/lib/techs
+    https://github.com/bem/bem-tools/tree/master/lib/techs
 
 ###### Создание элемента блока
 
@@ -205,7 +205,7 @@
 Значением флага -t может быть как название технологии, так и полный путь до модуля
 технологии. В этом модуле указано, как именно по декларации собирается конечный файл.
 
-Например, модуль для `deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
+Например, модуль для `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
 
 ##### Создание файла deps.js по bemdecl.js
 
@@ -883,7 +883,7 @@ exports.getConfig = function() {
 
 Способ заключается в том, что вы создаёте обычный CommonJS модуль, из
 которого экспортируете несколько функций, которые перекроют методы базового
-класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/nodejs/lib/tech.js).
+класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
 
 ```js
 exports.getCreateResult = function(...) {
