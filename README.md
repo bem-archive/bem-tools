@@ -135,7 +135,7 @@ E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
 You can find the examples of tech modules in the repo:
 
-    https://github.com/bem/bem-tools/tree/nodejs/lib/techs
+    https://github.com/bem/bem-tools/tree/master/lib/techs
 
 ###### Create element
 
@@ -204,7 +204,7 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 You can use either tech's name or a path to its module as a value of -t flag. This
 module says how to build a final file from a declaration.
 
-E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/nodejs/lib/techs/deps.js.js
+E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
 
 ##### Create deps.js file from bemdecl.js
 
