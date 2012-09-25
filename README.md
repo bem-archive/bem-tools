@@ -603,22 +603,19 @@ MAKE.decl('Arch', {
 });
 ```
 
-And for complex logic:
+And for more precise control:
 
 ```js
 MAKE.decl('Arch', {
-    createBundlesLevelsNodes: function(parent, children) {
-        // Create the BundleLevelNode instance
-        var node1 = new BundleLevelNode(...);
-        // Add it into the graph
-        this.arch.setNode(node1, parent, children);
 
-        var node2 = new BundleLevelNode(...);
-        this.arch.setNode(node2, parent, children);
-
-        // return an array with the Ids of the created nodes
-        return [node1.getId(), node2.getId()];
+    getBundlesLevels: function() {
+        return [
+            'pages-desktop',
+            'pages-touch',
+            'bundles/common'
+        ];
     }
+
 });
 ```
 

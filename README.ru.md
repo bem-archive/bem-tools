@@ -607,22 +607,19 @@ MAKE.decl('Arch', {
 });
 ```
 
-И для большего контроля
+И для большего контроля:
 
 ```js
 MAKE.decl('Arch', {
-    createBundlesLevelsNodes: function(parent, children) {
-        // Создаем экземпляр BundleLevelNode
-        var node1 = new BundleLevelNode(...);
-        // Добавляем созданный узел в дерево
-        this.arch.setNode(node1, parent, children);
 
-        var node2 = new BundleLevelNode(...);
-        this.arch.setNode(node2, parent, children);
-
-        // Возвращаем массив из идентификаторов созданных узлов
-        return [node1.getId(), node2.getId()];
+    getBundlesLevels: function() {
+        return [
+            'pages-desktop',
+            'pages-touch',
+            'bundles/common'
+        ];
     }
+
 });
 ```
 
