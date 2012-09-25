@@ -1,6 +1,16 @@
 bem-tools changelog
 ===================
 
+25.09.2012, Version 0.5.17 (stable)
+-----------------------------------
+
+- bem: Make content read of deps.js files of block to be synchronous to gain some speed boost (PR #261)
+- bem make: Provide a more convenient way to configure the list of bundles and blocks levels to build (Closes #260)
+- bem make: Change signature of `getLevels()` method of `BundleNode` to `getLevels(tech)` to add ability
+  to configure the list of levels more precisely
+- docs: Small JSDoc improvements in `BundleNode` class
+- docs: Correct links in README (@banzalik)
+
 19.09.2012, Version 0.5.16 (stable)
 -----------------------------------
 
