@@ -3233,6 +3233,18 @@ BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
 
 });
 ;
+
+/*
+b-link_pseudo_yes.coffee
+*/
+
+
+(function() {
+
+
+
+}).call(this);
+;
 /** @requires BEM */
 /** @requires BEM.DOM */
 
