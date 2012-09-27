@@ -1,5 +1,5 @@
 var BEMHTML = (function(exports) {
-    var __r8, __r10, __r12, __r14, __r16, __r18, __r20, __r22, __r24, __r26, __r33, __r34;
+    var __r8, __r10, __r12, __r14, __r16, __r18, __r20, __r22, __r24, __r26, __r33, __r34, __r44, __r45, __r46;
     exports.apply = apply;
     function apply() {
         return $79.call(this);
@@ -133,7 +133,7 @@ var BEMHTML = (function(exports) {
                 },
                 isSimple: function(obj) {
                     var t = typeof obj;
-                    return t === "string" || t === "number";
+                    return t === "string" || t === "number" || t === "boolean";
                 },
                 isShortTag: function(t) {
                     return SHORT_TAGS.hasOwnProperty(t);
@@ -207,17 +207,17 @@ var BEMHTML = (function(exports) {
         if (!!this["ctx"]["_wrap"] === false) {
             if (!!this["mods"]["inner"] === false) {
                 "";
-                var __r44 = this["_mode"];
+                var __r48 = this["_mode"];
                 this["_mode"] = "";
-                var __r45 = this["ctx"];
+                var __r49 = this["ctx"];
                 this["ctx"] = {
                     elem: "inner",
                     content: this["ctx"]["content"],
                     _wrap: true
                 };
                 $79.call(this);
-                this["_mode"] = __r44;
-                this["ctx"] = __r45;
+                this["_mode"] = __r48;
+                this["ctx"] = __r49;
                 "";
                 undefined;
                 undefined;
@@ -241,9 +241,9 @@ var BEMHTML = (function(exports) {
         }
     }
     function $11() {
-        var ctx = this["ctx"], a = {
-            href: ctx["url"]
-        }, props = [ "title", "target" ], p;
+        var ctx = this["ctx"], props = [ "title", "target" ], p = typeof ctx["url"], a = {
+            href: p === "undefined" || p === "string" ? ctx["url"] : (p = [], "", __r44 = this["_buf"], this["_buf"] = p, __r45 = this["_mode"], this["_mode"] = "", __r46 = this["ctx"], this["ctx"] = ctx["url"], __r47 = $79.call(this), this["_buf"] = __r44, this["_mode"] = __r45, this["ctx"] = __r46, "", __r47, p.join(""))
+        };
         while (p = props.pop()) {
             ctx[p] && (a[p] = ctx[p]);
         }
@@ -255,9 +255,9 @@ var BEMHTML = (function(exports) {
             return {};
             return;
         } else {
-            var ctx = this["ctx"], a = {
-                href: ctx["url"]
-            }, props = [ "title", "target" ], p;
+            var ctx = this["ctx"], props = [ "title", "target" ], p = typeof ctx["url"], a = {
+                href: p === "undefined" || p === "string" ? ctx["url"] : (p = [], "", __r44 = this["_buf"], this["_buf"] = p, __r45 = this["_mode"], this["_mode"] = "", __r46 = this["ctx"], this["ctx"] = ctx["url"], __r47 = $79.call(this), this["_buf"] = __r44, this["_mode"] = __r45, this["ctx"] = __r46, "", __r47, p.join(""))
+            };
             while (p = props.pop()) {
                 ctx[p] && (a[p] = ctx[p]);
             }
@@ -405,7 +405,8 @@ var BEMHTML = (function(exports) {
         if (!!this["_mode"] === false) {
             if (!this["_"].isSimple(this["ctx"]) === false) {
                 this["_listLength"]--;
-                this["_buf"].push(this["ctx"]);
+                var ctx = this["ctx"];
+                (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                 return;
             } else {
                 if (!!this["ctx"] === false) {
@@ -518,7 +519,8 @@ var BEMHTML = (function(exports) {
                 if (!!this["_mode"] === false) {
                     if (!this["_"].isSimple(this["ctx"]) === false) {
                         this["_listLength"]--;
-                        this["_buf"].push(this["ctx"]);
+                        var ctx = this["ctx"];
+                        (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                         return;
                     } else {
                         if (!!this["ctx"] === false) {
@@ -602,17 +604,17 @@ var BEMHTML = (function(exports) {
                     if (!!this["ctx"]["_wrap"] === false) {
                         if (!!this["mods"]["inner"] === false) {
                             "";
-                            var __r44 = this["_mode"];
+                            var __r48 = this["_mode"];
                             this["_mode"] = "";
-                            var __r45 = this["ctx"];
+                            var __r49 = this["ctx"];
                             this["ctx"] = {
                                 elem: "inner",
                                 content: this["ctx"]["content"],
                                 _wrap: true
                             };
                             $79.call(this);
-                            this["_mode"] = __r44;
-                            this["ctx"] = __r45;
+                            this["_mode"] = __r48;
+                            this["ctx"] = __r49;
                             "";
                             undefined;
                             undefined;
@@ -639,9 +641,9 @@ var BEMHTML = (function(exports) {
                         return {};
                         return;
                     } else {
-                        var ctx = this["ctx"], a = {
-                            href: ctx["url"]
-                        }, props = [ "title", "target" ], p;
+                        var ctx = this["ctx"], props = [ "title", "target" ], p = typeof ctx["url"], a = {
+                            href: p === "undefined" || p === "string" ? ctx["url"] : (p = [], "", __r44 = this["_buf"], this["_buf"] = p, __r45 = this["_mode"], this["_mode"] = "", __r46 = this["ctx"], this["ctx"] = ctx["url"], __r47 = $79.call(this), this["_buf"] = __r44, this["_mode"] = __r45, this["ctx"] = __r46, "", __r47, p.join(""))
+                        };
                         while (p = props.pop()) {
                             ctx[p] && (a[p] = ctx[p]);
                         }
@@ -692,7 +694,8 @@ var BEMHTML = (function(exports) {
                         if (!!this["_mode"] === false) {
                             if (!this["_"].isSimple(this["ctx"]) === false) {
                                 this["_listLength"]--;
-                                this["_buf"].push(this["ctx"]);
+                                var ctx = this["ctx"];
+                                (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                                 return;
                             } else {
                                 if (!!this["ctx"] === false) {
@@ -798,7 +801,8 @@ var BEMHTML = (function(exports) {
                         if (!!this["_mode"] === false) {
                             if (!this["_"].isSimple(this["ctx"]) === false) {
                                 this["_listLength"]--;
-                                this["_buf"].push(this["ctx"]);
+                                var ctx = this["ctx"];
+                                (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                                 return;
                             } else {
                                 if (!!this["ctx"] === false) {
@@ -884,9 +888,9 @@ var BEMHTML = (function(exports) {
                         return;
                     }
                 } else if (__t === "attrs") {
-                    var ctx = this["ctx"], a = {
-                        href: ctx["url"]
-                    }, props = [ "title", "target" ], p;
+                    var ctx = this["ctx"], props = [ "title", "target" ], p = typeof ctx["url"], a = {
+                        href: p === "undefined" || p === "string" ? ctx["url"] : (p = [], "", __r44 = this["_buf"], this["_buf"] = p, __r45 = this["_mode"], this["_mode"] = "", __r46 = this["ctx"], this["ctx"] = ctx["url"], __r47 = $79.call(this), this["_buf"] = __r44, this["_mode"] = __r45, this["ctx"] = __r46, "", __r47, p.join(""))
+                    };
                     while (p = props.pop()) {
                         ctx[p] && (a[p] = ctx[p]);
                     }
@@ -940,7 +944,8 @@ var BEMHTML = (function(exports) {
                         if (!!this["_mode"] === false) {
                             if (!this["_"].isSimple(this["ctx"]) === false) {
                                 this["_listLength"]--;
-                                this["_buf"].push(this["ctx"]);
+                                var ctx = this["ctx"];
+                                (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                                 return;
                             } else {
                                 if (!!this["ctx"] === false) {
@@ -1046,7 +1051,8 @@ var BEMHTML = (function(exports) {
                         if (!!this["_mode"] === false) {
                             if (!this["_"].isSimple(this["ctx"]) === false) {
                                 this["_listLength"]--;
-                                this["_buf"].push(this["ctx"]);
+                                var ctx = this["ctx"];
+                                (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                                 return;
                             } else {
                                 if (!!this["ctx"] === false) {
@@ -1232,7 +1238,8 @@ var BEMHTML = (function(exports) {
                     if (!!this["_mode"] === false) {
                         if (!this["_"].isSimple(this["ctx"]) === false) {
                             this["_listLength"]--;
-                            this["_buf"].push(this["ctx"]);
+                            var ctx = this["ctx"];
+                            (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                             return;
                         } else {
                             if (!!this["ctx"] === false) {
@@ -1338,7 +1345,8 @@ var BEMHTML = (function(exports) {
                     if (!!this["_mode"] === false) {
                         if (!this["_"].isSimple(this["ctx"]) === false) {
                             this["_listLength"]--;
-                            this["_buf"].push(this["ctx"]);
+                            var ctx = this["ctx"];
+                            (ctx && ctx !== true || ctx === 0) && this["_buf"].push(ctx);
                             return;
                         } else {
                             if (!!this["ctx"] === false) {
@@ -1495,7 +1503,7 @@ var BEMHTML = (function(exports) {
                     this["ctx"] = __r39;
                     "";
                 } else {
-                    var hideRule = !ie ? [ "gt IE 7", "<!-->", "<!--" ] : ie == "!IE" ? [ ie, "<!-->", "<!--" ] : [ ie, "", "" ];
+                    var hideRule = !ie ? [ "gt IE 9", "<!-->", "<!--" ] : ie == "!IE" ? [ ie, "<!-->", "<!--" ] : [ ie, "", "" ];
                     {
                         "";
                         var __r40 = this["_mode"];
