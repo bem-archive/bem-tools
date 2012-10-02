@@ -66,4 +66,50 @@ describe('util', function() {
 
     });
 
+    describe('readJsonJs()', function() {
+
+        var example = {
+                block: 'b-page',
+                title: 'Pseudo link',
+                head: [
+                    { elem: 'css', url: '_example.css'},
+                    { elem: 'css', url: '_example', ie: true },
+                    { block: 'i-jquery', elem: 'core' },
+                    { elem: 'js', url: '_example.js' }
+                ],
+                content: [
+                    {
+                        block: 'b-link',
+                        mods : { pseudo : 'yes', togcolor : 'yes', color: 'green' },
+                        url: '#',
+                        target: '_blank',
+                        title: 'Click me',
+                        content : 'This pseudo link changes its color after click'
+                    }
+                ]
+            };
+         
+       function testRead(file, reference) {
+           var path = PATH.resolve(__dirname, 'data/util/' + file + '.bemjson.js');
+
+           return (function(done) {
+               this.timeout(0);
+
+               U.readJsonJs(path).then(function(json) {
+                   assert.deepEqual(json, reference);
+                   done();
+               })
+               .fail(done)
+               .end();
+           });
+        };
+
+        it("simple", testRead('simple', example));
+
+        it("include in array", testRead('include-in-array', example));
+
+        it("include in object", testRead('include-in-object', example));
+
+    });
+
 });
