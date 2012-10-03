@@ -762,7 +762,7 @@ process.env.YENV = 'production';
 
 При создании уровня командой `bem create level` файл `.bem/level.js` создаётся пустым, что означает, что уровень —
 «стандартный». Поведение стандартного уровня описано в классе `Level` в файле
-(lib/level.js)[https://github.com/bem/bem-tools/blob/master/lib/level.js].
+[lib/level.js](https://github.com/bem/bem-tools/blob/master/lib/level.js).
 
 Перекрыть поведение уроня просто. Файл `.bem/level.js` (как и практически любой файл конфигурации) является CommonJS
 модулем. `bem-tools` при обнаружении такого файла создаёт класс-наследник стандартного класса `Level`, используя экспорт
