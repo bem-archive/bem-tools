@@ -731,7 +731,7 @@ A level should have `.bem/level.js` configuration file which contains the meta i
 
 When the `bem create level` command is used to create a level the empty `.bem/level.js` file will be also created.
 Which means that this level is «standard» one. The logic for standard level is defined in the `Level` class within 
-(lib/level.js)[https://github.com/bem/bem-tools/blob/master/lib/level.js].
+[lib/level.js](https://github.com/bem/bem-tools/blob/master/lib/level.js).
 
 As the `.bem/level.js` file is a CommonJS module it's easy to override the level's behavior. `bem-tools` creates a new
 class inherited from the standard `Level` class using export of this module as a class extention (under the hood the 
