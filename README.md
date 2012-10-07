@@ -324,7 +324,7 @@ exports.getTechs = function() {
     return {
         'bemjson.js': '',
         'js': 'js-i',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'priv.js': '../../.bem/techs/priv.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html'
     };
@@ -345,7 +345,7 @@ exports.getConfig = function() {
 };
 ```
 
-`getTechs()` returns an object with used techs. Object properties (for example `'bemjson.js'`, `'js'`, `'bemhtml.js'`) define the
+`getTechs()` returns an object with used techs. Object properties (for example `'bemjson.js'`, `'js'`, `'bemhtml'`) define the
 tech names, object values specify the paths to the appropriate tech files (`''`, `'js-i'`, `'../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'`).
 A path can be relative or absolute, it can be empty, or it can specify just a file name. When the latter case is used the
 tech will be considered being standard (bundled with bem-tools) and the file will be looked up in the `[bem]/lib/techs` folder.
@@ -398,7 +398,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html.js'
     };
 
@@ -444,7 +444,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'html'
@@ -468,7 +468,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
     };
 
 };
@@ -512,7 +512,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js'
         ];
@@ -653,7 +653,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'priv.js'
