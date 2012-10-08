@@ -56,6 +56,7 @@
     "jshint": "~2.1.4"
   },
   "scripts": {
+    "postinstall": "./scripts/postinst.js",
     "test": "make test",
     "test-cover": "make test-cover"
   },
