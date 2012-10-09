@@ -53,6 +53,7 @@
     "coverjs": ">= 0.0.7-alpha"
   },
   "scripts": {
+    "postinstall": "./scripts/postinst.js",
     "test": "make test",
     "test-cover": "make test-cover"
   },
