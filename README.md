@@ -324,7 +324,7 @@ exports.getTechs = function() {
     return {
         'bemjson.js': '',
         'js': 'js-i',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'priv.js': '../../.bem/techs/priv.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html'
     };
@@ -345,7 +345,7 @@ exports.getConfig = function() {
 };
 ```
 
-`getTechs()` returns an object with used techs. Object properties (for example `'bemjson.js'`, `'js'`, `'bemhtml.js'`) define the
+`getTechs()` returns an object with used techs. Object properties (for example `'bemjson.js'`, `'js'`, `'bemhtml'`) define the
 tech names, object values specify the paths to the appropriate tech files (`''`, `'js-i'`, `'../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'`).
 A path can be relative or absolute, it can be empty, or it can specify just a file name. When the latter case is used the
 tech will be considered being standard (bundled with bem-tools) and the file will be looked up in the `[bem]/lib/techs` folder.
@@ -398,7 +398,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html.js'
     };
 
@@ -444,7 +444,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'html'
@@ -468,7 +468,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
     };
 
 };
@@ -512,7 +512,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js'
         ];
@@ -653,7 +653,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'priv.js'
@@ -731,7 +731,7 @@ A level should have `.bem/level.js` configuration file which contains the meta i
 
 When the `bem create level` command is used to create a level the empty `.bem/level.js` file will be also created.
 Which means that this level is «standard» one. The logic for standard level is defined in the `Level` class within 
-(lib/level.js)[https://github.com/bem/bem-tools/blob/master/lib/level.js].
+[lib/level.js](https://github.com/bem/bem-tools/blob/master/lib/level.js).
 
 As the `.bem/level.js` file is a CommonJS module it's easy to override the level's behavior. `bem-tools` creates a new
 class inherited from the standard `Level` class using export of this module as a class extention (under the hood the 
