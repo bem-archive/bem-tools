@@ -4,6 +4,9 @@ var assert = require('chai').assert,
     PATH = require('path'),
     QFS = require('q-fs'),
 
+    registry = require('..').require('./nodesregistry'),
+    Node = require('..').require('./nodes/node'),
+    SeedNode = require('..').require('./nodes/seed'),
     LibNodes = require('..').require('./nodes/lib');
 
 /**
@@ -21,7 +24,14 @@ describe('nodes', function() {
 
     describe('new SymlinkLibraryNode()', function() {
 
-        var node = new LibNodes.SymlinkLibraryNode({
+        var make = (new (registry.getNodeClass('SeedNode'))({})).make;
+
+        registry.decl('SeedNode', {
+            make: function() {
+            }
+        });
+
+        var node = new (registry.getNodeClass(LibNodes.SymlinkLibraryNodeName))({
                 root: PATH.resolve(__dirname, 'data'),
                 target: 'symlink',
                 relative: 'lib'
@@ -29,8 +39,8 @@ describe('nodes', function() {
             symlink = PATH.resolve(__dirname, 'data', 'symlink');
 
         describe('.getId()', function() {
-            it('equals to target', function() {
-                assert.equal(node.getId(), 'symlink');
+            it('equals to target*', function() {
+                assert.equal(node.getId(), 'symlink*');
             });
         });
 
@@ -65,6 +75,8 @@ describe('nodes', function() {
             });
 
         });
+
+        registry.decl('SeedNode', { make: make });
 
     });
 
