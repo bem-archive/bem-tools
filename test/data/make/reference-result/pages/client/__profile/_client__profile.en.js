@@ -849,6 +849,21 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
     },
 
     /**
+     * Shortcut for getMod/setMod
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {BEM}
+     */
+    mod : function(elem, modName, modVal) {
+
+        return typeof modVal !== 'undefined' || (typeof modName !== 'undefined' && typeof elem === 'string')?
+            this.setMod(elem, modName, modVal) :
+            this.getMod(elem, modName, modVal);
+
+    },
+
+    /**
      * Executes handlers for setting modifiers
      * @private
      * @param {String} elemName Element name
@@ -2568,6 +2583,18 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
 
         this.destruct(ctx, true);
         this.init(ctx.html(content), callback, callbackCtx);
+
+    },
+
+    /**
+     * Changes a fragment of the DOM tree including the context and initializes blocks.
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content Content to be added
+     */
+    replace : function(ctx, content) {
+
+        this.destruct(true, ctx);
+        this.init($(content).replaceAll(ctx));
 
     },
 
