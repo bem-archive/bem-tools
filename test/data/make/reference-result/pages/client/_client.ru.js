@@ -877,6 +877,21 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
     },
 
     /**
+     * Shortcut for getMod/setMod
+     * @param {Object} [elem] Nested element
+     * @param {String} modName Modifier name
+     * @param {String} [modVal] Modifier value
+     * @returns {BEM}
+     */
+    mod : function(elem, modName, modVal) {
+
+        return typeof modVal !== 'undefined' || (typeof modName !== 'undefined' && typeof elem === 'string')?
+            this.setMod(elem, modName, modVal) :
+            this.getMod(elem, modName, modVal);
+
+    },
+
+    /**
      * Executes handlers for setting modifiers
      * @private
      * @param {String} elemName Element name
