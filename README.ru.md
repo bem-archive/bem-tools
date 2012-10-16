@@ -64,7 +64,7 @@
 ### Консольные команды
 #### bem create
 
-С помошью `bem create` можно создавать сущности:
+С помощью `bem create` можно создавать сущности:
 
  * уровни переопределения
  * блоки
@@ -321,7 +321,7 @@ exports.getTechs = function() {
     return {
         'bemjson.js': '',
         'js': 'js-i',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'priv.js': '../../.bem/techs/priv.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html'
     };
@@ -342,7 +342,7 @@ exports.getConfig = function() {
 };
 ```
 
-`getTechs()` возвращает массив подключаемых технологий: ключ (например `'bemjson.js'`, `'js'`, `'bemhtml.js'`) указывает 
+`getTechs()` возвращает массив подключаемых технологий: ключ (например `'bemjson.js'`, `'js'`, `'bemhtml'`) указывает 
 имя, под котором технологию можно будет использовать, значение (`''`, `'js-i'`, `'../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'`) -
 где взять сам файл технологии. В качестве этого значения может быть указан абсолютный или относительный путь к файлу, 
 пустая строка или просто имя файла. В последнем случае подразумевается, что технология стандартная (входит в состав 
@@ -394,7 +394,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
         'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html.js'
     };
 
@@ -440,7 +440,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'html'
@@ -464,7 +464,7 @@ exports.getTechs = function() {
         'deps.js': 'deps.js',
         'js': 'js-i',
         'css': 'css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
+        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'
     };
 
 };
@@ -508,7 +508,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js'
         ];
@@ -657,7 +657,7 @@ MAKE.decl('BundleNode', {
         return [
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'css',
             'js',
             'priv.js'
@@ -762,7 +762,7 @@ process.env.YENV = 'production';
 
 При создании уровня командой `bem create level` файл `.bem/level.js` создаётся пустым, что означает, что уровень —
 «стандартный». Поведение стандартного уровня описано в классе `Level` в файле
-(lib/level.js)[https://github.com/bem/bem-tools/blob/master/lib/level.js].
+[lib/level.js](https://github.com/bem/bem-tools/blob/master/lib/level.js).
 
 Перекрыть поведение уроня просто. Файл `.bem/level.js` (как и практически любой файл конфигурации) является CommonJS
 модулем. `bem-tools` при обнаружении такого файла создаёт класс-наследник стандартного класса `Level`, используя экспорт
