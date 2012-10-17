@@ -45,7 +45,8 @@
     "csso": "~1.2.17",
     "uglify-js": "~1.3.0",
     "coffee-script": "*",
-    "dom-js": "*"
+    "dom-js": "*",
+    "mkdirp": "~0.3.4"
   },
   "devDependencies": {
     "mocha-coverjs": "*",
