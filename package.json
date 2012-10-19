@@ -46,7 +46,8 @@
     "uglify-js": "~1.3.0",
     "coffee-script": "*",
     "dom-js": "*",
-    "mkdirp": "~0.3.4"
+    "mkdirp": "~0.3.4",
+    "node.extend": "~1.0.0"
   },
   "devDependencies": {
     "mocha-coverjs": "*",
