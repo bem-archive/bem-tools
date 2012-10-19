@@ -1,19 +1,19 @@
-bem-tools is a toolkit to work with files based on BEM methodology.
+BEM tools — это набор инструментов для работы с файлами по БЭМ методологии.
 
-It allows you:
+Он позволяет:
 
-* [creating entities](bem-create/);
-* [building final runtime](bem-build/);
-* [working with build declarations: merge, subtract and intersect them](bem-decl/);
-* [building the whole project using bem make command](bem-make/);
-* [launching development server on the projects source tree using bem server command](bem-server/).
+* создавать сущности;
+* собирать финальный рантайм;
+* работать с build-декларациями: объединять, вычитать и получать пересение;
+* собирать весь проект, используя команду bem make;
+* запускать разработческий сервер на деревом исходников проекта, используя bem server.
 
 See also:
 
-* [Installation](installation/)
-* [Levels](levels/)
-* [Customization](customization/)
-* [Techs](techs/)
+* [Установка](installation/)
+* [Команды](commands/)
+* [Уровни переопределения](levels/)
+* [Кастомизация сборки](customization/)
+* [Модули технологий](techs/)
 * [API](api/)
-* [Contribute](contribute/)
-
+* [Участие в разработке](contribute/)
