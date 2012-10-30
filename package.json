@@ -28,7 +28,7 @@
     "bem": "./bin/bem"
   },
   "dependencies": {
-    "coa": "~0.3.5",
+    "coa": "~0.3.6",
     "q": "~0.8.8",
     "qq": "~0.3.4",
     "q-fs": "0.1",
@@ -36,15 +36,18 @@
     "mime": "~1.2.5",
     "underscore": "~1.3.1",
     "inherit": "~1.0.0",
-    "xjst": "0.2.21",
-    "ometajs": "~2.1.10",
-    "borschik": "~0.0.11",
+    "xjst": "~0.3.10",
+    "ometajs": "~3.1.15",
+    "borschik": "~0.0.13",
     "apw": "~0.3.6",
     "winston": ">= 0.5.0",
     "memorystream": ">= 0.1.1",
     "csso": "~1.2.17",
     "uglify-js": "~1.3.0",
-    "dom-js": "*"
+    "coffee-script": "*",
+    "dom-js": "*",
+    "mkdirp": "~0.3.4",
+    "node.extend": "~1.0.0"
   },
   "devDependencies": {
     "mocha-coverjs": "*",
