@@ -207,13 +207,14 @@ MAKE.decl('BundleNode', {
 });
 ```
 
-### Сборка css и локализационных технологий js и bemhtml, из файлов декларации (bemdecl) для уровня страниц pages.
-Подключаются уровень переопределения блоков `blocks`, а также `blocks-common` и `blocks-desktop` из `bem-bl`.
+### Сборка тезнологий css, bemhtml и локализационной технологии js, из файлов декларации (bemdecl) для уровня страниц pages.  Подключаются уровень переопределения блоков `blocks`, а также `blocks-common` и `blocks-desktop` из `bem-bl`.
 
 ```js
 // pages/.bem/level.js
 
-var extend = require('bem/lib/util').extend,
+var BEM = require('bem'),
+    PATH = require('path'),
+
     BEMBL_TECHS_PATH = '../../bem-bl/blocks-common/i-bem/bem/techs/';
 
 exports.getTechs = function() {
@@ -222,17 +223,17 @@ exports.getTechs = function() {
         'bemdecl.js': 'bemdecl.js',
         'deps.js': 'deps.js',
         'js': 'js-i',
-        'i18n': BEMBL_TECHS_PATH + 'i18n.js',
-        'i18n.js': BEMBL_TECHS_PATH + 'i18n.js.js',
+        'i18n': PATH.join(BEMBL_TECHS_PATH, 'i18n.js'),
+        'i18n.js': PATH.join(BEMBL_TECHS_PATH, 'i18n.js.js'),
         'css': 'css',
-        'bemhtml.js': BEMBL_TECHS_PATH + 'bemhtml.js'
+        'bemhtml.js': PATH.join(BEMBL_TECHS_PATH, 'bemhtml.js')
     };
 
 };
 
 exports.getConfig = function() {
 
-    return extend({}, this.__base() || {}, {
+    return BEM.util.extend({}, this.__base() || {}, {
 
         bundleBuildLevels: this.resolvePaths([
             '../../bem-bl/blocks-common',
@@ -255,7 +256,8 @@ MAKE.decl('Arch', {
         return {
             'bem-bl': {
                 type: 'git',
-                url: 'git://github.com/bem/bem-bl.git'
+                url: 'git://github.com/bem/bem-bl.git',
+                treeish: '0.3'
             }
         };
 
