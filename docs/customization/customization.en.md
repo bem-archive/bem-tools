@@ -209,6 +209,89 @@ MAKE.decl('BundleNode', {
 });
 ```
 
+### Build of localided js and css, bemhtml tamples on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from bem-bl.
+
+```js
+// pages/.bem/level.js
+
+var BEM = require('bem'),
+    PATH = require('path'),
+
+    BEMBL_TECHS_PATH = '../../bem-bl/blocks-common/i-bem/bem/techs/';
+
+exports.getTechs = function() {
+
+    return {
+        'bemdecl.js': 'bemdecl.js',
+        'deps.js': 'deps.js',
+        'js': 'js-i',
+        'i18n': PATH.join(BEMBL_TECHS_PATH, 'i18n.js'),
+        'i18n.js': PATH.join(BEMBL_TECHS_PATH, 'i18n.js.js'),
+        'css': 'css',
+        'bemhtml.js': PATH.join(BEMBL_TECHS_PATH, 'bemhtml.js')
+    };
+
+};
+
+exports.getConfig = function() {
+
+    return BEM.util.extend({}, this.__base() || {}, {
+
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../blocks'
+        ])
+
+    });
+
+};
+```
+
+```js
+// .bem/make.js
+
+MAKE.decl('Arch', {
+
+    getLibraries: function() {
+
+        return {
+            'bem-bl': {
+                type: 'git',
+                url: 'git://github.com/bem/bem-bl.git',
+                treeish: '0.3'
+            }
+        };
+
+    }
+
+});
+
+
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemdecl.js',
+            'deps.js',
+            'i18n',
+            'bemhtml',
+            'i18n.js',
+            'css'
+        ];
+
+    },
+
+    'create-i18n.js-optimizer-node': function(tech, sourceNode, bundleNode) {
+
+        return this.createBorschikOptimizerNode('js', sourceNode, bundleNode);
+
+    }
+
+});
+```
+
 ### The block libraries
 
 The block libraries are not used by default. To use a library add the following code to `.bem/make.js`:
