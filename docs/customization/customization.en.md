@@ -209,7 +209,7 @@ MAKE.decl('BundleNode', {
 });
 ```
 
-### Build of localided js and css, bemhtml tamples on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from bem-bl.
+### Build of localized js and css, bemhtml tamples on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from bem-bl.
 
 ```js
 // pages/.bem/level.js
