@@ -207,6 +207,87 @@ MAKE.decl('BundleNode', {
 });
 ```
 
+### Сборка css и локализационных технологий js и bemhtml, из файлов декларации (bemdecl) для уровня страниц pages.
+Подключаются уровень переопределения блоков `blocks`, а также `blocks-common` и `blocks-desktop` из `bem-bl`.
+
+```js
+// pages/.bem/level.js
+
+var extend = require('bem/lib/util').extend,
+    BEMBL_TECHS_PATH = '../../bem-bl/blocks-common/i-bem/bem/techs/';
+
+exports.getTechs = function() {
+
+    return {
+        'bemdecl.js': 'bemdecl.js',
+        'deps.js': 'deps.js',
+        'js': 'js-i',
+        'i18n': BEMBL_TECHS_PATH + 'i18n.js',
+        'i18n.js': BEMBL_TECHS_PATH + 'i18n.js.js',
+        'css': 'css',
+        'bemhtml.js': BEMBL_TECHS_PATH + 'bemhtml.js'
+    };
+
+};
+
+exports.getConfig = function() {
+
+    return extend({}, this.__base() || {}, {
+
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../blocks'
+        ])
+
+    });
+
+};
+```
+
+```js
+// .bem/make.js
+
+MAKE.decl('Arch', {
+
+    getLibraries: function() {
+
+        return {
+            'bem-bl': {
+                type: 'git',
+                url: 'git://github.com/bem/bem-bl.git'
+            }
+        };
+
+    }
+
+});
+
+
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemdecl.js',
+            'deps.js',
+            'i18n',
+            'bemhtml',
+            'i18n.js',
+            'css'
+        ];
+
+    },
+
+    'create-i18n.js-optimizer-node': function(tech, sourceNode, bundleNode) {
+
+        return this.createBorschikOptimizerNode('js', sourceNode, bundleNode);
+
+    }
+
+});
+```
+
 ### Библиотеки блоков
 
 TODO: По умолчанию библиотеки блоков не подключаются. Чтобы подключить нужные библиотеки блоков, добавьте
