@@ -14,6 +14,6 @@ See also:
 * [Commands](commands/)
 * [Levels](levels/)
 * [Customization](customization/)
-* [Techs](techs/)
+* [Techs](tech-modules/)
 * [API](api/)
 * [Contribute](contribute/)
