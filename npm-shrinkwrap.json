@@ -3,10 +3,10 @@
   "version": "0.5.19",
   "dependencies": {
     "coa": {
-      "version": "0.3.7"
+      "version": "0.3.8"
     },
     "q": {
-      "version": "0.8.8"
+      "version": "0.8.10"
     },
     "qq": {
       "version": "0.3.5",
@@ -17,10 +17,10 @@
       }
     },
     "q-fs": {
-      "version": "0.1.32",
+      "version": "0.1.33",
       "dependencies": {
         "q-io": {
-          "version": "0.0.15"
+          "version": "0.0.17"
         },
         "fs-boot": {
           "version": "0.0.8"
@@ -28,13 +28,10 @@
       }
     },
     "q-http": {
-      "version": "0.1.15",
+      "version": "0.1.16",
       "dependencies": {
-        "q": {
-          "version": "0.8.4"
-        },
         "q-io": {
-          "version": "0.0.13"
+          "version": "0.0.17"
         }
       }
     },
@@ -51,7 +48,12 @@
       "version": "0.2.21",
       "dependencies": {
         "coa": {
-          "version": "0.3.1"
+          "version": "0.3.1",
+          "dependencies": {
+            "q": {
+              "version": "0.8.10"
+            }
+          }
         },
         "q": {
           "version": "0.7.2",
@@ -83,7 +85,7 @@
       }
     },
     "borschik": {
-      "version": "0.0.17",
+      "version": "0.0.18",
       "dependencies": {
         "cssp": {
           "version": "1.0.6",
@@ -96,7 +98,7 @@
       }
     },
     "apw": {
-      "version": "0.3.8",
+      "version": "0.3.9",
       "dependencies": {
         "node.extend": {
           "version": "1.0.0"
@@ -143,11 +145,11 @@
         }
       }
     },
-    "coffee-script": {
-      "version": "1.4.0"
-    },
     "chai": {
       "version": "1.0.4"
+    },
+    "coffee-script": {
+      "version": "1.4.0"
     },
     "eyes": {
       "version": "0.1.8"

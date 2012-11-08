@@ -206,12 +206,12 @@ function testBaseTech(techPath, techAlias) {
 
             it("contains results for all suffixes", function(done) {
 
-                Q.when(res, function(res) {
+                Q.done(res, function(res) {
                     tech.getSuffixes().forEach(function(suffix) {
                         assert.include(res, suffix);
                     });
                     done();
-                }, done).end();
+                }, done);
 
             });
 
@@ -229,12 +229,12 @@ function testBaseTech(techPath, techAlias) {
 
             it("contains results for all suffixes", function(done) {
 
-                Q.when(res, function(res) {
+                Q.done(res, function(res) {
                     tech.getSuffixes().forEach(function(suffix) {
                         assert.include(res, suffix);
                     });
                     done();
-                }, done).end();
+                }, done);
 
             });
 
