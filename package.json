@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.5.17",
+  "version": "0.5.19",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -28,18 +28,18 @@
     "bem": "./bin/bem"
   },
   "dependencies": {
-    "coa": "~0.3.6",
-    "q": "~0.8.8",
+    "coa": "~0.3.8",
+    "q": "~0.8.10",
     "qq": "~0.3.4",
-    "q-fs": "0.1",
-    "q-http": "~0.1.14",
+    "q-fs": "~0.1.33",
+    "q-http": "~0.1.16",
     "mime": "~1.2.5",
     "underscore": "~1.3.1",
     "inherit": "~1.0.0",
     "xjst": "~0.3.10",
     "ometajs": "~3.1.15",
     "borschik": "~0.0.13",
-    "apw": "~0.3.6",
+    "apw": "~0.3.9",
     "winston": ">= 0.5.0",
     "memorystream": ">= 0.1.1",
     "csso": "~1.2.17",
