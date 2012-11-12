@@ -1,6 +1,24 @@
 bem-tools changelog
 ===================
 
+12.11.2012, Version 0.5.20 (stable)
+-----------------------------------
+
+- bem make: Fixed `npmPackages` check in `LibraryNode` (Closes #300)
+- bem make: Install production dependencies in `LibraryNode` by default (Closes #310)
+- Update `csso` to `1.3.5`
+- Update `q` to `0.8.10`
+
+06.11.2012, Version 0.5.19 (unstable)
+-------------------------------------
+
+- Freeze dependencies using `npm shrinkwrap` to fix problems with `q 0.8.10` release
+
+06.11.2012, Version 0.5.18 (stable)
+-----------------------------------
+
+- Dummy release
+
 25.09.2012, Version 0.5.17 (stable)
 -----------------------------------
 
