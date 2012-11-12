@@ -9,8 +9,8 @@ bem-tools changelog
 - Update `csso` to `1.3.5`
 - Update `q` to `0.8.10`
 
-06.11.2012, Version 0.5.19 (unstable)
--------------------------------------
+06.11.2012, Version 0.5.19 (stable)
+-----------------------------------
 
 - Freeze dependencies using `npm shrinkwrap` to fix problems with `q 0.8.10` release
 
