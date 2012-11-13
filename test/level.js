@@ -288,6 +288,21 @@ describe('level', function() {
             }
 
         });
+
+        describe(".resolveBemRelPath()", function() {
+            it("resolves to correct path", function() {
+                var level = createLevel(absolute('data/level-project')),
+                    paths = level.resolveBemRelPath([
+                        { block: 'pages', suffix: '.bundles', tech: 'bundles' },
+                        { block: 'page', suffix: '.blocks', tech: 'blocks' },
+                        { block: 'block', suffix: '.bundles', tech: 'bundles' },
+                        { block: 'example', suffix: '.blocks', tech: 'blocks' },
+                        { block: 'block', suffix: '.css', tech: 'css' }
+                    ]);
+
+                assert.deepEqual(paths, ['pages.bundles/page/page.blocks/block/block.bundles/example/example.blocks/block/block.css']);
+            });
+        });
         
     });
 
