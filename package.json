@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.4.2",
+  "version": "0.5.20",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -27,23 +27,41 @@
   "bin": {
     "bem": "./bin/bem"
   },
-  "main": "./lib/bem.js",
   "dependencies": {
-    "coa": "~0.3.2",
-    "q": "~0.7.2",
-    "qq": "0.3.3",
-    "q-wrap": "~0.0.1",
+    "coa": "~0.3.8",
+    "q": "~0.8.10",
+    "qq": "~0.3.4",
+    "q-fs": "~0.1.33",
+    "q-http": "~0.1.16",
+    "mime": "~1.2.5",
+    "underscore": "~1.3.1",
     "inherit": "~1.0.0",
-    "borschik": "~0.0.9"
+    "xjst": "~0.3.10",
+    "ometajs": "~3.1.15",
+    "borschik": "~0.0.13",
+    "apw": "~0.3.9",
+    "winston": ">= 0.5.0",
+    "memorystream": ">= 0.1.1",
+    "csso": "~1.3.5",
+    "uglify-js": "~1.3.0",
+    "coffee-script": "*",
+    "dom-js": "*",
+    "mkdirp": "~0.3.4",
+    "node.extend": "~1.0.0"
   },
   "devDependencies": {
-    "vows": "~0.6.2"
+    "mocha-coverjs": "*",
+    "mocha": "~1.3.0",
+    "chai": "~1.0.3",
+    "coverjs": ">= 0.0.7-alpha"
   },
   "scripts": {
-    "test": "./node_modules/.bin/vows --spec"
+    "postinstall": "./scripts/postinst.js",
+    "test": "make test",
+    "test-cover": "make test-cover"
   },
   "engines": {
-    "node": ">= 0.4.0 <0.7.0"
+    "node": ">= 0.6.0"
   },
   "npm2debian": {
     "bash-completion": {
@@ -54,12 +72,13 @@
   },
   "licenses": [
     {
-      "type": "AS IS"
+      "type": "MIT",
+      "url": "http://github.com/bem/bem-tools/raw/master/LICENSE"
     }
   ],
   "preferGlobal": true,
   "publishConfig": {
-    "tag": "unstable"
+    "tag": "latest"
   },
   "optionalDependencies": {}
 }

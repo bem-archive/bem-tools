@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>BEM Build</title>
+    <script type='text/javascript' src='d3.js'></script>
+    <script type='text/javascript' src='jquery-1.7.2.min.js'></script>
+    <script type='text/javascript' src='d3arch.js'></script>
+
+    <style type="text/css">
+        @import url('main.css');
+
+        path.link {
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+
+        marker#faded {
+            opacity: 0.1;
+        }
+
+        path.link.faded {
+            stroke: green;
+        }
+
+        path.link.normal {
+            stroke-dasharray: 0, 2 1;
+        }
+
+        circle {
+            fill: #ccc;
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        text {
+            font: 10px sans-serif;
+            pointer-events: none;
+        }
+
+        text.shadow {
+            stroke: #fff;
+            stroke-width: 2px;
+            stroke-opacity: .5;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class='b-controls'>
+    <input type='button' value="Fix all" id="btnFix"/>
+    <input type='button' value="Unfix all" id="btnUnfix"/>
+</div>
+
+    <div class='b-snapshots'>
+        <div class='b-snapshots__header'>Snapshots <input id='refreshSnapshots' type='image' src='refresh.png' width='14' height='14'/></div>
+        <div class='b-snapshots__list'>
+
+        </div>
+    </div>
+    <div class='b-archpanel' id='archpanel'>
+
+    </div>
+</body>
+</html>

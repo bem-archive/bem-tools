@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial;
+}
+
+.b-snapshots {
+    position: absolute;
+    display: block;
+    width: 10%;
+    height: 100%;
+    background-color: #d9d9d9;
+    border-right: solid 1px;
+    overflow-y: auto;
+    overflow-x: visible;
+}
+
+.b-snapshots__header {
+    position: fixed;
+    height: 20px;
+    width: 150px;
+    padding: 3px;
+    color: #e9e9e9;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.b-snapshots__list {
+    float: left;
+    font: 12px sans-serif;
+}
+
+.b-list {
+    padding-top: 20px;
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.b-snapshot__a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    padding: 4px;
+}
+
+.b-snapshot__a:hover {
+    color: #e9e9e9;
+    background-color: #393812 !important;
+
+}
+
+.b-snapshot:nth-child(odd) {
+    background-color: #e9e9e9;
+}
+
+.b-archpanel {
+    position: absolute;
+    margin-left: 10%;
+    overflow: auto;
+    width: 89%;
+    height: 100%;
+    z-index: -1;
+}
+
+.b-controls {
+    position: absolute;
+    width: 200px;
+    margin-left: 10%;
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: #999999;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #393812;
+}
