@@ -28,8 +28,7 @@ describe('bem', function() {
 
         before(function(done){
             prepareProject()
-                .then(done)
-                .end();
+                .done(done);
         });
 
         it('completes successfully', function(done) {
@@ -38,7 +37,7 @@ describe('bem', function() {
             BEM.api.make({root: buildPath, verbosity: 'error'})
                 .then(done)
                 .fail(done)
-                .end();
+                .done();
         });
 
         it('creates proper artifacts', function(done) {
@@ -53,7 +52,7 @@ describe('bem', function() {
                     done(result && new Error(result));
                 })
                 .fail(done)
-                .end();
+                .done();
         });
 
         it('does not rebuild anything on next build with no changes made to the files', function(done) {
@@ -77,7 +76,7 @@ describe('bem', function() {
                         });
                 })
                 .fail(done)
-                .end();
+                .done();
         });
 
         it('rebuilds missing artifacts on consequent build', function(done) {
@@ -105,7 +104,7 @@ describe('bem', function() {
                     done(result && new Error(result));
                 })
                 .fail(done)
-                .end();
+                .done();
         });
 
         it('clean removes build artifacts', function(done) {
@@ -124,7 +123,7 @@ describe('bem', function() {
                     })
                 })
                 .fail(done)
-                .end();
+                .done();
         });
 
         it('builds two targets', function(done) {
@@ -176,7 +175,7 @@ describe('bem', function() {
                     done(result && new Error(result));
                 })
                 .fail(done)
-                .end();
+                .done();
         });
     });
 });
