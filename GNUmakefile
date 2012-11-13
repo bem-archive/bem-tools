@@ -1,17 +1,20 @@
-BEM = ./bin/bem
 BIN = ./node_modules/.bin
+BEM = $(BIN)/bem
 MOCHA = $(BIN)/mocha
-JSCOV = $(BIN)/coverjs
+ISTANBUL = $(BIN)/istanbul
 JSHINT = $(BIN)/jshint
 
 .PHONY: all
 all:
 
 .PHONY: clean
-clean:
+clean: clean-coverage
 	-rm -rf test-make-temp
+
+.PHONY: clean-coverage
+clean-coverage:
 	-rm -rf lib-cov
-	-rm -rf coverage.html
+	-rm -rf html-report
 
 .PHONY: jshint
 jshint:
@@ -22,15 +25,14 @@ test: jshint
 	$(MOCHA)
 
 .PHONY: lib-cov
-lib-cov:
-	-rm -rf lib-cov
-	$(JSCOV) --recursive --output lib-cov lib/*
+lib-cov: clean-coverage
+	$(ISTANBUL) instrument --output lib-cov --no-compact --variable global.__coverage__ lib
 
 .PHONY: test-cover
 test-cover: lib-cov test
-	COVER=1 $(MOCHA) --reporter mocha-coverjs > coverage.html
+	BEM_COVER=1 $(MOCHA) --reporter mocha-istanbul
 	@echo
-	@echo Open ./coverage.html file in your browser
+	@echo Open html-report/index.html file in your browser
 
 .PHONY: tests
 tests:
