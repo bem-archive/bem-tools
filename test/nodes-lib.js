@@ -68,7 +68,7 @@ describe('nodes', function() {
 
                     })
                     .fail(done)
-                    .end();
+                    .done();
 
             });
 
