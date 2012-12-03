@@ -32,7 +32,7 @@ Commands to create BEM entities.
 
 ### BEM.create.level()
 
-Creates a level of defenition.
+Creates a level of definition.
 
 #### Options
 
