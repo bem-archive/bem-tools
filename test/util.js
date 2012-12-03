@@ -69,6 +69,45 @@ describe('util', function() {
 
     });
 
+    describe('bemType()', function() {
+
+        it('block', function() {
+            assert.equal(U.bemType({ block: 'block' }), 'block');
+        });
+
+        it('elem', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem' }), 'elem');
+            assert.equal(U.bemType({ elem: 'elem' }), 'elem');
+        });
+
+        it('mod', function() {
+            assert.equal(U.bemType({ mod: 'mod' }), 'mod');
+        });
+
+        it('mod-val', function() {
+            assert.equal(U.bemType({ mod: 'mod', val: 'val' }), 'mod-val');
+        });
+
+        it('block-mod', function() {
+            assert.equal(U.bemType({ block: 'block', mod: 'mod' }), 'block-mod');
+        });
+
+        it('block-mod-val', function() {
+            assert.equal(U.bemType({ block: 'block', mod: 'mod', val: 'val' }), 'block-mod-val');
+        });
+
+        it('elem-mod', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem', mod: 'mod' }), 'elem-mod');
+            assert.equal(U.bemType({ elem: 'elem', mod: 'mod' }), 'elem-mod');
+        });
+
+        it('elem-mod-val', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem', mod: 'mod', val: 'val' }), 'elem-mod-val');
+            assert.equal(U.bemType({ elem: 'elem', mod: 'mod', val: 'val' }), 'elem-mod-val');
+        });
+
+    });
+
     describe('bemParseKey()', function() {
 
         it('block', function() {
