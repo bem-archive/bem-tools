@@ -109,6 +109,10 @@ describe('util', function() {
             assert.deepEqual(U.bemParseKey('block.css'), { block: 'block', tech: 'css' });
         });
 
+        it('block.decl.js', function() {
+            assert.deepEqual(U.bemParseKey('block.decl.js'), { block: 'block', tech: 'decl.js' });
+        });
+
         it('block_mod.css', function() {
             assert.deepEqual(U.bemParseKey('block_mod.css'), {
                 block: 'block',
