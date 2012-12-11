@@ -85,7 +85,7 @@
       }
     },
     "borschik": {
-      "version": "0.0.18",
+      "version": "0.2.3",
       "dependencies": {
         "cssp": {
           "version": "1.0.6",
