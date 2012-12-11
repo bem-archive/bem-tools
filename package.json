@@ -45,7 +45,9 @@
     "minimatch": "~0.2.12",
     "collections": "~0.1.24",
     "reqf": "~1.0.0",
-    "memorystream": "~0.2"
+    "memorystream": "~0.2",
+    "node.extend": "~1.0.0",
+    "fs.extra": "~1.2.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",
