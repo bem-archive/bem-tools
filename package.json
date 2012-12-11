@@ -47,7 +47,8 @@
     "coffee-script": "*",
     "dom-js": "*",
     "mkdirp": "~0.3.4",
-    "node.extend": "~1.0.0"
+    "node.extend": "~1.0.0",
+    "fs.extra": "~1.2.0"
   },
   "devDependencies": {
     "istanbul": "~0.1.21",
