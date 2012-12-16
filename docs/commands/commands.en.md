@@ -242,3 +242,14 @@ Default TCP port is 8080. You can change it using the --port (-p) option.
 When requested URL is mapped to a directory, the server will check if there is an index.html file or it's possible to build it.
 In the case one of these is true the content of the file will be returned to browser. The directory content listing will be returned
 otherwise.
+
+Add a link to client module `/refresh/vogue-client.js` in your `bemjson.js` to automatically update the page in a browser when the source code changes:
+
+    ({
+        block: 'b-page',
+        head: [
+            {elem: 'js', url: '/refresh/vogue-client.js'}
+        ]
+    })
+
+CSS styles are updated without reloading the page. If you change the other files the page is reloaded completely.
