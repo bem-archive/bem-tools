@@ -38,7 +38,7 @@
     "inherit": "~1.0.0",
     "xjst": "0.2.21",
     "ometajs": "~2.1.10",
-    "borschik": "~0.2.3",
+    "borschik": "~0.2.4",
     "apw": "~0.3.9",
     "winston": ">= 0.5.0",
     "dom-js": "*"
