@@ -99,5 +99,5 @@ exports.Tech = INHERIT(BaseTech, {
 
 ### Примеры модулей технологий
 
- * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/nodejs/lib/techs)
+ * [bem-tools/lib/techs/](https://github.com/bem/bem-tools/tree/master/lib/techs)
  * [bem-bl/blocks-common/i-bem/bem/techs/](https://github.com/bem/bem-bl/tree/master/blocks-common/i-bem/bem/techs)
