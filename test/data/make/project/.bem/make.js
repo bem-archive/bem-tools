@@ -1,5 +1,12 @@
 var PATH = require('path');
 
+MAKE.decl('Arch', {
+
+    blocksLevelsRegexp: /^.+?\.blocks/,
+
+    bundlesLevelsRegexp: /^.+?\.bundles$/
+});
+
 // Build i18n files
 MAKE.decl('BundleNode', {
 
@@ -31,7 +38,7 @@ MAKE.decl('BundleNode', {
 
     getTechs: function() {
 
-        if (this.getLevelPath() === 'pages-with-merged') return [
+        if (this.getLevelPath() === 'merged.bundles') return [
             'bemdecl.js',
             'deps.js'
         ];
@@ -46,7 +53,7 @@ MAKE.decl('BundleNode', {
 MAKE.decl('BundlesLevelNode', {
 
     buildMergedBundle: function() {
-        return this.getLevelPath() === 'pages-with-merged';
+        return this.getLevelPath() === 'merged.bundles';
     }
 
 });
