@@ -3,6 +3,7 @@ var assert = require('chai').assert,
     Deps = DEPS.Deps,
     DepsItem = DEPS.DepsItem;
 
+
 /**
  * Mocha BDD interface.
  *
@@ -90,7 +91,20 @@ describe('Deps', function() {
 
             it('block with shouldDeps and mustDeps', assertDepsParse(
                 [ { block: 'b1', shouldDeps: [ { block: 'b2', mustDeps: 'b3' }, 'b3' ] } ],
-                { '': { '': [ { block: 'b1' }, { block: 'b3' }, { block: 'b2' } ] } }
+                { '': { '': [
+                    {
+                        'block': 'b1',
+                        'shouldDeps': [
+                            { 'block': 'b2' },
+                            { 'block': 'b3' }
+                        ]
+                    },
+                    { 'block': 'b3' },
+                    {
+                        'block': 'b2',
+                        'mustDeps': [ { 'block': 'b3' } ]
+                    }
+                ] } }
             ));
 
             it('simple blocks', assertDepsParse(
@@ -115,27 +129,51 @@ describe('Deps', function() {
             it('block with tech', assertDepsParse(
                 { block: 'b1', tech: 't1', shouldDeps: [ 'b2', 'b3' ], mustDeps: [ 'b0', 'b4' ] },
                 { 't1': { 't1': [
-                    { block: 'b0', tech: 't1' },
-                    { block: 'b4', tech: 't1' },
-                    { block: 'b1', tech: 't1' },
-                    { block: 'b2', tech: 't1' },
-                    { block: 'b3', tech: 't1' }
+                    { 'block': 'b0', 'tech': 't1' },
+                    { 'block': 'b4', 'tech': 't1' },
+                    {
+                        'block': 'b1', 'tech': 't1',
+                        'shouldDeps': [
+                            { 'block': 'b2', 'tech': 't1' },
+                            { 'block': 'b3', 'tech': 't1' }
+                        ],
+                        'mustDeps': [
+                            { 'block': 'b0', 'tech': 't1' },
+                            { 'block': 'b4', 'tech': 't1' }
+                        ]
+                    },
+                    { 'block': 'b2', 'tech': 't1' },
+                    { 'block': 'b3', 'tech': 't1' }
                 ] } }
             ));
 
             it('block with techs', assertDepsParse(
                 { block: 'b1', tech: 't1', shouldDeps: { block: 'b2', tech: 't2' } },
                 { 't1': {
-                    't1': [ { block: 'b1', tech: 't1' } ],
-                    't2': [ { block: 'b2', tech: 't2' } ]
+                    't1': [ {
+                        'block': 'b1',
+                        'tech': 't1',
+                        'shouldDeps': [ { 'block': 'b2', 'tech': 't2' } ]
+                    } ],
+                    't2': [ { 'block': 'b2', 'tech': 't2' } ]
                 } }
             ));
 
             it('block with and without tech', assertDepsParse(
                 { block: 'b1', shouldDeps: { block: 'b2', tech: 't2', shouldDeps: { block: 'b3' } } },
                 { '': {
-                    '': [ { block: 'b1' } ],
-                    't2': [ { block: 'b2', tech: 't2' }, { block: 'b3', tech: 't2' } ]
+                    '': [ {
+                        'block': 'b1',
+                        'shouldDeps': [ { 'block': 'b2', 'tech': 't2' } ]
+                    } ],
+                    't2': [
+                        {
+                            'block': 'b2',
+                            'tech': 't2',
+                            'shouldDeps': [ { 'block': 'b3', 'tech': 't2' } ]
+                        },
+                        { 'block': 'b3', 'tech': 't2' }
+                    ]
                 } }
             ));
 
@@ -148,7 +186,15 @@ describe('Deps', function() {
                     { block: 'b1', shouldDeps: [ 'b2', 'b3' ], mustDeps: [ 'b0', 'b4' ] },
                     { block: 'b1', noDeps: ['b2', 'b4'] }
                 ],
-                { '': { '': [ { block: 'b0' }, { block: 'b1' }, { block: 'b3' } ] } }
+                { '': { '': [
+                    { 'block': 'b0' },
+                    {
+                        'block': 'b1',
+                        'shouldDeps': [ { 'block': 'b3' } ],
+                        'mustDeps': [ { 'block': 'b0' } ]
+                    },
+                    { 'block': 'b3' }
+                ] } }
             ));
 
         });
