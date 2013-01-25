@@ -2,8 +2,7 @@ var BEM = require('../../..'),
     PATH = require('path'),
     extend = BEM.util.extend,
 
-    BEM_TECHS = '../../bem-bl/blocks-common/i-bem/bem/techs',
-    PRJ_TECHS = '../../.bem/techs';
+    BEM_TECHS = '../../bem-bl/blocks-common/i-bem/bem/techs';
 
 exports.getTechs = function() {
 
@@ -18,7 +17,6 @@ exports.getTechs = function() {
         'bemhtml': PATH.join(BEM_TECHS, 'v2/bemhtml.js'),
         'html': PATH.join(BEM_TECHS, 'html.js')
     };
-
 };
 
 exports.getConfig = function() {
@@ -28,7 +26,7 @@ exports.getConfig = function() {
         bundleBuildLevels: this.resolvePaths([
             '../../bem-bl/blocks-common',
             '../../bem-bl/blocks-desktop',
-            '../../blocks'
+            '../../desktop.blocks'
         ])
 
     });
