@@ -1,5 +1,17 @@
 bem-tools changelog
 ===================
+04.02.2013, Version 0.5.24 (stable)
+-----------------------------------
+
+- bem server: Add error handling for server.listen() (Closes #315)
+- bem server: Fix server message about serving address to have real host name it is listening on (Closes #334)
+- bem server: Add socket-only option to make bem server listen only unix socket (Closes #316)
+- bem server: Add a check for specified tcp port value to be a number
+- bem make: Fix recursion error when build target name contain trailing slash (Closes #252)
+- bem make: Use tech.getSuffixes() in MetaNode to build dependencies list (Closes #320)
+- bem make: Git library checkout fixed to work with commit hashes (close #302)
+- bem make: Git library branch parameter is added to specify branch name. Use treeish parameter to specify commit or tag.
+- ie6.css tech: Don't include bundle.css
 
 11.12.2012, Version 0.5.21 (stable)
 -----------------------------------
