@@ -67,6 +67,8 @@ describe('bem', function() {
                         .then(function(newTimestamps){
                             var mismatches = Object.keys(newTimestamps)
                                 .filter(function(ts) {
+                                    if (newTimestamps[ts] !== timestamps[ts])
+                                        console.log('ts %s was %s now %s', ts, timestamps[ts], newTimestamps[ts]);
                                     return newTimestamps[ts] !== timestamps[ts];
                                 });
 
@@ -82,10 +84,10 @@ describe('bem', function() {
         it('rebuilds missing artifacts on consequent build', function(done) {
             this.timeout(0);
 
-            Q.all(['pages/example/example.html',
-             'pages/example/example.css',
-             'pages/client/client.html',
-             'pages/client/client.css'].map(function(file) {
+            Q.all(['desktop.bundles/example/example.html',
+             'desktop.bundles/example/example.css',
+             'desktop.bundles/client/client.html',
+             'desktop.bundles/client/client.css'].map(function(file) {
                     return QFS.remove(PATH.join(buildPath, file));
                 }))
                 .then(function() {
@@ -113,8 +115,8 @@ describe('bem', function() {
             BEM.api.make({root: buildPath, verbosity: 'error', method: 'clean'})
                 .then(function() {
                     return Q.all([
-                        dirHasOnly(PATH.join(buildPath, 'pages/example'), ['example.bemjson.js']),
-                        dirHasOnly(PATH.join(buildPath, 'pages/client'), ['client.bemjson.js'])
+                        dirHasOnly(PATH.join(buildPath, 'desktop.bundles/example'), ['example.bemjson.js']),
+                        dirHasOnly(PATH.join(buildPath, 'desktop.bundles/client'), ['client.bemjson.js'])
                     ])
                     .spread(function(example, client) {
                         if (!(example && client)) throw new Error('build artifacts exist');
@@ -136,25 +138,25 @@ describe('bem', function() {
                         verbosity: 'error'
                         },
                         {
-                            targets: ['pages/example/_example.css', 'pages/client/client.html']
+                            targets: ['desktop.bundles/example/_example.css', 'desktop.bundles/client/client.html']
                         });
                 })
                 .then(function(){
                     return Q.all([
                         dirHasOnly(
-                            PATH.join(buildPath, 'pages/example'),
+                            PATH.join(buildPath, 'desktop.bundles/example'),
                             ['example.bemjson.js', '_example.css', 'example.bemdecl.js', 'example.css',
                              'example.deps.js']),
                         dirHasOnly(
-                            PATH.join(buildPath, 'pages/client'),
+                            PATH.join(buildPath, 'desktop.bundles/client'),
                             ['client.bemjson.js', 'client.bemhtml.js', 'client.bemdecl.js',
                             'client.deps.js', 'client.html']),
                         dirHasOnly(
-                            PATH.join(buildPath, '.bem/cache/pages/example'),
+                            PATH.join(buildPath, '.bem/cache/desktop.bundles/example'),
                             ['example.css.meta.js', 'example.deps.js.meta.js']
                         ),
                         dirHasOnly(
-                            PATH.join(buildPath, '.bem/cache/pages/client'),
+                            PATH.join(buildPath, '.bem/cache/desktop.bundles/client'),
                             ['client.deps.js.meta.js', 'client.bemhtml.meta.js']
                         )
                     ])
