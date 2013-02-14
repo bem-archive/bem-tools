@@ -1,5 +1,10 @@
 bem-tools changelog
 ===================
+14.02.2013, Version 0.5.25 (stable)
+-----------------------------------
+
+- bem server: windows fixes 
+
 04.02.2013, Version 0.5.24 (stable)
 -----------------------------------
 
