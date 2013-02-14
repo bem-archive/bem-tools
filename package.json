@@ -28,30 +28,38 @@
     "bem": "./bin/bem"
   },
   "dependencies": {
-    "coa": "~0.3.8",
-    "q": "~0.8.10",
+    "coa": "~0.3.9",
+    "q": "~0.8.11",
     "qq": "~0.3.4",
     "q-fs": "~0.1.33",
     "q-http": "~0.1.16",
     "mime": "~1.2.5",
     "underscore": "~1.3.1",
     "inherit": "~1.0.0",
-    "xjst": "0.2.21",
-    "ometajs": "~2.1.10",
-    "borschik": "~0.2.4",
+    "xjst": "~0.3.10",
+    "ometajs": "~3.1.15",
+    "borschik": "~0.0.13",
     "apw": "~0.3.9",
     "winston": ">= 0.5.0",
-    "dom-js": "*"
+    "memorystream": ">= 0.1.1",
+    "csso": "~1.3.5",
+    "uglify-js": "~1.3.0",
+    "coffee-script": "*",
+    "dom-js": "*",
+    "mkdirp": "~0.3.4",
+    "node.extend": "~1.0.0"
   },
   "devDependencies": {
-    "mocha-coverjs": "*",
-    "mocha": "~1.3.0",
-    "chai": "~1.0.3",
-    "coverjs": ">= 0.0.7-alpha"
+    "istanbul": "~0.1.21",
+    "mocha-as-promised": "*",
+    "mocha-istanbul": "*",
+    "mocha": "~1.7.0",
+    "chai": "~1.3.0"
   },
   "scripts": {
+    "postinstall": "./scripts/postinst.js",
     "test": "make test",
-    "test-cover": "make test-cover"
+    "coverage": "make coverage"
   },
   "engines": {
     "node": ">= 0.6.0"

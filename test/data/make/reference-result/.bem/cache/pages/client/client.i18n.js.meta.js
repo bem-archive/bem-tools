@@ -15,5 +15,6 @@
     "../../../../pages/client/blocks/b-page/b-page.js",
     "../../../../bem-bl/blocks-common/i-jquery/__leftclick/i-jquery__leftclick.js",
     "../../../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js",
+    "../../../../blocks/b-link/_pseudo/b-link_pseudo_yes.coffee",
     "../../../../blocks/b-link/_togcolor/b-link_togcolor_yes.js"
 ])

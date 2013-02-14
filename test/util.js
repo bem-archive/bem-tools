@@ -66,4 +66,136 @@ describe('util', function() {
 
     });
 
+    describe('bemType()', function() {
+
+        it('block', function() {
+            assert.equal(U.bemType({ block: 'block' }), 'block');
+        });
+
+        it('elem', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem' }), 'elem');
+            assert.equal(U.bemType({ elem: 'elem' }), 'elem');
+        });
+
+        it('mod', function() {
+            assert.equal(U.bemType({ mod: 'mod' }), 'mod');
+        });
+
+        it('mod-val', function() {
+            assert.equal(U.bemType({ mod: 'mod', val: 'val' }), 'mod-val');
+        });
+
+        it('block-mod', function() {
+            assert.equal(U.bemType({ block: 'block', mod: 'mod' }), 'block-mod');
+        });
+
+        it('block-mod-val', function() {
+            assert.equal(U.bemType({ block: 'block', mod: 'mod', val: 'val' }), 'block-mod-val');
+        });
+
+        it('elem-mod', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem', mod: 'mod' }), 'elem-mod');
+            assert.equal(U.bemType({ elem: 'elem', mod: 'mod' }), 'elem-mod');
+        });
+
+        it('elem-mod-val', function() {
+            assert.equal(U.bemType({ block: 'block', elem: 'elem', mod: 'mod', val: 'val' }), 'elem-mod-val');
+            assert.equal(U.bemType({ elem: 'elem', mod: 'mod', val: 'val' }), 'elem-mod-val');
+        });
+
+    });
+
+    describe('bemParseKey()', function() {
+
+        it('block', function() {
+            assert.deepEqual(U.bemParseKey('block'), { block: 'block' });
+        });
+
+        it('block_mod', function() {
+            assert.deepEqual(U.bemParseKey('block_mod'), { block: 'block', mod: 'mod' });
+        });
+
+        it('block_mod_val', function() {
+            assert.deepEqual(U.bemParseKey('block_mod_val'), {
+                block: 'block',
+                mod: 'mod',
+                val: 'val'
+            });
+        });
+
+        it('block__elem', function() {
+            assert.deepEqual(U.bemParseKey('block__elem'), { block: 'block', elem: 'elem' });
+        });
+
+        it('block__elem_mod', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod'
+            });
+        });
+
+        it('block__elem_mod_val', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod_val'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val'
+            });
+        });
+
+        it('block.css', function() {
+            assert.deepEqual(U.bemParseKey('block.css'), { block: 'block', tech: 'css' });
+        });
+
+        it('block.decl.js', function() {
+            assert.deepEqual(U.bemParseKey('block.decl.js'), { block: 'block', tech: 'decl.js' });
+        });
+
+        it('block_mod.css', function() {
+            assert.deepEqual(U.bemParseKey('block_mod.css'), {
+                block: 'block',
+                mod: 'mod',
+                tech: 'css'
+            });
+        });
+
+        it('block_mod_val.css', function() {
+            assert.deepEqual(U.bemParseKey('block_mod_val.css'), {
+                block: 'block',
+                mod: 'mod',
+                val: 'val',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem.css'), {
+                block: 'block',
+                elem: 'elem',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem_mod.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem_mod_val.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod_val.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val',
+                tech: 'css'
+            });
+        });
+
+    });
+
 });
