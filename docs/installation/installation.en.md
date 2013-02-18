@@ -1,42 +1,32 @@
 # Installation
 You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.1.69](http://npmjs.org/) or later.
-After this it suffices `npm -g install bem`.
+Then it's sufficient just to make `npm install bem`.
 
  * Install [nodejs](http://nodejs.org)
 
         https://github.com/joyent/node/wiki/Installation
 
- * Install [npm](http://npmjs.org)
+To work with bem tools on Windows you need to have minimalist unix development environment. We recomend to install [git](http://git-scm.com/) which has built-in [MinGW](http://www.mingw.org/) as you'll probably need git in your further work anyway.
 
-        curl http://npmjs.org/install.sh | sudo sh
-
- * After installation configure `NODE_PATH`:
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
-
-    or
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
-
- * Install [bem-tools](https://github.com/bem/bem-tools)
+ * Install [bem-tools](https://github.com/bem/bem-tools) globally or locally for particular project (which is preferable). Don't pay attention to WARN messages while installation.
 
         sudo npm -g install bem
 
- * Use this command [bem-tools](https://github.com/bem/bem-tools) to install the development version
+or better add bem into ``package.json`` like this:
 
-        sudo npm -g install bem@unstable
-
-## bem-bl
-
-If you are going to use `bem` with
-[bem-bl](https://github.com/bem/bem-bl) block library, you should also install
-[XJST](https://github.com/veged/xjst) and [OmetaJS](https://github.com/veged/ometa-js).
-
-    sudo npm -g install xjst ometajs
+````js
+{
+  "dependencies": {
+    "bem": "~0.5.25"
+  }
+}
+````
 
 ## Usage
 Get the list of commands with `bem --help`.
 To read about commands and subcommands use `bem COMMAND --help` or `bem COMMAND SUBCOMMAND --help`.
+
+For quick start consider to checkout [bem project stub](https://github.com/bem/project-stub) and follow the instructions in [README.md](https://github.com/bem/project-stub/blob/master/README.md).
 
 ## Shell completion
 
