@@ -10,6 +10,6 @@ To verify that your changes do not break existing functionality we recommend to 
 
 You can check the level of the code coverage by tests using the command:
 
-    make test-cover
+    make coverage
 
-Then open coverage.html file in a browser. Code lines which have not been executed during the tests run will be marked red.
+Then open html-report/index.html file in a browser. Code lines which have not been executed during the tests run will be marked red.
