@@ -1,5 +1,9 @@
 bem-tools changelog
 ===================
+06.03.2013, Version 0.5.26 (stable)
+- bem make: Magic nodes doesn't link the nodes it creates with parent magic nodes (Closes #306)
+- deps.js: don't swallow parsing errors (Closes #353)
+
 14.02.2013, Version 0.5.25 (stable)
 -----------------------------------
 
