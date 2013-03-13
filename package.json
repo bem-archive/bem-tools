@@ -39,9 +39,11 @@
     "xjst": "0.2.21",
     "ometajs": "~2.1.10",
     "borschik": "~0.2.4",
-    "apw": "~0.3.9",
+    "apw": "https://github.com/bem/apw/tarball/vow",
     "winston": ">= 0.5.0",
-    "dom-js": "*"
+    "dom-js": "*",
+    "vow": "~0.2.0",
+    "vow-fs": "~0.1.7"
   },
   "devDependencies": {
     "mocha-coverjs": "*",
