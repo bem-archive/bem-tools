@@ -101,6 +101,11 @@
     },
     "apw": {
       "version": "0.3.9",
+        "dependencies": {
+          "node.extend": {
+            "version": "1.0.0"
+          }
+        },
       "from": "https://github.com/bem/apw/tarball/vow"
     },
     "winston": {
