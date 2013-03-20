@@ -1,3 +1,4 @@
+/* ../../bem-bl/blocks-common/i-jquery/__inherit/i-jquery__inherit.js begin */
 /**
  * Inheritance plugin
  *
@@ -108,7 +109,10 @@ $.inheritSelf = function(base, props, staticProps) {
 
 };
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-jquery/__inherit/i-jquery__inherit.js end */
+;
+/* ../../bem-bl/blocks-common/i-jquery/__identify/i-jquery__identify.js begin */
 /**
  * Identify plugin
  *
@@ -141,7 +145,10 @@ $.identify = function(obj, onlyGet) {
 
 };
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-jquery/__identify/i-jquery__identify.js end */
+;
+/* ../../bem-bl/blocks-common/i-jquery/__is-empty-object/i-jquery__is-empty-object.js begin */
 (function($) {
 
 $.isEmptyObject || ($.isEmptyObject = function(obj) {
@@ -150,7 +157,10 @@ $.isEmptyObject || ($.isEmptyObject = function(obj) {
     });
 
 })(jQuery);
+
+/* ../../bem-bl/blocks-common/i-jquery/__is-empty-object/i-jquery__is-empty-object.js end */
 ;
+/* ../../bem-bl/blocks-common/i-jquery/__debounce/i-jquery__debounce.js begin */
 /**
  * Debounce and throttle function's decorator plugin 1.0.6
  *
@@ -219,7 +229,10 @@ $.extend({
 
 });
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-jquery/__debounce/i-jquery__debounce.js end */
+;
+/* ../../bem-bl/blocks-common/i-jquery/__observable/i-jquery__observable.js begin */
 /**
  * Observable plugin
  *
@@ -420,7 +433,10 @@ var storageExpando = '__' + +new Date + 'storage',
 
 $.observable = $.inherit(Observable, Observable);
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-jquery/__observable/i-jquery__observable.js end */
+;
+/* ../../bem-bl/blocks-common/i-bem/i-bem.js begin */
 /** @requires jquery.inherit */
 /** @requires jquery.isEmptyObject */
 /** @requires jquery.identify */
@@ -1149,7 +1165,10 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
 
 });
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-bem/i-bem.js end */
+;
+/* ../../bem-bl/blocks-common/i-ecma/__object/i-ecma__object.js begin */
 (function() {
 
 /**
@@ -1166,7 +1185,10 @@ Object.keys || (Object.keys = function(obj) {
     return res;
 });
 
-})();;
+})();
+/* ../../bem-bl/blocks-common/i-ecma/__object/i-ecma__object.js end */
+;
+/* ../../bem-bl/blocks-common/i-ecma/__array/i-ecma__array.js begin */
 (function() {
 
 var ptp = Array.prototype,
@@ -1325,7 +1347,10 @@ Array.isArray || (Array.isArray = function(obj) {
     return toStr.call(obj) === '[object Array]';
 });
 
-})();;
+})();
+/* ../../bem-bl/blocks-common/i-ecma/__array/i-ecma__array.js end */
+;
+/* ../../bem-bl/blocks-common/i-ecma/__function/i-ecma__function.js begin */
 (function() {
 
 var slice = Array.prototype.slice;
@@ -1341,7 +1366,10 @@ Function.prototype.bind || (Function.prototype.bind = function(ctx) {
 
 });
 
-})();;
+})();
+/* ../../bem-bl/blocks-common/i-ecma/__function/i-ecma__function.js end */
+;
+/* ../../bem-bl/blocks-common/i-bem/__internal/i-bem__internal.js begin */
 /** @fileOverview Module for internal BEM helpers */
 /** @requires BEM */
 
@@ -1499,7 +1527,10 @@ BEM.INTERNAL = {
 
 }
 
-})(BEM, jQuery);;
+})(BEM, jQuery);
+/* ../../bem-bl/blocks-common/i-bem/__internal/i-bem__internal.js end */
+;
+/* ../../bem-bl/blocks-common/i-bem/__dom/i-bem__dom.js begin */
 /** @requires BEM */
 /** @requires BEM.INTERNAL */
 
@@ -3147,7 +3178,10 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
 });
 
 })(BEM, jQuery);
+
+/* ../../bem-bl/blocks-common/i-bem/__dom/i-bem__dom.js end */
 ;
+/* ../../bem-bl/blocks-common/i-ecma/__string/i-ecma__string.js begin */
 (function() {
 
 String.prototype.trim || (String.prototype.trim = function () {
@@ -3162,11 +3196,17 @@ String.prototype.trim || (String.prototype.trim = function () {
 
 });
 
-})();;
+})();
+/* ../../bem-bl/blocks-common/i-ecma/__string/i-ecma__string.js end */
+;
+/* ../../bem-bl/blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js begin */
 /* дефолтная инициализация */
 $(function() {
     BEM.DOM.init();
-});;
+});
+/* ../../bem-bl/blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js end */
+;
+/* ../../bem-bl/blocks-common/i-jquery/__leftclick/i-jquery__leftclick.js begin */
 /**
  * leftClick event plugin
  *
@@ -3206,7 +3246,10 @@ var leftClick = $.event.special.leftclick = {
 
 };
 
-})(jQuery);;
+})(jQuery);
+/* ../../bem-bl/blocks-common/i-jquery/__leftclick/i-jquery__leftclick.js end */
+;
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js begin */
 BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
 
     _onClick : function(e) {
@@ -3232,7 +3275,10 @@ BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
     }
 
 });
+
+/* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js end */
 ;
+/* ../../blocks/b-link/_togcolor/b-link_togcolor_yes.js begin */
 /** @requires BEM */
 /** @requires BEM.DOM */
 
@@ -3248,6 +3294,8 @@ BEM.DOM.decl({ name: 'b-link', modName: 'togcolor', modVal: 'yes'}, {
 });
 
 })();
+
+/* ../../blocks/b-link/_togcolor/b-link_togcolor_yes.js end */
 ;
 
 BEM.I18N.lang('en');
