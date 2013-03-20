@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.5.27",
+  "version": "0.5.28",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -38,7 +38,7 @@
     "inherit": "~1.0.0",
     "xjst": "0.2.21",
     "ometajs": "~2.1.10",
-    "borschik": "~0.2.4",
+    "borschik": "~0.2.8",
     "apw": "~0.3.9",
     "winston": ">= 0.5.0",
     "dom-js": "*"
