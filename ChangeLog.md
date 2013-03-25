@@ -1,5 +1,10 @@
 bem-tools changelog
 ===================
+25.03.2013, Version 0.5.29 (stable)
+-----------------------------------
+
+- bem make: don't update git library form upstream when working copy state satisfies to configured one. git update commands chain altered (no git reset for now) (Closes #335)
+
 20.03.2013, Version 0.5.27 (stable)
 -----------------------------------
 
