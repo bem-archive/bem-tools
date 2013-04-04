@@ -1,5 +1,12 @@
 bem-tools changelog
 ===================
+
+04.04.2013, Version 0.5.30 (stable)
+-----------------------------------
+
+- bem make: Add ability to customize build rules more flexibly by providing Arch.createCustomNode() method
+- bem make: Add match*() methods to `simple` level prototype, add tests (Closes #282)
+
 25.03.2013, Version 0.5.29 (stable)
 -----------------------------------
 
