@@ -186,7 +186,7 @@ function testBaseTech(techPath, techAlias) {
 
         });
 
-        describe(".getTechRelativePath()", function() {
+        describe(".getTechRelativePath(" + __dirname + ")", function() {
 
             var p = PATH.unixToOs(relTechPath);
             it("equals to " + p, function() {
