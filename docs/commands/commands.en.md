@@ -122,17 +122,16 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 
     bem create -b b-block -e elem -m mod -v val1 -v val2
 
+## Create bemdecl.js file from page's bemjson
+
+    bem create \
+        -l pages \
+        -b index \
+        -T bemdecl.js
+
 # bem build
 
 `bem build` command builds page files in different techs, according to a page declaration.
-
-## Create bemdecl.js file from page's bemjson
-
-    bem build \
-        -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
-        -l blocks -l pages/index/blocks \
-        -d pages/index/index.bemjson.js -t bemdecl.js \
-        -o pages/index -n index
 
 You can use either tech's name or a path to its module as a value of -t flag. This
 module says how to build a final file from a declaration.
