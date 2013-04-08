@@ -125,18 +125,17 @@
 
     bem create -b b-block -e elem -m mod -v val1 -v val2
 
+## Создание файла bemdecl.js по bemjson-декларации страницы
+
+    bem create \
+        -l pages \
+        -b index \
+        -T bemdecl.js
+
 # bem build
 
 С помощью команды `bem build` можно собирать файлы страниц для различных технологий,
 основываясь на декларации страницы.
-
-## Создание файла bemdecl.js по bemjson-декларации страницы
-
-    bem build \
-        -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
-        -l blocks -l pages/index/blocks \
-        -d pages/index/index.bemjson.js -t bemdecl.js \
-        -o pages/index -n index
 
 Значением флага -t может быть как название технологии, так и полный путь до модуля
 технологии. В этом модуле указано, как именно по декларации собирается конечный файл.
