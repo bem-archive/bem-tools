@@ -1,5 +1,12 @@
 bem-tools changelog
 ===================
+24.04.2013, Version 0.5.31 (stable)
+-----------------------------------
+
+- bem: Add additional techs and levels from abandoned introspect branch
+- API: Add mkdrip wrapper to util.js
+- bem: ie.css tech should pass absolute path for its chunks
+- bem make: Fix for "Coud not call for method of undefined" when using nodes from API
 
 04.04.2013, Version 0.5.30 (stable)
 -----------------------------------
