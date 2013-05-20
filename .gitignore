@@ -7,3 +7,4 @@ node_modules/
 test-make-temp/
 lib-cov/
 coverage.html
+.DS_Store
