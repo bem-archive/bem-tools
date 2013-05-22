@@ -79,8 +79,6 @@ exports.depsFull = {
     "": {
         "shouldDeps": [
             "b-page",
-            "b-page",
-            "b-page",
             "i-bem",
             "i-bem__html",
             "i-ua",
