@@ -142,11 +142,6 @@ exports.depsFull = {
             "b-link_togcolor_yes",
             "b-link_color",
             "b-link_color_green",
-            "b-page",
-            "b-page",
-            "b-link_pseudo",
-            "b-link_pseudo_yes",
-            "b-link_togcolor_yes",
             "i-bem",
             "i-bem__html",
             "i-ua",
@@ -184,8 +179,6 @@ exports.depsFull = {
     },
     "b-link_pseudo": {
         "shouldDeps": [
-            "b-link_pseudo",
-            "b-link_pseudo",
             "b-link_pseudo",
             "b-link_pseudo_yes",
             "b-link_pseudo_no"
@@ -225,7 +218,6 @@ exports.depsFull = {
     "b-link_togcolor_yes": {
         "shouldDeps": [
             "b-link",
-            "b-link_color",
             "b-link_color",
             "b-link_color_red",
             "b-link_color_green"
