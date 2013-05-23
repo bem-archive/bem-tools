@@ -1,5 +1,12 @@
 bem-tools changelog
 ===================
+
+23.05.2013, Version 0.5.32 (stable)
+-----------------------------------
+
+- bem: Fix `bem create level` on Node 0.10.x (Closes #372)
+- bem make: Create parent directory for `SymlinkLibraryNode` if it doesn't exists (Closes #342)
+
 24.04.2013, Version 0.5.31 (stable)
 -----------------------------------
 
