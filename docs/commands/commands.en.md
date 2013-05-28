@@ -21,22 +21,22 @@ An example of technologies' links (this is `blocks-desktop` level of
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
-### Create new level of definition named `blocks` under current directory:
+### Create new level of definition named `desktop.blocks` under current directory
 
-    bem create level blocks
+    bem create level desktop.blocks
 
 ### Create a level for pages
 
 In `bem-tools` terms pages are blocks as well and a directory which holds pages is a level of
-definition itself. To create such a directory run this:
+definition itself. To create such a directory run this command:
 
-    bem create level pages
+    bem create level desktop.bundles
 
 ### Create a level based on an existing one
 
 `bem create level` allows to use an existing level as a prototype for a level it creates.
 
-    bem create level --level bem-bl/blocks-desktop blocks
+    bem create level --level .bem/levels/blocks.js desktop.blocks
 
 ## Block
 
@@ -44,13 +44,13 @@ Block is a bunch of files in different technologies that hold block's implementa
 
 ### Create a new block
 
-    bem create block b-my-block
+    bem create -b b-my-block
 
-By default, a block has several techs: (`bemhtml`, `css`, `js`).
+By default, a block will be created in several techs (`bemhtml`, `css`, `js`).
 
 ### Create a new block using concrete tech
 
-Flags -t (-T) are to create files of technologies you need:
+Flags `-t` (`-T`) are to create files of technologies you need:
 
     bem create block -t deps.js b-my-block
         // Creates a block implementation in deps.js technology, ecxept of default techs.
@@ -70,31 +70,7 @@ You can find the examples of tech modules in the repo:
 
     https://github.com/bem/bem-tools/tree/master/lib/techs
 
-### Create element
-
-Create element named `elem` for block `b-my-block`
-
-    bem create elem -b b-my-block elem
-
-### Create modifier of block or element
-
-Create modifier named `mod` for block `b-my-block`
-
-    bem create mod -b b-my-block mod
-
-Create modifier named `mod` having value `val` for block `b-my-block`
-
-    bem create mod -b b-my-block mod -v val
-
-Create modifier named `mod` for element `elem` of block `b-my-block`
-
-    bem create mod -b b-my-block -e elem mod
-
-Create modifier named  `mod` having value `val` for element `elem` of block `b-my-block`
-
-    bem create mod -b b-my-block -e elem mod -v val
-
-### Create any BEM entity using `bem create` command only
+### Create any BEM entity
 
 You can create any BEM entities or bunches of them using `bem create` command.
 
@@ -122,7 +98,7 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 
     bem create -b b-block -e elem -m mod -v val1 -v val2
 
-## Create bemdecl.js file from page's bemjson
+### Create bemdecl.js file from page's bemjson
 
     bem create \
         -l pages \
@@ -133,7 +109,7 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 
 `bem build` command builds page files in different techs, according to a page declaration.
 
-You can use either tech's name or a path to its module as a value of -t flag. This
+You can use either tech's name or a path to its module as a value of `-t` flag. This
 module says how to build a final file from a declaration.
 
 E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
