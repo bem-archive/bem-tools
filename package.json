@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.5.32",
+  "version": "0.5.33",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -29,16 +29,16 @@
   },
   "dependencies": {
     "coa": "~0.3.8",
-    "q": "~0.8.10",
+    "q": "~0.8.12",
     "qq": "~0.3.4",
     "q-fs": "~0.1.33",
     "q-http": "~0.1.16",
     "mime": "~1.2.5",
     "underscore": "~1.3.1",
     "inherit": "~1.0.0",
-    "xjst": "0.2.21",
-    "ometajs": "~2.1.10",
-    "borschik": "~0.2.8",
+    "xjst": "0.4.13",
+    "ometajs": "~3.2.4",
+    "borschik": "~0.3.1",
     "apw": "~0.3.9",
     "winston": ">= 0.5.0",
     "dom-js": "*",
@@ -70,7 +70,7 @@
       "url": "http://github.com/bem/bem-tools/raw/master/LICENSE"
     }
   ],
-  "preferGlobal": true,
+  "preferGlobal": false,
   "publishConfig": {
     "tag": "latest"
   },
