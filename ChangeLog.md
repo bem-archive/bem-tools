@@ -1,6 +1,15 @@
 bem-tools changelog
 ===================
 
+30.05.2013, Version 0.5.33 (stable)
+----------------------------------
+
+- package: q updated to 0.8.12
+- package: borschik updated to 0.3.1
+- package: xjst updated to 0.4.13
+- package: ometajs updated to 3.2.4
+- package: preferglobal set to false 
+
 23.05.2013, Version 0.5.32 (stable)
 -----------------------------------
 
