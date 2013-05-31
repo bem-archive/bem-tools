@@ -215,6 +215,8 @@ describe('level', function() {
         describe(".match-*()", function() {
             level.matchOrder().forEach(function(matcher) {
 
+                if (matcher === 'block-all' || matcher === 'elem-all') return;
+
                 var args = matcher.split('-'),
                     match;
                 if(args[0] != 'block') args.unshift('block');
@@ -235,6 +237,52 @@ describe('level', function() {
 
         });
 
+        describe(".match-*-all()", function() {
+
+            var blockData = ['elem',
+                             'elem-mod',
+                             'elem-mod-val',
+                             '',
+                             'block',
+                             'block-mod',
+                             'block-mod-val'],
+                matcher = 'elem-all';
+
+            blockData.forEach(function(block) {
+                if (block === '') {
+                    matcher = 'block-all';
+                    return;
+                }
+
+                var args = block.split('-');
+                if (args[0] !== 'block') args.unshift('block');
+
+                var match = level.match(matcher, level['get-' + block].apply(this, args));
+
+                it(UTIL.format("matcher '%s' complies to getter with %s data", matcher, block), testMatch(match));
+
+            }, this);
+
+            // generate test function for matchs and vars to check equality to
+            function testMatch(match, vars) {
+
+                vars = vars || {};
+
+                return function() {
+                    Object.keys(match).forEach(function(key) {
+                        assert.isString(match[key]);
+                        if(key == 'suffix') {
+                            assert.equal(match[key], '');
+                            return;
+                        }
+                        assert.equal(match[key], vars[key] || key);
+                    });
+                };
+
+            }
+
+        });
+        
     });
 
 });

@@ -261,7 +261,7 @@ describe('tech modules', function() {
 
     testBaseTech(lib + 'techs/js');
     testBaseTech(lib + 'techs/css');
-    testBaseTech(lib + 'tech', 'def');
+    testBaseTech(lib + 'tech/index', 'def');
     testBaseTech('./data/techs/test.js');
 
 });

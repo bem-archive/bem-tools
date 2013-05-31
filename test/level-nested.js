@@ -273,6 +273,8 @@ describe('level', function() {
                 var args = matcher.split('-'),
                     match, nestedMatch, block;
 
+                if (matcher === 'elem-all' || matcher === 'block-all') return;
+
                 // test simple match
                 if(args[0] != 'block') args.unshift('block');
                 match = level.match(matcher, level.getRel(matcher, args));
