@@ -46,13 +46,6 @@ exports.deps = [
         "elem": "html"
     },
     {
-        "block": "i-ua"
-    },
-    {
-        "block": "i-jquery",
-        "elem": "core"
-    },
-    {
         "block": "i-bem",
         "elem": "dom"
     },
@@ -72,7 +65,22 @@ exports.deps = [
         "val": "auto"
     },
     {
+        "block": "i-ua"
+    },
+    {
+        "block": "i-jquery",
+        "elem": "core"
+    },
+    {
         "block": "b-page"
+    },
+    {
+        "block": "b-page",
+        "elem": "css"
+    },
+    {
+        "block": "b-page",
+        "elem": "js"
     }
 ];
 exports.depsByTechs = {
