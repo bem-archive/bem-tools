@@ -192,7 +192,11 @@ describe('level', function() {
 
         describe(".createIntrospector() default introspector call", function() {
             it("returns correct introspection", function() {
-                assert.deepEqual(level.createIntrospector()(), [
+                assert.deepEqual(level.createIntrospector()().sort(function(a, b) {
+                    if (a.tech < b.tech) return -1;
+                    if (a.tech > b.tech) return 1;
+                    return 0;
+                }), [
                     {
                         block: 'first-block',
                         elem: 'elem1',
