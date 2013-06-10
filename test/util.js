@@ -25,7 +25,7 @@ describe('util', function() {
         });
 
         it("'custom' resolves to 'bem/lib/tech'", function() {
-            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech.js'));
+            assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech'));
         });
 
     });

@@ -158,6 +158,8 @@ describe('level', function() {
 
             level.matchOrder().forEach(function(matcher) {
 
+                if (matcher === 'elem-all' || matcher === 'block-all') return;
+
                 var args = matcher.split('-'),
                     match, nestedMatch, block;
 

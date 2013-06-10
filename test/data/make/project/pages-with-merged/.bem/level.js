@@ -3,10 +3,8 @@ var extend = require(process.env.COVER? 'bem/lib-cov/util' : 'bem/lib/util').ext
 exports.getTechs = function() {
     return {
         'bemjson.js': '',
-        'bemdecl.js': 'bemdecl.js',
-        'deps.js': 'deps.js',
-        'bemhtml': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
-        'js': 'js-i.js'
+        'bemdecl.js': 'v2/bemdecl.js',
+        'deps.js': 'v2/deps.js'
     };
 };
 
