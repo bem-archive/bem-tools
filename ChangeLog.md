@@ -1,5 +1,9 @@
 bem-tools changelog
 ===================
+11.06.2013, Version 0.6.0 (stable)
+----------------------------------
+
+- speed optimizations with techs API V2
 
 30.05.2013, Version 0.5.33 (stable)
 ----------------------------------

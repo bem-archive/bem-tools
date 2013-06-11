@@ -7,15 +7,26 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  *
- * @version 1.3.3
+ * @version 1.3.5
  */
 
 (function($) {
 
 var hasIntrospection = (function(){_}).toString().indexOf('_') > -1,
-    needCheckProps = $.browser.msie, // fucking ie hasn't toString, valueOf in for
-    specProps = needCheckProps? ['toString', 'valueOf'] : null,
-    emptyBase = function() {};
+    emptyBase = function() {},
+    objCreate = Object.create || function(ptp) {
+        var inheritance = function() {};
+        inheritance.prototype = ptp;
+        return new inheritance();
+    },
+    needCheckProps = true,
+    testPropObj = { toString : '' };
+
+for(var i in testPropObj) { // fucking ie hasn't toString, valueOf in for
+    testPropObj.hasOwnProperty(i) && (needCheckProps = false);
+}
+
+var specProps = needCheckProps? ['toString', 'valueOf'] : null;
 
 function override(base, result, add) {
 
@@ -85,9 +96,8 @@ $.inherit = function() {
 
     $.extend(result, base);
 
-    var inheritance = function() {},
-        basePtp = inheritance.prototype = base.prototype,
-        resultPtp = result.prototype = new inheritance();
+    var basePtp = base.prototype,
+        resultPtp = result.prototype = objCreate(basePtp);
 
     resultPtp.__self = resultPtp.constructor = result;
 
@@ -248,7 +258,7 @@ $.extend({
 
 (function($) {
 
-var storageExpando = '__' + +new Date + 'storage',
+var storageExpando = '__' + (+new Date) + 'storage',
     getFnId = function(fn, ctx) {
         return $.identify(fn) + (ctx? $.identify(ctx) : '');
     },
@@ -580,12 +590,14 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
         if(!this._initing && !this.hasMod('js', 'inited')) {
             this._initing = true;
 
-            this.params = $.extend(this.getDefaultParams(), this._params);
-            delete this._params;
+            if(!this.params) {
+                this.params = $.extend(this.getDefaultParams(), this._params);
+                delete this._params;
+            }
 
             this.setMod('js', 'inited');
             delete this._initing;
-            this.trigger('init');
+            this.hasMod('js', 'inited') && this.trigger('init');
         }
 
         return this;
@@ -1016,6 +1028,13 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
                             undefined;
                     });
             });
+        }
+
+        if(staticProps && typeof staticProps.live === 'boolean') {
+            var live = staticProps.live;
+            staticProps.live = function() {
+                return live;
+            };
         }
 
         var block;
@@ -1562,7 +1581,7 @@ var win = $(window),
     domElemToParams = {},
 
 /**
- * Storage for liveCtx event handlers 
+ * Storage for liveCtx event handlers
  * @private
  * @type Object
  */
@@ -1762,7 +1781,7 @@ function getClientNode() {
 }
 
 /**
- * Returns a block on a DOM element and initializes it if necessary 
+ * Returns a block on a DOM element and initializes it if necessary
  * @param {String} blockName Block name
  * @param {Object} params Block parameters
  * @returns {BEM}
@@ -1777,7 +1796,7 @@ $.fn.bem = function(blockName, params) {
  */
 var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
     /**
-     * @class Base block for creating BEM blocks that have DOM representation 
+     * @class Base block for creating BEM blocks that have DOM representation
      * @constructs
      * @private
      * @param {jQuery} domElem DOM element that the block is created on
@@ -1995,6 +2014,31 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
      * @returns {BEM}
      */
     bindToWin : function(event, fn) {
+
+        var _fn = fn,
+            currentHeight,
+            currentWidth;
+
+        if (event === 'resize') {
+
+            fn = function() {
+
+                var height = win.height(),
+                    width = win.width();
+
+                if (currentHeight !== height || currentWidth !== width) {
+
+                    currentHeight = height;
+                    currentWidth = width;
+
+                    _fn.apply(this, arguments);
+
+                }
+
+
+            }
+
+        }
 
         this._needSpecialUnbind = true;
         return this.bindToDomElem(win, event, fn);
@@ -2269,7 +2313,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
             className.indexOf(classPrefix) > -1?
                 this.className = className.replace(
                     classRE,
-                    (needDel? '' : '$1' + classPrefix + modVal) + '$3') :
+                    (needDel? '' : '$1' + classPrefix + modVal)) :
                 needDel || $(this).addClass(classPrefix + modVal);
         });
 
@@ -2505,12 +2549,8 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
             var noLive = typeof res == 'undefined';
 
             if(noLive ^ heedLive) {
-                if($.isFunction(_this.live)) {
-                    res = _this.live() !== false;
-                    _this.live = function() {};
-                } else {
-                    res = _this.live;
-                }
+                res = _this.live() !== false;
+                _this.live = function() {};
             }
         }
 
@@ -2599,6 +2639,18 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
 
         this.destruct(ctx, true);
         this.init(ctx.html(content), callback, callbackCtx);
+
+    },
+
+    /**
+     * Changes a fragment of the DOM tree including the context and initializes blocks.
+     * @param {jQuery} ctx Root DOM node
+     * @param {jQuery|String} content Content to be added
+     */
+    replace : function(ctx, content) {
+
+        this.destruct(true, ctx);
+        this.init($(content).replaceAll(ctx));
 
     },
 
@@ -2722,9 +2774,13 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
                 var nodeClassName = ' ' + node.className + ' ', i = 0;
                 while(className = classNames[i++]) {
                     if(nodeClassName.indexOf(' ' + className + ' ') > -1) {
-                        var j = 0, fns = storage[className].fns, fn;
-                        while(fn = fns[j++]) fn.fn.call($(node), e);
-                        if(e.isPropagationStopped()) return;
+                        var j = 0, fns = storage[className].fns, fn, stopPropagationAndPreventDefault = false;
+                        while(fn = fns[j++])
+                            if(fn.fn.call($(node), e) === false) stopPropagationAndPreventDefault = true;
+
+                        stopPropagationAndPreventDefault && e.preventDefault();
+                        if(stopPropagationAndPreventDefault || e.isPropagationStopped()) return;
+
                         classNames.splice(--i, 1);
                     }
                 }
@@ -2742,7 +2798,9 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
                     ((e.data || (e.data = {})).domElem = $(this)).closest(_this.buildSelector()),
                     true ],
                 block = initBlock.apply(null, invokeOnInit? args.concat([callback, e]) : args);
-            block && (invokeOnInit || (callback && callback.apply(block, arguments)));
+
+            if(block && !invokeOnInit && callback)
+                return callback.apply(block, arguments);
         };
 
     },
@@ -2785,7 +2843,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
 
         var _this = this;
 
-        if(to.elem && to.elem.indexOf(' ') > 1) {
+        if(to.elem && to.elem.indexOf(' ') > 0) {
             to.elem.split(' ').forEach(function(elem) {
                 _this._liveClassBind(
                     buildClass(_this._name, elem, to.modName, to.modVal),
@@ -2932,7 +2990,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
     },
 
     /**
-     * Removes the live event handler from a block, based on a specified element where the event was being listened for 
+     * Removes the live event handler from a block, based on a specified element where the event was being listened for
      * @static
      * @protected
      * @param {jQuery} [ctx] The element in which the event was being listened for
@@ -3121,7 +3179,7 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
      */
     _buildModValRE : function(modName, elem, quantifiers) {
 
-        return new RegExp('(\\s?)' + this._buildModClassPrefix(modName, elem) + '(' + NAME_PATTERN + ')(\\s|$)', quantifiers);
+        return new RegExp('(\\s|^)' + this._buildModClassPrefix(modName, elem) + '(' + NAME_PATTERN + ')(?=\\s|$)', quantifiers);
 
     },
 

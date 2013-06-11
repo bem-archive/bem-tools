@@ -1,5 +1,19 @@
 var PATH = require('path');
 
+MAKE.decl('Arch', {
+
+    getLevelCachePolicy: function() {
+        return {
+            cache: false,
+            except: [
+                'bem-bl/blocks-common',
+                'bem-bl/blocks-desktop'
+            ]
+        }
+    }
+
+});
+
 // Build i18n files
 MAKE.decl('BundleNode', {
 
