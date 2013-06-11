@@ -34,8 +34,96 @@
  
  - `-wait` : ( **активное ожидание** ) принимает числовой параметр, которым является задержка в секундах. Данная задержка необходима между запусками пакетов тестов, для сглаживания разброса результирующих значений. Значение по умолчанию `20сек`. Напрямую влияет на `RME`.
  
-#### Конфигурирование проекта для запуска тестов
-...
+#### Конфигурирование проекта
+
+Для запуска **bem-bench** необходимо внести несколько изменений в конфигурационные файлы проекта. В примере использовался **project-stub**.
+
+1) Необходимо дописать следующий код  в метод `getTechs`, в файлe `./.bem/make.js`, который указывает, какие технологии собирать для benchmarks.
+
+```js
+
+MAKE.decl('BundleNode', {
+
+    getTechs: function() {
+        
+        if (PATH.basename(this.level.dir) === 'benchmark.bundles')  {
+            return [
+                'bemjson.js',
+                'bemdecl.js',
+                'deps.js',
+                'bemhtml'
+            ];
+        }
+        ...
+    }
+});    
+        
+```
+
+2) Создать конфигурационный файл уровня переопределения `./.bem/levels/benchmarks.js`, с содержимым:
+
+```js
+var BEM = require('bem');
+    PATH = require('path'),
+
+    pjoin = PATH.join,
+    presolve = PATH.resolve.bind(null, __dirname),
+
+    PRJ_ROOT = presolve('../../'),
+
+    PRJ_TECHS = presolve('../techs/'),
+    BEMBL_TECHS = pjoin(PRJ_ROOT, 'bem-bl/blocks-common/i-bem/bem/techs');
+
+
+exports.baseLevelPath = require.resolve('./bundles.js');
+
+exports.getConfig = function() {
+
+    return BEM.util.extend(this.__base() || {}, {
+        bundleBuildLevels: this.resolvePaths([
+            '../../bem-bl/blocks-common',
+            '../../bem-bl/blocks-desktop',
+            '../../common.blocks',
+            '../../desktop.blocks'
+        ])
+    });
+
+};
+
+exports.getTechs = function() {
+
+    return {
+        'bemjson.js'    : pjoin(PRJ_TECHS, 'bemjson.js'),
+        'bemdecl.js'    : 'bemdecl.js',
+        'deps.js'       : 'deps.js',
+
+        'bemhtml'       : pjoin(BEMBL_TECHS, 'bemhtml.js')
+    };
+
+};
+
+// Create bundles in bemjson.js tech
+exports.defaultTechs = ['bemjson.js'];
+```
+
+3) В корне проекта создать файл `./benchmark.bundles/.bem/level.js`, в котором подключить `benchmarks.js`:
+```js
+exports.baseLevelPath = require.resolve('../../.bem/levels/benchmarks.js');
+```
+
+Benchmsrks должны находится в директории `./benchmark.bundles/`
+
+*Пример расположения файлов:*
+```
+ benchmark.bundles/
+        b-logo/
+            b-logo.bemjson.js
+        b-link/
+            b-link.bemjson.js
+        b-mix-input-button/
+            b-mix-input-button.bemjson.js    
+```
+
 #### Пример
 
 Тестирование **bem-bl**. Стандартный **project-stub** использующий **bem-bl** библиотеку блоков. Тестирование двух предыдущих ревизий и текущего состояния файловой системы.
