@@ -1,6 +1,6 @@
 {
   "name": "bem",
-  "version": "0.5.33",
+  "version": "0.6.0",
   "dependencies": {
     "coa": {
       "version": "0.3.9"
