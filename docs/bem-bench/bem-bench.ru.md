@@ -21,17 +21,17 @@
 
  Опция | Алиас   | Описание|
 :-------:|:-------:| :-------|
-| `-w`    | `--wcs` | Позволяет запустить тесты не используя рабочую копию. |
+| `-w`    | `--no-wc` | Позволяет запустить тесты не используя рабочую копию. |
 | `-b`    | `--benchmark` | Позволяет запускать конкретные тесты, не собирая весь проект. Принимает 1 параметр (строка - имя теста). Возможно указать одновременно несколько тестов ( **-b b-logo -b b-link** ).|
 | `-dr`    | `--delta-rme` | Позволяет изменить допустимое значение погрешности для **RME-stat**. Значение по умолчанию - **5%**. |
-| `-ob`    | `--only-bench` | Позволяет запустить тесты пропуская этап сборки, используя тесты собранные последний раз. |
-| `-wait`    |  | **"Активное ожидание"**. Принимает 1 параметр (число), которым является задержка в секундах. Данная задержка необходима между запусками пакетов тестов, для сглаживания **RME**. Значение по умолчанию **20сек**. Это значение напрямую влияет на **RME**. Эксперементы показывают, что при использовании режима `ONLY BECHMARKS` параметр `-wait` можно устанавливать в **0**.|
+| `-m`    | `--no-make` | Позволяет запустить тесты пропуская этап сборки, используя тесты собранные последний раз. |
+| `-d`    | `--delay` | **"Активное ожидание"**. Принимает 1 параметр (число), которым является задержка в секундах. Данная задержка необходима между запусками пакетов тестов, для сглаживания **RME**. Значение по умолчанию **20сек**. Это значение напрямую влияет на **RME**. Эксперементы показывают, что при использовании режима `NO MAKE` параметр `-delay` можно устанавливать в **0**.|
 
 #### Конфигурирование проекта для запуска тестов, на примере **project-stub**.
 
 Для запуска **bem-bench** необходимо внести несколько изменений в конфигурационные файлы проекта:
 
-1) Необходимо дописать следующий код  в метод `getTechs`, в файлe `./.bem/make.js`, который указывает, какие технологии собирать для тестов.
+1) Необходимо дописать следующий код  в метод `getTechs`, в файлe `./.bem/make.js`, который указывает, какие технологии собирать для тестов. Так же дописать функцию `getLevels`, указывающую уровни переопределения.
 
 ```js
 
@@ -49,6 +49,19 @@ MAKE.decl('BundleNode', {
         }
         ...
     }
+    
+    getLevels: function(tech) {
+     
+        if (PATH.basename(this.level.dir) === 'benchmark.bundles') {
+            return ['../bem-bl/blocks-common',
+                    '../bem-bl/blocks-desktop',
+                    '../common.blocks',
+                    '../desktop.blocks']
+                .map(PATH.resolve.bind(PATH, __dirname));
+        }
+        return this.__base(tech);
+        
+    }
 });    
         
 ```
@@ -56,41 +69,17 @@ MAKE.decl('BundleNode', {
 2) Создать конфигурационный файл уровня переопределения `./.bem/levels/benchmarks.js`, с содержимым:
 
 ```js
-var BEM = require('bem');
-    PATH = require('path'),
-
-    pjoin = PATH.join,
-    presolve = PATH.resolve.bind(null, __dirname),
-
-    PRJ_ROOT = presolve('../../'),
-
-    PRJ_TECHS = presolve('../techs/'),
-    BEMBL_TECHS = pjoin(PRJ_ROOT, 'bem-bl/blocks-common/i-bem/bem/techs');
-
+var PATH = require('path');
 
 exports.baseLevelPath = require.resolve('./bundles.js');
-
-exports.getConfig = function() {
-
-    return BEM.util.extend(this.__base() || {}, {
-        bundleBuildLevels: this.resolvePaths([
-            '../../bem-bl/blocks-common',
-            '../../bem-bl/blocks-desktop',
-            '../../common.blocks',
-            '../../desktop.blocks'
-        ])
-    });
-
-};
 
 exports.getTechs = function() {
 
     return {
-        'bemjson.js'    : pjoin(PRJ_TECHS, 'bemjson.js'),
+        'bemjson.js'    : PATH.resolve(__dirname, '../techs/bemjson.js'),
         'bemdecl.js'    : 'bemdecl.js',
         'deps.js'       : 'deps.js',
-
-        'bemhtml'       : pjoin(BEMBL_TECHS, 'bemhtml.js')
+        'bemhtml'       : PATH.resolve(__dirname, '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js')
     };
 
 };
