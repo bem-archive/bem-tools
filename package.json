@@ -47,7 +47,10 @@
     "coffee-script": "*",
     "dom-js": "*",
     "mkdirp": "~0.3.4",
-    "node.extend": "~1.0.0"
+    "node.extend": "~1.0.0",
+    "colors": "~0.6.0",
+    "benchmark": "~1.0.0",
+    "cli-table": "~0.2.0"
   },
   "devDependencies": {
     "istanbul": "~0.1.21",
