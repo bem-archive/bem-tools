@@ -1,4 +1,7 @@
-exports.techModule = module;
-exports.outFile = function (file) {
-    return 'include("' + file + '");\n';
+exports.techMixin = {
+
+    getBuildResultChunk: function(relPath) {
+        return 'include("' + relPath + '");\n';
+    }
+
 };
