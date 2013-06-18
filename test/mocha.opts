@@ -1,3 +1,2 @@
 --reporter spec
---ignore-leaks
 --timeout 0

@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "mocha-coverjs": "*",
-    "mocha": "~1.3.0",
+    "mocha": "~1.11.0",
     "chai": "~1.0.3",
     "coverjs": ">= 0.0.7-alpha"
   },
