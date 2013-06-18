@@ -2448,6 +2448,17 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
     },
 
     /**
+     * Elemify given element
+     * @param {jQuery} elem Element
+     * @param {String} elemName Name
+     * @returns {jQuery}
+     */
+    elemify : function(elem, elemName) {
+        (elem = $(elem)).__bemElemName = elemName;
+        return elem;
+    },
+
+    /**
      * Checks whether a DOM element is in a block
      * @protected
      * @param {jQuery} domElem DOM element

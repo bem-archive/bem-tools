@@ -2,6 +2,7 @@
 *.iml
 .*.swp
 *.log
+test/data/level1/.bem/cache/
 node_modules/
 test-make-temp/
 lib-cov/
