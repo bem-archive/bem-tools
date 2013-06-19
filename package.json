@@ -59,7 +59,8 @@
     "test-cover": "make test-cover"
   },
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.6.0",
+    "npm": ">= 1.2.32"
   },
   "npm2debian": {
     "bash-completion": {
