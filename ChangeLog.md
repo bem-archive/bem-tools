@@ -1,6 +1,11 @@
 bem-tools changelog
 ===================
 
+20.06.2013, Version 0.6.3 (unstable)
+------------------------------------
+
+- bem bench: Run `npm install` before `bem make` after revision export
+
 20.06.2013, Version 0.6.2 (unstable)
 ------------------------------------
 
