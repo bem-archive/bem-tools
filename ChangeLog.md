@@ -1,9 +1,80 @@
 bem-tools changelog
 ===================
-11.06.2013, Version 0.6.0 (stable)
+
+20.06.2013, Version 0.6.1 (unstable)
+----------------------------------
+
+- bem: Add `bem bench` command see [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md)
+  (in russian) for more info
+
+- bem: Add ability to create level prototypes (js files) using `bem create level` command. See example:
+
+  ```
+  bem create level -l simple .bem/levels/docs.js
+  ```
+
+- bem: Add `project` tech and `project` level prototype:
+
+  This command will create `my` project:
+
+  ```
+  bem create -b my -T project
+  ```
+
+  ```
+  my/
+  ├── .bem/
+  |   ├── levels/
+  |   |   ├── blocks.js
+  |   |   ├── bundles.js
+  |   |   ├── docs.js
+  |   |   ├── examples.js
+  |   |   └── tech-docs.js
+  |   ├── techs/
+  |   └── level.js
+  └── node_modules/
+      ├── .bin/
+      |   └── bem -> symplink/to/globally/installed/bem (executable)
+      └── bem/ -> symplink/to/globally/installed/bem (module)
+  ```
+
+- bem: Add `docs` tech and `docs` level prototype.
+
+  This command will create new level based on `docs`:
+
+  ```
+  bem create level -l docs docs
+  ```
+
+  ```
+  docs/
+  └── .bem/
+      └── level.js
+    ```
+
+  This command will create `docs` tech for block `button`:
+
+  ```
+  bem create -b button -T docs
+  ```
+
+  ```
+  button/
+  ├── button.docs/
+  |   └── .bem/
+  |       └── level.js
+  └── ...
+  ```
+
+- bem: Add `tech-docs` tech and `tech-docs` level prototype.
+
+- API: Introduce `util.findLevel(path, [types])` function
+
+11.06.2013, Version 0.6.0 (unstable)
 ----------------------------------
 
 - speed optimizations with techs API V2
+- ... TODO ...
 
 30.05.2013, Version 0.5.33 (stable)
 ----------------------------------

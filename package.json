@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -77,7 +77,7 @@
   ],
   "preferGlobal": false,
   "publishConfig": {
-    "tag": "latest"
+    "tag": "unstable"
   },
   "optionalDependencies": {}
 }
