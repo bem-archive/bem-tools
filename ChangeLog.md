@@ -1,8 +1,14 @@
 bem-tools changelog
 ===================
 
+20.06.2013, Version 0.6.2 (unstable)
+------------------------------------
+
+- bem bench: Disable verbose mode for `rsync` to stop output buffer overflow
+- bem bench: Disable double error output on `rsync`
+
 20.06.2013, Version 0.6.1 (unstable)
-----------------------------------
+------------------------------------
 
 - bem: Add `bem bench` command see [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md)
   (in russian) for more info
@@ -71,7 +77,7 @@ bem-tools changelog
 - API: Introduce `util.findLevel(path, [types])` function
 
 11.06.2013, Version 0.6.0 (unstable)
-----------------------------------
+------------------------------------
 
 - speed optimizations with techs API V2
 - ... TODO ...
