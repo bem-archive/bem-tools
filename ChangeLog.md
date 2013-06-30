@@ -1,6 +1,11 @@
 bem-tools changelog
 ===================
 
+30.06.2013, Version 0.6.4 (stable)
+------------------------------------
+
+- fixed bugs in new level scanner (see BEM-467) 
+
 20.06.2013, Version 0.6.3 (unstable)
 ------------------------------------
 
@@ -84,8 +89,10 @@ bem-tools changelog
 11.06.2013, Version 0.6.0 (unstable)
 ------------------------------------
 
-- speed optimizations with techs API V2
-- ... TODO ...
+- new techs API is implemented (see lib/tech/v2.js). It operates with real file paths instead of prefixes.
+This makes build avoid redundant operations and makes it work faster.
+- as the part of new API new level introspection is implemented. In default implementation it just scans dirs/files 
+and checks their validity to being BEM entity using simple string operations (see scan* methods in lib/level.js).
 
 30.05.2013, Version 0.5.33 (stable)
 ----------------------------------
