@@ -1,8 +1,14 @@
 bem-tools changelog
 ===================
 
+01.07.2013, Version 0.6.5 (stable)
+----------------------------------
+
+- API: Add `util.bemParseKey()` helper to parse BEM entity key into BEM entity object
+  (fixes `bem bench` execution error)
+
 30.06.2013, Version 0.6.4 (stable)
-------------------------------------
+----------------------------------
 
 - fixed bugs in new level scanner (see BEM-467) 
 
