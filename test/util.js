@@ -66,4 +66,97 @@ describe('util', function() {
 
     });
 
+    describe('bemParseKey()', function() {
+
+        it('block', function() {
+            assert.deepEqual(U.bemParseKey('block'), { block: 'block' });
+        });
+
+        it('block_mod', function() {
+            assert.deepEqual(U.bemParseKey('block_mod'), { block: 'block', mod: 'mod' });
+        });
+
+        it('block_mod_val', function() {
+            assert.deepEqual(U.bemParseKey('block_mod_val'), {
+                block: 'block',
+                mod: 'mod',
+                val: 'val'
+            });
+        });
+
+        it('block__elem', function() {
+            assert.deepEqual(U.bemParseKey('block__elem'), { block: 'block', elem: 'elem' });
+        });
+
+        it('block__elem_mod', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod'
+            });
+        });
+
+        it('block__elem_mod_val', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod_val'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val'
+            });
+        });
+
+        it('block.css', function() {
+            assert.deepEqual(U.bemParseKey('block.css'), { block: 'block', tech: 'css' });
+        });
+
+        it('block.decl.js', function() {
+            assert.deepEqual(U.bemParseKey('block.decl.js'), { block: 'block', tech: 'decl.js' });
+        });
+
+        it('block_mod.css', function() {
+            assert.deepEqual(U.bemParseKey('block_mod.css'), {
+                block: 'block',
+                mod: 'mod',
+                tech: 'css'
+            });
+        });
+
+        it('block_mod_val.css', function() {
+            assert.deepEqual(U.bemParseKey('block_mod_val.css'), {
+                block: 'block',
+                mod: 'mod',
+                val: 'val',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem.css'), {
+                block: 'block',
+                elem: 'elem',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem_mod.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                tech: 'css'
+            });
+        });
+
+        it('block__elem_mod_val.css', function() {
+            assert.deepEqual(U.bemParseKey('block__elem_mod_val.css'), {
+                block: 'block',
+                elem: 'elem',
+                mod: 'mod',
+                val: 'val',
+                tech: 'css'
+            });
+        });
+
+    });
+
 });
