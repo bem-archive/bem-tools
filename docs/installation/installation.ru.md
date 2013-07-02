@@ -1,5 +1,5 @@
 # Установка
-Вам потребуется [NodeJS 0.6+](http://nodejs.org/) или выше и [npm 1.1.69](http://npmjs.org/) или выше.
+Вам потребуется [NodeJS 0.6+](http://nodejs.org/) или выше и [npm 1.2.14](http://npmjs.org/) или выше.
 После этого достаточно `npm -g install bem`.
 
  * Установить [nodejs](http://nodejs.org)
