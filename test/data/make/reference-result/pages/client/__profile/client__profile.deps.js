@@ -89,8 +89,8 @@ exports.depsFull = {
             "b-page",
             "i-bem",
             "i-bem__html",
-            "i-ua",
             "i-bem__dom",
+            "i-ua",
             "i-jquery__observable"
         ],
         "mustDeps": [],
@@ -98,16 +98,20 @@ exports.depsFull = {
         "key": ""
     },
     "b-page": {
-        "shouldDeps": [],
+        "shouldDeps": [
+            "b-page",
+            "b-page__css",
+            "b-page__js"
+        ],
         "mustDeps": [
             "i-bem",
             "i-bem__html",
-            "i-ua",
-            "i-jquery",
-            "i-jquery__core",
             "i-bem__dom",
             "i-bem__dom_init",
-            "i-bem__dom_init_auto"
+            "i-bem__dom_init_auto",
+            "i-ua",
+            "i-jquery",
+            "i-jquery__core"
         ],
         "item": {
             "block": "b-page"
@@ -146,34 +150,6 @@ exports.depsFull = {
         },
         "key": "i-bem__html"
     },
-    "i-ua": {
-        "shouldDeps": [],
-        "mustDeps": [
-            "i-bem",
-            "i-bem__html"
-        ],
-        "item": {
-            "block": "i-ua"
-        },
-        "key": "i-ua"
-    },
-    "i-jquery": {
-        "shouldDeps": [],
-        "mustDeps": [],
-        "item": {
-            "block": "i-jquery"
-        },
-        "key": "i-jquery"
-    },
-    "i-jquery__core": {
-        "shouldDeps": [],
-        "mustDeps": [],
-        "item": {
-            "block": "i-jquery",
-            "elem": "core"
-        },
-        "key": "i-jquery__core"
-    },
     "i-bem__dom": {
         "shouldDeps": [
             "i-ecma__string"
@@ -208,6 +184,52 @@ exports.depsFull = {
             "val": "auto"
         },
         "key": "i-bem__dom_init_auto"
+    },
+    "i-ua": {
+        "shouldDeps": [],
+        "mustDeps": [
+            "i-bem",
+            "i-bem__html"
+        ],
+        "item": {
+            "block": "i-ua"
+        },
+        "key": "i-ua"
+    },
+    "i-jquery": {
+        "shouldDeps": [],
+        "mustDeps": [],
+        "item": {
+            "block": "i-jquery"
+        },
+        "key": "i-jquery"
+    },
+    "i-jquery__core": {
+        "shouldDeps": [],
+        "mustDeps": [],
+        "item": {
+            "block": "i-jquery",
+            "elem": "core"
+        },
+        "key": "i-jquery__core"
+    },
+    "b-page__css": {
+        "shouldDeps": [],
+        "mustDeps": [],
+        "item": {
+            "block": "b-page",
+            "elem": "css"
+        },
+        "key": "b-page__css"
+    },
+    "b-page__js": {
+        "shouldDeps": [],
+        "mustDeps": [],
+        "item": {
+            "block": "b-page",
+            "elem": "js"
+        },
+        "key": "b-page__js"
     },
     "i-jquery__inherit": {
         "shouldDeps": [],
