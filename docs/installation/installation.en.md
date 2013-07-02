@@ -1,5 +1,5 @@
 # Installation
-You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.1.69](http://npmjs.org/) or later.
+You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
 Then it's sufficient just to make `npm install bem`.
 
  * Install [nodejs](http://nodejs.org)
