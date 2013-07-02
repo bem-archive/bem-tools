@@ -3,7 +3,9 @@
         "phantom": false,
         "describe": false,
         "before": false,
-        "it": false
+        "it": false,
+        "afterEach": false,
+        "beforeEach": false
     },
     "node": true,
     "globalstrict": true,

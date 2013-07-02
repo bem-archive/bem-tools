@@ -1,7 +1,7 @@
-var assert = require('assert'),
-    UTIL = require('util'),
+'use strict';
+
+var UTIL = require('util'),
     PATH = require('path'),
-    FS = require('fs'),
     Q = require('q'),
     _ = require('underscore'),
     QFS = require('q-fs'),
@@ -98,7 +98,7 @@ describe('bem', function() {
                                 '.',
                                 PATH.relative(referencePath, buildPath)),
                             {cwd: referencePath},
-                            true)
+                            true);
                 })
                 .then(function(result) {
                     done(result && new Error(result));
@@ -120,7 +120,7 @@ describe('bem', function() {
                         if (!(example && client)) throw new Error('build artifacts exist');
 
                         done();
-                    })
+                    });
                 })
                 .fail(done)
                 .done();
@@ -160,7 +160,7 @@ describe('bem', function() {
                     ])
                     .spread(function(example, client) {
                         if (!(example && client)) throw new Error('set of build artifacts differs from expected');
-                    })
+                    });
                 })
                 .then(function() {
                     return BEM.util.exec(
@@ -169,7 +169,7 @@ describe('bem', function() {
                                 '.',
                                 PATH.relative(referencePath, buildPath)),
                             {cwd: referencePath},
-                            true)
+                            true);
                 })
                 .then(function(result) {
                     done(result && new Error(result));
