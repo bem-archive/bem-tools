@@ -1,5 +1,12 @@
 bem-tools changelog
 ===================
+03.07.2013, Version 0.6.6 (stable)
+----------------------------------
+
+- package: Downgrade q from 0.9.6 to 0.9.5 because former is buggy on node 0.10
+- level: Show warning when failed to load a tech during level scan, not fail.
+- level: Fix level scanner to find block.tech dirs within mods
+- API: Fix `util.isFileP()` and mark it as deprecated
 
 01.07.2013, Version 0.6.5 (stable)
 ----------------------------------
