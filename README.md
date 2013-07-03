@@ -1,5 +1,6 @@
 # bem-tools
 [![Build Status](https://secure.travis-ci.org/bem/bem-tools.png?branch=master)](http://travis-ci.org/bem/bem-tools)
+[![NPM version](https://badge.fury.io/js/bem.png)](http://badge.fury.io/js/bem)
 
 bem-tools is a toolkit to work with files based on [BEM methodology](http://bem.info/method/).
 
