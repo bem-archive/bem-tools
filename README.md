@@ -1,7 +1,7 @@
-# BEM Tools
+# bem-tools
 [![Build Status](https://secure.travis-ci.org/bem/bem-tools.png?branch=master)](http://travis-ci.org/bem/bem-tools)
 
-BEM tools is a toolkit to work with files based on [BEM methodology](http://bem.info/method/).
+bem-tools is a toolkit to work with files based on [BEM methodology](http://bem.info/method/).
 
 It allows you:
 

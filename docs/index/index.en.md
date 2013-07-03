@@ -1,4 +1,4 @@
-BEM tools is a toolkit to work with files based on BEM methodology.
+bem-tools is a toolkit to work with files based on BEM methodology.
 
 It allows you:
 
