@@ -22,5 +22,6 @@
     "undef": true,
     "unused": false,
     "loopfunc": true,
-    "trailing": true
+    "trailing": true,
+    "boss": true
 }
