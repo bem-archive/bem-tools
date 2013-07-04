@@ -1,6 +1,8 @@
 BEM = ./bin/bem
-MOCHA = ./node_modules/.bin/mocha
-JSCOV = ./node_modules/coverjs/bin/coverjs
+BIN = ./node_modules/.bin
+MOCHA = $(BIN)/mocha
+JSCOV = $(BIN)/coverjs
+JSHINT = $(BIN)/jshint
 
 .PHONY: all
 all:
@@ -11,8 +13,12 @@ clean:
 	-rm -rf lib-cov
 	-rm -rf coverage.html
 
+.PHONY: jshint
+jshint:
+	$(JSHINT) lib test
+
 .PHONY: test
-test:
+test: jshint
 	$(MOCHA)
 
 .PHONY: lib-cov

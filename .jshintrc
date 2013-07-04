@@ -1,0 +1,19 @@
+{
+    "node": true,
+    "globalstrict": true,
+    "expr": true,
+    "curly": false,
+    "camelcase": true,
+    "eqeqeq": true,
+    "forin": false,
+    "immed": true,
+    "multistr": true,
+    "newcap": true,
+    "nonew": true,
+    "quotmark": false,
+    "undef": true,
+    "unused": false,
+    "loopfunc": true,
+    "trailing": true,
+    "boss": true
+}
