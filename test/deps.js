@@ -25,8 +25,8 @@ function assertDepsParse(deps, expected) {
 function assertDepsFull(deps, expected) {
     return function() {
         var serialized = new Deps().parse(deps).serializeFull();
-        assert.deepEqual(serialized, expected, JSON.stringify(serialized, null, 4) + '\n\n' + JSON.stringify(expected, null, 4))
-    }
+        assert.deepEqual(serialized, expected, JSON.stringify(serialized, null, 4) + '\n\n' + JSON.stringify(expected, null, 4));
+    };
 }
 
 function assertDepsMap(deps, expected) {
@@ -36,8 +36,8 @@ function assertDepsMap(deps, expected) {
             .map(function(i) {
                 return i.item;
             });
-        assert.deepEqual(serialized, expected, JSON.stringify(serialized, null, 4) + '\n\n' + JSON.stringify(expected, null, 4))
-    }
+        assert.deepEqual(serialized, expected, JSON.stringify(serialized, null, 4) + '\n\n' + JSON.stringify(expected, null, 4));
+    };
 }
 
 function assertBuildKey(item, expected) {
