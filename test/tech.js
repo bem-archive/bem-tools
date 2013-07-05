@@ -1,3 +1,6 @@
+/* jshint quotmark: false */
+'use strict';
+
 var Q = require('q'),
     assert = require('chai').assert,
     BEM = require('..'),
@@ -134,7 +137,7 @@ function testBaseTech(techPath, techAlias) {
         relTechPath = relTechPath.replace(re, bemLib);
 
         // default tech identified by '' relative path
-        if(techName == 'tech') relTechPath = '';
+        if(techName === 'tech') relTechPath = '';
     }
 
     techAlias = techAlias || techName;
@@ -142,7 +145,7 @@ function testBaseTech(techPath, techAlias) {
     describe("Tech.createTech('" + techPath + "')", function() {
 
         var tech = createTech(require.resolve(techPath),
-                techAlias == techName ? null : techAlias);
+                techAlias === techName ? null : techAlias);
 
         // meta data
         describe(".getTechName()", function() {

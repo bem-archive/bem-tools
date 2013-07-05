@@ -1,3 +1,6 @@
+/* jshint quotmark: false */
+'use strict';
+
 var assert = require('chai').assert,
     PATH = require('..').require('./path');
 

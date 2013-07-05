@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('chai').assert,
     DEPS = require('..').require('./techs/deps.js.js'),
     Deps = DEPS.Deps,
@@ -182,11 +184,11 @@ describe('Deps', function() {
             deps = [deps1, deps2];
 
         it('.items', function() {
-            assert.deepEqual(deps[1].items, deps[0].items)
+            assert.deepEqual(deps[1].items, deps[0].items);
         });
 
         it('.itemsByOrder', function() {
-            assert.deepEqual(deps[1].itemsByOrder, deps[0].itemsByOrder)
+            assert.deepEqual(deps[1].itemsByOrder, deps[0].itemsByOrder);
         });
 
     });

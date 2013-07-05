@@ -1,0 +1,4 @@
+lib/data/**
+lib/legacy-techs/**.js
+tests/**
+test/data/**
