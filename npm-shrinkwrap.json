@@ -8,29 +8,35 @@
     },
     "q": {
       "version": "0.9.5",
-      "from": "q@0.9.5"
+      "from": "q@0.9.5",
+      "resolved": "https://registry.npmjs.org/q/-/q-0.9.5.tgz"
     },
     "qq": {
       "version": "0.3.5",
       "from": "qq@0.3.5",
+      "resolved": "https://registry.npmjs.org/qq/-/qq-0.3.5.tgz",
       "dependencies": {
         "q": {
           "version": "0.8.4",
-          "from": "q@0.8.4"
+          "from": "q@0.8.4",
+          "resolved": "https://registry.npmjs.org/q/-/q-0.8.4.tgz"
         }
       }
     },
     "q-fs": {
       "version": "0.1.33",
       "from": "q-fs@0.1.33",
+      "resolved": "https://registry.npmjs.org/q-fs/-/q-fs-0.1.33.tgz",
       "dependencies": {
         "q-io": {
           "version": "0.0.18",
-          "from": "q-io@0.0.18"
+          "from": "q-io@0.0.18",
+          "resolved": "https://registry.npmjs.org/q-io/-/q-io-0.0.18.tgz"
         },
         "fs-boot": {
           "version": "0.0.9",
-          "from": "fs-boot@0.0.9"
+          "from": "fs-boot@0.0.9",
+          "resolved": "https://registry.npmjs.org/fs-boot/-/fs-boot-0.0.9.tgz"
         }
       }
     },
@@ -46,7 +52,8 @@
     },
     "mime": {
       "version": "1.2.7",
-      "from": "mime@1.2.7"
+      "from": "mime@1.2.7",
+      "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.7.tgz"
     },
     "underscore": {
       "version": "1.3.3",
@@ -59,26 +66,32 @@
     "borschik": {
       "version": "0.3.1",
       "from": "borschik@0.3.1",
+      "resolved": "https://registry.npmjs.org/borschik/-/borschik-0.3.1.tgz",
       "dependencies": {
         "ometajs": {
           "version": "3.1.19",
-          "from": "ometajs@3.1.19"
+          "from": "ometajs@3.1.19",
+          "resolved": "https://registry.npmjs.org/ometajs/-/ometajs-3.1.19.tgz"
         },
         "cssp": {
           "version": "1.0.6",
-          "from": "cssp@1.0.6"
+          "from": "cssp@1.0.6",
+          "resolved": "https://registry.npmjs.org/cssp/-/cssp-1.0.6.tgz"
         },
         "coffee-script": {
-          "version": "1.4.0",
-          "from": "coffee-script@1.4.0"
+          "version": "1.6.3",
+          "from": "coffee-script@1.6.3",
+          "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.6.3.tgz"
         },
         "csso": {
-          "version": "1.3.6",
-          "from": "csso@1.3.6"
+          "version": "1.3.7",
+          "from": "csso@~1.3.6",
+          "resolved": "https://registry.npmjs.org/csso/-/csso-1.3.7.tgz"
         },
         "uglify-js": {
-          "version": "1.3.4",
-          "from": "uglify-js@1.3.4"
+          "version": "1.3.5",
+          "from": "uglify-js@~1.3.0",
+          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-1.3.5.tgz"
         }
       }
     },
@@ -87,38 +100,55 @@
       "from": "apw@0.3.9",
       "dependencies": {
         "node.extend": {
-          "version": "1.0.0",
-          "from": "node.extend@1.0.0"
+          "version": "1.0.7",
+          "from": "node.extend@1.0.7",
+          "resolved": "https://registry.npmjs.org/node.extend/-/node.extend-1.0.7.tgz",
+          "dependencies": {
+            "is": {
+              "version": "0.2.6",
+              "from": "is@~0.2.6",
+              "resolved": "https://registry.npmjs.org/is/-/is-0.2.6.tgz"
+            },
+            "object-keys": {
+              "version": "0.3.0",
+              "from": "object-keys@~0.3.0",
+              "resolved": "https://registry.npmjs.org/object-keys/-/object-keys-0.3.0.tgz",
+              "dependencies": {
+                "foreach": {
+                  "version": "2.0.3",
+                  "from": "foreach@~2.0.3",
+                  "resolved": "https://registry.npmjs.org/foreach/-/foreach-2.0.3.tgz"
+                }
+              }
+            }
+          }
         }
       }
     },
     "winston": {
       "version": "0.6.2",
       "from": "winston@0.6.2",
+      "resolved": "https://registry.npmjs.org/winston/-/winston-0.6.2.tgz",
       "dependencies": {
         "async": {
           "version": "0.1.22",
-          "from": "async@0.1.22"
-        },
-        "colors": {
-          "version": "0.6.0-1",
-          "from": "colors@0.6.0-1"
+          "from": "async@0.1.22",
+          "resolved": "https://registry.npmjs.org/async/-/async-0.1.22.tgz"
         },
         "cycle": {
           "version": "1.0.1",
-          "from": "cycle@1.0.1"
-        },
-        "eyes": {
-          "version": "0.1.8",
-          "from": "eyes@0.1.8"
+          "from": "cycle@1.0.1",
+          "resolved": "https://registry.npmjs.org/cycle/-/cycle-1.0.1.tgz"
         },
         "pkginfo": {
           "version": "0.2.3",
-          "from": "pkginfo@0.2.3"
+          "from": "pkginfo@0.2.3",
+          "resolved": "https://registry.npmjs.org/pkginfo/-/pkginfo-0.2.3.tgz"
         },
         "request": {
           "version": "2.9.203",
-          "from": "request@2.9.203"
+          "from": "request@2.9.203",
+          "resolved": "https://registry.npmjs.org/request/-/request-2.9.203.tgz"
         },
         "stack-trace": {
           "version": "0.0.6",
@@ -131,14 +161,16 @@
       "from": "dom-js@0.0.9",
       "dependencies": {
         "sax": {
-          "version": "0.4.2",
-          "from": "sax@0.4.2"
+          "version": "0.5.4",
+          "from": "sax@0.5.4",
+          "resolved": "https://registry.npmjs.org/sax/-/sax-0.5.4.tgz"
         }
       }
     },
     "mkdirp": {
       "version": "0.3.5",
-      "from": "mkdirp@0.3.5"
+      "from": "mkdirp@0.3.5",
+      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.5.tgz"
     },
     "node.extend": {
       "version": "1.0.0",
@@ -164,6 +196,26 @@
           "resolved": "https://registry.npmjs.org/colors/-/colors-0.3.0.tgz"
         }
       }
+    },
+    "semver": {
+      "version": "2.0.8",
+      "from": "semver@"
+    },
+    "which": {
+      "version": "1.0.5",
+      "from": "which@"
+    },
+    "coffee-script": {
+      "version": "1.4.0",
+      "from": "coffee-script@1.4.0"
+    },
+    "eyes": {
+      "version": "0.1.8",
+      "from": "eyes@0.1.8"
+    },
+    "uglify-js": {
+      "version": "1.3.4",
+      "from": "uglify-js@1.3.4"
     }
   }
 }
