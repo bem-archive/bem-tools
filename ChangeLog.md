@@ -1,5 +1,9 @@
 bem-tools changelog
 ===================
+10.07.2013, Version 0.6.8 (stable)
+----------------------------------
+- deps.js: Correct unique items in `forEach` in case of deps by techs
+
 09.07.2013, Version 0.6.7 (stable)
 ----------------------------------
 - level: Add opts.noCache support to level.createLevel to force level creation without cache use
