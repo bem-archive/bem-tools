@@ -1,3 +1,6 @@
+/* jshint quotmark: false */
+'use strict';
+
 var assert = require('chai').assert,
     BEM = require('..'),
     Tech = BEM.require('./legacy-tech').Tech,

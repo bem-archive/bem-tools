@@ -1,8 +1,10 @@
+/* jshint quotmark: false */
+'use strict';
+
 var assert = require('chai').assert,
     UTIL = require('util'),
     BEM = require('..'),
     PATH = BEM.require('./path'),
-    U = require('./util'),
     createLevel = BEM.createLevel;
 
 /**
@@ -223,13 +225,13 @@ describe('level', function() {
 
                 var args = matcher.split('-'),
                     match;
-                if(args[0] != 'block') args.unshift('block');
+                if(args[0] !== 'block') args.unshift('block');
                 match = level.match(matcher, level.getRel(matcher, args));
 
                 it(UTIL.format("matcher '%s' complies to getter", matcher), function() {
                     Object.keys(match).forEach(function(key) {
                         assert.isString(match[key]);
-                        if(key == 'suffix') {
+                        if(key === 'suffix') {
                             assert.equal(match[key], '');
                             return;
                         }
@@ -275,7 +277,7 @@ describe('level', function() {
                 return function() {
                     Object.keys(match).forEach(function(key) {
                         assert.isString(match[key]);
-                        if(key == 'suffix') {
+                        if(key === 'suffix') {
                             assert.equal(match[key], '');
                             return;
                         }

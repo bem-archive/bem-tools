@@ -1,5 +1,22 @@
 bem-tools changelog
 ===================
+10.07.2013, Version 0.6.8 (stable)
+----------------------------------
+- deps.js: Correct unique items in `forEach` in case of deps by techs
+
+09.07.2013, Version 0.6.7 (stable)
+----------------------------------
+- level: Add opts.noCache support to level.createLevel to force level creation without cache use
+- API: Ability to specify source techs for BundlesLevelNode (via getBundleSourceTechs())
+- code: fixed jshint warnings    
+
+03.07.2013, Version 0.6.6 (stable)
+----------------------------------
+
+- package: Downgrade q from 0.9.6 to 0.9.5 because former is buggy on node 0.10
+- level: Show warning when failed to load a tech during level scan, not fail.
+- level: Fix level scanner to find block.tech dirs within mods
+- API: Fix `util.isFileP()` and mark it as deprecated
 
 01.07.2013, Version 0.6.5 (stable)
 ----------------------------------

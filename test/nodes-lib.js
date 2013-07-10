@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('chai').assert,
     PATH = require('path'),
     QFS = require('q-fs'),
