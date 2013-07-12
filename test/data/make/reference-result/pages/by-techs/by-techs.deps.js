@@ -81,12 +81,16 @@ exports.deps = [
     {
         "block": "b-page",
         "elem": "js"
+    },
+    {
+        "block": "b-with-js"
     }
 ];
 exports.depsFull = {
     "": {
         "shouldDeps": [
             "b-page",
+            "b-with-js",
             "i-bem",
             "i-bem__html",
             "i-bem__dom",
@@ -117,6 +121,16 @@ exports.depsFull = {
             "block": "b-page"
         },
         "key": "b-page"
+    },
+    "b-with-js": {
+        "shouldDeps": [
+            "b-with-css.css"
+        ],
+        "mustDeps": [],
+        "item": {
+            "block": "b-with-js"
+        },
+        "key": "b-with-js"
     },
     "i-bem": {
         "shouldDeps": [
@@ -230,6 +244,15 @@ exports.depsFull = {
             "elem": "js"
         },
         "key": "b-page__js"
+    },
+    "b-with-css.css": {
+        "shouldDeps": [],
+        "mustDeps": [],
+        "item": {
+            "block": "b-with-css",
+            "tech": "css"
+        },
+        "key": "b-with-css.css"
     },
     "i-jquery__inherit": {
         "shouldDeps": [],
