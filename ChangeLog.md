@@ -13,13 +13,15 @@ bem-tools changelog
 
 10.07.2013, Version 0.6.8 (stable)
 ----------------------------------
+
 - deps.js: Correct unique items in `forEach` in case of deps by techs
 
 09.07.2013, Version 0.6.7 (stable)
 ----------------------------------
-- level: Add opts.noCache support to level.createLevel to force level creation without cache use
-- API: Ability to specify source techs for BundlesLevelNode (via getBundleSourceTechs())
-- code: fixed jshint warnings    
+
+- level: Add `opts.noCache` support to `level.createLevel()` to force level creation without cache use
+- API: Ability to specify source techs for `BundlesLevelNode` (via `getBundleSourceTechs()`)
+- code: fixed jshint warnings
 
 03.07.2013, Version 0.6.6 (stable)
 ----------------------------------
