@@ -1,5 +1,16 @@
 bem-tools changelog
 ===================
+
+16.07.2013, Version 0.6.9 (stable)
+----------------------------------
+
+- bem bench: Add ability to test [bh](https://github.com/enb-make/bh) templates and compare them with bemhtml
+
+  You should run `bem bench -t bh [...other opts...]` to launch `bh` tests only or just `bem bench`
+  to run both if they exist.
+
+  See docs for more info.
+
 10.07.2013, Version 0.6.8 (stable)
 ----------------------------------
 - deps.js: Correct unique items in `forEach` in case of deps by techs
