@@ -7,8 +7,8 @@
       "from": "coa@0.4.0"
     },
     "q": {
-      "version": "0.9.5",
-      "from": "q@0.9.5"
+      "version": "0.9.6",
+      "from": "q@0.9.6"
     },
     "qq": {
       "version": "0.3.5",
