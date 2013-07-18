@@ -12,22 +12,12 @@
     },
     "qq": {
       "version": "0.3.5",
-      "from": "qq@~0.3.4",
-      "dependencies": {
-        "q": {
-          "version": "0.8.4",
-          "from": "q@0.8.4"
-        }
-      }
+      "from": "qq@~0.3.4"
     },
     "q-fs": {
       "version": "0.1.36",
       "from": "q-fs@~0.1.33",
       "dependencies": {
-        "q": {
-          "version": "0.8.12",
-          "from": "q@~ 0.8.10"
-        },
         "q-io": {
           "version": "0.0.18",
           "from": "q-io@0.0.x"
@@ -42,10 +32,6 @@
       "version": "0.1.16",
       "from": "q-http@~0.1.16",
       "dependencies": {
-        "q": {
-          "version": "0.8.12",
-          "from": "q@~ 0.8.10"
-        },
         "q-io": {
           "version": "0.0.18",
           "from": "q-io@0.0.x"
