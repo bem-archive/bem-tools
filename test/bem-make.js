@@ -195,18 +195,14 @@ function collectTimestamps(root) {
     var list = {};
 
     return QFS.listTree(root, function(path, stat) {
-        return PATH.basename(path)[0] !== '.' &&
-            Q.when(stat.isFile(), function(isFile) {
-                if (isFile) {
-                    return QFS.lastModified(path)
-                        .then(function(modified) {
-                            list[path] = modified;
-                            return true;
-                        });
-                }
-
-                return false;
-            });
+        if (PATH.basename(path)[0] !== '.' && stat.isFile()) {
+            return QFS.lastModified(path)
+                .then(function(modified) {
+                    list[path] = modified;
+                    return true;
+                });
+        }
+        return false;
     })
     .then(function() {
         return list;
