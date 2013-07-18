@@ -58,7 +58,8 @@
   },
   "scripts": {
     "test": "make test",
-    "test-cover": "make test-cover"
+    "test-cover": "make test-cover",
+    "shrinkwrap": "npm shrinkwrap && scripts/fix-npm-shrinkwrap.js"
   },
   "engines": {
     "node": ">= 0.6.0",

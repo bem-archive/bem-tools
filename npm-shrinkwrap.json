@@ -1,18 +1,18 @@
 {
   "name": "bem",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "dependencies": {
     "coa": {
       "version": "0.4.0",
-      "from": "coa@0.4.0"
+      "from": "coa@~0.4.0"
     },
     "q": {
-      "version": "0.9.5",
-      "from": "q@0.9.5"
+      "version": "0.9.6",
+      "from": "q@~0.9.5"
     },
     "qq": {
       "version": "0.3.5",
-      "from": "qq@0.3.5",
+      "from": "qq@~0.3.4",
       "dependencies": {
         "q": {
           "version": "0.8.4",
@@ -21,144 +21,392 @@
       }
     },
     "q-fs": {
-      "version": "0.1.33",
-      "from": "q-fs@0.1.33",
+      "version": "0.1.36",
+      "from": "q-fs@~0.1.33",
       "dependencies": {
+        "q": {
+          "version": "0.8.12",
+          "from": "q@~ 0.8.10"
+        },
         "q-io": {
           "version": "0.0.18",
-          "from": "q-io@0.0.18"
+          "from": "q-io@0.0.x"
         },
         "fs-boot": {
           "version": "0.0.9",
-          "from": "fs-boot@0.0.9"
+          "from": "fs-boot@0.0.x"
         }
       }
     },
     "q-http": {
       "version": "0.1.16",
-      "from": "q-http@0.1.16",
+      "from": "q-http@~0.1.16",
       "dependencies": {
+        "q": {
+          "version": "0.8.12",
+          "from": "q@~ 0.8.10"
+        },
         "q-io": {
           "version": "0.0.18",
-          "from": "q-io@0.0.18"
+          "from": "q-io@0.0.x"
         }
       }
     },
     "mime": {
-      "version": "1.2.7",
-      "from": "mime@1.2.7"
+      "version": "1.2.9",
+      "from": "mime@~1.2.5"
     },
     "underscore": {
       "version": "1.3.3",
-      "from": "underscore@1.3.3"
+      "from": "underscore@~1.3.1"
     },
     "inherit": {
       "version": "1.0.4",
-      "from": "inherit@1.0.4"
+      "from": "inherit@~1.0.0"
     },
     "borschik": {
-      "version": "0.3.1",
-      "from": "borschik@0.3.1",
+      "version": "0.3.3",
+      "from": "borschik@~0.3.3",
       "dependencies": {
-        "ometajs": {
-          "version": "3.1.19",
-          "from": "ometajs@3.1.19"
+        "q-io": {
+          "version": "1.9.1",
+          "from": "q-io@~1.9.1",
+          "dependencies": {
+            "qs": {
+              "version": "0.1.0",
+              "from": "qs@~0.1.0"
+            },
+            "url2": {
+              "version": "0.0.0",
+              "from": "url2@~0.0.0"
+            },
+            "mimeparse": {
+              "version": "0.1.4",
+              "from": "mimeparse@~0.1.4"
+            },
+            "collections": {
+              "version": "0.1.22",
+              "from": "collections@~0.1.3"
+            }
+          }
         },
         "cssp": {
           "version": "1.0.6",
-          "from": "cssp@1.0.6"
+          "from": "cssp@~1.0.6",
+          "dependencies": {
+            "ometajs": {
+              "version": "3.1.19",
+              "from": "ometajs@~ 3.1.x",
+              "dependencies": {
+                "coa": {
+                  "version": "0.3.9",
+                  "from": "coa@0.3.x"
+                },
+                "q": {
+                  "version": "0.8.12",
+                  "from": "q@0.8.x"
+                },
+                "uglify-js": {
+                  "version": "1.3.5",
+                  "from": "uglify-js@1.3.x"
+                }
+              }
+            }
+          }
         },
         "coffee-script": {
-          "version": "1.4.0",
-          "from": "coffee-script@1.4.0"
+          "version": "1.6.3",
+          "from": "coffee-script@*"
         },
         "csso": {
-          "version": "1.3.6",
-          "from": "csso@1.3.6"
+          "version": "1.3.7",
+          "from": "csso@~1.3.7"
         },
         "uglify-js": {
-          "version": "1.3.4",
-          "from": "uglify-js@1.3.4"
+          "version": "2.3.6",
+          "from": "uglify-js@~2.3.6",
+          "dependencies": {
+            "async": {
+              "version": "0.2.9",
+              "from": "async@~0.2.6"
+            },
+            "source-map": {
+              "version": "0.1.26",
+              "from": "source-map@~0.1.7",
+              "dependencies": {
+                "amdefine": {
+                  "version": "0.0.5",
+                  "from": "amdefine@>=0.0.4"
+                }
+              }
+            },
+            "optimist": {
+              "version": "0.3.7",
+              "from": "optimist@~0.3.5",
+              "dependencies": {
+                "wordwrap": {
+                  "version": "0.0.2",
+                  "from": "wordwrap@~0.0.2"
+                }
+              }
+            }
+          }
         }
       }
     },
     "apw": {
-      "version": "0.3.9",
-      "from": "apw@0.3.9",
-      "dependencies": {
-        "node.extend": {
-          "version": "1.0.0",
-          "from": "node.extend@1.0.0"
-        }
-      }
+      "version": "0.3.10",
+      "from": "apw@~0.3.10"
     },
     "winston": {
-      "version": "0.6.2",
-      "from": "winston@0.6.2",
+      "version": "0.7.2",
+      "from": "winston@>= 0.5.0",
       "dependencies": {
         "async": {
-          "version": "0.1.22",
-          "from": "async@0.1.22"
-        },
-        "colors": {
-          "version": "0.6.0-1",
-          "from": "colors@0.6.0-1"
+          "version": "0.2.9",
+          "from": "async@0.2.x"
         },
         "cycle": {
-          "version": "1.0.1",
-          "from": "cycle@1.0.1"
+          "version": "1.0.2",
+          "from": "cycle@1.0.x"
         },
         "eyes": {
           "version": "0.1.8",
-          "from": "eyes@0.1.8"
+          "from": "eyes@0.1.x"
         },
         "pkginfo": {
-          "version": "0.2.3",
-          "from": "pkginfo@0.2.3"
+          "version": "0.3.0",
+          "from": "pkginfo@0.3.x"
         },
         "request": {
-          "version": "2.9.203",
-          "from": "request@2.9.203"
+          "version": "2.16.6",
+          "from": "request@2.16.x",
+          "dependencies": {
+            "form-data": {
+              "version": "0.0.10",
+              "from": "form-data@~0.0.3",
+              "dependencies": {
+                "combined-stream": {
+                  "version": "0.0.4",
+                  "from": "combined-stream@~0.0.4",
+                  "dependencies": {
+                    "delayed-stream": {
+                      "version": "0.0.5",
+                      "from": "delayed-stream@0.0.5"
+                    }
+                  }
+                }
+              }
+            },
+            "hawk": {
+              "version": "0.10.2",
+              "from": "hawk@~0.10.2",
+              "dependencies": {
+                "hoek": {
+                  "version": "0.7.6",
+                  "from": "hoek@0.7.x"
+                },
+                "boom": {
+                  "version": "0.3.8",
+                  "from": "boom@0.3.x"
+                },
+                "cryptiles": {
+                  "version": "0.1.3",
+                  "from": "cryptiles@0.1.x"
+                },
+                "sntp": {
+                  "version": "0.1.4",
+                  "from": "sntp@0.1.x"
+                }
+              }
+            },
+            "node-uuid": {
+              "version": "1.4.0",
+              "from": "node-uuid@~1.4.0"
+            },
+            "cookie-jar": {
+              "version": "0.2.0",
+              "from": "cookie-jar@~0.2.0"
+            },
+            "aws-sign": {
+              "version": "0.2.0",
+              "from": "aws-sign@~0.2.0"
+            },
+            "oauth-sign": {
+              "version": "0.2.0",
+              "from": "oauth-sign@~0.2.0"
+            },
+            "forever-agent": {
+              "version": "0.2.0",
+              "from": "forever-agent@~0.2.0"
+            },
+            "tunnel-agent": {
+              "version": "0.2.0",
+              "from": "tunnel-agent@~0.2.0"
+            },
+            "json-stringify-safe": {
+              "version": "3.0.0",
+              "from": "json-stringify-safe@~3.0.0"
+            },
+            "qs": {
+              "version": "0.5.6",
+              "from": "qs@~0.5.4"
+            }
+          }
         },
         "stack-trace": {
-          "version": "0.0.6",
-          "from": "stack-trace@0.0.6"
+          "version": "0.0.7",
+          "from": "stack-trace@0.0.x"
         }
       }
     },
     "dom-js": {
       "version": "0.0.9",
-      "from": "dom-js@0.0.9",
+      "from": "dom-js@*",
       "dependencies": {
         "sax": {
-          "version": "0.4.2",
-          "from": "sax@0.4.2"
+          "version": "0.5.4",
+          "from": "sax@>=0.1.5"
         }
       }
     },
     "mkdirp": {
       "version": "0.3.5",
-      "from": "mkdirp@0.3.5"
+      "from": "mkdirp@~0.3.5"
     },
     "node.extend": {
-      "version": "1.0.0",
-      "from": "node.extend@1.0.0"
+      "version": "1.0.7",
+      "from": "node.extend@~1.0.0",
+      "dependencies": {
+        "is": {
+          "version": "0.2.6",
+          "from": "is@~0.2.6"
+        },
+        "object-keys": {
+          "version": "0.3.0",
+          "from": "object-keys@~0.3.0",
+          "dependencies": {
+            "foreach": {
+              "version": "2.0.3",
+              "from": "foreach@~2.0.3"
+            }
+          }
+        }
+      }
     },
     "colors": {
       "version": "0.6.0-1",
-      "from": "colors@0.6.0-1"
+      "from": "colors@~0.6.0"
     },
     "benchmark": {
       "version": "1.0.0",
-      "from": "benchmark@1.0.0"
+      "from": "benchmark@~1.0.0"
     },
     "cli-table": {
       "version": "0.2.0",
-      "from": "cli-table@0.2.0",
+      "from": "cli-table@~0.2.0",
       "dependencies": {
         "colors": {
           "version": "0.3.0",
           "from": "colors@0.3.0"
+        }
+      }
+    },
+    "update-notifier": {
+      "version": "0.1.3",
+      "from": "update-notifier@~0.1.3",
+      "dependencies": {
+        "request": {
+          "version": "2.12.0",
+          "from": "request@~2.12.0",
+          "dependencies": {
+            "form-data": {
+              "version": "0.0.3",
+              "from": "form-data",
+              "dependencies": {
+                "combined-stream": {
+                  "version": "0.0.3",
+                  "from": "combined-stream@0.0.3",
+                  "dependencies": {
+                    "delayed-stream": {
+                      "version": "0.0.5",
+                      "from": "delayed-stream@0.0.5"
+                    }
+                  }
+                },
+                "async": {
+                  "version": "0.1.9",
+                  "from": "async@0.1.9"
+                }
+              }
+            },
+            "mime": {
+              "version": "1.2.7",
+              "from": "mime"
+            }
+          }
+        },
+        "configstore": {
+          "version": "0.1.2",
+          "from": "configstore@~0.1.0",
+          "dependencies": {
+            "lodash": {
+              "version": "1.2.1",
+              "from": "lodash@~1.2.1"
+            },
+            "yamljs": {
+              "version": "0.1.4",
+              "from": "yamljs@~0.1.4",
+              "dependencies": {
+                "argparse": {
+                  "version": "0.1.15",
+                  "from": "argparse@~0.1.4",
+                  "dependencies": {
+                    "underscore": {
+                      "version": "1.4.4",
+                      "from": "underscore@~1.4.3"
+                    },
+                    "underscore.string": {
+                      "version": "2.3.3",
+                      "from": "underscore.string@~2.3.1"
+                    }
+                  }
+                },
+                "glob": {
+                  "version": "3.1.21",
+                  "from": "glob@~3.1.11",
+                  "dependencies": {
+                    "minimatch": {
+                      "version": "0.2.12",
+                      "from": "minimatch@~0.2.11",
+                      "dependencies": {
+                        "lru-cache": {
+                          "version": "2.3.0",
+                          "from": "lru-cache@2"
+                        },
+                        "sigmund": {
+                          "version": "1.0.0",
+                          "from": "sigmund@~1.0.0"
+                        }
+                      }
+                    },
+                    "graceful-fs": {
+                      "version": "1.2.3",
+                      "from": "graceful-fs@~1.2.0"
+                    },
+                    "inherits": {
+                      "version": "1.0.0",
+                      "from": "inherits@1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "semver": {
+          "version": "1.1.4",
+          "from": "semver@~1.1.4"
         }
       }
     }
