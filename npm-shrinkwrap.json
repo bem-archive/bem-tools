@@ -15,8 +15,8 @@
       "from": "qq@~0.3.4"
     },
     "q-fs": {
-      "version": "0.1.36",
-      "from": "q-fs@~0.1.33",
+      "version": "0.1.33",
+      "from": "q-fs@0.1.33",
       "dependencies": {
         "q-io": {
           "version": "0.0.18",
