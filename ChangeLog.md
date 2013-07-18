@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+For 1.x and newer releases see [bem-tools releases](https://github.com/bem/bem-tools/releases) page.
+
+---
+
 16.07.2013, Version 0.6.9 (stable)
 ----------------------------------
 
