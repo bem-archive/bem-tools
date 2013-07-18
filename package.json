@@ -80,7 +80,7 @@
   ],
   "preferGlobal": false,
   "publishConfig": {
-    "tag": "latest"
+    "tag": "unstable"
   },
   "optionalDependencies": {}
 }
