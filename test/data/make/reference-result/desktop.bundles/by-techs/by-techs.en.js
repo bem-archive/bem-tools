@@ -11,6 +11,6 @@
 /*borschik:include:../../bem-bl/blocks-common/i-bem/__dom/i-bem__dom.js*/;
 /*borschik:include:../../bem-bl/blocks-common/i-ecma/__string/i-ecma__string.js*/;
 /*borschik:include:../../bem-bl/blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js*/;
-/*borschik:include:../../blocks/b-with-js/b-with-js.js*/;
+/*borschik:include:../../desktop.blocks/b-with-js/b-with-js.js*/;
 
 BEM.I18N.lang('en');

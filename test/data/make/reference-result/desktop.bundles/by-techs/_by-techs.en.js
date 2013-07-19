@@ -3275,14 +3275,14 @@ $(function() {
 });
 /* ../../bem-bl/blocks-common/i-bem/__dom/_init/i-bem__dom_init_auto.js end */
 ;
-/* ../../blocks/b-with-js/b-with-js.js begin */
+/* ../../desktop.blocks/b-with-js/b-with-js.js begin */
 
 function that_is_never_called(){
     //but does something with css of b-with-css block
 }
 
 
-/* ../../blocks/b-with-js/b-with-js.js end */
+/* ../../desktop.blocks/b-with-js/b-with-js.js end */
 ;
 
 BEM.I18N.lang('en');

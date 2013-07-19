@@ -877,21 +877,6 @@ this.BEM = $.inherit($.observable, /** @lends BEM.prototype */ {
     },
 
     /**
-     * Shortcut for getMod/setMod
-     * @param {Object} [elem] Nested element
-     * @param {String} modName Modifier name
-     * @param {String} [modVal] Modifier value
-     * @returns {BEM}
-     */
-    mod : function(elem, modName, modVal) {
-
-        return typeof modVal !== 'undefined' || (typeof modName !== 'undefined' && typeof elem === 'string')?
-            this.setMod(elem, modName, modVal) :
-            this.getMod(elem, modName, modVal);
-
-    },
-
-    /**
      * Executes handlers for setting modifiers
      * @private
      * @param {String} elemName Element name
@@ -3383,7 +3368,7 @@ BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
 
 /* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js end */
 ;
-/* ../../blocks/b-link/_togcolor/b-link_togcolor_yes.js begin */
+/* ../../desktop.blocks/b-link/_togcolor/b-link_togcolor_yes.js begin */
 /** @requires BEM */
 /** @requires BEM.DOM */
 
@@ -3400,7 +3385,7 @@ BEM.DOM.decl({ name: 'b-link', modName: 'togcolor', modVal: 'yes'}, {
 
 })();
 
-/* ../../blocks/b-link/_togcolor/b-link_togcolor_yes.js end */
+/* ../../desktop.blocks/b-link/_togcolor/b-link_togcolor_yes.js end */
 ;
 
 BEM.I18N.lang('ru');
