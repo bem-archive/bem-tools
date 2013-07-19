@@ -4,7 +4,11 @@
 var assert = require('chai').assert,
     BEM = require('..'),
     Tech = BEM.require('./legacy-tech').Tech,
-    PATH = BEM.require('./path');
+    PATH = BEM.require('./path'),
+    U = BEM.require('./util');
+
+// Turn off deprecation warnings
+U.deprecate.silence = true;
 
 /**
  * Mocha BDD interface.

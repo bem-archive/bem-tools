@@ -4,10 +4,14 @@
 var Q = require('q'),
     assert = require('chai').assert,
     BEM = require('..'),
+    U = BEM.require('./util'),
     PATH = BEM.require('./path'),
     TECH = BEM.require('./tech'),
     createTech = TECH.createTech,
     getTechClass = TECH.getTechClass;
+
+// Turn off deprecation warnings
+U.deprecate.silence = true;
 
 /**
  * Mocha BDD interface.
