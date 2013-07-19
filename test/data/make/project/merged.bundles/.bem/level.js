@@ -1,20 +1,12 @@
 var BEM = require('../../..'),
-    PATH = require('path'),
-    extend = BEM.util.extend,
-
-    BEM_TECHS = '../../bem-bl/blocks-common/i-bem/bem/techs';
+    extend = BEM.util.extend;
 
 exports.getTechs = function() {
 
     return {
         'bemjson.js': '',
-        'bemdecl.js': 'bemdecl.js',
-        'deps.js': 'deps.js',
-        'js': 'js+coffee-i',
-        'i18n': PATH.join(BEM_TECHS, 'i18n.js'),
-        'i18n.js': PATH.join(BEM_TECHS, 'i18n.js.js'),
-        'bemhtml': PATH.join(BEM_TECHS, 'bemhtml.js'),
-        'html': PATH.join(BEM_TECHS, 'html.js')
+        'bemdecl.js': 'v2/bemdecl.js',
+        'deps.js': 'v2/deps.js'
     };
 };
 
