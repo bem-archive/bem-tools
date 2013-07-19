@@ -16,16 +16,6 @@
       "version": "0.9.5",
       "from": "q@~0.9.5"
     },
-    "qq": {
-      "version": "0.3.5",
-      "from": "qq@~0.3.4",
-      "dependencies" : {
-        "q": {
-          "version": "0.9.5",
-          "from": "q@~0.9.5"
-        }
-      }
-    },
     "mime": {
       "version": "1.2.9",
       "from": "mime@~1.2.5"
