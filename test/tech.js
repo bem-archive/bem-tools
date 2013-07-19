@@ -5,7 +5,7 @@ var Q = require('q'),
     SINON = require('sinon'),
     requireMocked = require('require-mocked'),
     assert = require('chai').assert,
-    mockFs = require('q-fs').Mock,
+    mockFs = require('q-io/fs-mock'),
     BEM = require('..'),
     U = BEM.require('./util'),
     PATH = BEM.require('./path'),
@@ -355,7 +355,7 @@ describe('tech', function() {
             
             var MOCKTECH = requireMocked(require.resolve(path), {
                 mocks: {
-                    'q-fs': mockFs(fs)
+                    'q-io/fs': mockFs(fs)
                 }
             });
 
