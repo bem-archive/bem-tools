@@ -1,6 +1,17 @@
 bem-tools changelog
 ===================
 
+19.07.2013, Version 0.6.10 (stable)
+-----------------------------------
+
+- API: Recommend to use tech V2 API instead of V1
+- API: Deprecate `LegacyTech` API
+- API: Deprecate `bem create block`, `bem create elem` and `bem create mod` commands,
+  use `bem create` command with options instead
+
+To disable deprecation warnings set `util.deprecate.silence` value to `false`
+or set `BEM_NO_DEPRECATION` environment variable to `1`.
+
 16.07.2013, Version 0.6.9 (stable)
 ----------------------------------
 
