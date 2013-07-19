@@ -70,9 +70,10 @@ If you use `zsh`, you can add `bem completion` to your `.zshrc` and reload:
 You can create following entities using `bem create`:
 
  * levels of defenition
- * blocks
- * elements
- * modifiers
+ * BEM entities
+   * blocks
+   * elements
+   * modifiers
 
 ##### Level of defenition
 
@@ -111,7 +112,7 @@ Block is a bunch of files in different technologies that hold block's implementa
 
 ###### Create a new block
 
-    bem create block b-my-block
+    bem create block my-block
 
 By default, a block has several techs: (`bemhtml`, `css`, `js`).
 
@@ -119,13 +120,13 @@ By default, a block has several techs: (`bemhtml`, `css`, `js`).
 
 Flags -t (-T) are to create files of technologies you need:
 
-    bem create block -t deps.js b-my-block
+    bem create block -t deps.js my-block
         // Creates a block implementation in deps.js technology, ecxept of default techs.
 
-    bem create block -T css b-my-block
+    bem create block -T css my-block
         // Creates only CSS technology for a block
 
-    bem create block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js b-my-block
+    bem create block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js my-block
         // -T flag is useful when you need to add a new tech to the block existed
 
 The value of this flag may be either tech's name (e.g `css`) or a path to tech module.
@@ -139,55 +140,55 @@ You can find the examples of tech modules in the repo:
 
 ###### Create element
 
-Create element named `elem` for block `b-my-block`
+Create element named `elem` for block `my-block`
 
-    bem create elem -b b-my-block elem
+    bem create elem -b my-block elem
 
 ###### Create modifier of block or element
 
-Create modifier named `mod` for block `b-my-block`
+Create modifier named `mod` for block `my-block`
 
-    bem create mod -b b-my-block mod
+    bem create mod -b my-block mod
 
-Create modifier named `mod` having value `val` for block `b-my-block`
+Create modifier named `mod` having value `val` for block `my-block`
 
-    bem create mod -b b-my-block mod -v val
+    bem create mod -b my-block mod -v val
 
-Create modifier named `mod` for element `elem` of block `b-my-block`
+Create modifier named `mod` for element `elem` of block `my-block`
 
-    bem create mod -b b-my-block -e elem mod
+    bem create mod -b my-block -e elem mod
 
-Create modifier named  `mod` having value `val` for element `elem` of block `b-my-block`
+Create modifier named  `mod` having value `val` for element `elem` of block `my-block`
 
-    bem create mod -b b-my-block -e elem mod -v val
+    bem create mod -b my-block -e elem mod -v val
 
-###### Create any BEM entity using `bem create` command only
+You can specify `-b`, `-e`, `-m` and `-v` options many times so several BEM entities will be created.
 
-You can create any BEM entities or bunches of them using `bem create` command.
+Here are some more examples.
 
-Create blocks named `b-block1` and `b-block2`
+Create blocks named `block1` and `block2`
 
-    bem create -b b-block1 -b b-block2
+    bem create -b block1 -b block2
 
-Create elements named `elem1` and `elem2` for block `b-block`
+Create elements named `elem1` and `elem2` for block `block`
 
-    bem create -b b-block -e elem1 -e elem2
+    bem create -b block -e elem1 -e elem2
 
-Create modifier names `mod` of block `b-block`
+Create modifier names `mod` of block `block`
 
-    bem create -b b-block -m mod
+    bem create -b block -m mod
 
-Create modifier named `mod` of block `b-block` having values `val1` and `val2`
+Create modifier named `mod` of block `block` having values `val1` and `val2`
 
-    bem create -b b-block -m mod -v val1 -v val2
+    bem create -b block -m mod -v val1 -v val2
 
-Create modifier named `mod` for element `elem` of block `b-block`
+Create modifier named `mod` for element `elem` of block `block`
 
-    bem create -b b-block -e elem -m mod
+    bem create -b block -e elem -m mod
 
-Create modifier named `mod` having values `val1` and `val2` for element `elem` of block `b-block`
+Create modifier named `mod` having values `val1` and `val2` for element `elem` of block `block`
 
-    bem create -b b-block -e elem -m mod -v val1 -v val2
+    bem create -b block -e elem -m mod -v val1 -v val2
 
 #### bem build
 
@@ -942,9 +943,9 @@ var Q = require('q'),
     BEM = require('bem').api,
 
     techs = ['css', 'js'],
-    blocks = ['b-block1', 'b-block2'];
+    blocks = ['block1', 'block2'];
 
-Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
+Q.when(BEM.create({ block: blocks, forceTech: techs }), function() {
     console.log('Create blocks: %s', blocks.join(', '));
 });
 ```
@@ -1024,108 +1025,6 @@ Q.when(BEM.create({ forceTechs: forceTechs, block: block, mod: mods, val: vals }
 });
 
 Q.when(BEM.create({ forceTechs: forceTechs, block: block, elem: elem, mod: mods, val: vals }), function() {
-    console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
-});
-```
-
-##### BEM.create.block()
-
-Creates a block.
-
-###### Options
-
- * **String** `level` A directory of block's level. (Current directory by default)
- * **Array** `addTech` Add the techs listed
- * **Array** `forceTech` Use these techs only
- * **Array** `noTech` Exclude these techs
- * **Boolean** `force` Force files creating
-
-###### Arguments
-
- * **Array** `names` List of block names
-
-###### Example
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    addTechs = ['bemhtml'],
-    blocks = ['b-header'];
-
-Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
-    console.log('Create blocks: %s', blocks.join(', '));
-});
-```
-
-##### BEM.create.elem()
-
-Creating an element.
-
-###### Options
-
- * **String** `level` A directory of level. (Current directory by default)
- * **String** `blockName` A name of element's block (required)
- * **Array** `addTech` Add the techs listed
- * **Array** `forceTech` Use only the techs listed
- * **Array** `noTech` Exclude the techs listed
- * **Boolean** `force` Force creating element's files (to rewrite them)
-
-###### Arguments
-
- * **Array** `names` List of element names
-
-###### Example
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    addTechs = ['bemhtml', 'title.txt'],
-    block = 'b-header',
-    elems = ['logo'];
-
-Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }), function() {
-    console.log('Create elems %s of block %s', elems.join(', '), block);
-});
-```
-
-##### BEM.create.mod()
-
-Creating a modifier for a block or an element.
-
-###### Options
-
- * **String** `level` Level directory (current directory by default)
- * **String** `blockName` Block name of this modifier (required)
- * **String** `elemName` Element name
- * **Array** `modVal` Modifier value
- * **Array** `addTech` Add the techs listed
- * **Array** `forceTech` Use only the techs listed
- * **Array** `noTech` Exclude the techs listed
- * **Boolean** `force` Force creating modifier files (rewrite)
-
-###### Arguments
-
- * **Array** `names` List of modifier
-
-###### Example
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    forceTechs = ['css'],
-    block = 'b-header',
-    elem = 'logo',
-    mods = ['lang'],
-    vals = ['ru', 'en'];
-
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
-    console.log('Create mod %s of block %s with vals %s', mods.join(', '), block, vals.join(', '));
-});
-
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: mods }), function() {
     console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
 });
 ```

@@ -67,9 +67,10 @@
 С помошью `bem create` можно создавать сущности:
 
  * уровни переопределения
- * блоки
- * элементы
- * модификаторы
+ * БЭМ-сущности
+   * блоки
+   * элементы
+   * модификаторы
 
 ##### Уровень переопределения
 
@@ -110,21 +111,21 @@
 
 ###### Создание блока
 
-    bem create block b-my-block
+    bem create -b my-block
 
 По умолчанию блок создаётся с набором файлов для всех технологий по-умолчанию (`bemhtml`, `css`, `js`).
 
 ###### Создание блока в определённой технологии
 
-Использование флагов -t (-T) позволяет создавать файлы блока нужных технологий:
+Использование флагов `-t` (`-T`) позволяет создавать файлы блока нужных технологий:
 
-    bem create block -t deps.js b-my-block
+    bem create -b my-block -t deps.js
         // Создаст реализацию в технологии deps.js помимо дефолтных
 
-    bem create block -T css b-my-block
+    bem create -b my-block -T css
         // Создаст только технологию CSS для блока
 
-    bem create block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js b-my-block
+    bem create -b my-block -T bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js
         // Флаг -T удобно использовать, если нужно добавить новую технологию для уже существующего блока
 
 В качестве значения флага может быть указано название технологии (например, `css`)
@@ -139,55 +140,55 @@
 
 ###### Создание элемента блока
 
-Создание элемента `elem` для блока `b-my-block`
+Создание элемента `elem` для блока `my-block`
 
-    bem create elem -b b-my-block elem
+    bem create -b my-block -e elem
 
 ###### Создание модификатора блока или элемента
 
-Создание модификатора `mod` для блока `b-my-block`
+Создание модификатора `mod` для блока `my-block`
 
-    bem create mod -b b-my-block mod
+    bem create -b my-block -m mod
 
-Создание модификатора `mod` в значении `val` для блока `b-my-block`
+Создание модификатора `mod` в значении `val` для блока `my-block`
 
-    bem create mod -b b-my-block mod -v val
+    bem create -b my-block -m mod -v val
 
-Создание модификатора `mod` для элемента `elem` блока `b-my-block`
+Создание модификатора `mod` для элемента `elem` блока `my-block`
 
-    bem create mod -b b-my-block -e elem mod
+    bem create -b my-block -e elem -m mod
 
-Создание модификатора `mod` в значении `val` для элемента `elem` блока `b-my-block`
+Создание модификатора `mod` в значении `val` для элемента `elem` блока `my-block`
 
-    bem create mod -b b-my-block -e elem mod -v val
+    bem create -b my-block -e elem -m mod -v val
 
-###### Создание произвольной БЭМ сущности используя только команду `bem create`
+Все опции `-b`, `-e`, `-m` и `-v` можно указывать несколько раз, тогда будут созданые несколько сущностей.
 
-При момощи команды `bem create` можно создавать произвольные БЭМ сущности или даже наборы сущностей.
+Вот ещё несколько примеров.
 
-Создание блоков `b-block1` и `b-block2`
+Создание блоков `block1` и `block2`
 
-    bem create -b b-block1 -b b-block2
+    bem create -b block1 -b block2
 
-Создание элементов `elem1` и `elem2` для блока `b-block`
+Создание элементов `elem1` и `elem2` для блока `block`
 
-    bem create -b b-block -e elem1 -e elem2
+    bem create -b block -e elem1 -e elem2
 
-Создание модификатора `mod` блока `b-block`
+Создание модификатора `mod` блока `block`
 
-    bem create -b b-block -m mod
+    bem create -b block -m mod
 
-Создание модификатор `mod` блока `b-block` в значениях `val1` и `val2`
+Создание модификатор `mod` блока `block` в значениях `val1` и `val2`
 
-    bem create -b b-block -m mod -v val1 -v val2
+    bem create -b block -m mod -v val1 -v val2
 
-Создание модификатора `mod` элемента `elem` блока `b-block`
+Создание модификатора `mod` элемента `elem` блока `block`
 
-    bem create -b b-block -e elem -m mod
+    bem create -b block -e elem -m mod
 
-Создание модификатора `mod` в значениях `val1` и `val2` для элемента `elem` блока `b-block`
+Создание модификатора `mod` в значениях `val1` и `val2` для элемента `elem` блока `block`
 
-    bem create -b b-block -e elem -m mod -v val1 -v val2
+    bem create -b block -e elem -m mod -v val1 -v val2
 
 #### bem build
 
@@ -977,9 +978,9 @@ var Q = require('q'),
     BEM = require('bem').api,
 
     techs = ['css', 'js'],
-    blocks = ['b-block1', 'b-block2'];
+    blocks = ['block1', 'block2'];
 
-Q.when(BEM.create.block({ forceTech: techs }, { names: blocks }), function() {
+Q.when(BEM.create({ block: blocks, forceTech: techs }), function() {
     console.log('Create blocks: %s', blocks.join(', '));
 });
 ```
@@ -1060,108 +1061,6 @@ Q.when(BEM.create({ forceTechs: forceTechs, block: block, mod: mods, val: vals }
 
 Q.when(BEM.create({ forceTechs: forceTechs, block: block, elem: elem, mod: mods, val: vals }), function() {
     console.log('Create mod %s of elem %s of block %s with vals %s', mods.join(', '), elem, block, vals.join(', '));
-});
-```
-
-##### BEM.create.block()
-
-Создание блока.
-
-###### Опции
-
- * **String** `level` директория уровня переопределения, по умолчанию текущая
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы блока
-
-###### Аргументы
-
- * **Array** `names` имена создаваемых блоков
-
-###### Пример использования
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    addTechs = ['bemhtml'],
-    blocks = ['b-header'];
-
-Q.when(BEM.create.block({ addTech: addTechs }, { names: blocks }), function() {
-    console.log('Create blocks: %s', blocks.join(', '));
-});
-```
-
-##### BEM.create.elem()
-
-Создание элемента.
-
-###### Опции
-
- * **String** `level` директория уровня переопределения, по умолчанию текущая
- * **String** `blockName` имя блока (обязательный параметр)
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы элемента
-
-###### Аргументы
-
- * **Array** `names` имена создаваемых элементов
-
-###### Пример использования
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    addTechs = ['bemhtml', 'title.txt'],
-    block = 'b-header',
-    elems = ['logo'];
-
-Q.when(BEM.create.elem({ addTech: addTechs, blockName: block }, { names: elems }), function() {
-    console.log('Create elems %s of block %s', elems.join(', '), block);
-});
-```
-
-##### BEM.create.mod()
-
-Создание модификатора блока или модификатора элемента.
-
-###### Опции
-
- * **String** `level` директория уровня переопределения, по умолчанию текущая
- * **String** `blockName` имя блока (обязательный параметр)
- * **String** `elemName` имя элемента
- * **Array** `modVal` значения модификатора
- * **Array** `addTech` добавить перечисленные технологии к технологиям для уровня по умолчанию
- * **Array** `forceTech` использовать только указанные технологии
- * **Array** `noTech` исключить указанные технологии из использования
- * **Boolean** `force` принудительно создавать файлы модификатора
-
-###### Аргументы
-
- * **Array** `names` имена создаваемых модификаторов
-
-###### Пример использования
-
-```js
-var Q = require('q'),
-    BEM = require('bem').api,
-
-    forceTechs = ['css'],
-    block = 'b-header',
-    elem = 'logo',
-    mods = ['lang'],
-    vals = ['ru', 'en'];
-
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, modVal: vals }, { names: mods }), function() {
-    console.log('Create mod %s of block %s with vals %s', elems.join(', '), block, vals.join(', '));
-});
-
-Q.when(BEM.create.mod({ forceTechs: forceTechs, blockName: block, elemName: elem, modVal: vals }, { names: elems }), function() {
-    console.log('Create mod %s of elem %s of block %s with vals %s', elems.join(', '), elem, block, vals.join(', '));
 });
 ```
 
