@@ -1,10 +1,16 @@
 {
   "name": "bem",
-  "version": "0.6.10",
+  "version": "1.0.0-alpha2",
   "dependencies": {
     "coa": {
       "version": "0.4.0",
-      "from": "coa@~0.4.0"
+      "from": "coa@~0.4.0",
+      "dependencies" : {
+        "q": {
+          "version": "0.9.5",
+          "from": "q@~0.9.5"
+        }
+      }
     },
     "q": {
       "version": "0.9.5",
@@ -12,29 +18,11 @@
     },
     "qq": {
       "version": "0.3.5",
-      "from": "qq@~0.3.4"
-    },
-    "q-fs": {
-      "version": "0.1.33",
-      "from": "q-fs@0.1.33",
-      "dependencies": {
-        "q-io": {
-          "version": "0.0.18",
-          "from": "q-io@0.0.x"
-        },
-        "fs-boot": {
-          "version": "0.0.9",
-          "from": "fs-boot@0.0.x"
-        }
-      }
-    },
-    "q-http": {
-      "version": "0.1.16",
-      "from": "q-http@~0.1.16",
-      "dependencies": {
-        "q-io": {
-          "version": "0.0.18",
-          "from": "q-io@0.0.x"
+      "from": "qq@~0.3.4",
+      "dependencies" : {
+        "q": {
+          "version": "0.9.5",
+          "from": "q@~0.9.5"
         }
       }
     },
@@ -54,25 +42,21 @@
       "version": "0.3.3",
       "from": "borschik@~0.3.3",
       "dependencies": {
-        "q-io": {
-          "version": "1.9.1",
-          "from": "q-io@~1.9.1",
+        "ometajs": {
+          "version": "3.2.4",
+          "from": "ometajs@~3.2.4",
           "dependencies": {
-            "qs": {
-              "version": "0.1.0",
-              "from": "qs@~0.1.0"
+            "coa": {
+              "version": "0.3.9",
+              "from": "coa@0.3.x"
             },
-            "url2": {
-              "version": "0.0.0",
-              "from": "url2@~0.0.0"
+            "q": {
+              "version": "0.8.12",
+              "from": "q@0.8.x"
             },
-            "mimeparse": {
-              "version": "0.1.4",
-              "from": "mimeparse@~0.1.4"
-            },
-            "collections": {
-              "version": "0.1.22",
-              "from": "collections@~0.1.3"
+            "uglify-js": {
+              "version": "1.3.5",
+              "from": "uglify-js@1.3.x"
             }
           }
         },
@@ -150,7 +134,7 @@
       "dependencies": {
         "async": {
           "version": "0.2.9",
-          "from": "async@0.2.x"
+          "from": "async@~0.2.6"
         },
         "cycle": {
           "version": "1.0.2",
@@ -393,6 +377,28 @@
         "semver": {
           "version": "1.1.4",
           "from": "semver@~1.1.4"
+        }
+      }
+    },
+    "q-io": {
+      "version": "1.9.1",
+      "from": "q-io@~1.9.1",
+      "dependencies": {
+        "qs": {
+          "version": "0.1.0",
+          "from": "qs@~0.1.0"
+        },
+        "url2": {
+          "version": "0.0.0",
+          "from": "url2@~0.0.0"
+        },
+        "mimeparse": {
+          "version": "0.1.4",
+          "from": "mimeparse@~0.1.4"
+        },
+        "collections": {
+          "version": "0.1.22",
+          "from": "collections@~0.1.3"
         }
       }
     }

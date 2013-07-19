@@ -2,7 +2,7 @@
 
 'use strict';
 
-var QFS = require('q-fs'),
+var QFS = require('q-io/fs'),
     file = 'npm-shrinkwrap.json';
 
 QFS.read(file)

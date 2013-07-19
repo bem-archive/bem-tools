@@ -4,7 +4,7 @@ var UTIL = require('util'),
     PATH = require('path'),
     Q = require('q'),
     _ = require('underscore'),
-    QFS = require('q-fs'),
+    QFS = require('q-io/fs'),
 
     BEM = require('..'),
 
@@ -67,7 +67,7 @@ describe('bem', function() {
                         .then(function(newTimestamps){
                             var mismatches = Object.keys(newTimestamps)
                                 .filter(function(ts) {
-                                    return newTimestamps[ts] !== timestamps[ts];
+                                    return newTimestamps[ts].value !== timestamps[ts].value;
                                 });
 
                             if (mismatches.length > 0) throw new Error('There are modified files:\n' + mismatches.join('\n'));

@@ -2,7 +2,7 @@
 
 var assert = require('chai').assert,
     PATH = require('path'),
-    QFS = require('q-fs'),
+    QFS = require('q-io/fs'),
 
     LibNodes = require('..').require('./nodes/lib');
 
