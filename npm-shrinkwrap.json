@@ -83,8 +83,8 @@
       }
     },
     "apw": {
-      "version": "0.3.9",
-      "from": "apw@0.3.9",
+      "version": "0.3.10",
+      "from": "apw@0.3.10",
       "dependencies": {
         "node.extend": {
           "version": "1.0.0",
