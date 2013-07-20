@@ -1557,6 +1557,7 @@ BEM.INTERNAL = {
 
 var win = $(window),
     doc = $(document),
+    scope = $('body'),
 
 /**
  * Storage for DOM elements by unique key
@@ -2530,6 +2531,13 @@ var DOM = BEM.DOM = BEM.decl('i-bem__dom',/** @lends BEM.DOM.prototype */{
     }
 
 }, /** @lends BEM.DOM */{
+
+    /**
+     * Scope
+     * @protected
+     * @type jQuery
+     */
+    scope : scope,
 
     /**
      * Document shortcut
