@@ -83,8 +83,8 @@
       }
     },
     "apw": {
-      "version": "0.3.9",
-      "from": "apw@0.3.9",
+      "version": "0.3.11",
+      "from": "apw@0.3.11",
       "dependencies": {
         "node.extend": {
           "version": "1.0.0",
@@ -125,6 +125,9 @@
           "from": "stack-trace@0.0.6"
         }
       }
+    },
+    "coffee-script": {
+      "version": "1.4.0"
     },
     "dom-js": {
       "version": "0.0.9",
