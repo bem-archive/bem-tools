@@ -3347,6 +3347,21 @@ BEM.DOM.decl({'name': 'b-link', 'modName': 'pseudo', 'modVal': 'yes'}, {
 
 /* ../../bem-bl/blocks-desktop/b-link/_pseudo/b-link_pseudo_yes.js end */
 ;
+/* ../../desktop.blocks/b-link/_pseudo/b-link_pseudo_yes.coffee begin */
+
+/*
+b-link_pseudo_yes.coffee
+*/
+
+
+(function() {
+
+
+
+}).call(this);
+
+/* ../../desktop.blocks/b-link/_pseudo/b-link_pseudo_yes.coffee end */
+;
 /* ../../desktop.blocks/b-link/_togcolor/b-link_togcolor_yes.js begin */
 /** @requires BEM */
 /** @requires BEM.DOM */

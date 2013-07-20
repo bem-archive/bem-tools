@@ -9,7 +9,7 @@ exports.getTechs = function() {
     return {
         'bemjson.js': '',
         'deps.js': 'v2/deps.js',
-        'js': 'v2/js-i',
+        'js': 'v2/js+coffee-i',
         'css': 'v2/css',
         'ie.css': 'v2/ie.css',
         'i18n': PATH.join(BEM_TECHS, 'v2/i18n.js'),
