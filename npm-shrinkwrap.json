@@ -126,6 +126,10 @@
           "version": "0.2.9",
           "from": "async@~0.2.6"
         },
+        "colors": {
+          "version": "0.6.0-1",
+          "from": "colors@0.6.x"
+        },
         "cycle": {
           "version": "1.0.2",
           "from": "cycle@1.0.x"
@@ -254,39 +258,109 @@
         }
       }
     },
-    "colors": {
-      "version": "0.6.0-1",
-      "from": "colors@~0.6.0"
-    },
-    "benchmark": {
-      "version": "1.0.0",
-      "from": "benchmark@~1.0.0"
-    },
-    "cli-table": {
-      "version": "0.2.0",
-      "from": "cli-table@~0.2.0",
-      "dependencies": {
-        "colors": {
-          "version": "0.3.0",
-          "from": "colors@0.3.0"
-        }
-      }
-    },
     "update-notifier": {
-      "version": "0.1.3",
+      "version": "0.1.4",
       "from": "update-notifier@~0.1.3",
       "dependencies": {
+        "colors": {
+          "version": "0.6.0-1",
+          "from": "colors@0.6.x"
+        },
         "request": {
-          "version": "2.12.0",
-          "from": "request@~2.12.0",
+          "version": "2.22.0",
+          "from": "request@~2.22.0",
           "dependencies": {
+            "qs": {
+              "version": "0.6.5",
+              "from": "qs@~0.6.0"
+            },
+            "json-stringify-safe": {
+              "version": "4.0.0",
+              "from": "json-stringify-safe@~4.0.0"
+            },
+            "forever-agent": {
+              "version": "0.5.0",
+              "from": "forever-agent@~0.5.0"
+            },
+            "tunnel-agent": {
+              "version": "0.3.0",
+              "from": "tunnel-agent@~0.3.0"
+            },
+            "http-signature": {
+              "version": "0.10.0",
+              "from": "http-signature@~0.10.0",
+              "dependencies": {
+                "assert-plus": {
+                  "version": "0.1.2",
+                  "from": "assert-plus@0.1.2"
+                },
+                "asn1": {
+                  "version": "0.1.11",
+                  "from": "asn1@0.1.11"
+                },
+                "ctype": {
+                  "version": "0.5.2",
+                  "from": "ctype@0.5.2"
+                }
+              }
+            },
+            "hawk": {
+              "version": "0.13.1",
+              "from": "hawk@~0.13.0",
+              "dependencies": {
+                "hoek": {
+                  "version": "0.8.5",
+                  "from": "hoek@0.8.x"
+                },
+                "boom": {
+                  "version": "0.4.2",
+                  "from": "boom@0.4.x",
+                  "dependencies": {
+                    "hoek": {
+                      "version": "0.9.1",
+                      "from": "hoek@0.9.x"
+                    }
+                  }
+                },
+                "cryptiles": {
+                  "version": "0.2.2",
+                  "from": "cryptiles@0.2.x"
+                },
+                "sntp": {
+                  "version": "0.2.4",
+                  "from": "sntp@0.2.x",
+                  "dependencies": {
+                    "hoek": {
+                      "version": "0.9.1",
+                      "from": "hoek@0.9.x"
+                    }
+                  }
+                }
+              }
+            },
+            "aws-sign": {
+              "version": "0.3.0",
+              "from": "aws-sign@~0.3.0"
+            },
+            "oauth-sign": {
+              "version": "0.3.0",
+              "from": "oauth-sign@~0.3.0"
+            },
+            "cookie-jar": {
+              "version": "0.3.0",
+              "from": "cookie-jar@~0.3.0"
+            },
+            "node-uuid": {
+              "version": "1.4.0",
+              "from": "node-uuid@~1.4.0"
+            },
             "form-data": {
-              "version": "0.0.3",
-              "from": "form-data",
+              "version": "0.0.8",
+              "from": "form-data@0.0.8",
               "dependencies": {
                 "combined-stream": {
-                  "version": "0.0.3",
-                  "from": "combined-stream@0.0.3",
+                  "version": "0.0.4",
+                  "from": "combined-stream@~0.0.4",
                   "dependencies": {
                     "delayed-stream": {
                       "version": "0.0.5",
@@ -295,14 +369,10 @@
                   }
                 },
                 "async": {
-                  "version": "0.1.9",
-                  "from": "async@0.1.9"
+                  "version": "0.2.9",
+                  "from": "async@~0.2.7"
                 }
               }
-            },
-            "mime": {
-              "version": "1.2.7",
-              "from": "mime"
             }
           }
         },
@@ -365,8 +435,8 @@
           }
         },
         "semver": {
-          "version": "1.1.4",
-          "from": "semver@~1.1.4"
+          "version": "2.0.10",
+          "from": "semver@~2.0.0"
         }
       }
     },
