@@ -1,1 +1,5 @@
-exports.test = true;
+'use strict';
+
+exports.techMixin = {
+    test: true
+};
