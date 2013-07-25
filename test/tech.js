@@ -2,8 +2,12 @@
 'use strict';
 
 var Q = require('q'),
-    assert = require('chai').assert,
     SINON = require('sinon'),
+    chai = require('chai'),
+    chaiAsPromised = require('chai-as-promised'),
+    assert = chai.assert,
+    requireMocked = require('require-mocked'),
+    mockFs = require('q-fs').Mock,
     BEM = require('..'),
     U = BEM.require('./util'),
     PATH = BEM.require('./path'),
@@ -13,6 +17,8 @@ var Q = require('q'),
     getTechClass = TECH.getTechClass;
 // Turn off deprecation warnings
 U.deprecate.silence = true;
+
+chai.use(chaiAsPromised);
 
 /**
  * Mocha BDD interface.
@@ -268,6 +274,150 @@ describe('tech', function() {
                                         SINON.match.any,
                                         SINON.match.any,
                                         "source_suffix");
+        });
+    });
+
+    describe('v2', function() {
+        function createMockedTech(fs) {
+            var path = (process.env.COVER? '../lib-cov/' : '../lib/') + 'tech/index.js';
+            
+            var MOCKTECH = requireMocked(require.resolve(path), {
+                mocks: {
+                    'q-fs': mockFs(fs)
+                }
+            });
+
+            var TechClass = MOCKTECH.getTechClass({API_VER: 2});
+            var tech = new TechClass('techName', '/some/path');
+            tech.setContext({opts:{}});
+            return tech;
+        }
+
+        describe('validate()', function() {
+
+            it('should return false when meta file does not exists', function(done) {
+                var tech = createMockedTech({
+                    'dest': ''
+                });
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374796800000}
+                ], {})).notify(done);
+            });
+
+            it('should return false when amount of source files in cache different from current', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source1', lastUpdated: 1374796800000},
+                                    {absPath: 'source2', lastUpdated: 1374796800000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source1', lastUpdated: 1374796800000}
+                ], {})).notify(done);
+            });
+
+            it('should return false when source file changed names', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'oldSource', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'newSource', lastUpdated: 1374710400000}
+                ], {})).notify(done);
+            });
+
+            it('should return false when source file has been updated', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374796800000}
+                ], {})).notify(done);
+            });
+
+            it('should return false when destination file does not exists', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    }
+                });
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {})).notify(done);
+
+            });
+
+            it('should return true when all previous conditions met', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                 
+                assert.eventually.isTrue(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {})).notify(done);
+            });
+
+            it('should return false when opts.force is set', function(done) {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+ 
+                assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {force: true})).notify(done);
+            });
         });
     });
 
