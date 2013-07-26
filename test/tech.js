@@ -279,20 +279,26 @@ describe('tech', function() {
 
     describe('v2', function() {
 
+        function createTechObj(decl) {
+            decl = decl || {};
+            decl.API_VER = 2;
+            var TechClass = getTechClass(decl);
+            return new TechClass();
+        }
+
         describe('getCreateResults()', function() {
-            var TechClass = getTechClass({
-                API_VER: 2,
-                getCreateSuffixes: function() {
-                    return ['js', 'css'];
-                },
-                getCreateResult: function (path, suffix, vars) {
-                    return Q.resolve(suffix + ' content');
-                }
-            });
 
             var tech;
             beforeEach(function() {
-                tech = new TechClass();
+                tech = createTechObj({
+                    API_VER: 2,
+                    getCreateSuffixes: function() {
+                        return ['js', 'css'];
+                    },
+                    getCreateResult: function (path, suffix, vars) {
+                        return Q.resolve(suffix + ' content');
+                    }
+                });
             });
 
             it('should return one value for each suffix', function(done) {
@@ -315,7 +321,9 @@ describe('tech', function() {
         });
 
         describe('getBuildResult()', function () {
-            var TechClass = getTechClass({
+            var tech;
+            beforeEach(function() {
+                tech = createTechObj({
                     API_VER: 2,
 
                     getBuildResultChunk: function(relPath, path, suffix) {
@@ -324,10 +332,6 @@ describe('tech', function() {
                             'suffix: ' + suffix;
                     }
                 });
-
-            var tech;
-            beforeEach(function() {
-                tech = new TechClass();
             });
 
             it('should return chunk for each file', function(done) {
@@ -488,6 +492,111 @@ describe('tech', function() {
                 ], {force: true})).notify(done);
             });
         });
+
+        
+
+        describe('getSuffixes()', function () {
+
+            it('should return each source suffix from build suffixes map', function () {
+                var tech = createTechObj({
+                    getBuildSuffixesMap: function () {
+                        return {
+                            'js': ['js', 'coffee'],
+                            'css': ['styl', 'scss']
+                        };
+                    }
+                });
+
+                //TODO: Update chai and repalce with sameMembers
+                assert.deepEqual(tech.getSuffixes(), ['js', 'coffee', 'styl', 'scss']);
+            });
+
+            it('should have no duplicates', function (){
+                var tech = createTechObj({
+                    getBuildSuffixesMap: function () {
+                        return {
+                            'js': ['js', 'css'],
+                            'css': ['js', 'css']
+                        };
+                    }
+                });
+                assert.deepEqual(tech.getSuffixes(), ['js', 'css']);
+            });
+        });
+
+        describe.skip('matchSuffix()', function () {
+        });
+
+        describe('getPath()', function () {
+
+            it('should return prefix and suffix concatenated', function() {
+                var tech = createTechObj({});
+                assert.equal(tech.getPath('/test/example', 'js'), '/test/example.js');
+            });
+
+            it('should use techName when suffix is not passed', function () {
+                var tech = createTechObj({
+                    getTechName: function() {
+                        return 'test';
+                    }
+                });
+
+                assert.equal(tech.getPath('/test/example'), '/test/example.test');
+            });
+        });
+
+        describe('getPaths()', function () {
+            it('should return path for single suffix and prefix', function() {
+                var tech = createTechObj();
+                assert.deepEqual(tech.getPaths('/test/example', 'js'), ['/test/example.js']);
+            });
+
+            it('should return all possible pathes for arrays of suffixes and prefixes', function () {
+                var paths = createTechObj().getPaths(['/test/example1', '/test/example2'],
+                                                     ['js', 'css']);
+
+                //TODO: replace with sameMembers
+                assert.include(paths, '/test/example1.js');
+                assert.include(paths, '/test/example2.js');
+                assert.include(paths, '/test/example1.css');
+                assert.include(paths, '/test/example2.css');
+                
+            });
+
+            it('should use getSuffixes() if suffixes has not been passed', function () {
+                var paths = createTechObj({
+                        getSuffixes: function () {
+                            return ['html', 'less'];
+                        }
+                    })
+                    .getPaths(['/test/example1', '/test/example2']);
+
+                assert.include(paths, '/test/example1.html');
+                assert.include(paths, '/test/example2.html');
+                assert.include(paths, '/test/example1.less');
+                assert.include(paths, '/test/example2.less');
+            });
+        });
+
+        describe('getTechName()', function () {
+            var tech;
+            beforeEach(function () {
+                tech = createTechObj();
+            });
+
+            it('should return techName if its set', function () {
+                tech.techName = 'SomeTech';
+
+                assert.equal(tech.getTechName(), 'SomeTech');
+            });
+
+            it('should return file name if techName is not set', function () {
+                tech.techPath = '/test/someFile.js';
+
+                assert.equal(tech.getTechName(), 'someFile');
+            });
+        });
+
     });
 
 });
