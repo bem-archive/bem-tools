@@ -129,9 +129,75 @@ describe('tech', function() {
     });
 
     describe('v2', function() {
+
+        describe('getCreateResults()', function() {
+            var TechClass = getTechClass({
+                API_VER: 2,
+                getCreateSuffixes: function() {
+                    return ['js', 'css'];
+                },
+                getCreateResult: function (path, suffix, vars) {
+                    return Q.resolve(suffix + ' content');
+                }
+            });
+
+            var tech;
+            beforeEach(function() {
+                tech = new TechClass();
+            });
+
+            it('should return one value for each suffix', function(done) {
+                var result = tech.getCreateResults('/tmp', {});
+
+                assert.isFulfilled(Q.all([
+                    assert.eventually.property(result, 'css'),
+                    assert.eventually.property(result, 'js'),
+                ])).notify(done);
+            });
+
+            it('should return result of getCreateResult for each key', function(done) {
+                var result= tech.getCreateResults('/tmp', {});
+                assert.isFulfilled(Q.all([
+                    assert.eventually.propertyVal(result, 'css', 'css content'),
+                    assert.eventually.propertyVal(result, 'js', 'js content')
+                ])).notify(done);
+            });
+
+        });
+
+        describe('getBuildResult()', function () {
+            var TechClass = getTechClass({
+                    API_VER: 2,
+
+                    getBuildResultChunk: function(relPath, path, suffix) {
+                        return 'relPath: ' + relPath + ' ' +
+                            'path: ' + path + ' ' +
+                            'suffix: ' + suffix;
+                    }
+                });
+
+            var tech;
+            beforeEach(function() {
+                tech = new TechClass();
+            });
+
+            it('should return chunk for each file', function(done) {
+               var result = tech.getBuildResult([
+                    {absPath: '/test/1.js'},
+                    {absPath: '/test/2.js'}
+               ], 'out.js', '/test/result/out.js');
+
+
+               assert.eventually.deepEqual(result, [
+                    'relPath: ../1.js path: /test/1.js suffix: out.js',
+                    'relPath: ../2.js path: /test/2.js suffix: out.js'
+               ]).notify(done);
+            });
+        });
+
         function createMockedTech(fs) {
             var path = (process.env.COVER? '../lib-cov/' : '../lib/') + 'tech/index.js';
-            
+           
             var MOCKTECH = MOCKS.loadFile(require.resolve(path), {
                 'q-fs': mockFs(fs),
             }, null, true);
@@ -148,6 +214,7 @@ describe('tech', function() {
                 var tech = createMockedTech({
                     'dest': ''
                 });
+
                 assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374796800000}
                 ], {})).notify(done);
@@ -223,6 +290,7 @@ describe('tech', function() {
                         }
                     }
                 });
+
                 assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374710400000}
                 ], {})).notify(done);
