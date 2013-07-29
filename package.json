@@ -57,7 +57,8 @@
     "jshint": "~2.1.4",
     "sinon": "~1.7.3",
     "chai-as-promised": "~3.3.1",
-    "require-mocked": "~0.2.1"
+    "require-mocked": "~0.2.1",
+    "mocha-as-promised": "~1.4.0"
   },
   "scripts": {
     "test": "make test",

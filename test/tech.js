@@ -297,21 +297,21 @@ describe('tech', function() {
                 });
             });
 
-            it('should return one value for each suffix', function(done) {
+            it('should return one value for each suffix', function() {
                 var result = tech.getCreateResults('/tmp', {});
 
-                assert.isFulfilled(Q.all([
+                return assert.isFulfilled(Q.all([
                     assert.eventually.property(result, 'css'),
                     assert.eventually.property(result, 'js'),
-                ])).notify(done);
+                ]));
             });
 
-            it('should return result of getCreateResult for each key', function(done) {
+            it('should return result of getCreateResult for each key', function() {
                 var result= tech.getCreateResults('/tmp', {});
-                assert.isFulfilled(Q.all([
+                return assert.isFulfilled(Q.all([
                     assert.eventually.propertyVal(result, 'css', 'css content'),
                     assert.eventually.propertyVal(result, 'js', 'js content')
-                ])).notify(done);
+                ]));
             });
 
         });
@@ -330,17 +330,17 @@ describe('tech', function() {
                 });
             });
 
-            it('should return chunk for each file', function(done) {
+            it('should return chunk for each file', function() {
                var result = tech.getBuildResult([
                     {absPath: '/test/1.js', suffix: 'js'},
                     {absPath: '/test/2.css', suffix: 'css'}
                ], 'out.js', '/test/result/out.js');
 
 
-               assert.eventually.deepEqual(result, [
+               return assert.eventually.deepEqual(result, [
                     'relPath: ../1.js path: /test/1.js suffix: js',
                     'relPath: ../2.css path: /test/2.css suffix: css'
-               ]).notify(done);
+               ]);
             });
         });
 
@@ -362,17 +362,17 @@ describe('tech', function() {
 
         describe('validate()', function() {
 
-            it('should return false when meta file does not exists', function(done) {
+            it('should return false when meta file does not exists', function() {
                 var tech = createMockedTech({
                     'dest': ''
                 });
 
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374796800000}
-                ], {})).notify(done);
+                ], {}));
             });
 
-            it('should return false when amount of source files in cache different from current', function(done) {
+            it('should return false when amount of source files in cache different from current', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -387,12 +387,12 @@ describe('tech', function() {
                     'dest': ''
                 });
 
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source1', lastUpdated: 1374796800000}
-                ], {})).notify(done);
+                ], {}));
             });
 
-            it('should return false when source file changed names', function(done) {
+            it('should return false when source file changed names', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -406,12 +406,12 @@ describe('tech', function() {
                     'dest': ''
                 });
 
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'newSource', lastUpdated: 1374710400000}
-                ], {})).notify(done);
+                ], {}));
             });
 
-            it('should return false when source file has been updated', function(done) {
+            it('should return false when source file has been updated', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -425,12 +425,12 @@ describe('tech', function() {
                     'dest': ''
                 });
 
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374796800000}
-                ], {})).notify(done);
+                ], {}));
             });
 
-            it('should return false when destination file does not exists', function(done) {
+            it('should return false when destination file does not exists', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -443,13 +443,13 @@ describe('tech', function() {
                     }
                 });
 
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374710400000}
-                ], {})).notify(done);
+                ], {}));
 
             });
 
-            it('should return true when all previous conditions met', function(done) {
+            it('should return true when all previous conditions met', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -464,12 +464,12 @@ describe('tech', function() {
                 });
 
                  
-                assert.eventually.isTrue(tech.validate('dest', [
+                return assert.eventually.isTrue(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374710400000}
-                ], {})).notify(done);
+                ], {}));
             });
 
-            it('should return false when opts.force is set', function(done) {
+            it('should return false when opts.force is set', function() {
                 var tech = createMockedTech({
                     '.bem': {
                         'cache': {
@@ -483,9 +483,9 @@ describe('tech', function() {
                     'dest': ''
                 });
  
-                assert.eventually.isFalse(tech.validate('dest', [
+                return assert.eventually.isFalse(tech.validate('dest', [
                     {absPath: 'source', lastUpdated: 1374710400000}
-                ], {force: true})).notify(done);
+                ], {force: true}));
             });
         });
 
