@@ -3,10 +3,8 @@
 
 var Q = require('q'),
     SINON = require('sinon'),
-    chai = require('chai'),
-    chaiAsPromised = require('chai-as-promised'),
-    assert = chai.assert,
     requireMocked = require('require-mocked'),
+    assert = require('chai').assert,
     mockFs = require('q-fs').Mock,
     BEM = require('..'),
     U = BEM.require('./util'),
@@ -17,8 +15,6 @@ var Q = require('q'),
     getTechClass = TECH.getTechClass;
 // Turn off deprecation warnings
 U.deprecate.silence = true;
-
-chai.use(chaiAsPromised);
 
 /**
  * Mocha BDD interface.
