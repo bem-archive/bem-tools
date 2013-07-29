@@ -2,9 +2,7 @@
 'use strict';
 
 var Q = require('q'),
-    chai = require('chai'),
-    chaiAsPromised = require('chai-as-promised'),
-    assert = chai.assert,
+    assert = require('chai').assert,
     MOCKS = require('mocks'),
     mockFs = require('q-fs').Mock,
     BEM = require('..'),
@@ -12,8 +10,6 @@ var Q = require('q'),
     TECH = BEM.require('./tech'),
     createTech = TECH.createTech,
     getTechClass = TECH.getTechClass;
-
-chai.use(chaiAsPromised);
 
 /**
  * Mocha BDD interface.
