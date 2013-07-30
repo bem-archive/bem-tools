@@ -1,6 +1,13 @@
 bem-tools changelog
 ===================
 
+30.07.2013, Version 0.6.11 (stable)
+-----------------------------------
+
+- tech v2: Fix cache. Two technologies with the same target name don't
+  overwrite each other's metadata cache anymore
+- bem make: Stop using bem create {block,mod,val} commands in make process
+
 19.07.2013, Version 0.6.10 (stable)
 -----------------------------------
 
