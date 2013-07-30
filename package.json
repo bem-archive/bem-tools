@@ -45,15 +45,15 @@
   "devDependencies": {
     "ometajs": "~3.2.4",
     "xjst": "0.4.13",
-    "mocha-coverjs": "*",
     "mocha": "~1.11.0",
     "chai": "~1.0.3",
-    "coverjs": ">= 0.0.7-alpha",
-    "jshint": "~2.1.4"
+    "jshint": "~2.1.4",
+    "coveralls": "~2.0.16",
+    "mocha-istanbul": "~0.2.0",
+    "istanbul": "~0.1.42"
   },
   "scripts": {
-    "test": "make test",
-    "test-cover": "make test-cover",
+    "test": "make test-cover",
     "shrinkwrap": "npm shrinkwrap && scripts/fix-npm-shrinkwrap.js"
   },
   "engines": {

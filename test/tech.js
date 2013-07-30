@@ -130,11 +130,11 @@ describe('tech', function() {
 
 function testBaseTech(techPath, techAlias) {
 
-    var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/',
+    var bemLib = process.env.BEM_COVER? 'bem/lib-cov/' : 'bem/lib/',
         techName = PATH.basename(techPath),
         absTechPath = require.resolve(PATH.resolve(__dirname, techPath)),
         relTechPath = techPath + '.js',
-        re = process.env.COVER? /^\.\.\/lib-cov\// : /^\.\.\/lib\//;
+        re = process.env.BEM_COVER? /^\.\.\/lib-cov\// : /^\.\.\/lib\//;
 
     // NOTE: techPath will be always in unix format
     if(re.test(techPath)) {
@@ -264,7 +264,7 @@ function testBaseTech(techPath, techAlias) {
 
 describe('tech modules', function() {
 
-    var lib = process.env.COVER? '../lib-cov/' : '../lib/';
+    var lib = process.env.BEM_COVER? '../lib-cov/' : '../lib/';
 
     testBaseTech(lib + 'techs/js');
     testBaseTech(lib + 'techs/css');

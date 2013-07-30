@@ -1,7 +1,7 @@
 BEM = ./bin/bem
 BIN = ./node_modules/.bin
 MOCHA = $(BIN)/mocha
-JSCOV = $(BIN)/coverjs
+ISTANBUL = $(BIN)/istanbul
 JSHINT = $(BIN)/jshint
 
 .PHONY: all
@@ -23,14 +23,15 @@ test: jshint
 
 .PHONY: lib-cov
 lib-cov:
-	-rm -rf lib-cov
-	$(JSCOV) --recursive --output lib-cov lib/*
+	-rm -rf lib-cov html-report lcov.info
+	$(ISTANBUL) instrument --output lib-cov --no-compact --variable global.__coverage__ lib
 
 .PHONY: test-cover
 test-cover: lib-cov test
-	COVER=1 $(MOCHA) --reporter mocha-coverjs > coverage.html
+	BEM_COVER=1 ISTANBUL_REPORTERS=lcovonly,text-summary,html $(MOCHA) --reporter mocha-istanbul
+	-cat lcov.info | $(BIN)/coveralls
 	@echo
-	@echo Open ./coverage.html file in your browser
+	@echo Open html-report/index.html file in your browser
 
 .PHONY: tests
 tests:
