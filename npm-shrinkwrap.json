@@ -29,7 +29,7 @@
           "from": "q-io@0.0.18"
         },
         "fs-boot": {
-          "version": "0.0.9",
+          "version": "https://github.com/SevInf/fs-boot/archive/fix-sep.tar.gz",
           "from": "fs-boot@0.0.9"
         }
       }
