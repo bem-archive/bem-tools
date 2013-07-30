@@ -49,7 +49,10 @@
     "mocha": "~1.11.0",
     "chai": "~1.0.3",
     "coverjs": ">= 0.0.7-alpha",
-    "jshint": "~2.1.4"
+    "jshint": "~2.1.4",
+    "mocks": "https://github.com/SevInf/node-mocks/archive/patch-1.tar.gz",
+    "chai-as-promised": "~3.3.1",
+    "mocha-as-promised": "~1.4.0"
   },
   "scripts": {
     "test": "make test",
