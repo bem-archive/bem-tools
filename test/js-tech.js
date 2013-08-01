@@ -1,6 +1,6 @@
 'use strict';
 
-var BEMTesting = require('../lib/testing');
+var BEMTesting = require('bem-smoke');
 
 describe('js tech', function() {
     var tech;
