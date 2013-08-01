@@ -75,8 +75,8 @@ describe('css tech', function() {
         });
     });
 
-    describe.skip('building', function() {
-        it('should produce concatenated css', function(done) {
+    describe('building', function() {
+        it('produces concatenated css on one level', function(done) {
             tech.withSourceFiles({
                 'menu': {
                     'menu.css': '.test1 {}',
@@ -86,11 +86,43 @@ describe('css tech', function() {
                 }
             })
             .build('/name', {
-                block: 'menu'
+                deps: [
+                    {block: 'menu'},
+                    {block: 'menu', elem: 'item'}
+                ]
             })
             .producesFile('name.css')
-            .withContent('@import url(menu/menu.css)',
-                         '@import url(menu/__item/menu__item.css)',
+            .withContent('@import url(menu/menu.css);',
+                         '@import url(menu/__item/menu__item.css);',
+                         '')
+            .notify(done);
+        });
+
+        it('produces concatenated css on multiple levels', function (done) {
+            tech.withSourceFiles({
+                'world1-1': {
+                    'menu': {
+                        'menu.css': 'World 1-1'
+                    }
+                },
+                'world1-2': {
+                    'menu': {
+                        'menu.css': 'World 1-2'
+                    }
+                }
+            })
+            .withLevels([
+                '/world1-1',
+                '/world1-2'
+            ])
+            .build('/name', {
+                deps: [
+                    {block: 'menu'}
+                ]
+            })
+            .producesFile('name.css')
+            .withContent('@import url(world1-1/menu/menu.css);',
+                         '@import url(world1-2/menu/menu.css);',
                          '')
             .notify(done);
         });
