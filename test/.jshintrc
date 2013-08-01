@@ -1,12 +1,4 @@
 {
-    "globals": {
-        "describe": false,
-        "it": false,
-        "after": false,
-        "before": false,
-        "afterEach": false,
-        "beforeEach": false
-    },
     "node": true,
     "globalstrict": true,
     "expr": true,
@@ -23,5 +15,13 @@
     "unused": false,
     "loopfunc": true,
     "trailing": true,
-    "boss": true
+    "boss": true,
+    "globals": { 
+        "describe": true,
+        "it": true,
+        "before": true,
+        "beforeEach": true,
+        "after": true,
+        "afterEach": true
+    }
 }
