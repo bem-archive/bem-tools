@@ -8,7 +8,7 @@
 
  * Установить [npm](http://npmjs.org)
 
-        curl http://npmjs.org/install.sh | sudo sh
+        curl https://npmjs.org/install.sh | sudo sh
 
  * После установки сконфигурируйте `NODE_PATH`:
 
