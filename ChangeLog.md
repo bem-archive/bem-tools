@@ -1,6 +1,41 @@
 bem-tools changelog
 ===================
 
+05.08.2013, Version 0.6.12 (stable)
+-----------------------------------
+
+- bem: Add `level-proto` tech that creates levels based on prototypes in `.bem/levels/*.js` on project level
+
+  Example usage (`.bem/level.js`):
+
+  ```js
+  exports.getTechs = function() {
+      return {
+          'docs':   'level-proto', // will create levels <name>.blocks/ with proto in .bem/levels/docs.js
+          'blocks': 'level-proto'  // will create levels <name>.blocks/ with proto in .bem/levels/blocks.js
+      };
+  };
+  ```
+
+- bem: Fix bug in `bem create level` that prevented from creating level without prototype
+- bem make: Fix bug in `BemCreateNode` that was causing error when using single tech on different names
+  (e.g. `level-proto`)
+- bem make: `require()` in `.bem/make.js` configs behaves more correctly now (try to require any dependency
+  of your project from your `.bem/make.js`)
+- bem make: `level` property in `BlockNode` now initialized on the first access; this helps to deal with levels being
+  created during the `bem make` build process
+- API: Export `logger` and `template` from `bem` module
+- API: Add `Node.create()` static method to simplify creation of nodes, see example
+
+  ```js
+  var opts = {
+          // node options
+      },
+      node = registry
+          .getNodeClass('BemCreateNode')
+          .create(opts);
+  ```
+
 30.07.2013, Version 0.6.11 (stable)
 -----------------------------------
 
