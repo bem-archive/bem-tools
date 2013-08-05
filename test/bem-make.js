@@ -177,6 +177,44 @@ describe('bem', function() {
                 .fail(done)
                 .done();
         });
+
+        it('invalidates deps when bemdecl is modified', function(done) {
+            this.timeout(0);
+
+            return prepareProject()
+                .then(function() {
+                    BEM.api.make({root: buildPath, verbosity: 'error'})
+                        .then(function() {
+                            return BEM.util.exec(UTIL.format('cp %s %s',
+                                PATH.resolve(__dirname, 'data/make/misc/changed.bemjson.js'),
+                                PATH.resolve(buildPath, 'pages/example/example.bemjson.js')))
+
+                                .then(function() {
+                                    return BEM.api.make({root: buildPath, verbosity: 'error'},
+                                        {
+                                            targets: ['pages/example/example.deps.js']
+                                        });
+                                })
+                                .then(function() {
+                                    return Q.all([
+                                            QFS.lastModified(PATH.join(buildPath, 'pages/example/example.bemjson.js')),
+                                            QFS.lastModified(PATH.join(buildPath, 'pages/example/example.deps.js'))
+                                        ])
+                                        .spread(function(bemjson, deps) {
+                                            if (deps >= bemjson) return;
+
+                                            throw new Error('deps did not invalidate');
+                                        });
+                                });
+
+                        })
+                        .then(done)
+                        .fail(done)
+                        .done();
+
+                });
+        });
+
     });
 });
 
