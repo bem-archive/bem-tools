@@ -60,7 +60,7 @@
     "shrinkwrap": "npm shrinkwrap && scripts/fix-npm-shrinkwrap.js"
   },
   "engines": {
-    "node": ">= 0.6.0",
+    "node": ">= 0.8.0",
     "npm": ">= 1.2.32"
   },
   "npm2debian": {
