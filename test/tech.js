@@ -8,9 +8,9 @@ var Q = require('q'),
     U = BEM.require('./util'),
     PATH = BEM.require('./path'),
     TECH = BEM.require('./tech'),
+    Level = BEM.require('./level').Level,
     createTech = TECH.createTech,
     getTechClass = TECH.getTechClass;
-
 // Turn off deprecation warnings
 U.deprecate.silence = true;
 
@@ -131,6 +131,14 @@ describe('tech', function() {
             assert.equal(T.getBuildResults(), BEM.require.resolve('./techs/js.js'));
         });
 
+        it('throws an error when baseTechName is unresolvable', function() {
+            assert.throws(function() {
+               var level = new Level('', '');
+               getTechClass({
+                   baseTechName: 'nonexistent'
+               }, level);
+            });
+        });
     });
 
     describe('v2', function() {
@@ -256,6 +264,7 @@ describe('tech', function() {
                         ]
                     });
                 });
+        
             });
         });
     });
