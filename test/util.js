@@ -31,7 +31,7 @@ describe('util', function() {
             assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech'));
         });
 
-        it("thorws an error when unable to resolve tech and throwWhenUnresolved===true", function() {
+        it("throws an error when unable to resolve tech and throwWhenUnresolved===true", function() {
             assert.throws(function() {
                 U.getBemTechPath('custom', {throwWhenUnresolved: true});
             });
