@@ -30,6 +30,18 @@ describe('tech', function() {
     describe('getTechClass()', function() {
 
         var testTech = require.resolve(PATH.resolve(__dirname, 'data/techs/test-tech.js'));
+        var testTechV2 = require.resolve(PATH.resolve(__dirname, 'data/techs/test-tech-v2.js'));
+
+        /**
+         * Creates level that always resolves to specified path
+         */
+        function mockLevel(techPath) {
+            return {
+                resolveTech: function() {
+                    return techPath;
+                }
+            };
+        }
 
         it('for path', function() {
 
@@ -72,19 +84,11 @@ describe('tech', function() {
         });
 
         it('for module with baseTechName property', function() {
-
-            // level mock with resolveTech() implementation only
-            var level = {
-                        resolveTech: function() {
-                            return testTech;
-                        }
-                    },
-
                 // tech class
-                T = getTechClass({
+            var T = getTechClass({
                         baseTechName: 'base',
                         test2: true
-                    }, level),
+                    }, mockLevel(testTech)),
 
                 // tech object
                 o = new T('tech', 'tech');
@@ -131,6 +135,93 @@ describe('tech', function() {
                getTechClass({
                    baseTechName: 'nonexistent'
                }, level);
+            });
+        });
+
+        describe('when API_VER is specified', function() {
+            describe('without base tech', function() {
+                it('loads TechV2 when API_VER=2', function() {
+                    var T = getTechClass({
+                        API_VER: 2
+                    });
+
+                    assert.instanceOf(new T(), TECH.TechV2);
+                });
+
+                it('loads TechV1 when API_VER=1', function() {
+                    var T = getTechClass({
+                        API_VER: 1
+                    });
+
+                    assert.instanceOf(new T(), TECH.Tech);
+                });
+
+            });
+
+            describe('with base tech', function() {
+                it('disallows to inherit V2 tech from V1', function() {
+                    assert.throws(function() {
+                        getTechClass({
+                            baseTechName: 'base',
+                            API_VER: 2
+                        }, mockLevel(testTech));
+                    });
+                });
+
+                it('disallows to inherit V1 tech from V2', function() {
+                    assert.throws(function() {
+                        getTechClass({
+                            baseTechName: 'base',
+                            API_VER: 1
+                        }, mockLevel(testTechV2));
+                    });
+                });
+
+                it('allows to inherit V1 tech from V1', function() {
+                    assert.doesNotThrow(function() {
+                        getTechClass({
+                            baseTechName: 'base',
+                            API_VER: 1
+                        }, mockLevel(testTech));
+                    });
+                });
+
+                it('allows to inherit V2 tech from V2', function() {
+                    assert.doesNotThrow(function() {
+                        getTechClass({
+                            baseTechName: 'base',
+                            API_VER: 2
+                        }, mockLevel(testTechV2));
+                    });
+                });
+            });
+        });
+
+        describe('when API_VER is not specified', function() {
+            describe('without base tech', function() {
+                it('loads V1 tech', function() {
+                    var T = getTechClass({});
+                    assert.instanceOf(new T(), TECH.Tech);
+                });
+            });
+
+            describe('with base tech', function() {
+                it('allows to inherit from V1 tech', function() {
+                    assert.doesNotThrow(function() {
+                        getTechClass({
+                            baseTechName: 'base'
+                        }, mockLevel(testTech));
+                    });
+                });
+
+
+                it('allows to inherit from V2 tech', function() {
+                    assert.doesNotThrow(function() {
+                        getTechClass({
+                            baseTechName: 'base'
+                        }, mockLevel(testTechV2));
+                    });
+                });
             });
         });
     });
