@@ -27,6 +27,11 @@ describe('util', function() {
             assert.equal(U.getBemTechPath('css'), PATH.unixToOs(bemLib + 'techs/css.js'));
         });
 
+        it("'css' resolves to 'bem/lib/techs/v2/css' when opts.version === 2", function () {
+            assert.equal(U.getBemTechPath('css', {version: 2}),
+                         PATH.unixToOs(bemLib + 'techs/v2/css.js'));
+        });
+
         it("'custom' resolves to 'bem/lib/tech'", function() {
             assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech'));
         });

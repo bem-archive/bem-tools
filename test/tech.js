@@ -194,6 +194,24 @@ describe('tech', function() {
                         }, mockLevel(testTechV2));
                     });
                 });
+
+                it('loads base tech from lib/techs/ by default when API_VER is 1', function() {
+                    var level = new Level('', '');
+                    var T = getTechClass({
+                        baseTechName: 'js',
+                        API_VER: 1
+                    }, level);
+                    assert.instanceOf(new T(), TECH.Tech);
+                });
+
+                it('loads base tech from lib/techs/v2 by default when API_VER is 2', function() {
+                    var level = new Level('', '');
+                    var T = getTechClass({
+                        baseTechName: 'js',
+                        API_VER: 2
+                    }, level);
+                    assert.instanceOf(new T(), TECH.TechV2);
+                });
             });
         });
 
@@ -221,6 +239,14 @@ describe('tech', function() {
                             baseTechName: 'base'
                         }, mockLevel(testTechV2));
                     });
+                });
+
+                it('loads base tech from lib/techs by default', function() {
+                    var level = new Level('', '');
+                    var T = getTechClass({
+                        baseTechName: 'js',
+                    }, level);
+                    assert.instanceOf(new T(), TECH.Tech);
                 });
             });
         });
