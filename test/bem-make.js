@@ -1,6 +1,7 @@
 'use strict';
 
-var UTIL = require('util'),
+var assert = require('chai').assert,
+    UTIL = require('util'),
     PATH = require('path'),
     Q = require('q'),
     _ = require('underscore'),
@@ -201,9 +202,7 @@ describe('bem', function() {
                                             QFS.lastModified(PATH.join(buildPath, 'pages/example/example.deps.js'))
                                         ])
                                         .spread(function(bemjson, deps) {
-                                            if (deps >= bemjson) return;
-
-                                            throw new Error('deps did not invalidate');
+                                            assert.operator(deps.getTime(), '>=', bemjson.getTime());
                                         });
                                 });
 
