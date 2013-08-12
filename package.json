@@ -43,7 +43,8 @@
     "q-io": "~1.9.1",
     "insight": "~0.1.2",
     "minimatch": "~0.2.12",
-    "collections": "~0.1.24"
+    "collections": "~0.1.24",
+    "reqf": "~1.0.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",

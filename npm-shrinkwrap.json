@@ -659,6 +659,10 @@
           "from": "weak-map@1.0.0"
         }
       }
+    },
+    "reqf": {
+      "version": "1.0.0",
+      "from": "reqf@1.0.0"
     }
   }
 }
