@@ -44,7 +44,8 @@
     "node.extend": "~1.0.0",
     "colors": "~0.6.0",
     "benchmark": "~1.0.0",
-    "cli-table": "~0.2.0"
+    "cli-table": "~0.2.0",
+    "reqf": "~1.0.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",

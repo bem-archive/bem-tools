@@ -161,6 +161,10 @@
           "from": "colors@0.3.0"
         }
       }
+    },
+    "reqf": {
+      "version": "1.0.0",
+      "from": "reqf@1.0.0"
     }
   }
 }
