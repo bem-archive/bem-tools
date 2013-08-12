@@ -124,7 +124,7 @@ describe('tech', function() {
 
         });
 
-        it.skip('throws an error when baseTechName is unresolvable', function() {
+        it('throws an error when baseTechName is unresolvable', function() {
             assert.throws(function() {
                var level = new Level('', '');
                getTechClass({
