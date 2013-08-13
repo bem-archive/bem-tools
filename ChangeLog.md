@@ -1,6 +1,13 @@
 bem-tools changelog
 ===================
 
+13.08.2013, Version 0.6.14 (stable)
+-----------------------------------
+
+- bem: Fix bug in `bem create level` that prevented from using level prototype from module installed in `node_modules`
+  folder on the project level
+- bem: Throw an error when unable to resolve tech by name specified in `baseTechName` property of tech module
+
 09.08.2013, Version 0.6.13 (stable)
 -----------------------------------
 
