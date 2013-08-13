@@ -4,10 +4,10 @@ bem-tools changelog
 09.08.2013, Version 0.6.13 (stable)
 -----------------------------------
 
-tech/v2: transformBuildDecl() is reborn and used in buildByDecl()
-level scanner: use proper suffix for folders representing block with mod and val
-level scanner: don't ignore block/elem/elem.tech and block/mod/mod.tech kinds of folders
-deps.js v2: invalidate when declaration modified date is later than deps.js
+- tech/v2: `transformBuildDecl()` is reborn and used in `buildByDecl()`
+- level scanner: use proper suffix for folders representing block with mod and val
+- level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
+- deps.js v2: invalidate when declaration modified date is later than deps.js
 
 05.08.2013, Version 0.6.12 (stable)
 -----------------------------------
