@@ -1,13 +1,20 @@
 bem-tools changelog
 ===================
 
+13.08.2013, Version 0.6.14 (stable)
+-----------------------------------
+
+- bem: Fix bug in `bem create level` that prevented from using level prototype from module installed in `node_modules`
+  folder on the project level
+- bem: Throw an error when unable to resolve tech by name specified in `baseTechName` property of tech module
+
 09.08.2013, Version 0.6.13 (stable)
 -----------------------------------
 
-tech/v2: transformBuildDecl() is reborn and used in buildByDecl()
-level scanner: use proper suffix for folders representing block with mod and val
-level scanner: don't ignore block/elem/elem.tech and block/mod/mod.tech kinds of folders
-deps.js v2: invalidate when declaration modified date is later than deps.js
+- tech/v2: `transformBuildDecl()` is reborn and used in `buildByDecl()`
+- level scanner: use proper suffix for folders representing block with mod and val
+- level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
+- deps.js v2: invalidate when declaration modified date is later than deps.js
 
 05.08.2013, Version 0.6.12 (stable)
 -----------------------------------
