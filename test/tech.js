@@ -3,6 +3,7 @@
 
 var Q = require('q'),
     assert = require('chai').assert,
+    SINON = require('sinon'),
     BEM = require('..'),
     U = BEM.require('./util'),
     PATH = BEM.require('./path'),
@@ -131,6 +132,25 @@ describe('tech', function() {
                    baseTechName: 'nonexistent'
                }, level);
             });
+        });
+    });
+
+    describe('getBuildResult', function() {
+        it('calls getBuildResultChunk with source suffix', function() {
+            var TechClass = getTechClass({
+                API_VER: 2
+            });
+
+            var tech = new TechClass();
+            tech.getBuildResultChunk = SINON.spy();
+            tech.getBuildResult([
+                {absPath: '/source.source_suffix', suffix: 'source_suffix'}
+            ], 'dest_suffix', '/out', {});
+
+            SINON.assert.calledWith(tech.getBuildResultChunk,
+                                        SINON.match.any,
+                                        SINON.match.any,
+                                        "source_suffix");
         });
     });
 
