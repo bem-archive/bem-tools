@@ -1,6 +1,12 @@
 bem-tools changelog
 ===================
 
+13.08.2013, Version 0.6.15 (stable)
+-----------------------------------
+
+- API: `getBuildResultChunk()` should've been passed source suffix, not destination, and that was fixed.
+  Check your tech modules that they do not broke.
+
 13.08.2013, Version 0.6.14 (stable)
 -----------------------------------
 
