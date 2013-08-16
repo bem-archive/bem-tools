@@ -37,7 +37,7 @@
     "underscore": "~1.3.1",
     "inherit": "~1.0.0",
     "borschik": "~0.3.1",
-    "apw": "~0.3.11",
+    "apw": "~0.3.13",
     "winston": ">= 0.5.0",
     "dom-js": "*",
     "mkdirp": "~0.3.5",
