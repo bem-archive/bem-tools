@@ -165,7 +165,7 @@ E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/mast
     bem build \
         -l bem-bl/blocks-common -l bem-bl/blocks-desktop \
         -l blocks -l pages/index/blocks \
-        -d pages/index/index.bemhtml.js \
+        -d pages/index/index.deps.js \
         -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
         -o pages/index -n index
 
