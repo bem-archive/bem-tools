@@ -277,11 +277,11 @@ exports.techMixin = {
 метод получает список файлов, которые должны попасть в сборку. Затем метод проверяет возвращаемое значение метода 
 `validate(file, filteredFiles, opts)`. При значении true файл считается валидным и не пересобирается.
 
-Метод `validate(file, filteredFiles, opts)` принимает следующие параметры:
-{String} `file` - абсолютный путь собираемого файла.
-{Array} `filteredFiles` - список файлов, которые должны попасть в сборку.
-{Object} `opts` - хеш опциональных параметров, пробрасывается аргумент `opts`, приходящий в `getBuildResults(decl, levels, output, opts)`. 
-Если в opts содержится ключ `force` с не `false` значением, метод `validate(file, filteredFiles, opts)` вернет `false`.
+Метод `validate(file, filteredFiles, opts)` принимает следующие параметры:  
+{String} `file` - абсолютный путь собираемого файла.  
+{Array} `filteredFiles` - список файлов, которые должны попасть в сборку.  
+{Object} `opts` - хеш опциональных параметров, пробрасывается аргумент `opts`, приходящий в `getBuildResults(decl, levels, output, opts)`.  
+Если в opts содержится ключ `force` с не `false` значением, метод `validate(file, filteredFiles, opts)` вернет `false`.  
 Метод `validate(file, filteredFiles, opts)` загружает из кеша (.bem/cache) список файлов, из которых в последний раз собирался 
 результирующий файл и сравнивает его со значением параметра `filteredFiles`. Если отличий нет, значит результирующий файл валиден.
 
