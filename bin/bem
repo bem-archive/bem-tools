@@ -3,4 +3,16 @@
 // Do not limit stack trace
 Error.stackTraceLimit = Infinity;
 
-require('../lib/coa').run();
+var insight = require('../lib/insight'),
+    coa = require('../lib/coa');
+
+if (insight.optOut === undefined) {
+    insight.track('first-run');
+    insight.askPermission(null, run);
+} else {
+    run();
+}
+
+function run() {
+    coa.run();
+}
