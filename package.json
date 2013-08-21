@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.6.9",
+  "version": "0.6.15",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
@@ -44,7 +44,8 @@
     "node.extend": "~1.0.0",
     "colors": "~0.6.0",
     "benchmark": "~1.0.0",
-    "cli-table": "~0.2.0"
+    "cli-table": "~0.2.0",
+    "reqf": "~1.0.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",
@@ -53,7 +54,8 @@
     "mocha": "~1.11.0",
     "chai": "~1.0.3",
     "coverjs": ">= 0.0.7-alpha",
-    "jshint": "~2.1.4"
+    "jshint": "~2.1.4",
+    "sinon": "~1.7.3"
   },
   "scripts": {
     "test": "make test",

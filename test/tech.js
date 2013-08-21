@@ -3,11 +3,16 @@
 
 var Q = require('q'),
     assert = require('chai').assert,
+    SINON = require('sinon'),
     BEM = require('..'),
+    U = BEM.require('./util'),
     PATH = BEM.require('./path'),
     TECH = BEM.require('./tech'),
+    Level = BEM.require('./level').Level,
     createTech = TECH.createTech,
     getTechClass = TECH.getTechClass;
+// Turn off deprecation warnings
+U.deprecate.silence = true;
 
 /**
  * Mocha BDD interface.
@@ -120,6 +125,33 @@ describe('tech', function() {
 
         });
 
+        it('throws an error when baseTechName is unresolvable', function() {
+            assert.throws(function() {
+               var level = new Level('', '');
+               getTechClass({
+                   baseTechName: 'nonexistent'
+               }, level);
+            });
+        });
+    });
+
+    describe('getBuildResult', function() {
+        it('calls getBuildResultChunk with source suffix', function() {
+            var TechClass = getTechClass({
+                API_VER: 2
+            });
+
+            var tech = new TechClass();
+            tech.getBuildResultChunk = SINON.spy();
+            tech.getBuildResult([
+                {absPath: '/source.source_suffix', suffix: 'source_suffix'}
+            ], 'dest_suffix', '/out', {});
+
+            SINON.assert.calledWith(tech.getBuildResultChunk,
+                                        SINON.match.any,
+                                        SINON.match.any,
+                                        "source_suffix");
+        });
     });
 
 });

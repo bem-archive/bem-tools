@@ -1,6 +1,80 @@
 bem-tools changelog
 ===================
 
+13.08.2013, Version 0.6.15 (stable)
+-----------------------------------
+
+- API: `getBuildResultChunk()` should've been passed source suffix, not destination, and that was fixed.
+  Check your tech modules that they do not broke.
+
+13.08.2013, Version 0.6.14 (stable)
+-----------------------------------
+
+- bem: Fix bug in `bem create level` that prevented from using level prototype from module installed in `node_modules`
+  folder on the project level
+- bem: Throw an error when unable to resolve tech by name specified in `baseTechName` property of tech module
+
+09.08.2013, Version 0.6.13 (stable)
+-----------------------------------
+
+- tech/v2: `transformBuildDecl()` is reborn and used in `buildByDecl()`
+- level scanner: use proper suffix for folders representing block with mod and val
+- level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
+- deps.js v2: invalidate when declaration modified date is later than deps.js
+
+05.08.2013, Version 0.6.12 (stable)
+-----------------------------------
+
+- bem: Add `level-proto` tech that creates levels based on prototypes in `.bem/levels/*.js` on project level
+
+  Example usage (`.bem/level.js`):
+
+  ```js
+  exports.getTechs = function() {
+      return {
+          'docs':   'level-proto', // will create levels <name>.blocks/ with proto in .bem/levels/docs.js
+          'blocks': 'level-proto'  // will create levels <name>.blocks/ with proto in .bem/levels/blocks.js
+      };
+  };
+  ```
+
+- bem: Fix bug in `bem create level` that prevented from creating level without prototype
+- bem make: Fix bug in `BemCreateNode` that was causing error when using single tech on different names
+  (e.g. `level-proto`)
+- bem make: `require()` in `.bem/make.js` configs behaves more correctly now (try to require any dependency
+  of your project from your `.bem/make.js`)
+- bem make: `level` property in `BlockNode` now initialized on the first access; this helps to deal with levels being
+  created during the `bem make` build process
+- API: Export `logger` and `template` from `bem` module
+- API: Add `Node.create()` static method to simplify creation of nodes, see example
+
+  ```js
+  var opts = {
+          // node options
+      },
+      node = registry
+          .getNodeClass('BemCreateNode')
+          .create(opts);
+  ```
+
+30.07.2013, Version 0.6.11 (stable)
+-----------------------------------
+
+- tech v2: Fix cache. Two technologies with the same target name don't
+  overwrite each other's metadata cache anymore
+- bem make: Stop using bem create {block,mod,val} commands in make process
+
+19.07.2013, Version 0.6.10 (stable)
+-----------------------------------
+
+- API: Recommend to use tech V2 API instead of V1
+- API: Deprecate `LegacyTech` API
+- API: Deprecate `bem create block`, `bem create elem` and `bem create mod` commands,
+  use `bem create` command with options instead
+
+To disable deprecation warnings set `util.deprecate.silence` value to `false`
+or set `BEM_NO_DEPRECATION` environment variable to `1`.
+
 16.07.2013, Version 0.6.9 (stable)
 ----------------------------------
 

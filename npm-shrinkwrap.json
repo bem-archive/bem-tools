@@ -1,6 +1,6 @@
 {
   "name": "bem",
-  "version": "0.6.8",
+  "version": "0.6.15",
   "dependencies": {
     "coa": {
       "version": "0.3.9",
@@ -161,6 +161,10 @@
           "from": "colors@0.3.0"
         }
       }
+    },
+    "reqf": {
+      "version": "1.0.0",
+      "from": "reqf@1.0.0"
     }
   }
 }

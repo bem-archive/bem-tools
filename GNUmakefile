@@ -36,17 +36,17 @@ test-cover: lib-cov test
 tests:
 	-rm -rf tests/level4
 	$(BEM) create level -o tests -l simple -T css -T js -t xsl level4
-	$(BEM) create block -l tests/level4 -T css -T js -t xsl first-block
-	$(BEM) create elem -l tests/level4 -b first-block -T css -T js -t xsl elem1
-	$(BEM) create mod -l tests/level4 -b first-block mod1
-	$(BEM) create mod -l tests/level4 -b first-block -v 1 mod1
+	$(BEM) create -l tests/level4 -T css -T js -t xsl -b first-block
+	$(BEM) create -l tests/level4 -b first-block -T css -T js -t xsl -e elem1
+	$(BEM) create -l tests/level4 -b first-block -m mod1
+	$(BEM) create -l tests/level4 -b first-block -v 1 -m mod1
 
 	-rm -rf tests/level5
 	$(BEM) create level -o tests -l tests/level2/.bem/level.js -t css -t css1 -n js -n js1 level5
-	$(BEM) create block -l tests/level5 first-block
-	$(BEM) create elem -l tests/level5 -b second-block -n css1 elem2
-	$(BEM) create mod -l tests/level5 -b second-block mod2
-	$(BEM) create mod -l tests/level5 -b second-block -e elem2 -v 221 -v 222 mod22
+	$(BEM) create -l tests/level5 -b first-block
+	$(BEM) create -l tests/level5 -b second-block -n css1 -e elem2
+	$(BEM) create -l tests/level5 -b second-block -m mod2
+	$(BEM) create -l tests/level5 -b second-block -e elem2 -v 221 -v 222 -m mod22
 
 	$(BEM) build -d tests/decl.js -o tests -n bla -t deps.js -t ie.css -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
 	$(BEM) build -d tests/bla.deps.js -o tests -n bla -t css -t js -l tests/level1 -l tests/level2 -l tests/level3 -l tests/level4 -l tests/level5
