@@ -2,6 +2,7 @@
 'use strict';
 
 var Q = require('q'),
+    SINON = require('sinon'),
     assert = require('chai').assert,
     BEM = require('..'),
     U = BEM.require('./util'),
@@ -124,6 +125,133 @@ describe('tech', function() {
 
         });
 
+    });
+
+    describe('v2', function() {
+        describe('.getBuildPaths()', function() {
+            var tech;
+            beforeEach(function() {
+                var T = getTechClass({
+                    API_VER: 2,
+
+                    getBuildSuffixesMap: function() {
+                        return {
+                            'out': ['js']
+                        };
+                    },
+
+                    getWeakBuildSuffixesMap: function() {
+                        return {
+                            'out': ['js', 'dependency']
+                        };
+                    }
+                });
+
+                tech = new T('out', '');
+            });
+            
+            describe('without tech dependencies', function() {
+               it('calls level.getFileByObjIfExists with self', function() {
+                   var level = {
+                       getFileByObjIfExists: SINON.spy(),
+                       scanFiles: SINON.stub().returns(Q.fcall(function() {}))
+                   };
+
+                   return tech.getBuildPaths({
+                       deps: [
+                           {block: 'block'}
+                       ]
+                   }, [level])
+                   .then(function() {
+                        SINON.assert.calledWith(level.getFileByObjIfExists,
+                                                {block: 'block'},
+                                                tech);
+                   });
+
+
+
+               });
+
+               it('selects only files matching strong suffixes map', function() {
+                   var level = {
+                       getFileByObjIfExists: SINON.stub().returns([
+                           {file: 'test.js', suffix:'js', absPath: '/test.js'},
+                           {file: 'test.dependency', suffix: 'dependency', absPath: '/test.dependency'}
+                       ]),
+
+                       scanFiles: SINON.stub().returns(Q.fcall(function() {}))
+                   };
+
+                   var paths = tech.getBuildPaths({
+                       deps: [
+                           {block: 'block'}
+                       ]
+                   }, [level]);
+
+                   return assert.eventually.deepEqual(paths, {
+                       out:[
+                           {file: 'test.js', suffix:'js', absPath: '/test.js'}
+                       ]
+                   });
+               });
+            });
+
+            describe('with tech dependencies', function() {
+                var dependencyTech;
+                beforeEach(function() {
+                    var T = getTechClass({API_VER: 2});
+                    dependencyTech = new T('dependency', '');
+                    var context = {
+                        getTech: SINON.stub().withArgs('dependency').returns(dependencyTech)
+                    };
+
+                    tech.setContext(context);
+                });
+
+                it('calls level.getFileByObjIfExists with dependent tech', function() {
+                    var level = {
+                        getFileByObjIfExists: SINON.spy(),
+                        scanFiles: SINON.stub().returns(Q.fcall(function() {}))
+                    };
+
+                    return tech.getBuildPaths({
+                        deps: [
+                            {block: 'block', tech: 'dependency'}
+                        ]
+                    }, [level])
+                    .then(function() {
+                        SINON.assert.calledWith(level.getFileByObjIfExists,
+                                                {block: 'block', tech: 'dependency'},
+                                                dependencyTech);
+                    });
+
+                });
+
+                it('selects only files matching weak suffixes map', function() {
+                    var level = {
+                        getFileByObjIfExists: SINON.stub().returns([
+                            {file: 'test.dependency', suffix: 'dependency', absPath: '/test.dependency'},
+                            {file: 'test.not_dependency', suffix: 'not_dependency', absPath: '/test.not_dependency'}
+                        ]),
+
+                        scanFiles: SINON.stub().returns(Q.fcall(function() {}))
+
+                    };
+
+                    var paths = tech.getBuildPaths({
+                        deps: [
+                            {block: 'block', tech: 'dependency'}
+                        ]
+                    }, [level]);
+
+                    return assert.eventually.deepEqual(paths, {
+                        out: [
+                            {file: 'test.dependency', suffix: 'dependency', absPath: '/test.dependency'},
+                        ]
+                    });
+                });
+            });
+        });
     });
 
 });
