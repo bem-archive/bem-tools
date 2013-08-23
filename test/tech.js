@@ -126,7 +126,7 @@ describe('tech', function() {
         });
 
         it('for module with function-style code', function() {
-            var T = getTechClass(require.resolve(PATH.resolve(__dirname, 'data/techs/function-tech.js')));
+            var T = getTechClass(require.resolve('./data/techs/function-tech.js'));
             T = new T('function-tech', 'function-tech');
             assert.equal(T.getBuildResults(), BEM.require.resolve('./techs/js.js'));
         });
