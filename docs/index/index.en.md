@@ -15,5 +15,6 @@ See also:
 * [Levels](levels/)
 * [Build customization](customization/)
 * [Tech modules](tech-modules/)
+* [Declaration of dependences into deps.js](depsjs/)
 * [API](api/)
 * [How to contribute](contribute/)
