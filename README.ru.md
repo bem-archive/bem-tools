@@ -17,5 +17,6 @@ See also:
 * [Уровни переопределения](http://ru.bem.info/tools/bem/levels/)
 * [Кастомизация сборки](http://ru.bem.info/tools/bem/customization/)
 * [Модули технологий](http://ru.bem.info/tools/bem/tech-modules/)
+* [Декларация зависимостей в deps.js](http://ru.bem.info/tools/bem/depsjs/)
 * [API](http://ru.bem.info/tools/bem/api/)
 * [Участие в разработке](http://ru.bem.info/tools/bem/contribute/)

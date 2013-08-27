@@ -15,5 +15,6 @@ See also:
 * [Уровни переопределения](levels/)
 * [Кастомизация сборки](customization/)
 * [Модули технологий](tech-modules/)
+* [Декларация зависимостей в deps.js](depsjs/)
 * [API](api/)
 * [Участие в разработке](contribute/)
