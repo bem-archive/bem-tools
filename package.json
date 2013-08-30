@@ -52,7 +52,8 @@
     "jshint": "~2.1.4",
     "chai-as-promised": "~3.3.1",
     "mocha-as-promised": "~1.4.0",
-    "bem-smoke": "~0.2.0"
+    "bem-smoke": "~0.2.0",
+    "sinon": "~1.7.3"
   },
   "scripts": {
     "test": "make test",
