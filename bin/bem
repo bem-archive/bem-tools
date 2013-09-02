@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var updateNotifier = require('update-notifier'),
     notifier = updateNotifier({ packagePath: '../package.json' });
 
@@ -10,4 +12,16 @@ if (notifier.update) {
 // Do not limit stack trace
 Error.stackTraceLimit = Infinity;
 
-require('../lib/coa').run();
+var insight = require('../lib/insight'),
+    coa = require('../lib/coa');
+
+if (insight.optOut === undefined) {
+    insight.track('first-run');
+    insight.askPermission(null, run);
+} else {
+    run();
+}
+
+function run() {
+    coa.run();
+}
