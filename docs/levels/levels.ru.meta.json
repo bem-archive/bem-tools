@@ -1,0 +1,15 @@
+{
+    "title": "Уровни переопределения",
+    "longTitle": "Уровни переопределения в bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Описание уровеня переопределения .bem/level.js.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["bem-tools","tools"],
+    "categories": [{"name": "BEM/bem-tools", "url": "bem/bem-tools", "order": "10/10"}],
+    "translators": [],
+    "url": "/docs/levels/",
+    "type": "tools",
+    "order": "30"
+} 
