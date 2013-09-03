@@ -8,13 +8,3 @@ It allows you:
 * building the whole project using bem make command;
 * launching development server on the projects source tree using bem server command.
 
-See also:
-
-* [Installation](installation/)
-* [Commands](commands/)
-* [Levels](levels/)
-* [Build customization](customization/)
-* [Tech modules](tech-modules/)
-* [Declaration of dependences into deps.js](depsjs/)
-* [API](api/)
-* [How to contribute](contribute/)

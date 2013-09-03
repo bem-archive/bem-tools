@@ -1,0 +1,14 @@
+{
+    "title": "bem-tools",
+    "createDate": "17-10-2012",
+    "editDate": "",
+    "summary": "Short description of bem-tools.",
+    "thumbnail": "",
+    "authors": ["harisov-vitaly"],
+    "tags": ["tools","bem-tools"],
+    "categories": [{"name": "BEM/bem-tools", "url": "bem/bem-tools", "order": "10/10"}],
+    "translators": [],
+    "url": "/docs/index/",
+    "type": "tools",
+    "root": "true"
+} 

@@ -1,0 +1,15 @@
+{
+    "title": "API Usage",
+    "longTitle": "bem-tools API Usage",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "The document explains how use bem-tools from API.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools", "API"],
+    "categories": [{"name": "BEM/bem-tools", "url": "bem/bem-tools", "order": "10/10"}],
+    "translators": [],
+    "url": "/docs/api/",
+    "type": "tools",
+    "order": "70"
+}
