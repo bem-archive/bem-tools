@@ -1,6 +1,20 @@
 bem-tools changelog
 ===================
 
+04.09.2013, Version 0.6.16 (stable)
+-----------------------------------
+
+- Update csso within borschik dependency to 1.3.8 
+- deps.js: Fix levels cache validity check
+- Warn on v1 tech module usage, not creation
+- GitLibraryNode: add origin parameter to customise remote name
+- Update borschik dependency to 0.3.5 
+- Version-independent solution for CP#fork (Node.js 0.6+)
+- Add tech name and path to V1 deprecation warning
+- Fix `bem create level` run without prototype (--level opt)
+- LibraryNode: create the leading directories before checkout
+- bemdecl.js: Traverse through all fields, not only `mix` and `content`
+
 13.08.2013, Version 0.6.15 (stable)
 -----------------------------------
 
