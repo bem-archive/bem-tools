@@ -15,7 +15,7 @@ Error.stackTraceLimit = Infinity;
 var insight = require('../lib/insight'),
     coa = require('../lib/coa');
 
-if (insight.optOut === undefined) {
+if (!process.env.CI && insight.optOut === undefined) {
     insight.track('first-run');
     insight.askPermission(null, run);
 } else {
