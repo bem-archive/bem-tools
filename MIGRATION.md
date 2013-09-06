@@ -104,3 +104,10 @@ module.exports = function(MAKE) {
 
 You should now explicitly call `bower-npm-install` each time you change
 your dependencies in `bower.json`.
+
+## Legacy tech modules support removed
+
+You should migrate your legacy tech modules to APIv2. Legacy modules is not
+supported anymore. APIv1 is still supported, but will produce warnings
+during build.
+
