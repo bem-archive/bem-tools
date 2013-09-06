@@ -20,5 +20,6 @@ See also:
 * [Levels](http://bem.info/tools/bem/levels/)
 * [Build customization](http://bem.info/tools/bem/customization/)
 * [Tech modules](http://bem.info/tools/bem/tech-modules/)
+* [Declaration of dependences into deps.js](http://bem.info/tools/bem/depsjs/)
 * [API](http://bem.info/tools/bem/api/)
 * [How to contribute](http://bem.info/tools/bem/contribute/)
