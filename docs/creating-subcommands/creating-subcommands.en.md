@@ -16,9 +16,9 @@ Example:
 var Q = require('q');
 module.exports = function() {
     return this.title('hello world command')
-               .act(function() {
-                   return Q.resolve('Hello, world!');
-               });
+        .act(function() {
+            return Q.resolve('Hello, world!');
+        });
 };
 ```
 
