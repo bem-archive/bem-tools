@@ -358,7 +358,7 @@ function testBaseTech(techPath, techAlias) {
 
                 Q.done(res, function(res) {
                     tech.getSuffixes().forEach(function(suffix) {
-                        assert.include(res, suffix);
+                        assert.property(res, suffix);
                     });
                     done();
                 }, done);
@@ -381,7 +381,7 @@ function testBaseTech(techPath, techAlias) {
 
                 Q.done(res, function(res) {
                     tech.getSuffixes().forEach(function(suffix) {
-                        assert.include(res, suffix);
+                        assert.property(res, suffix);
                     });
                     done();
                 }, done);

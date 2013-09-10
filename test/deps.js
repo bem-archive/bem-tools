@@ -476,7 +476,15 @@ describe('Deps', function() {
                     }
                 }
             ));
-
+            
+            it('block with tech shortcut', assertDepsParse(
+                {block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
+                { 't1': {
+                    't1': [ { block: 'b1', tech: 't1'} ],
+                    't2': [ { block: 'b1', tech: 't2'} ]
+                  }
+                }
+            ));
         });
 
         describe('noDeps', function() {
