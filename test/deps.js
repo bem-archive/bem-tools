@@ -100,6 +100,23 @@ describe('Deps', function() {
                 { '': { '': [ { block: 'b1' }, { block: 'b2' } ] } }
             ));
 
+            it('block with elems', assertDepsParse(
+                [ { block: 'b1', elems: [ 'e1', 'e2' ] } ],
+                { '': { '': [
+                    {block: 'b1'},
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'},
+                ] } }
+            ));
+
+            it('block with elem array', assertDepsParse(
+                [ { block: 'b1', elem: ['e1', 'e2'] } ],
+                { '': {'': [
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'}
+                ] } }
+            ));
+
         });
 
         describe('new format with techs', function() {
