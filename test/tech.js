@@ -271,6 +271,13 @@ describe('tech', function() {
                                         SINON.match.any,
                                         "source_suffix");
         });
+
+        it('for module with function-style code', function() {
+            var T = getTechClass(require.resolve('./data/techs/function-tech.js'));
+            T = new T('function-tech', 'function-tech');
+            assert.equal(T.getBuildResults(), BEM.require.resolve('./techs/js.js'));
+        });
+
     });
 
     describe('v2', function() {
