@@ -32,9 +32,9 @@ describe('util', function() {
                          PATH.unixToOs(bemLib + 'techs/v2/css.js'));
         });
 
-        it("'bemdecl.js' resolves to 'bem/lib/techs/v2/bemdecl.js.js'", function () {
-            assert.equal(U.getBemTechPath('bemdecl.js'),
-                        PATH.unixToOs(bemLib + 'techs/v2/bemdecl.js.js'));
+        it("'level-proto' resolves to 'bem/lib/techs/v2/level-proto.js'", function () {
+            assert.equal(U.getBemTechPath('level-proto'),
+                        PATH.unixToOs(bemLib + 'techs/v2/level-proto.js'));
         });
 
         it("'custom' resolves to 'bem/lib/tech'", function() {
