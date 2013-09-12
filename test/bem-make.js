@@ -41,19 +41,16 @@ describe('bem', function() {
                 .done();
         });
 
-        it('creates proper artifacts', function(done) {
-            return BEM.util.exec(
+        it('creates proper artifacts', function() {
+            return assert.eventually.isNull(
+                BEM.util.exec(
                     UTIL.format(
                         'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                         '.',
                         PATH.relative(referencePath, buildPath)),
                     {cwd: referencePath},
                     true)
-                .then(function(result) {
-                    done(result && new Error(result));
-                })
-                .fail(done)
-                .done();
+            );
         });
 
         it('does not rebuild anything on next build with no changes made to the files', function(done) {
@@ -182,7 +179,7 @@ describe('bem', function() {
         it('invalidates deps when bemdecl is modified', function(done) {
             this.timeout(0);
 
-            return prepareProject()
+            prepareProject()
                 .then(function() {
                     BEM.api.make({root: buildPath, verbosity: 'error'})
                         .then(function() {
