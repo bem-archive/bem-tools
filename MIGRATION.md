@@ -111,3 +111,17 @@ You should migrate your legacy tech modules to APIv2. Legacy modules is not
 supported anymore. APIv1 is still supported, but will produce warnings
 during build.
 
+## `bem bench` command moved to separate package
+
+In `1.0.0` `bem bench` is no longer shipped with `bem-tools`. It has been
+moved to its own [package](https://github.com/bem/bem-bench). To use it
+you'll need to install it to the same directory with `bem-tools`:
+
+    npm install bem-bench
+
+Or if you use globally installed `bem-tools`:
+
+    npm install -g bem-bench
+
+You can use it as `bem-tools` subcommand (`bem bench`) or as separate
+utility (`bem-bench`).
