@@ -92,8 +92,8 @@ MAKE.decl(...)
 should be rewritten to:
 
 ```javascript
-module.exports = function(MAKE) {
-    MAKE.decl(...)
+module.exports = function(registry) {
+    registry.decl(...)
 
     //make settings continues
     ...
