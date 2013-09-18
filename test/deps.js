@@ -57,12 +57,14 @@ describe('Deps', function() {
                     shouldDeps: ['b1'],
                     mustDeps: [],
                     item: {},
+                    include: true,
                     key: ''
                 },
                 'b1': {
                     shouldDeps: [],
                     mustDeps: [],
                     item: { block: 'b1' },
+                    include: true,
                     key: 'b1'
                 }
             }));
@@ -77,18 +79,21 @@ describe('Deps', function() {
                         shouldDeps: [ 'b1', 'b1__e1' ],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b1__e1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', elem: 'e1' },
+                        include: true,
                         key: 'b1__e1'
                     }
                 }
@@ -111,18 +116,21 @@ describe('Deps', function() {
                         ],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b1__e1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', elem: 'e1' },
+                        include: true,
                         key: 'b1__e1'
                     },
                     'b1__e1_m1': {
@@ -133,6 +141,7 @@ describe('Deps', function() {
                             elem: 'e1',
                             mod: 'm1'
                         },
+                        include: true,
                         key: 'b1__e1_m1'
                     },
                     'b1__e1_m1_v1': {
@@ -144,6 +153,7 @@ describe('Deps', function() {
                             mod: 'm1',
                             val: 'v1'
                         },
+                        include: true,
                         key: 'b1__e1_m1_v1'
                     },
                     'b1__e1_m1_v2': {
@@ -155,6 +165,7 @@ describe('Deps', function() {
                             'mod': 'm1',
                             'val': 'v2'
                         },
+                        include: true,
                         key: 'b1__e1_m1_v2'
                     }
                 }
@@ -179,24 +190,28 @@ describe('Deps', function() {
                         ],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b1__e1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', elem: 'e1' },
+                        include: true,
                         key: 'b1__e1'
                     },
                     'b1__e2': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', elem: 'e2' },
+                        include: true,
                         key: 'b1__e2'
                     },
                     'b1_m1_v1': {
@@ -207,6 +222,7 @@ describe('Deps', function() {
                             mod: 'm1',
                             val: 'v1'
                         },
+                        include: true,
                         key: 'b1_m1_v1'
                     },
                     'b1_m2_v2': {
@@ -217,6 +233,7 @@ describe('Deps', function() {
                             mod: 'm2',
                             val: 'v2'
                         },
+                        include: true,
                         key: 'b1_m2_v2'
                     }
                 }
@@ -233,12 +250,14 @@ describe('Deps', function() {
                         shouldDeps: ['b1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     }
                 }
@@ -251,6 +270,7 @@ describe('Deps', function() {
                         shouldDeps: ['b1__e1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1__e1': {
@@ -260,6 +280,7 @@ describe('Deps', function() {
                             block: 'b1',
                             elem: 'e1'
                         },
+                        include: true,
                         key: 'b1__e1'
                     }
                 }
@@ -278,24 +299,28 @@ describe('Deps', function() {
                         shouldDeps: ['b1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: ['b2', 'b3'],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b2': {
                         shouldDeps: [],
                         mustDeps: ['b3'],
                         item: { block: 'b2' },
+                        include: true,
                         key: 'b2'
                     },
                     'b3': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b3' },
+                        include: true,
                         key: 'b3'
                     }
                 }
@@ -308,18 +333,21 @@ describe('Deps', function() {
                         shouldDeps: ['b1', 'b2'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b2': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b2' },
+                        include: true,
                         key: 'b2'
                     }
                 }
@@ -353,12 +381,14 @@ describe('Deps', function() {
                         shouldDeps: ['b1.t1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1.t1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', tech: 't1' },
+                        include: true,
                         key: 'b1.t1'
                     }
                 }
@@ -371,12 +401,14 @@ describe('Deps', function() {
                         shouldDeps: ['b1__e1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1__e1': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b1', elem: 'e1' },
+                        include: true,
                         key: 'b1__e1'
                     }
                 }
@@ -394,36 +426,42 @@ describe('Deps', function() {
                         shouldDeps: ['b1.t1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1.t1': {
                         shouldDeps: ['b2', 'b3'],
                         mustDeps: ['b0', 'b4'],
                         item: { block: 'b1', tech: 't1' },
+                        include: true,
                         key: 'b1.t1'
                     },
                     'b0': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b0' },
+                        include: true,
                         key: 'b0'
                     },
                     'b4': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b4' },
+                        include: true,
                         key: 'b4'
                     },
                     'b2': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b2' },
+                        include: true,
                         key: 'b2'
                     },
                     'b3': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b3' },
+                        include: true,
                         key: 'b3'
                     }
                 }
@@ -440,18 +478,21 @@ describe('Deps', function() {
                         shouldDeps: ['b1.t1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1.t1': {
                         shouldDeps: ['b2.t2'],
                         mustDeps: [],
                         item: { block: 'b1', tech: 't1' },
+                        include: true,
                         key: 'b1.t1'
                     },
                     'b2.t2': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b2', tech: 't2' },
+                        include: true,
                         key: 'b2.t2'
                     }
                 }
@@ -471,24 +512,28 @@ describe('Deps', function() {
                         shouldDeps: ['b1'],
                         mustDeps: [],
                         item: {},
+                        include: true,
                         key: ''
                     },
                     'b1': {
                         shouldDeps: ['b2.t2'],
                         mustDeps: [],
                         item: { block: 'b1' },
+                        include: true,
                         key: 'b1'
                     },
                     'b2.t2': {
                         shouldDeps: ['b3'],
                         mustDeps: [],
                         item: { block: 'b2', tech: 't2' },
+                        include: true,
                         key: 'b2.t2'
                     },
                     'b3': {
                         shouldDeps: [],
                         mustDeps: [],
                         item: { block: 'b3'},
+                        include: true,
                         key: 'b3'
                     }
                 }
@@ -527,6 +572,29 @@ describe('Deps', function() {
 
         });
 
+        describe('include: false', function() {
+
+            it('block', assertDepsParse(
+                [
+                    {
+                        block: 'b1',
+                        shouldDeps: [
+                            { block: 'b2', include: false },
+                            { block: 'b3', include: false }
+                        ],
+                        mustDeps: [
+                            { block: 'b4', include: false },
+                            { block: 'b5', include: false }
+                        ]
+                    },
+                    { block: 'b3' },
+                    { block: 'b4' }
+                ],
+                { '': { '': [ { block: 'b4' }, { block: 'b1' }, { block: 'b3' } ] } }
+            ));
+
+        });
+
     });
 
     describe('serialize:', function() {
@@ -551,9 +619,13 @@ describe('Deps', function() {
 
     describe('clone', function() {
 
-        var deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']),
-            deps2 = deps1.clone(),
+        var deps1, deps2, deps;
+
+        beforeEach(function(){
+            deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']);
+            deps2 = deps1.clone();
             deps = [deps1, deps2];
+        });
 
         it('.items', function() {
             assert.deepEqual(deps[1].items, deps[0].items);
@@ -567,24 +639,28 @@ describe('Deps', function() {
 
     describe('subtract', function() {
 
-        var deps1 = new DEPS.Deps().parse([
+        var deps1, deps2, deps3;
+
+        beforeEach(function() {
+            deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
                 { block: 'b3' },
                 { block: 'b5' }
-            ]),
+            ]);
 
             deps2 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b3' },
                 { block: 'b4' }
-            ]),
+            ]);
 
             deps3 = new DEPS.Deps().parse([
                 { block: 'b5' }
             ]);
 
-        deps1.subtract(deps2).subtract(deps3);
+            deps1.subtract(deps2).subtract(deps3);
+        });
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
@@ -598,18 +674,21 @@ describe('Deps', function() {
 
     describe('intersect', function() {
 
-        var deps1 = new DEPS.Deps().parse([
+        var deps1, deps2, deps3;
+
+        beforeEach(function() {
+            deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
                 { block: 'b3' },
                 { block: 'b5' }
-            ]),
+            ]);
 
             deps2 = new DEPS.Deps().parse([
                 { block: 'b3' },
                 { block: 'b1' },
                 { block: 'b4' }
-            ]),
+            ]);
 
             deps3 = new DEPS.Deps().parse([
                 { block: 'b3' },
@@ -617,7 +696,8 @@ describe('Deps', function() {
                 { block: 'b1' }
             ]);
 
-        deps1.intersect(deps2).intersect(deps3);
+            deps1.intersect(deps2).intersect(deps3);
+        });
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
