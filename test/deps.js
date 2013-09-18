@@ -593,6 +593,41 @@ describe('Deps', function() {
                 { '': { '': [ { block: 'b4' }, { block: 'b1' }, { block: 'b3' } ] } }
             ));
 
+            it('serialize', assertDepsFull(
+                [
+                    {
+                        block: 'b1',
+                        include: false
+                    },
+                    {
+                        block: 'b2'
+                    }
+                ],
+                {
+                    '': {
+                        shouldDeps: [ 'b1', 'b2' ],
+                        mustDeps: [],
+                        item: {},
+                        include: true,
+                        key: ''
+                    },
+                    b1: {
+                        shouldDeps: [],
+                        mustDeps: [],
+                        item: { block: 'b1' },
+                        include: false,
+                        key: 'b1'
+                    },
+                    b2: {
+                        shouldDeps: [],
+                        mustDeps: [],
+                        item: { block: 'b2' },
+                        include: true,
+                        key: 'b2'
+                    }
+                }
+            ));
+
         });
 
     });
