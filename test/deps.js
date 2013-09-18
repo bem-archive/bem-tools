@@ -181,6 +181,29 @@ describe('Deps', function() {
 
         });
 
+        describe('include: false', function() {
+
+            it('block', assertDepsParse(
+                [
+                    {
+                        block: 'b1',
+                        shouldDeps: [
+                            { block: 'b2', include: false },
+                            { block: 'b3', include: false }
+                        ],
+                        mustDeps: [
+                            { block: 'b4', include: false },
+                            { block: 'b5', include: false }
+                        ]
+                    },
+                    { block: 'b3' },
+                    { block: 'b4' }
+                ],
+                { '': { '': [ { block: 'b4' }, { block: 'b1' }, { block: 'b3' } ] } }
+            ));
+
+        });
+
     });
 
     describe('serialize:', function() {
@@ -205,9 +228,13 @@ describe('Deps', function() {
 
     describe('clone', function() {
 
-        var deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']),
-            deps2 = deps1.clone(),
+        var deps1, deps2, deps;
+
+        beforeEach(function(){
+            deps1 = new Deps().parse([{ block: 'b1', bla: 1 }, 'b2']);
+            deps2 = deps1.clone();
             deps = [deps1, deps2];
+        });
 
         it('.items', function() {
             assert.deepEqual(deps[1].items, deps[0].items);
@@ -221,24 +248,28 @@ describe('Deps', function() {
 
     describe('subtract', function() {
 
-        var deps1 = new DEPS.Deps().parse([
+        var deps1, deps2, deps3;
+
+        beforeEach(function() {
+            deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
                 { block: 'b3' },
                 { block: 'b5' }
-            ]),
+            ]);
 
             deps2 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b3' },
                 { block: 'b4' }
-            ]),
+            ]);
 
             deps3 = new DEPS.Deps().parse([
                 { block: 'b5' }
             ]);
 
-        deps1.subtract(deps2).subtract(deps3);
+            deps1.subtract(deps2).subtract(deps3);
+        });
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
@@ -252,18 +283,21 @@ describe('Deps', function() {
 
     describe('intersect', function() {
 
-        var deps1 = new DEPS.Deps().parse([
+        var deps1, deps2, deps3;
+
+        beforeEach(function() {
+            deps1 = new DEPS.Deps().parse([
                 { block: 'b1' },
                 { block: 'b2' },
                 { block: 'b3' },
                 { block: 'b5' }
-            ]),
+            ]);
 
             deps2 = new DEPS.Deps().parse([
                 { block: 'b3' },
                 { block: 'b1' },
                 { block: 'b4' }
-            ]),
+            ]);
 
             deps3 = new DEPS.Deps().parse([
                 { block: 'b3' },
@@ -271,7 +305,8 @@ describe('Deps', function() {
                 { block: 'b1' }
             ]);
 
-        deps1.intersect(deps2).intersect(deps3);
+            deps1.intersect(deps2).intersect(deps3);
+        });
 
         it('works correctly', function() {
             assert.deepEqual(deps1.serialize(), {
