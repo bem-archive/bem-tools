@@ -95,6 +95,7 @@ exports.depsFull = {
         ],
         "mustDeps": [],
         "item": {},
+        "include": true,
         "key": ""
     },
     "b-page": {
@@ -116,6 +117,7 @@ exports.depsFull = {
         "item": {
             "block": "b-page"
         },
+        "include": true,
         "key": "b-page"
     },
     "i-bem": {
@@ -136,6 +138,7 @@ exports.depsFull = {
         "item": {
             "block": "i-bem"
         },
+        "include": true,
         "key": "i-bem"
     },
     "i-bem__html": {
@@ -148,6 +151,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "html"
         },
+        "include": true,
         "key": "i-bem__html"
     },
     "i-bem__dom": {
@@ -162,6 +166,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "dom"
         },
+        "include": true,
         "key": "i-bem__dom"
     },
     "i-bem__dom_init": {
@@ -172,6 +177,7 @@ exports.depsFull = {
             "elem": "dom",
             "mod": "init"
         },
+        "include": true,
         "key": "i-bem__dom_init"
     },
     "i-bem__dom_init_auto": {
@@ -183,6 +189,7 @@ exports.depsFull = {
             "mod": "init",
             "val": "auto"
         },
+        "include": true,
         "key": "i-bem__dom_init_auto"
     },
     "i-ua": {
@@ -194,6 +201,7 @@ exports.depsFull = {
         "item": {
             "block": "i-ua"
         },
+        "include": true,
         "key": "i-ua"
     },
     "i-jquery": {
@@ -202,6 +210,7 @@ exports.depsFull = {
         "item": {
             "block": "i-jquery"
         },
+        "include": true,
         "key": "i-jquery"
     },
     "i-jquery__core": {
@@ -211,6 +220,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "core"
         },
+        "include": true,
         "key": "i-jquery__core"
     },
     "b-page__css": {
@@ -220,6 +230,7 @@ exports.depsFull = {
             "block": "b-page",
             "elem": "css"
         },
+        "include": true,
         "key": "b-page__css"
     },
     "b-page__js": {
@@ -229,6 +240,7 @@ exports.depsFull = {
             "block": "b-page",
             "elem": "js"
         },
+        "include": true,
         "key": "b-page__js"
     },
     "i-jquery__inherit": {
@@ -238,6 +250,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "inherit"
         },
+        "include": true,
         "key": "i-jquery__inherit"
     },
     "i-jquery__identify": {
@@ -247,6 +260,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "identify"
         },
+        "include": true,
         "key": "i-jquery__identify"
     },
     "i-jquery__is-empty-object": {
@@ -256,6 +270,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "is-empty-object"
         },
+        "include": true,
         "key": "i-jquery__is-empty-object"
     },
     "i-jquery__debounce": {
@@ -265,6 +280,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "debounce"
         },
+        "include": true,
         "key": "i-jquery__debounce"
     },
     "i-jquery__observable": {
@@ -278,6 +294,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "observable"
         },
+        "include": true,
         "key": "i-jquery__observable"
     },
     "i-ecma__object": {
@@ -287,6 +304,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "object"
         },
+        "include": true,
         "key": "i-ecma__object"
     },
     "i-ecma__array": {
@@ -296,6 +314,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "array"
         },
+        "include": true,
         "key": "i-ecma__array"
     },
     "i-ecma__function": {
@@ -305,6 +324,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "function"
         },
+        "include": true,
         "key": "i-ecma__function"
     },
     "i-bem__internal": {
@@ -314,6 +334,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "internal"
         },
+        "include": true,
         "key": "i-bem__internal"
     },
     "i-ecma__string": {
@@ -323,6 +344,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "string"
         },
+        "include": true,
         "key": "i-ecma__string"
     }
 };
