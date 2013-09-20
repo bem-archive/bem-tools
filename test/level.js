@@ -5,7 +5,7 @@ var assert = require('chai').assert,
     UTIL = require('util'),
     BEM = require('..'),
     PATH = BEM.require('./path'),
-    createLevel = BEM.createLevel;
+    LevelManager = BEM.LevelManager.get();
 
 /**
  * Mocha BDD interface.
@@ -22,7 +22,7 @@ describe('level', function() {
 
     describe("Level('data/level1') /* generic level */", function() {
 
-        var level = createLevel(absolute('data/level1'));
+        var level = LevelManager.createLevel(absolute('data/level1'));
 
         describe(".getDefaultTechs()", function() {
             it("returns empty array", function() {
@@ -93,6 +93,7 @@ describe('level', function() {
         });
 
         describe(".matchAny()", function() {
+            console.log('test', level.dir);
 
             var abs = PATH.resolve(level.dir, 'block/block.css');
             it(abs, function() {
