@@ -1,5 +1,5 @@
 'use strict';
-var INHERIT = require('INHERIT'),
+var INHERIT = require('inherit'),
     assert = require('chai').assert,
     requireMocked = require('require-mocked')(__filename);
 
