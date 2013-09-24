@@ -61,7 +61,7 @@ describe('LevelManager', function() {
             validateLevel(manager.createLevel('/level'));
         });
 
-        it('should load level configured with explicit Level class', function() {
+        it('should load level configured with explicit Level class in Level property', function() {
             var mockModule = {};
             var manager = createManager({
                 '/level/.bem/level.js': mockModule
