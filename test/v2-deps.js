@@ -10,7 +10,6 @@ var assert = require('chai').assert,
  *
  * @name describe @function
  * @name it @function
- * @name xit @function
  * @name before @function
  * @name after @function
  * @name beforeEach @function
@@ -111,13 +110,13 @@ describe('Deps', function() {
             ));
 
             // TODO: https://github.com/bem/bem-tools/issues/401
-            //xit('block with elem array', assertDepsParse(
-                //[ { block: 'b1', elem: ['e1', 'e2'] } ],
-                //{ '': {'': [
-                    //{block: 'b1', elem: 'e1'},
-                    //{block: 'b1', elem: 'e2'}
-                //] } }
-            //));
+            it.skip('block with elem array', assertDepsParse(
+                [ { block: 'b1', elem: ['e1', 'e2'] } ],
+                { '': {'': [
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'}
+                ] } }
+            ));
 
         });
 
@@ -153,14 +152,14 @@ describe('Deps', function() {
             ));
 
             // TODO: https://github.com/bem/bem-tools/issues/413
-            //xit('block with tech shortcut', assertDepsParse(
-                //{block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
-                //{ 't1': {
-                    //'t1': [ { block: 'b1', tech: 't1'} ],
-                    //'t2': [ { block: 'b1', tech: 't2'} ]
-                  //}
-                //}
-            //));
+            it.skip('block with tech shortcut', assertDepsParse(
+                {block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
+                { 't1': {
+                    't1': [ { block: 'b1', tech: 't1'} ],
+                    't2': [ { block: 'b1', tech: 't2'} ]
+                  }
+                }
+            ));
 
             it('block with and without tech', assertDepsParse(
                 { block: 'b1', shouldDeps: { block: 'b2', tech: 't2', shouldDeps: { block: 'b3' } } },
