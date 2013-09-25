@@ -93,8 +93,6 @@ describe('level', function() {
         });
 
         describe(".matchAny()", function() {
-            console.log('test', level.dir);
-
             var abs = PATH.resolve(level.dir, 'block/block.css');
             it(abs, function() {
                 assert.deepEqual(level.matchAny(abs), {
