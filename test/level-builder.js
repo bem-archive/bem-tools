@@ -115,7 +115,7 @@ describe('level builder', function() {
 
             assert.deepPropertyVal(Class,
                 'prototype.match-block',
-                require(bemLib + 'levels/naming/simple')['match-block']);
+                require(bemLib + 'level/naming/simple')['match-block']);
         });
     });
 
