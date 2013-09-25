@@ -353,6 +353,15 @@ describe('Deps v2', function() {
                 }
             ));
 
+            // TODO: https://github.com/bem/bem-tools/issues/401
+            it.skip('block with elem array', assertDepsParse(
+                [ { block: 'b1', elem: ['e1', 'e2'] } ],
+                { '': {'': [
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'}
+                ] } }
+            ));
+
         });
 
         describe('new format with techs', function() {
@@ -519,6 +528,16 @@ describe('Deps v2', function() {
                         include: true,
                         key: 'b3'
                     }
+                }
+            ));
+
+            // TODO: https://github.com/bem/bem-tools/issues/413
+            it.skip('block with tech shortcut', assertDepsParse(
+                {block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
+                { 't1': {
+                    't1': [ { block: 'b1', tech: 't1'} ],
+                    't2': [ { block: 'b1', tech: 't2'} ]
+                  }
                 }
             ));
 
