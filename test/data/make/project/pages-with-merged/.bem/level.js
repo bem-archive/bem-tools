@@ -1,4 +1,4 @@
-var extend = require(process.env.COVER? 'bem/lib-cov/util' : 'bem/lib/util').extend;
+var extend = require('bem/lib/util').extend;
 
 exports.getTechs = function() {
     return {

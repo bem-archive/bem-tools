@@ -19,7 +19,7 @@ var assert = require('chai').assert,
 
 describe('util', function() {
 
-    var bemLib = process.env.COVER? 'bem/lib-cov/' : 'bem/lib/';
+    var bemLib = 'bem/lib/';
 
     describe('getBemTechPath()', function() {
 

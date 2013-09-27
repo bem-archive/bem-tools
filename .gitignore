@@ -5,6 +5,5 @@
 .bem/cache
 node_modules/
 test-make-temp/
-lib-cov/
-coverage.html
+coverage/
 .DS_Store
