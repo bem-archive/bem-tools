@@ -46,15 +46,14 @@
   "devDependencies": {
     "ometajs": "~3.2.4",
     "xjst": "0.4.13",
-    "mocha-coverjs": "*",
     "mocha": "~1.11.0",
     "chai": "~1.0.3",
-    "coverjs": ">= 0.0.7-alpha",
     "jshint": "~2.1.4",
     "chai-as-promised": "~3.3.1",
     "mocha-as-promised": "~1.4.0",
     "bem-smoke": "~0.3.2",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "istanbul": "~0.1.44"
   },
   "scripts": {
     "test": "make test",
