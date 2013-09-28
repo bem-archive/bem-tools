@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('chai').assert,
-    LevelsConfig = require((process.env.COVER? '../lib-cov/ ': '../lib/' ) + 'make-config/levels-config'),
+    LevelsConfig = require((process.env.COVER? '../lib-cov/ ': '../lib/' ) + 'level/levels-config'),
     LevelManager = require('..').LevelManager;
 
 describe('levels config', function() {
