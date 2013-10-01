@@ -1,8 +1,6 @@
 'use strict';
-var BEM = require('bem'),
-    PATH = require('path'),
-    BEMBL_TECHS = PATH.resolve(__dirname, '../bem-bl/blocks-common/i-bem/bem/techs'),
-    PATH = require('path');
+var PATH = require('path'),
+    BEMBL_TECHS = PATH.resolve(__dirname, '../bem-bl/blocks-common/i-bem/bem/techs');
 
 module.exports = function(make) {
 
