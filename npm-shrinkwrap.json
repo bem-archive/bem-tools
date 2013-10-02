@@ -457,7 +457,7 @@
           "from": "mimeparse@~0.1.4"
         },
         "collections": {
-          "version": "0.1.22",
+          "version": "0.1.23",
           "from": "collections@~0.1.3"
         }
       }
