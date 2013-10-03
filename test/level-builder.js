@@ -121,12 +121,11 @@ describe('level builder', function() {
 
     describe('setDefaultTechs()', function() {
         it('should create getDefaultTechs method', function() {
-            var techs = ['css', 'js'],
-                Class = defineLevel()
-                    .setDefaultTechs(techs)
+            var Class = defineLevel()
+                    .setDefaultTechs('css', 'js')
                     .createClass();
 
-            assert.deepEqual(Class.prototype.getDefaultTechs(), techs);
+            assert.deepEqual(Class.prototype.getDefaultTechs(), ['css', 'js']);
 
         });
     });

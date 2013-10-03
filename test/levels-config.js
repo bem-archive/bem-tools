@@ -47,7 +47,7 @@ describe('levels config', function() {
 
     it('should allow to set default techs', function() {
         config.addLevel('test')
-              .setDefaultTechs(['js', 'css']);
+              .setDefaultTechs('js', 'css');
         assert.deepEqual(manager.createLevel('test').getDefaultTechs(), ['js', 'css']);
     });
 
