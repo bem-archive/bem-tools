@@ -22,13 +22,11 @@ module.exports = function(make) {
 
                     }
                 )
-                .setConfig({
-                    bundleBuildLevels: [
-                        PATH.resolve(__dirname, '../bem-bl/blocks-common'),
-                        PATH.resolve(__dirname, '../bem-bl/blocks-desktop'),
-                        PATH.resolve(__dirname, '../blocks')
-                    ]
-                })
+                .setBundleBuildLevels(
+                    PATH.resolve(__dirname, '../bem-bl/blocks-common'),
+                    PATH.resolve(__dirname, '../bem-bl/blocks-desktop'),
+                    PATH.resolve(__dirname, '../blocks')
+                )
             .addLevel('pages-with-merged')
                 .addTechs(
                     'bemdecl.js',
@@ -37,13 +35,11 @@ module.exports = function(make) {
                         'bemjson.js': ''
                     }
                 )
-                .setConfig({
-                    bundleBuildLevels: [
-                        PATH.resolve(__dirname, '../bem-bl/blocks-common'),
-                        PATH.resolve(__dirname, '../bem-bl/blocks-desktop'),
-                        PATH.resolve(__dirname, '../blocks')
-                    ]
-                });
+                .setBundleBuildLevels(
+                    PATH.resolve(__dirname, '../bem-bl/blocks-common'),
+                    PATH.resolve(__dirname, '../bem-bl/blocks-desktop'),
+                    PATH.resolve(__dirname, '../blocks')
+                );
     });
 
     make.nodes(function(registry) {

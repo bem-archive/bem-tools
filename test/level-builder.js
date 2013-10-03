@@ -131,14 +131,14 @@ describe('level builder', function() {
         });
     });
 
-    describe('setConfig()', function() {
-        it('should create getConfigMethod', function() {
-            var config = {a:1, b:2},
-                Class = defineLevel()
-                    .setConfig(config)
+    describe('setBundleBuildLevels()', function() {
+        it('should create entry bundleBuildLevels entry in level config', function() {
+            var Class = defineLevel()
+                    .setBundleBuildLevels('level1', 'level2')
                     .createClass();
 
-            assert.deepEqual(Class.prototype.getConfig(), config);
+            assert.deepEqual(Class.prototype.getConfig().bundleBuildLevels,
+                            ['level1', 'level2']);
         });
     });
 

@@ -31,12 +31,11 @@ describe('levels config', function() {
         assert.deepEqual(manager.createLevel('test')['match-block'], scheme['match-block']);
     });
 
-    it('should allow to set level config', function() {
-        var testConfig  = {key: 'value'};
+    it('should allow to set bundle build levels', function() {
         config.addLevel('test')
-              .setConfig(testConfig);
+              .setBundleBuildLevels('1', '2');
 
-        assert.deepEqual(manager.createLevel('test').getConfig(), testConfig);
+        assert.deepEqual(manager.createLevel('test').getConfig().bundleBuildLevels, ['1', '2']);
     });
 
     it('should allow to configure level types', function() {
