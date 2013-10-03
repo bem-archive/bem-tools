@@ -1,5 +1,6 @@
 'use strict';
-var assert = require('chai').assert,
+var SINON = require('sinon'),
+    assert = require('chai').assert,
     requireMocked = require('require-mocked')(__filename),
     BEM = require('..'),
     Level = BEM.Level,
@@ -48,7 +49,27 @@ describe('level builder', function() {
                 });
             });
 
-            it('should resolve techs from project root');
+            it('should resolve techs from project root', function() {
+                var defineLevel = requireMocked('..', {
+                    mocks: {
+                        '../env': {
+                            getEnv: SINON.stub().withArgs('root').returns('/root')
+                        },
+
+                        '/root/.bem/techs/project.js': {
+                            techMixin: {}
+                        }
+                    }
+                }).defineLevel;
+
+                var Class = defineLevel()
+                    .addTechs('project')
+                    .createClass();
+
+                assert.deepEqual(Class.prototype.getTechs(), {
+                    'project': '/root/.bem/techs/project.js'
+                });
+            });
 
             it('should resolve to bem tools v2 tech', function() {
                 var Class = defineLevel()
