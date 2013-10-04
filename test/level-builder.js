@@ -31,7 +31,10 @@ describe('level builder', function() {
             it('should resolve path with npm packages paths', function() {
                 var defineLevel = requireMocked('..', {
                     mocks: {
-                        'mock-techs': {
+                        '../env': {
+                            getEnv: SINON.stub().withArgs('root').returns('/root')
+                        },
+                        '/root/node_modules/mock-techs': {
                             resolveTech: function(tech) {
                                 return '/mock/' + tech;
                             }
