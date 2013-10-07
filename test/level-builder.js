@@ -83,6 +83,17 @@ describe('level builder', function() {
                     'css': BEM.require.resolve('./techs/v2/css')
                 });
             });
+
+            it('should accept array', function() {
+                var Class = defineLevel()
+                    .addTechs(['css', 'js'])
+                    .createClass();
+
+                assert.deepEqual(Class.prototype.getTechs(), {
+                    'css': BEM.require.resolve('./techs/v2/css'),
+                    'js': BEM.require.resolve('./techs/v2/js')
+                });
+            });
         });
 
         it('should accept multiple strings and map', function() {
@@ -152,12 +163,30 @@ describe('level builder', function() {
             assert.deepEqual(Class.prototype.getDefaultTechs(), ['css', 'js']);
 
         });
+
+        it('should accept an array of tech names', function() {
+            var Class = defineLevel()
+                    .setDefaultTechs(['css', 'js'])
+                    .createClass();
+
+            assert.deepEqual(Class.prototype.getDefaultTechs(), ['css', 'js']);
+
+        });
     });
 
     describe('setBundleBuildLevels()', function() {
         it('should create entry bundleBuildLevels entry in level config', function() {
             var Class = defineLevel()
                     .setBundleBuildLevels('level1', 'level2')
+                    .createClass();
+
+            assert.deepEqual(Class.prototype.getConfig().bundleBuildLevels,
+                            ['level1', 'level2']);
+        });
+
+        it('should accept array of strings', function() {
+            var Class = defineLevel()
+                    .setBundleBuildLevels(['level1', 'level2'])
                     .createClass();
 
             assert.deepEqual(Class.prototype.getConfig().bundleBuildLevels,
@@ -183,6 +212,19 @@ describe('level builder', function() {
                 'project',
                 'bundle'
             ]);
+        });
+
+        it('should accept an array of types', function() {
+            var Class = defineLevel()
+                .addTypes(['project', 'bundle'])
+                .createClass();
+
+            assert.deepEqual(Class.prototype.getTypes(), [
+                'level',
+                'project',
+                'bundle'
+            ]);
+
         });
     });
 
