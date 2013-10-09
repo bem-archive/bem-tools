@@ -4,6 +4,8 @@
 var Q = require('q'),
     SINON = require('sinon'),
     assert = require('chai').assert,
+    requireMocked = require('require-mocked')(__filename),
+    mockFs = require('q-io/fs-mock'),
     BEM = require('..'),
     U = BEM.require('./util'),
     PATH = BEM.require('./path'),
@@ -259,10 +261,19 @@ describe('tech', function() {
     });
 
     describe('v2', function() {
+        function createTechObj(decl) {
+            decl = decl || {};
+            decl.API_VER = 2;
+            var TechClass = getTechClass(decl);
+            return new TechClass();
+        }
+
         describe('.getBuildPaths()', function() {
+
             var tech;
+
             beforeEach(function() {
-                var T = getTechClass({
+                tech = createTechObj({
                     API_VER: 2,
 
                     getBuildSuffixesMap: function() {
@@ -277,8 +288,6 @@ describe('tech', function() {
                         };
                     }
                 });
-
-                tech = new T('out', '');
             });
             
             describe('without tech dependencies', function() {
@@ -384,6 +393,318 @@ describe('tech', function() {
         
             });
         });
+
+        describe('getCreateResults()', function() {
+
+            var tech;
+            beforeEach(function() {
+                tech = createTechObj({
+                    API_VER: 2,
+                    getCreateSuffixes: function() {
+                        return ['js', 'css'];
+                    },
+                    getCreateResult: function (path, suffix, vars) {
+                        return Q.resolve(suffix + ' content');
+                    }
+                });
+            });
+
+            it('should return one value for each suffix', function() {
+                var result = tech.getCreateResults('/tmp', {});
+
+                return assert.isFulfilled(Q.all([
+                    assert.eventually.property(result, 'css'),
+                    assert.eventually.property(result, 'js'),
+                ]));
+            });
+
+            it('should return result of getCreateResult for each key', function() {
+                var result= tech.getCreateResults('/tmp', {});
+                return assert.isFulfilled(Q.all([
+                    assert.eventually.propertyVal(result, 'css', 'css content'),
+                    assert.eventually.propertyVal(result, 'js', 'js content')
+                ]));
+            });
+
+        });
+
+        describe('getBuildResult()', function () {
+            var tech;
+            beforeEach(function() {
+                tech = createTechObj({
+                    API_VER: 2,
+
+                    getBuildResultChunk: function(relPath, path, suffix) {
+                        return 'relPath: ' + relPath + ' ' +
+                            'path: ' + path + ' ' +
+                            'suffix: ' + suffix;
+                    }
+                });
+            });
+
+            it('should return chunk for each file', function() {
+               var result = tech.getBuildResult([
+                    {absPath: '/test/1.js', suffix: 'js'},
+                    {absPath: '/test/2.css', suffix: 'css'}
+               ], 'out.js', '/test/result/out.js');
+
+
+               return assert.eventually.deepEqual(result, [
+                    'relPath: ../1.js path: /test/1.js suffix: js',
+                    'relPath: ../2.css path: /test/2.css suffix: css'
+               ]);
+            });
+        });
+
+        function createMockedTech(fs) {
+            var path = (process.env.COVER? '../lib-cov/' : '../lib/') + 'tech/index.js';
+            
+            var MOCKTECH = requireMocked(path, {
+                mocks: {
+                    'q-io/fs': mockFs(fs)
+                }
+            });
+
+
+            var TechClass = MOCKTECH.getTechClass({API_VER: 2});
+            var tech = new TechClass('techName', '/some/path');
+            tech.setContext({opts:{}});
+            return tech;
+        }
+
+        describe('validate()', function() {
+
+            it('should return false when meta file does not exists', function() {
+                var tech = createMockedTech({
+                    'dest': ''
+                });
+
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374796800000}
+                ], {}));
+            });
+
+            it('should return false when amount of source files in cache different from current', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source1', lastUpdated: 1374796800000},
+                                    {absPath: 'source2', lastUpdated: 1374796800000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source1', lastUpdated: 1374796800000}
+                ], {}));
+            });
+
+            it('should return false when source file changed names', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'oldSource', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'newSource', lastUpdated: 1374710400000}
+                ], {}));
+            });
+
+            it('should return false when source file has been updated', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374796800000}
+                ], {}));
+            });
+
+            it('should return false when destination file does not exists', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    }
+                });
+
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {}));
+
+            });
+
+            it('should return true when all previous conditions met', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+
+                 
+                return assert.eventually.isTrue(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {}));
+            });
+
+            it('should return false when opts.force is set', function() {
+                var tech = createMockedTech({
+                    '.bem': {
+                        'cache': {
+                            'dest~techName.meta.js': JSON.stringify({
+                                buildFiles: [
+                                    {absPath: 'source', lastUpdated: 1374710400000}
+                                ]
+                            })
+                        }
+                    },
+                    'dest': ''
+                });
+ 
+                return assert.eventually.isFalse(tech.validate('dest', [
+                    {absPath: 'source', lastUpdated: 1374710400000}
+                ], {force: true}));
+            });
+        });
+
+        
+
+        describe('getSuffixes()', function () {
+
+            it('should return each source suffix from build suffixes map', function () {
+                var tech = createTechObj({
+                    getBuildSuffixesMap: function () {
+                        return {
+                            'js': ['js', 'coffee'],
+                            'css': ['styl', 'scss']
+                        };
+                    }
+                });
+
+                //TODO: Update chai and repalce with sameMembers
+                assert.deepEqual(tech.getSuffixes(), ['js', 'coffee', 'styl', 'scss']);
+            });
+
+            it('should have no duplicates', function (){
+                var tech = createTechObj({
+                    getBuildSuffixesMap: function () {
+                        return {
+                            'js': ['js', 'css'],
+                            'css': ['js', 'css']
+                        };
+                    }
+                });
+                assert.deepEqual(tech.getSuffixes(), ['js', 'css']);
+            });
+        });
+
+        describe.skip('matchSuffix()', function () {
+        });
+
+        describe('getPath()', function () {
+
+            it('should return prefix and suffix concatenated', function() {
+                var tech = createTechObj({});
+                assert.equal(tech.getPath('/test/example', 'js'), '/test/example.js');
+            });
+
+            it('should use techName when suffix is not passed', function () {
+                var tech = createTechObj({
+                    getTechName: function() {
+                        return 'test';
+                    }
+                });
+
+                assert.equal(tech.getPath('/test/example'), '/test/example.test');
+            });
+        });
+
+        describe('getPaths()', function () {
+            it('should return path for single suffix and prefix', function() {
+                var tech = createTechObj();
+                assert.deepEqual(tech.getPaths('/test/example', 'js'), ['/test/example.js']);
+            });
+
+            it('should return all possible pathes for arrays of suffixes and prefixes', function () {
+                var paths = createTechObj().getPaths(['/test/example1', '/test/example2'],
+                                                     ['js', 'css']);
+
+                //TODO: replace with sameMembers
+                assert.include(paths, '/test/example1.js');
+                assert.include(paths, '/test/example2.js');
+                assert.include(paths, '/test/example1.css');
+                assert.include(paths, '/test/example2.css');
+                
+            });
+
+            it('should use getSuffixes() if suffixes has not been passed', function () {
+                var paths = createTechObj({
+                        getSuffixes: function () {
+                            return ['html', 'less'];
+                        }
+                    })
+                    .getPaths(['/test/example1', '/test/example2']);
+
+                assert.include(paths, '/test/example1.html');
+                assert.include(paths, '/test/example2.html');
+                assert.include(paths, '/test/example1.less');
+                assert.include(paths, '/test/example2.less');
+            });
+        });
+
+        describe('getTechName()', function () {
+            var tech;
+            beforeEach(function () {
+                tech = createTechObj();
+            });
+
+            it('should return techName if its set', function () {
+                tech.techName = 'SomeTech';
+
+                assert.equal(tech.getTechName(), 'SomeTech');
+            });
+
+            it('should return file name if techName is not set', function () {
+                tech.techPath = '/test/someFile.js';
+
+                assert.equal(tech.getTechName(), 'someFile');
+            });
+        });
+
     });
 
 });

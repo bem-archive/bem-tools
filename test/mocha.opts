@@ -1,2 +1,3 @@
 --reporter spec
+--require test/setup
 --timeout 0
