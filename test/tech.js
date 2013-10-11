@@ -41,6 +41,10 @@ describe('tech', function() {
             return {
                 resolveTech: function() {
                     return techPath;
+                },
+
+                resolveTechClass: function() {
+                    return getTechClass(testTech);
                 }
             };
         }
@@ -730,7 +734,7 @@ function testBaseTech(techPath, techAlias) {
     describe("Tech.createTech('" + techPath + "')", function() {
 
         var tech = createTech(require.resolve(techPath),
-                techAlias === techName ? null : techAlias);
+                techAlias || techName);
 
         // meta data
         describe(".getTechName()", function() {
@@ -762,23 +766,6 @@ function testBaseTech(techPath, techAlias) {
                     assert.isTrue(tech.matchSuffix(suffix));
                     assert.isTrue(tech.matchSuffix('.' + suffix));
                 });
-            });
-
-        });
-
-        describe(".getTechPath()", function() {
-
-            it("equals to " + absTechPath, function() {
-                assert.equal(tech.getTechPath(), absTechPath);
-            });
-
-        });
-
-        describe(".getTechRelativePath(" + __dirname + ")", function() {
-
-            var p = PATH.unixToOs(relTechPath);
-            it("equals to " + p, function() {
-                assert.equal(tech.getTechRelativePath(__dirname), p);
             });
 
         });
@@ -847,9 +834,9 @@ describe('tech modules', function() {
 
     var lib = process.env.COVER? '../lib-cov/' : '../lib/';
 
-    testBaseTech(lib + 'techs/js');
-    testBaseTech(lib + 'techs/css');
+    testBaseTech(lib + 'techs/js', 'js');
+    testBaseTech(lib + 'techs/css', 'css');
     testBaseTech(lib + 'tech/index', 'def');
-    testBaseTech('./data/techs/test.js');
+    testBaseTech('./data/techs/test.js', 'test');
 
 });
