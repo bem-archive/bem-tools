@@ -1,6 +1,6 @@
 {
   "name": "bem",
-  "version": "1.0.0-alpha4",
+  "version": "1.0.0-alpha5",
   "dependencies": {
     "coa": {
       "version": "0.4.0",
@@ -28,23 +28,23 @@
       "dependencies": {
         "cssp": {
           "version": "1.0.6",
-          "from": "cssp@1.0.6",
+          "from": "cssp@~1.0.6",
           "dependencies": {
             "ometajs": {
               "version": "3.1.19",
-              "from": "ometajs@3.1.19",
+              "from": "ometajs@~ 3.1.x",
               "dependencies": {
                 "coa": {
                   "version": "0.3.9",
-                  "from": "coa@0.3.9"
+                  "from": "coa@0.3.x"
                 },
                 "q": {
                   "version": "0.8.12",
-                  "from": "q@0.8.12"
+                  "from": "q@0.8.x"
                 },
                 "uglify-js": {
                   "version": "1.3.5",
-                  "from": "uglify-js@1.3.5"
+                  "from": "uglify-js@1.3.x"
                 }
               }
             }
@@ -52,37 +52,37 @@
         },
         "coffee-script": {
           "version": "1.6.3",
-          "from": "coffee-script@1.6.3"
+          "from": "coffee-script@*"
         },
         "csso": {
-          "version": "1.3.7",
-          "from": "csso@1.3.7"
+          "version": "1.3.8",
+          "from": "csso@~1.3.7"
         },
         "uglify-js": {
           "version": "2.3.6",
-          "from": "uglify-js@2.3.6",
+          "from": "uglify-js@~2.3.6",
           "dependencies": {
             "async": {
               "version": "0.2.9",
-              "from": "async@0.2.9"
+              "from": "async@~0.2.6"
             },
             "source-map": {
-              "version": "0.1.26",
-              "from": "source-map@0.1.26",
+              "version": "0.1.30",
+              "from": "source-map@~0.1.7",
               "dependencies": {
                 "amdefine": {
-                  "version": "0.0.5",
-                  "from": "amdefine@0.0.5"
+                  "version": "0.0.8",
+                  "from": "amdefine@>=0.0.4"
                 }
               }
             },
             "optimist": {
               "version": "0.3.7",
-              "from": "optimist@0.3.7",
+              "from": "optimist@~0.3.5",
               "dependencies": {
                 "wordwrap": {
                   "version": "0.0.2",
-                  "from": "wordwrap@0.0.2"
+                  "from": "wordwrap@~0.0.2"
                 }
               }
             }
@@ -382,20 +382,6 @@
                   "version": "3.1.21",
                   "from": "glob@3.1.21",
                   "dependencies": {
-                    "minimatch": {
-                      "version": "0.2.12",
-                      "from": "minimatch@0.2.12",
-                      "dependencies": {
-                        "lru-cache": {
-                          "version": "2.3.0",
-                          "from": "lru-cache@2.3.0"
-                        },
-                        "sigmund": {
-                          "version": "1.0.0",
-                          "from": "sigmund@1.0.0"
-                        }
-                      }
-                    },
                     "graceful-fs": {
                       "version": "1.2.3",
                       "from": "graceful-fs@1.2.3"
@@ -638,27 +624,31 @@
     },
     "minimatch": {
       "version": "0.2.12",
-      "from": "minimatch@",
+      "from": "minimatch@0.2.12",
       "dependencies": {
         "lru-cache": {
           "version": "2.3.1",
-          "from": "lru-cache@2"
+          "from": "lru-cache@2.3.1"
         },
         "sigmund": {
           "version": "1.0.0",
-          "from": "sigmund@~1.0.0"
+          "from": "sigmund@1.0.0"
         }
       }
     },
     "collections": {
       "version": "0.1.24",
-      "from": "collections@",
+      "from": "collections@0.1.24",
       "dependencies": {
         "weak-map": {
           "version": "1.0.0",
           "from": "weak-map@1.0.0"
         }
       }
+    },
+    "reqf": {
+      "version": "1.0.0",
+      "from": "reqf@1.0.0"
     }
   }
 }

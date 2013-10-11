@@ -27,8 +27,24 @@ describe('util', function() {
             assert.equal(U.getBemTechPath('css'), PATH.unixToOs(bemLib + 'techs/css.js'));
         });
 
+        it("'css' resolves to 'bem/lib/techs/v2/css' when opts.version === 2", function () {
+            assert.equal(U.getBemTechPath('css', {version: 2}),
+                         PATH.unixToOs(bemLib + 'techs/v2/css.js'));
+        });
+
+        it("'level-proto' resolves to 'bem/lib/techs/v2/level-proto.js'", function () {
+            assert.equal(U.getBemTechPath('level-proto'),
+                        PATH.unixToOs(bemLib + 'techs/v2/level-proto.js'));
+        });
+
         it("'custom' resolves to 'bem/lib/tech'", function() {
             assert.equal(U.getBemTechPath('custom'), PATH.unixToOs(bemLib + 'tech'));
+        });
+
+        it("throws an error when unable to resolve tech and throwWhenUnresolved===true", function() {
+            assert.throws(function() {
+                U.getBemTechPath('custom', {throwWhenUnresolved: true});
+            });
         });
 
     });

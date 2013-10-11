@@ -325,6 +325,23 @@ describe('Deps', function() {
                 }
             ));
 
+            it('block with elems', assertDepsParse(
+                [ { block: 'b1', elems: [ 'e1', 'e2' ] } ],
+                { '': { '': [
+                    {block: 'b1'},
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'},
+                ] } }
+            ));
+
+            it('block with elem array', assertDepsParse(
+                [ { block: 'b1', elem: ['e1', 'e2'] } ],
+                { '': {'': [
+                    {block: 'b1', elem: 'e1'},
+                    {block: 'b1', elem: 'e2'}
+                ] } }
+            ));
+
         });
 
         describe('new format with techs', function() {
@@ -476,7 +493,15 @@ describe('Deps', function() {
                     }
                 }
             ));
-
+            
+            it('block with tech shortcut', assertDepsParse(
+                {block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
+                { 't1': {
+                    't1': [ { block: 'b1', tech: 't1'} ],
+                    't2': [ { block: 'b1', tech: 't2'} ]
+                  }
+                }
+            ));
         });
 
         describe('noDeps', function() {
