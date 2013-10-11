@@ -1,6 +1,7 @@
 'use strict';
 
-var UTIL = require('util'),
+var assert = require('chai').assert,
+    UTIL = require('util'),
     PATH = require('path'),
     Q = require('q'),
     _ = require('underscore'),
@@ -40,19 +41,16 @@ describe('bem', function() {
                 .done();
         });
 
-        it('creates proper artifacts', function(done) {
-            return BEM.util.exec(
+        it('creates proper artifacts', function() {
+            return assert.eventually.isNull(
+                BEM.util.exec(
                     UTIL.format(
                         'find %s -type f -exec diff -q {} %s/{} \\; 2>&1',
                         '.',
                         PATH.relative(referencePath, buildPath)),
                     {cwd: referencePath},
                     true)
-                .then(function(result) {
-                    done(result && new Error(result));
-                })
-                .fail(done)
-                .done();
+            );
         });
 
         it('does not rebuild anything on next build with no changes made to the files', function(done) {
@@ -177,6 +175,42 @@ describe('bem', function() {
                 .fail(done)
                 .done();
         });
+
+        it('invalidates deps when bemdecl is modified', function(done) {
+            this.timeout(0);
+
+            prepareProject()
+                .then(function() {
+                    BEM.api.make({root: buildPath, verbosity: 'error'})
+                        .then(function() {
+                            return BEM.util.exec(UTIL.format('cp %s %s',
+                                PATH.resolve(__dirname, 'data/make/misc/changed.bemjson.js'),
+                                PATH.resolve(buildPath, 'pages/example/example.bemjson.js')))
+
+                                .then(function() {
+                                    return BEM.api.make({root: buildPath, verbosity: 'error'},
+                                        {
+                                            targets: ['pages/example/example.deps.js']
+                                        });
+                                })
+                                .then(function() {
+                                    return Q.all([
+                                            QFS.lastModified(PATH.join(buildPath, 'pages/example/example.bemjson.js')),
+                                            QFS.lastModified(PATH.join(buildPath, 'pages/example/example.deps.js'))
+                                        ])
+                                        .spread(function(bemjson, deps) {
+                                            assert.operator(deps.getTime(), '>=', bemjson.getTime());
+                                        });
+                                });
+
+                        })
+                        .then(done)
+                        .fail(done)
+                        .done();
+
+                });
+        });
+
     });
 });
 

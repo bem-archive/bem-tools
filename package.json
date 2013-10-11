@@ -43,21 +43,22 @@
     "q-io": "~1.9.1",
     "insight": "~0.1.2",
     "minimatch": "~0.2.12",
-    "collections": "~0.1.24"
+    "collections": "~0.1.24",
+    "reqf": "~1.0.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",
     "xjst": "0.4.13",
     "mocha-coverjs": "*",
-    "mocha": "~1.11.0",
-    "chai": "~1.0.3",
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
     "coverjs": ">= 0.0.7-alpha",
     "jshint": "~2.1.4",
     "chai-as-promised": "~3.3.1",
     "mocha-as-promised": "~1.4.0",
     "bem-smoke": "~0.3.2",
-    "sinon": "~1.7.3",
-    "require-mocked": "git://github.com/SevInf/require-mocked.git#1c2a512283af"
+    "require-mocked": "git://github.com/SevInf/require-mocked.git#1c2a512283af",
+    "sinon": "~1.7.3"
   },
   "scripts": {
     "test": "make test",
