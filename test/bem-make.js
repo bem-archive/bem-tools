@@ -109,7 +109,7 @@ describe('bem', function() {
             this.timeout(0);
 
             BEM.api.make({root: buildPath, verbosity: 'error', method: 'clean'})
-                .then(function(){return BEM.util.exec('sleep 5')})
+                .then(function(){return BEM.util.exec('sleep 5');})
                 .then(function() {
                     return Q.all([
                         dirHasOnly(PATH.join(buildPath, 'pages/example'), ['example.bemjson.js']),
@@ -224,7 +224,7 @@ function prepareProject() {
             var resultPath = 'test-result-'+(pathIdx++);
             return exists &&
                 BEM.util.exec(UTIL.format('mv %s %s', buildPath, resultPath))
-                    .then(function(){return BEM.util.exec(UTIL.format('rm -rf %s', resultPath))});
+                    .then(function(){return BEM.util.exec(UTIL.format('rm -rf %s', resultPath));});
         })
         .then(function() {
             return BEM.util.exec(UTIL.format('cp -r %s %s', projectPath, buildPath));
