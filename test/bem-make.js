@@ -109,6 +109,7 @@ describe('bem', function() {
             this.timeout(0);
 
             BEM.api.make({root: buildPath, verbosity: 'error', method: 'clean'})
+                .then(function(){return BEM.util.exec('sleep 5')})
                 .then(function() {
                     return Q.all([
                         dirHasOnly(PATH.join(buildPath, 'pages/example'), ['example.bemjson.js']),
