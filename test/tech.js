@@ -44,7 +44,7 @@ describe('tech', function() {
                 },
 
                 resolveTechClass: function() {
-                    return getTechClass(testTech);
+                    return getTechClass(techPath);
                 }
             };
         }
@@ -700,12 +700,6 @@ describe('tech', function() {
                 tech.techName = 'SomeTech';
 
                 assert.equal(tech.getTechName(), 'SomeTech');
-            });
-
-            it('should return file name if techName is not set', function () {
-                tech.techPath = '/test/someFile.js';
-
-                assert.equal(tech.getTechName(), 'someFile');
             });
         });
 

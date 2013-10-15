@@ -292,7 +292,7 @@ describe('level', function() {
 
     describe("Level('data/level-object-tech') /* level with tech defined inline */", function() {
 
-        var level = createLevel(absolute('data/level-object-tech'));
+        var level = LevelManager.createLevel(absolute('data/level-object-tech'));
 
         describe(".getTech('deps.js')", function() {
             it("returns proper tech object", function() {
