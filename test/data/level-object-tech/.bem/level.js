@@ -4,7 +4,7 @@ exports.getTechs = function() {
 
     return {
         'deps.js': function() {
-    	    return {
+            return {
                 baseTechPath: BEM.require.resolve('./techs/v2/deps.js'),
 
                 techMixin: {

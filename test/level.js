@@ -297,7 +297,7 @@ describe('level', function() {
         describe(".getTech('deps.js')", function() {
             it("returns proper tech object", function() {
                 var tech = level.getTech('deps.js');
-                assert.isObject(tech);
+                assert.instanceOf(tech, BEM.TechV2);
                 assert.equal(tech.check('test'), 'testpass');
             });
         });
