@@ -290,6 +290,18 @@ describe('level', function() {
         
     });
 
+    describe("Level('data/level-object-tech') /* level with tech defined inline */", function() {
+
+        var level = LevelManager.createLevel(absolute('data/level-object-tech'));
+
+        describe(".getTech('deps.js')", function() {
+            it("returns proper tech object", function() {
+                var tech = level.getTech('deps.js');
+                assert.instanceOf(tech, BEM.TechV2);
+                assert.equal(tech.check('test'), 'testpass');
+            });
+        });
+    });
 });
 
 function absolute(path) {
