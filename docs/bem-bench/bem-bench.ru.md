@@ -29,7 +29,7 @@
 
 `bem bench desktop.benchmarks -r HEAD`
 
-`bem bench desktop.benchmarks touch-phone.benchmarks/button -r HEAD`
+`bem bench desktop.benchmarks touch-phone.benchmarks:button -r HEAD`
 
 #### Конфигурирование проекта для запуска тестов, на примере `project-stub`
 
