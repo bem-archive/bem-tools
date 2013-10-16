@@ -156,7 +156,8 @@ exports.depsFull = {
             "b-logo"
         ],
         "mustDeps": [],
-        "item": {}
+        "item": {},
+        "include": true
     },
     "b-page": {
         "shouldDeps": [
@@ -177,6 +178,7 @@ exports.depsFull = {
         "item": {
             "block": "b-page"
         },
+        "include": true,
         "key": "b-page"
     },
     "b-link": {
@@ -185,6 +187,7 @@ exports.depsFull = {
         "item": {
             "block": "b-link"
         },
+        "include": true,
         "key": "b-link"
     },
     "b-link_pseudo": {
@@ -201,6 +204,7 @@ exports.depsFull = {
             "block": "b-link",
             "mod": "pseudo"
         },
+        "include": true,
         "key": "b-link_pseudo"
     },
     "b-link_pseudo_yes": {
@@ -214,6 +218,7 @@ exports.depsFull = {
             "mod": "pseudo",
             "val": "yes"
         },
+        "include": true,
         "key": "b-link_pseudo_yes"
     },
     "b-link_togcolor": {
@@ -223,6 +228,7 @@ exports.depsFull = {
             "block": "b-link",
             "mod": "togcolor"
         },
+        "include": true,
         "key": "b-link_togcolor"
     },
     "b-link_togcolor_yes": {
@@ -238,6 +244,7 @@ exports.depsFull = {
             "mod": "togcolor",
             "val": "yes"
         },
+        "include": true,
         "key": "b-link_togcolor_yes"
     },
     "b-link_color": {
@@ -247,6 +254,7 @@ exports.depsFull = {
             "block": "b-link",
             "mod": "color"
         },
+        "include": true,
         "key": "b-link_color"
     },
     "b-link_color_green": {
@@ -257,6 +265,7 @@ exports.depsFull = {
             "mod": "color",
             "val": "green"
         },
+        "include": true,
         "key": "b-link_color_green"
     },
     "i-bem": {
@@ -277,6 +286,7 @@ exports.depsFull = {
         "item": {
             "block": "i-bem"
         },
+        "include": true,
         "key": "i-bem"
     },
     "i-bem__html": {
@@ -289,6 +299,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "html"
         },
+        "include": true,
         "key": "i-bem__html"
     },
     "i-bem__dom": {
@@ -303,6 +314,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "dom"
         },
+        "include": true,
         "key": "i-bem__dom"
     },
     "i-bem__dom_init": {
@@ -313,6 +325,7 @@ exports.depsFull = {
             "elem": "dom",
             "mod": "init"
         },
+        "include": true,
         "key": "i-bem__dom_init"
     },
     "i-bem__dom_init_auto": {
@@ -324,6 +337,7 @@ exports.depsFull = {
             "mod": "init",
             "val": "auto"
         },
+        "include": true,
         "key": "i-bem__dom_init_auto"
     },
     "i-ua": {
@@ -335,6 +349,7 @@ exports.depsFull = {
         "item": {
             "block": "i-ua"
         },
+        "include": true,
         "key": "i-ua"
     },
     "i-jquery": {
@@ -343,6 +358,7 @@ exports.depsFull = {
         "item": {
             "block": "i-jquery"
         },
+        "include": true,
         "key": "i-jquery"
     },
     "i-jquery__core": {
@@ -352,6 +368,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "core"
         },
+        "include": true,
         "key": "i-jquery__core"
     },
     "b-page__css": {
@@ -361,6 +378,7 @@ exports.depsFull = {
             "block": "b-page",
             "elem": "css"
         },
+        "include": true,
         "key": "b-page__css"
     },
     "b-page__js": {
@@ -370,6 +388,7 @@ exports.depsFull = {
             "block": "b-page",
             "elem": "js"
         },
+        "include": true,
         "key": "b-page__js"
     },
     "i-jquery__leftclick": {
@@ -379,6 +398,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "leftclick"
         },
+        "include": true,
         "key": "i-jquery__leftclick"
     },
     "b-link_pseudo_no": {
@@ -389,6 +409,7 @@ exports.depsFull = {
             "mod": "pseudo",
             "val": "no"
         },
+        "include": true,
         "key": "b-link_pseudo_no"
     },
     "b-link__inner": {
@@ -398,6 +419,7 @@ exports.depsFull = {
             "block": "b-link",
             "elem": "inner"
         },
+        "include": true,
         "key": "b-link__inner"
     },
     "b-link_color_red": {
@@ -408,6 +430,7 @@ exports.depsFull = {
             "mod": "color",
             "val": "red"
         },
+        "include": true,
         "key": "b-link_color_red"
     },
     "i-jquery__inherit": {
@@ -417,6 +440,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "inherit"
         },
+        "include": true,
         "key": "i-jquery__inherit"
     },
     "i-jquery__identify": {
@@ -426,6 +450,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "identify"
         },
+        "include": true,
         "key": "i-jquery__identify"
     },
     "i-jquery__is-empty-object": {
@@ -435,6 +460,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "is-empty-object"
         },
+        "include": true,
         "key": "i-jquery__is-empty-object"
     },
     "i-jquery__debounce": {
@@ -444,6 +470,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "debounce"
         },
+        "include": true,
         "key": "i-jquery__debounce"
     },
     "i-jquery__observable": {
@@ -457,6 +484,7 @@ exports.depsFull = {
             "block": "i-jquery",
             "elem": "observable"
         },
+        "include": true,
         "key": "i-jquery__observable"
     },
     "i-ecma__object": {
@@ -466,6 +494,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "object"
         },
+        "include": true,
         "key": "i-ecma__object"
     },
     "i-ecma__array": {
@@ -475,6 +504,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "array"
         },
+        "include": true,
         "key": "i-ecma__array"
     },
     "i-ecma__function": {
@@ -484,6 +514,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "function"
         },
+        "include": true,
         "key": "i-ecma__function"
     },
     "i-bem__internal": {
@@ -493,6 +524,7 @@ exports.depsFull = {
             "block": "i-bem",
             "elem": "internal"
         },
+        "include": true,
         "key": "i-bem__internal"
     },
     "i-ecma__string": {
@@ -502,6 +534,7 @@ exports.depsFull = {
             "block": "i-ecma",
             "elem": "string"
         },
+        "include": true,
         "key": "i-ecma__string"
     },
     "b-logo": {
@@ -513,6 +546,7 @@ exports.depsFull = {
         "item": {
             "block": "b-logo"
         },
+        "include": true,
         "key": "b-logo"
     },
     "b-icon": {
@@ -521,6 +555,7 @@ exports.depsFull = {
         "item": {
             "block": "b-icon"
         },
+        "include": true,
         "key": "b-icon"
     }
 };
