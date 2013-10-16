@@ -7,8 +7,8 @@
       "from": "coa@0.4.0"
     },
     "q": {
-      "version": "0.9.7",
-      "from": "q@0.9.7"
+      "version": "0.9.5",
+      "from": "q@0.9.5"
     },
     "mime": {
       "version": "1.2.9",
