@@ -109,8 +109,7 @@ describe('Deps', function() {
                 ] } }
             ));
 
-            // TODO: https://github.com/bem/bem-tools/issues/401
-            it.skip('block with elem array', assertDepsParse(
+            it('block with elem array', assertDepsParse(
                 [ { block: 'b1', elem: ['e1', 'e2'] } ],
                 { '': {'': [
                     {block: 'b1', elem: 'e1'},
@@ -151,8 +150,7 @@ describe('Deps', function() {
                 } }
             ));
 
-            // TODO: https://github.com/bem/bem-tools/issues/413
-            it.skip('block with tech shortcut', assertDepsParse(
+            it('block with tech shortcut', assertDepsParse(
                 {block: 'b1', tech: 't1', shouldDeps: {tech: 't2'}},
                 { 't1': {
                     't1': [ { block: 'b1', tech: 't1'} ],
