@@ -135,14 +135,14 @@ describe('bem', function() {
                         verbosity: 'error'
                         },
                         {
-                            targets: ['pages/example/_example.css', 'pages/client/client.html']
+                            targets: ['pages/example/example.min.css', 'pages/client/client.html']
                         });
                 })
                 .then(function(){
                     return Q.all([
                         dirHasOnly(
                             PATH.join(buildPath, 'pages/example'),
-                            ['example.bemjson.js', '_example.css', 'example.bemdecl.js', 'example.css',
+                            ['example.bemjson.js', 'example.min.css', 'example.bemdecl.js', 'example.css',
                              'example.deps.js']),
                         dirHasOnly(
                             PATH.join(buildPath, 'pages/client'),

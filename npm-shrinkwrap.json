@@ -622,6 +622,10 @@
         }
       }
     },
+    "memorystream": {
+      "version": "0.2.0",
+      "from": "memorystream@0.2"
+    },
     "minimatch": {
       "version": "0.2.12",
       "from": "minimatch@0.2.12",

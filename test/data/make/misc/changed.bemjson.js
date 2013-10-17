@@ -2,9 +2,9 @@
     block: 'b-page',
     title: 'Pseudo link',
     head: [
-        { elem: 'css', url: '_example.css'},
-        { elem: 'css', url: '_example', ie: true },
-        { elem: 'js', url: '_example.js' }
+        { elem: 'css', url: 'example.min.css'},
+        { elem: 'css', url: 'example.min', ie: true },
+        { elem: 'js', url: 'example.min.js' }
     ],
     content: [
         {

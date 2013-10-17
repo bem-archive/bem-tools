@@ -3,11 +3,11 @@
     js: true,
     title: 'Client-side template work',
     head: [
-        { elem: 'css', url: '_client.css'},
-        { elem: 'css', url: '_client', ie: true },
+        { elem: 'css', url: 'client.min.css'},
+        { elem: 'css', url: 'client.min', ie: true },
         { block: 'i-jquery', elem: 'core' },
-        { elem: 'js', url: '_client.bemhtml.js' },
-        { elem: 'js', url: '_client.js' }
+        { elem: 'js', url: 'client.bemhtml.js' },
+        { elem: 'js', url: 'client.min.js' }
     ],
     content: ''
 })
