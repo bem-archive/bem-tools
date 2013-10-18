@@ -17,8 +17,13 @@ clean:
 jshint:
 	$(JSHINT) lib test
 
+.PHONY: test-setup
+test-setup:
+	@test -e node_modules/bem || ln -s .. node_modules/bem
+	@git submodule update --init
+
 .PHONY: test
-test: jshint
+test: test-setup jshint
 	$(MOCHA)
 
 .PHONY: lib-cov
