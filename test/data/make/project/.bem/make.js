@@ -2,6 +2,8 @@
 var PATH = require('path'),
     BEMBL_TECHS = PATH.resolve(__dirname, '../bem-bl/blocks-common/i-bem/bem/techs');
 
+process.env.BEM_I18N_LANGS = 'ru en';
+
 module.exports = function(make) {
 
     make.levels(function(levels) {
@@ -30,7 +32,11 @@ module.exports = function(make) {
                         'min.i18n.js': {
                             baseTechPath: 'v2/min',
                             getSuffixes: function() {
-                                return ['en.js', 'ru.js', 'js'];
+                                return process.env.BEM_I18N_LANGS.split(' ')
+                                    .map(function(lang) {
+                                        return lang + '.js';
+                                    })
+                                    .concat('js');
                             },
 
                             getDependencies: function() {
