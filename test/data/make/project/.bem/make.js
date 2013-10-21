@@ -2,6 +2,8 @@
 var PATH = require('path'),
     BEMBL_TECHS = PATH.resolve(__dirname, '../bem-bl/blocks-common/i-bem/bem/techs');
 
+process.env.BEM_I18N_LANGS = 'ru en';
+
 module.exports = function(make) {
 
     make.levels(function(levels) {
@@ -15,8 +17,32 @@ module.exports = function(make) {
                     {
                         'bemjson.js': '',
                         'js': 'v2/js-i',
+                        'min.ie.css': {
+                            baseTechPath: 'v2/min',
+                            getSuffixes: function() {
+                                return ['ie.css'];
+                            },
+
+                            getDependencies: function() {
+                                return ['css', 'ie.css'];
+                            }
+                        },
                         'i18n': PATH.join(BEMBL_TECHS, 'v2/i18n.js'),
                         'i18n.js': PATH.join(BEMBL_TECHS, 'v2/i18n.js.js'),
+                        'min.i18n.js': {
+                            baseTechPath: 'v2/min',
+                            getSuffixes: function() {
+                                return process.env.BEM_I18N_LANGS.split(' ')
+                                    .map(function(lang) {
+                                        return lang + '.js';
+                                    })
+                                    .concat('js');
+                            },
+
+                            getDependencies: function() {
+                                return ['i18n.js'];
+                            }
+                        },
                         'bemhtml': PATH.join(BEMBL_TECHS, 'v2/bemhtml.js'),
                         'html': PATH.join(BEMBL_TECHS, 'html.js')
 
@@ -68,16 +94,25 @@ module.exports = function(make) {
                 arr.splice(arr.indexOf('js'), 1);
 
                 // add i18n techs
-                return arr.concat(['i18n', 'i18n.js']);
+                return arr.concat(['i18n', 'i18n.js', 'min.ie.css', 'min.i18n.js']);
 
             },
 
-            'create-i18n.js-optimizer-node': function(tech, sourceNode, bundleNode) {
 
-                sourceNode.getFiles().forEach(function(f) {
-                    this['create-js-optimizer-node'](tech, this.ctx.arch.getNode(f), bundleNode);
-                }, this);
+            'create-min.ie.css-node': function(tech, bundleNode, magicNode) {
 
+                return this.setBemCreateNode(
+                    tech,
+                    bundleNode,
+                    magicNode);
+            },
+
+            'create-min.i18n.js-node': function(tech, bundleNode, magicNode) {
+
+                return this.setBemCreateNode(
+                    tech,
+                    bundleNode,
+                    magicNode);
             }
 
         });
