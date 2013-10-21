@@ -22,7 +22,7 @@ should use `bower-npm-install` instead.
     * `<lib>@<branch>` is not supported and should be replaced with either tag or 
         commit hash.
 
-    For example, if you had following `make.js`:
+    For example, if you have following `make.js`:
 
     ```javascript
     MAKE.decl('Arch', {
@@ -74,17 +74,18 @@ should use `bower-npm-install` instead.
 
 5. Run `bower-npm-install` from the project root.
 
-## `make.js` should be written as function
+## New `make.js` file format
 
-In bem-tools 0.6.x `make.js` file received `MAKE` variable implicitly and didn't export
-anything. In 1.0.0 it should export a function which receives `MAKE` explicitly.
+In bem-tools 1.0.0 make file has a new format. It now should export a function which 
+receives `make` variable explicitly. Makefile is split up int several sections. Old
+setup code should be performed in `nodes` section.
 
 This example make file:
 
 ```javascript
 MAKE.decl(...)
 
-//make settings continues
+//0.6.x setup code
 ...
 
 ```
@@ -92,22 +93,26 @@ MAKE.decl(...)
 should be rewritten to:
 
 ```javascript
-module.exports = function(registry) {
-    registry.decl(...)
+module.exports = function(make) {
 
-    //make settings continues
-    ...
+    make.nodes(function(registry) {
+        registry.decl(...)
+
+        //0.6.x setup code
+        ...
+    });
+
 };
 ```
 
-## Libraries does not get installed or updated by `bem make`
+## Libraries do not get installed or updated by `bem make`
 
 You should now explicitly call `bower-npm-install` each time you change
 your dependencies in `bower.json`.
 
 ## Legacy tech modules support removed
 
-You should migrate your legacy tech modules to APIv2. Legacy modules is not
+You should migrate your legacy tech modules to APIv2. Legacy modules are not
 supported anymore. APIv1 is still supported, but will produce warnings
 during build.
 
