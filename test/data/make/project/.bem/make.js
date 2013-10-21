@@ -24,7 +24,7 @@ module.exports = function(make) {
                             },
 
                             getDependencies: function() {
-                                return ['css']
+                                return ['css', 'ie.css'];
                             }
                         },
                         'i18n': PATH.join(BEMBL_TECHS, 'v2/i18n.js'),
