@@ -96,23 +96,6 @@ module.exports = function(make) {
                 // add i18n techs
                 return arr.concat(['i18n', 'i18n.js', 'min.ie.css', 'min.i18n.js']);
 
-            },
-
-
-            'create-min.ie.css-node': function(tech, bundleNode, magicNode) {
-
-                return this.setBemCreateNode(
-                    tech,
-                    bundleNode,
-                    magicNode);
-            },
-
-            'create-min.i18n.js-node': function(tech, bundleNode, magicNode) {
-
-                return this.setBemCreateNode(
-                    tech,
-                    bundleNode,
-                    magicNode);
             }
 
         });
