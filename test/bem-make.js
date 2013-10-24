@@ -4,7 +4,7 @@ var assert = require('chai').assert,
     UTIL = require('util'),
     PATH = require('path'),
     Q = require('q'),
-    _ = require('underscore'),
+    _ = require('lodash/dist/lodash.underscore'),
     QFS = require('q-fs'),
 
     BEM = require('..'),
