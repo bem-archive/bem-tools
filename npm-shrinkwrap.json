@@ -403,8 +403,8 @@
       }
     },
     "q-io": {
-      "version": "1.9.1",
-      "from": "q-io@1.9.1",
+      "version": "1.10.3",
+      "from": "q-io@1.10.3",
       "dependencies": {
         "qs": {
           "version": "0.1.0",
