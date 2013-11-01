@@ -105,6 +105,134 @@ module.exports = function(make) {
 };
 ```
 
+## `create-<techname>-optimizer-node` is replaced with `<techname>.min.js` techs
+
+In previous versions, minification was performed by special `borschik` node. In
+1.0.0 its done via `min.js` tech. 
+
+For standard tech supplied with bem-tools, such as `js` and `css` you should just add `min.<techname>`
+to `BundleNode`'s `getTechMethods`.
+
+But if you had minification for non-standard techs set up in your `make.js`, you should change your
+code as follows:
+
+1.  In `make.js` in `BundleNode` config remove all custom `create-<techname>-optimizer-node`
+    methods.
+2.  For each tech that needs minification change your **bundle level config**
+    (usually, `.bem/levels/bundle.js`) to contain min tech defintion:
+
+    ```javascript
+    exports.getTechs = function() {
+        return {
+            ... //other tech setup
+            'min.<techname>': {
+                baseTechName: 'v2/min.js',
+
+                getSuffixes: function() {
+                    return [/* <techname's> output siffixes*/];
+                }
+
+                getDependencies: function() { //run min tech after source
+                    return '<techname>'
+                }
+            }
+        }
+    };
+    ```
+
+3.  Add `min.<techname>` to your `BundleNode`'s `getTechs` method in `.bem/make.js` file:
+
+    ```javascript
+    registry.decl('BundleNode', {
+
+        getTechs: function() {
+            return [
+                'bemjson.js',
+                'bemdecl.js',
+                ...
+                'min.<techname>'
+            ]
+        }
+    });
+    ```
+
+For example, if you had following `BundleNode` declaration in your `make.js`:
+
+```javascript
+registry.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml',
+            'browser.js+bemhtml',
+            'css',
+            'html'
+        ];
+    }
+
+    'create-browser.js+bemhtml-optimizer-node': function() {
+        this['create-js-optimizer-node'].apply(this, arguments);
+    }
+});
+```
+
+then you should:
+1. Remove `create-browser.js+bemhtml-optimizer-node` method,
+2. Change your `.bem/levels/bundle.js` to contain `min.browser.js+bemhtml` tech
+3. Add `min.css` and `min.browser.js+bemhtml` tech to your build process:
+
+`.bem/levels/bundle.js`:
+
+```javascript
+exports.getTechs = function() {
+    return [
+        ... //old code
+        'min.browser.js+bemhtml': {
+            baseTechName: 'v2/min.js',
+
+            getSuffixes: function() {
+                return ['js']; //browser.js+bemhtml outputs js files
+            },
+
+            getDependencies: function() {
+                return ['browser.js+bemhtml'];
+            }
+        }
+    ]
+}
+```
+`BundleNode` in `.bem/make.js`:
+
+```javascript
+registry.decl('BundleNode', {
+
+    getTechs: function() {
+
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml',
+            'browser.js+bemhtml',
+            'min.browser.js+bemhtml',
+            'css',
+            'min.css',
+            'html'
+        ];
+    }
+});
+```
+
+## Minimized file name changed
+
+In previous versions, minimized versions of files had `_` prefix in their name.
+In 1.0.0 this files have `min` suffix by default. Be sure to change URLs in
+your `bemjson` files from `_<name>.<ext>` to `<name>.min.<ext>`.
+
 ## Libraries do not get installed or updated by `bem make`
 
 You should now explicitly call `bower-npm-install` each time you change
