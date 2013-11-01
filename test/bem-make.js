@@ -5,7 +5,7 @@ var assert = require('chai').assert,
     PATH = require('path'),
     Q = require('q'),
     _ = require('underscore'),
-    QFS = require('q-fs'),
+    QFS = require('q-io/fs'),
 
     BEM = require('..'),
 
@@ -65,7 +65,7 @@ describe('bem', function() {
                         .then(function(newTimestamps){
                             var mismatches = Object.keys(newTimestamps)
                                 .filter(function(ts) {
-                                    return newTimestamps[ts] !== timestamps[ts];
+                                    return newTimestamps[ts].getTime() !== timestamps[ts].getTime();
                                 });
 
                             if (mismatches.length > 0) throw new Error('There are modified files:\n' + mismatches.join('\n'));
@@ -199,7 +199,7 @@ describe('bem', function() {
                                             QFS.lastModified(PATH.join(buildPath, 'pages/example/example.deps.js'))
                                         ])
                                         .spread(function(bemjson, deps) {
-                                            assert.operator(deps, '>=', bemjson);
+                                            assert.operator(deps.getTime(), '>=', bemjson.getTime());
                                         });
                                 });
 
