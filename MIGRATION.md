@@ -3,12 +3,12 @@
 ## Replace external libraries support with `bower-npm-install`
 
 External libraries installation support was removed from bem-tools 1.0.0. You
-should use `bower-npm-install` instead.
+should use [`bower-npm-install`](https://github.com/arikon/bower-npm-install) instead.
 
 1.  Install `bower` and `bower-npm-install`:
         npm install -g bower bower-npm-install
 2.  Create `bower.json` file in the root directory of your project. You can use
-    `bower init` command to launch a wizard that will help initalizing project.
+    `bower init` command to launch a wizard that will help initializing project.
 3.  Replace `libraries` declarations in `.bem/make.js` file with `dependecies` declaration
     in `bower.json` file.
     * check if your library present in bower registry:
@@ -19,8 +19,8 @@ should use `bower-npm-install` instead.
         `"<lib>": "<repo>#<tag>"` in `bower.json`;
     * `<lib>@<commit hash>` should become `"<lib>" : "<commit hash>"` or
         `"<lib>" : "repo#<commit hash>"`;
-    * `<lib>@<branch>` is not supported and should be replaced with either tag or 
-        commit hash.
+    * `<lib>@<branch>` has no compatible replacement in bower. We recommend to replace it
+         with either tag or commit hash.
 
     For example, if you have following `make.js`:
 
@@ -77,7 +77,7 @@ should use `bower-npm-install` instead.
 ## New `make.js` file format
 
 In bem-tools 1.0.0 make file has a new format. It now should export a function which 
-receives `make` variable explicitly. Makefile is split up int several sections. Old
+receives `make` variable explicitly. Makefile is split up into several sections. Old
 setup code should be performed in `nodes` section.
 
 This example make file:
@@ -105,21 +105,21 @@ module.exports = function(make) {
 };
 ```
 
-## `create-<techname>-optimizer-node` is replaced with `<techname>.min.js` techs
+## `create-<techname>-optimizer-node()` is replaced with `min.<techname>` techs
 
 In previous versions, minification was performed by special `borschik` node. In
-1.0.0 its done via `min.js` tech. 
+1.0.0 its done via `min` tech. 
 
 For standard tech supplied with bem-tools, such as `js` and `css` you should just add `min.<techname>`
-to `BundleNode`'s `getTechMethods`.
+to `BundleNode`'s `getTechs()` method.
 
 But if you had minification for non-standard techs set up in your `make.js`, you should change your
 code as follows:
 
-1.  In `make.js` in `BundleNode` config remove all custom `create-<techname>-optimizer-node`
+1.  In `make.js` in `BundleNode` config remove all custom `create-<techname>-optimizer-node()`
     methods.
 2.  For each tech that needs minification change your **bundle level config**
-    (usually, `.bem/levels/bundle.js`) to contain min tech defintion:
+    (usually, `.bem/levels/bundle.js`) to contain `min` tech defintion:
 
     ```javascript
     exports.getTechs = function() {
@@ -132,15 +132,16 @@ code as follows:
                     return [/* <techname's> output siffixes*/];
                 }
 
-                getDependencies: function() { //run min tech after source
-                    return '<techname>'
+                getDependencies: function() {
+                    //run min tech after source
+                    return ['<techname>'];
                 }
             }
         }
     };
     ```
 
-3.  Add `min.<techname>` to your `BundleNode`'s `getTechs` method in `.bem/make.js` file:
+3.  Add `min.<techname>` to your `BundleNode`'s `getTechs()` method in `.bem/make.js` file:
 
     ```javascript
     registry.decl('BundleNode', {
@@ -181,7 +182,7 @@ registry.decl('BundleNode', {
 ```
 
 then you should:
-1. Remove `create-browser.js+bemhtml-optimizer-node` method,
+1. Remove `create-browser.js+bemhtml-optimizer-node()` method,
 2. Change your `.bem/levels/bundle.js` to contain `min.browser.js+bemhtml` tech
 3. Add `min.css` and `min.browser.js+bemhtml` tech to your build process:
 
@@ -240,9 +241,9 @@ your dependencies in `bower.json`.
 
 ## Legacy tech modules support removed
 
-You should migrate your legacy tech modules to APIv2. Legacy modules are not
-supported anymore. APIv1 is still supported, but will produce warnings
-during build.
+You should migrate your legacy tech modules to APIv2. Legacy modules
+(do not confuse with API V1 modules) are not supported anymore. APIv1
+is still supported, but will produce warnings during build.
 
 ## `bem bench` command moved to separate package
 
