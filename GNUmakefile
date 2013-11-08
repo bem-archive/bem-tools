@@ -17,8 +17,12 @@ clean:
 jshint:
 	$(JSHINT) lib test
 
+.PHONY: install
+install:
+	@git submodule update --init
+
 .PHONY: test
-test: jshint
+test: install jshint
 	$(MOCHA)
 
 .PHONY: lib-cov
