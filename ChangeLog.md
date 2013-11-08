@@ -1,6 +1,77 @@
 bem-tools changelog
 ===================
 
+08.11.2013, Version 0.7.0 (stable)
+----------------------------------
+- Level scanner no longer fails on symlinks
+- css tech correctly generates classes for modifiers without values
+- Warning is shown when level does not exists or does not contains .bem directory
+- Ability to specify multiple elems in elem properties in `deps.js` files:
+  
+  ```javascript
+  ({
+    shouldDeps: { block: 'bla', elem: ['e1', 'e2', 'e3'] }
+  })
+  ```
+
+  is equivalent to:
+
+  ```javascript
+  ({
+    shouldDeps: [
+        { block: 'bla', elem: 'e1' },
+        { block: 'bla', elem: 'e2' },
+        { block: 'bla', elem: 'e3' }
+  })
+  ```
+- Shortcut for specifying tech dependencies of the same block:
+  
+  ```javascript
+  { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
+  ```
+
+  is equivalent to:
+
+  ```javascript
+  { block: 'b',  tech: 'js', mustDeps: { block: 'b', tech: 'bemhtml' }  }
+  ```
+
+- build command for `bem bemch` is customizable via `bem-bench-build`
+  script in project's `pacakge.json`
+- GitLibraryNode specifies git dir explicitly with git commands
+- Base tech is selected according to child's `API_VER`. Error is thrown when
+  base and child techs have different `API_VER`
+- It is possible to write tech module as a function:
+
+  ```javascript
+  module.exports = function(BEM) {
+      return {
+          //tech mixin
+      };
+  }
+  ```
+
+- It is possible to write level config as a function:
+
+  ```javascript
+  module.exports = function(BEM) {
+      return {
+          //level mixin
+      };
+  }
+  ```
+
+- `baseLevelName` property can be used in level config to specify `simple`,
+  `project` or `nested` level by name
+- levels/simple doesn't ignore dirs like name.tech
+- deps: possibility to declare dependence without explicit including item
+- `--no-colors` option to disable colors in terminal
+- `v1` tech warning shows link to migration instructions
+- `q-fs` and `q-http` libraries replaced with `q-io`
+- `underscore` library replaced with `lodash`
+- benchmarks can be built on multiple bundle levels
+
+
 04.09.2013, Version 0.6.16 (stable)
 -----------------------------------
 
