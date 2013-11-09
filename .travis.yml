@@ -10,4 +10,3 @@ matrix:
     - node_js: "0.11"
 
 before_install: "npm -g install npm"
-before_script: "ln -s .. node_modules/bem && ls -la node_modules && git submodule init && git submodule update"
