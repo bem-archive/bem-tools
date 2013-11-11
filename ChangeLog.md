@@ -1,12 +1,12 @@
 bem-tools changelog
 ===================
 
-08.11.2013, Version 0.7.0 (stable)
+11.11.2013, Version 0.7.0 (stable)
 ----------------------------------
 - Level scanner no longer fails on symlinks
-- css tech correctly generates classes for modifiers without values
-- Warning is shown when level does not exists or does not contains .bem directory
-- Ability to specify multiple elems in elem properties in `deps.js` files:
+- css tech correctly generates classes for modifiers without values ([#425](http://github.com/bem/bem-tools/issues/425))
+- Warning is shown when level does not exists or does not contains .bem directory ([#418](http://github.com/bem/bem-tools/issues/418))
+- Ability to specify multiple elems in elem properties in `deps.js` files ([#401](http://github.com/bem/bem-tools/issues/401)):
   
   ```javascript
   ({
@@ -24,7 +24,7 @@ bem-tools changelog
         { block: 'bla', elem: 'e3' }
   })
   ```
-- Shortcut for specifying tech dependencies of the same block:
+- Shortcut for specifying tech dependencies of the same block ([#413](http://github.com/bem/bem-tools/issues/413)):
   
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
@@ -36,12 +36,12 @@ bem-tools changelog
   { block: 'b',  tech: 'js', mustDeps: { block: 'b', tech: 'bemhtml' }  }
   ```
 
-- build command for `bem bemch` is customizable via `bem-bench-build`
-  script in project's `pacakge.json`
-- GitLibraryNode specifies git dir explicitly with git commands
+- build command for `bem bench` is customizable via `bem-bench-build`
+  script in project's `package.json`
+- GitLibraryNode specifies git dir explicitly with git commands ([#355](http://github.com/bem/bem-tools/issues/355))
 - Base tech is selected according to child's `API_VER`. Error is thrown when
-  base and child techs have different `API_VER`
-- It is possible to write tech module as a function:
+  base and child techs have different `API_VER` ([#416](http://github.com/bem/bem-tools/issues/416))
+- It is possible to write tech module as a function ([#363](http://github.com/bem/bem-tools/issues/363)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -51,7 +51,7 @@ bem-tools changelog
   }
   ```
 
-- It is possible to write level config as a function:
+- It is possible to write level config as a function ([#364](http://github.com/bem/bem-tools/issues/364)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -61,14 +61,29 @@ bem-tools changelog
   }
   ```
 
-- `baseLevelName` property can be used in level config to specify `simple`,
-  `project` or `nested` level by name
-- levels/simple doesn't ignore dirs like name.tech
-- deps: possibility to declare dependence without explicit including item
+- `baseLevelName` property can be used in level config to specify `simple` or
+  `project` level by name ([#367](http://github.com/bem/bem-tools/issues/367))
+- scanner of simple level doesn't ignore dirs like name.tech
+- deps: possibility to declare dependence without explicitly including item ([#459](http://github.com/bem/bem-tools/issues/459)):
+
+  ```javascript
+  {
+      block: "some-block",
+      mustDeps: [
+        {block: "other-block", include: false}
+      ]
+  }
+
+  ```
+
+  In this case, `other-block` won't be included in bundle with `some-block` automatically. But, if
+  bundle requires both `some-block` and `other-block`, `other-block` will always 
+  be included before `some-block`.
+
 - `--no-colors` option to disable colors in terminal
 - `v1` tech warning shows link to migration instructions
 - `q-fs` and `q-http` libraries replaced with `q-io`
-- `underscore` library replaced with `lodash`
+- `underscore` library replaced with `lodash` ([#94](http://github.com/bem/bem-tools/issues/94))
 - benchmarks can be built on multiple bundle levels
 
 
