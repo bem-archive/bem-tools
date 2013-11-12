@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+12.11.2013, Version 0.7.1 (stable)
+----------------------------------
+- Fixed exception in `bem build`
+
 11.11.2013, Version 0.7.0 (stable)
 ----------------------------------
 - Level scanner no longer fails on symlinks
