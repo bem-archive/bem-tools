@@ -1,0 +1,15 @@
+{
+    "title": "Создание подкоманд",
+    "longTitle": "Расширение набора команд bem-tools при помощи модулей подкоманд",
+    "createDate": "05-09-2013",
+    "editDate": "",
+    "summary": "Начиная с версии `bem-tools` `1.0.0` cтандартный набор команд можно расширить при помощи модулей подкоманд.",
+    "thumbnail": "",
+    "authors": ["tatarincev-sergej"],
+    "tags": ["bem-tools","tools"],
+    "categories": [{"name": "BEM/bem-tools", "url": "bem/bem-tools", "order": "10/10"}],
+    "translators": [],
+    "url": "/docs/levels/",
+    "type": "tools",
+    "order": "80"
+}
