@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+27.11.2013, Version 0.7.2 (stable)
+----------------------------------
+- bem server: fixed encoding problem with files containing non latin characters
+
 12.11.2013, Version 0.7.1 (stable)
 ----------------------------------
 - Fixed exception in `bem build`
