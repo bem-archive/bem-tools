@@ -1,6 +1,11 @@
 bem-tools changelog
 ===================
 
+11.12.2013, Version 0.7.3 (stable)
+----------------------------------
+- Fix "bem create" as worcker invocation
+- Pass Tech#getTechPath() result as bem-create's forceTech argument
+
 27.11.2013, Version 0.7.2 (stable)
 ----------------------------------
 - bem server: fixed encoding problem with files containing non latin characters
