@@ -17,7 +17,8 @@ module.exports = function(BEM) {
                 'i18n': PATH.join(BEM_TECHS, 'v2/i18n.js'),
                 'i18n.js': PATH.join(BEM_TECHS, 'v2/i18n.js.js'),
                 'bemhtml': PATH.join(BEM_TECHS, 'v2/bemhtml.js'),
-                'html': PATH.join(BEM_TECHS, 'html.js')
+                'html': PATH.join(BEM_TECHS, 'html.js'),
+                'create-level': 'v2/level-proto'
             };
         },
 
