@@ -25,7 +25,7 @@ MAKE.decl('BundleNode', {
         arr.splice(arr.indexOf('js'), 1);
 
         // add i18n techs
-        return arr.concat(['i18n', 'i18n.js']);
+        return arr.concat(['i18n', 'i18n.js', 'create-level']);
 
     },
 
@@ -35,7 +35,18 @@ MAKE.decl('BundleNode', {
             this['create-js-optimizer-node'](tech, this.ctx.arch.getNode(f), bundleNode);
         }, this);
 
-    }
+    },
+
+    'create-create-level-node': function(tech, bundleNode, magicNode) {
+
+        return this.setBemCreateNode(
+            tech,
+            this.level.resolveTech(tech),
+            bundleNode,
+            magicNode);
+
+    },
+
 
 });
 
