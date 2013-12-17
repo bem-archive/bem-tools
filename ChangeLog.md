@@ -1,6 +1,13 @@
 bem-tools changelog
 ===================
 
+17.12.2013, Version 0.7.4 (stable)
+----------------------------------
+- Fixed crash related to underscore->lodash change
+- Reverted: pass Tech#getTechPath() result as bem-create's forceTech argument
+    The change caused level-proto tech to break
+- Tests: level-proto tech is included into bem make suite
+
 11.12.2013, Version 0.7.3 (stable)
 ----------------------------------
 - Fix "bem create" as worcker invocation
