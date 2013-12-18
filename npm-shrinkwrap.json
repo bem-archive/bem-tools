@@ -4,74 +4,74 @@
   "dependencies": {
     "coa": {
       "version": "0.4.0",
-      "from": "coa@0.4.0"
+      "from": "coa@0.4.0",
+      "dependencies": {
+        "q": {
+          "version": "0.9.7",
+          "from": "q@~0.9.6"
+        }
+      }
     },
     "q": {
-      "version": "0.9.5",
-      "from": "q@0.9.5"
+      "version": "0.9.7",
+      "from": "q@0.9.7"
     },
     "mime": {
-      "version": "1.2.9",
-      "from": "mime@1.2.9"
+      "version": "1.2.11",
+      "from": "mime@1.2.11"
     },
     "lodash": {
       "version": "2.2.1",
-      "from": "lodash@"
+      "from": "lodash@2.2.1"
     },
     "inherit": {
       "version": "1.0.4",
       "from": "inherit@1.0.4"
     },
     "borschik": {
-      "version": "0.3.3",
-      "from": "borschik@0.3.3",
+      "version": "0.4.2",
+      "from": "borschik@0.4.2",
       "dependencies": {
-        "cssp": {
-          "version": "1.0.6",
-          "from": "cssp@~1.0.6",
+        "inherit": {
+          "version": "2.1.0",
+          "from": "inherit@2.1.0"
+        },
+        "vow": {
+          "version": "0.3.12",
+          "from": "vow@0.3.12"
+        },
+        "vow-fs": {
+          "version": "0.2.3",
+          "from": "vow-fs@0.2.3",
           "dependencies": {
-            "ometajs": {
-              "version": "3.1.19",
-              "from": "ometajs@~ 3.1.x",
-              "dependencies": {
-                "coa": {
-                  "version": "0.3.9",
-                  "from": "coa@0.3.x"
-                },
-                "q": {
-                  "version": "0.8.12",
-                  "from": "q@0.8.x"
-                },
-                "uglify-js": {
-                  "version": "1.3.5",
-                  "from": "uglify-js@1.3.x"
-                }
-              }
+            "node-uuid": {
+              "version": "1.4.0",
+              "from": "node-uuid@1.4.0"
+            },
+            "vow-queue": {
+              "version": "0.0.2",
+              "from": "vow-queue@0.0.2"
             }
           }
         },
-        "coffee-script": {
-          "version": "1.6.3",
-          "from": "coffee-script@*"
-        },
         "csso": {
-          "version": "1.3.8",
-          "from": "csso@~1.3.7"
+          "version": "1.3.10",
+          "from": "csso@1.3.10"
         },
         "uglify-js": {
-          "version": "2.3.6",
-          "from": "uglify-js@~2.3.6",
+          "version": "2.4.6",
+          "from": "uglify-js@2.4.6",
           "dependencies": {
             "async": {
               "version": "0.2.9",
               "from": "async@~0.2.6"
             },
             "source-map": {
-              "version": "0.1.30",
+              "version": "0.1.31",
               "from": "source-map@~0.1.7",
               "dependencies": {
                 "amdefine": {
-                  "version": "0.0.8",
+                  "version": "0.1.0",
                   "from": "amdefine@>=0.0.4"
                 }
               }
@@ -85,6 +85,10 @@
                   "from": "wordwrap@~0.0.2"
                 }
               }
+            },
+            "uglify-to-browserify": {
+              "version": "1.0.1",
+              "from": "uglify-to-browserify@~1.0.0"
             }
           }
         }
@@ -408,19 +412,25 @@
       "dependencies": {
         "qs": {
           "version": "0.1.0",
-          "from": "qs@0.1.0"
+          "from": "qs@~0.1.0"
         },
         "url2": {
           "version": "0.0.0",
-          "from": "url2@0.0.0"
+          "from": "url2@~0.0.0"
         },
         "mimeparse": {
           "version": "0.1.4",
-          "from": "mimeparse@0.1.4"
+          "from": "mimeparse@~0.1.4"
         },
         "collections": {
-          "version": "0.1.22",
-          "from": "collections@0.1.22"
+          "version": "0.2.2",
+          "from": "collections@~0.2.0",
+          "dependencies": {
+            "weak-map": {
+              "version": "1.0.0",
+              "from": "weak-map@1.0.0"
+            }
+          }
         }
       }
     },
@@ -622,10 +632,6 @@
         }
       }
     },
-    "memorystream": {
-      "version": "0.2.0",
-      "from": "memorystream@0.2"
-    },
     "minimatch": {
       "version": "0.2.12",
       "from": "minimatch@0.2.12",
@@ -653,6 +659,10 @@
     "reqf": {
       "version": "1.0.0",
       "from": "reqf@1.0.0"
+    },
+    "memorystream": {
+      "version": "0.2.0",
+      "from": "memorystream@0.2.0"
     }
   }
 }
