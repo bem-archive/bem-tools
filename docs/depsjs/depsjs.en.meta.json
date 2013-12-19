@@ -1,6 +1,6 @@
 {
     "title": "Dependences",
-    "longTitle": "bem-tools: Dependencies Declaration",
+    "longTitle": "bem-tools: dependencies declaration",
     "createDate": "27-08-2013",
     "editDate": "",
     "summary": "deps.js — a technology to declare dependencies in BEM",
