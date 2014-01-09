@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+09.01.2014, Version 0.7.5 (stable)
+----------------------------------
+- Package: borschik is updated to 0.4.2
+
 17.12.2013, Version 0.7.4 (stable)
 ----------------------------------
 - Fixed crash related to underscore->lodash change
