@@ -1,6 +1,12 @@
 bem-tools changelog
 ===================
 
+20.01.2014, Version 0.7.6 (stable)
+----------------------------------
+- Correctly handle promises reject with no reason in tech modules
+- Check that bundle techs don't have common build suffixes
+- Save build cache data only on successful build
+
 09.01.2014, Version 0.7.5 (stable)
 ----------------------------------
 - Package: borschik is updated to 0.4.2
