@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+24.01.2014, Version 0.7.7 (stable)
+----------------------------------
+- New roole and less techs 
+
 20.01.2014, Version 0.7.6 (stable)
 ----------------------------------
 - Correctly handle promises reject with no reason in tech modules
