@@ -197,20 +197,20 @@
       "from": "node.extend@1.0.0"
     },
     "colors": {
-      "version": "0.6.0-1",
-      "from": "colors@0.6.0-1"
+      "version": "0.6.2",
+      "from": "colors@0.6.2"
     },
     "benchmark": {
       "version": "1.0.0",
       "from": "benchmark@1.0.0"
     },
     "cli-table": {
-      "version": "0.2.0",
-      "from": "cli-table@0.2.0",
+      "version": "0.3.0",
+      "from": "cli-table@0.3.0",
       "dependencies": {
         "colors": {
-          "version": "0.3.0",
-          "from": "colors@0.3.0"
+          "version": "0.6.2",
+          "from": "colors@0.6.2"
         }
       }
     },
