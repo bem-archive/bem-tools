@@ -1,3 +1,17 @@
+<!--
+{
+    "title": "bem-tools",
+    "createDate": "17-10-2012",
+    "editDate": "",
+    "summary": "bem-tools краткое описание.",
+    "thumbnail": "",
+    "authors": ["harisov-vitaly"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 bem-tools — это набор инструментов для работы с файлами по БЭМ-методологии.
 
 Он позволяет:

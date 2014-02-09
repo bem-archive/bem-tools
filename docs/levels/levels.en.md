@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Levels",
+    "longTitle": "bem-tools: levels",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Description of the level .bem/level.js.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Level (.bem/level.js)
 
 A level should have `.bem/level.js` configuration file which contains the meta information about the level:

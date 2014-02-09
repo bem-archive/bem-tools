@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "API usage",
+    "longTitle": "bem-tools: API usage",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "The document explains how use bem-tools from API.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools", "API"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # API usage
 
 Starting from 0.2.0 version it is possible to use `bem-tools` from API.

@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Участие в разработке",
+    "longTitle": "Участие в разработке bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Информация о запуске автотестов.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Участие в разработке
 
 ## Запуск автотестов

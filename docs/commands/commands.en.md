@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Commands",
+    "longTitle": "bem-tools: сommands",
+    "createDate": "19-10-2012",
+    "editDate": "",
+    "summary": "The main bem-tools commands.",
+    "thumbnail": "",
+    "authors": ["jetpyspayeva-yelena"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # bem create
 
 You can create following entities using `bem create`:

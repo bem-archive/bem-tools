@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Команды",
+    "longTitle": "Команды bem-tools",
+    "createDate": "19-10-2012",
+    "editDate": "",
+    "summary": "Описание основных команд bem-tools.",
+    "thumbnail": "",
+    "authors": ["jetpyspayeva-yelena"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # bem create
 
 С помошью `bem create` можно создавать сущности:

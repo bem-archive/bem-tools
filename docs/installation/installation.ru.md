@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Установка",
+    "longTitle": "Установка bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "02-08-2013",
+    "summary": "Инструкция по установке bem-tools.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Установка
 Вам потребуется [NodeJS 0.6+](http://nodejs.org/) или выше и [npm 1.2.14](http://npmjs.org/) или выше.
 После этого достаточно `npm -g install bem`.

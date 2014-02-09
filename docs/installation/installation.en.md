@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Installation",
+    "longTitle": "Installation of bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "02-07-2013",
+    "summary": "bem-tools installation manual.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Installation
 You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
 Then it's sufficient just to make `npm install bem`.

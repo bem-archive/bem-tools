@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Модули технологий",
+    "longTitle": "Модули технологий bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "30-11-2013",
+    "summary": "Способы создания модуля технологии.",
+    "thumbnail": "",
+    "authors": ["ivanichenko-sergey"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Модули технологий. Создание и использование
 
 <a name="common"></a>

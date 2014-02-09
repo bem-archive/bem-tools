@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Tech Modules",
+    "longTitle": "bem-tools: tech modules",
+    "createDate": "03-10-2012",
+    "editDate": "23-12-2012",
+    "summary": "Several ways to create a tech module.",
+    "thumbnail": "",
+    "authors": ["ivanichenko-sergey"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Tech modules
 
 ## API

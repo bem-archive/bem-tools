@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Уровни переопределения",
+    "longTitle": "Уровни переопределения в bem-tools",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Описание уровеня переопределения .bem/level.js.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Уровень переопределения (`.bem/level.js`)
 
 На уровне переопределения должен быть файл конфигурации `.bem/level.js`, который содержит в себе мета-информацию

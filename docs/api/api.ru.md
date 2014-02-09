@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Использование через API",
+    "longTitle": "Использование bem-tools через API",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Использование команды bem-tools через API.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools", "API"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Использование через API
 
 В версии 0.2.0 появилась возможность использовать команды `bem-tools` через API.

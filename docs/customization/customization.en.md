@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Сustomization",
+    "longTitle": "bem-tools: customization",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Description of the build customization.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools"],
+    "translators": ["varankin-vladimir"],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Build customization
 
 There is a default build behavior programmed in the build system. The configuration files allow to adjust it a little or change it completely.

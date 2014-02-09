@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Contribute to development",
+    "longTitle": " Contribute to bem-tools development",
+    "createDate": "03-10-2012",
+    "editDate": "",
+    "summary": "Information about autotests execution.",
+    "thumbnail": "",
+    "authors": ["alaev-vladimir"],
+    "tags": ["tools","bem-tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Contribute to development
 
 ## Executing autotests

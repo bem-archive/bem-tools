@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Creating subcommands",
+    "longTitle": "Extension of the bem-tools standard set of commands with subcommands modules",
+    "createDate": "05-09-2013",
+    "editDate": "",
+    "summary": "Starting from `bem-tools 1.0.0` it is possible to extend standard set of commands with subcommands modules.",
+    "thumbnail": "",
+    "authors": ["tatarincev-sergej"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # Creating subcommands
 
 Starting from `bem-tools 1.0.0` it is possible to extend standard set of commands with subcommands modules.

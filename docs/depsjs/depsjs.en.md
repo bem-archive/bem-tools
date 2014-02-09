@@ -1,3 +1,18 @@
+<!--
+{
+    "title": "Dependences",
+    "longTitle": "bem-tools: dependencies declaration",
+    "createDate": "27-08-2013",
+    "editDate": "",
+    "summary": "deps.js — a technology to declare dependencies in BEM",
+    "thumbnail": "",
+    "authors": ["bashinsky-pavel"],
+    "tags": ["bem-tools","tools"],
+    "translators": [],
+    "type": "tools"
+}
+#META_LABEL-->
+
 # deps.js — a technology to declare dependencies in BEM
 
 Building a page in different technologies is based on declaring BEM entities in a BEM tree.
