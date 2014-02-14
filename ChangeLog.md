@@ -1,9 +1,14 @@
 bem-tools changelog
 ===================
 
+24.01.2014, Version 0.7.8 (stable)
+----------------------------------
+— bem create: Add possibility to create entities with predefined content
+- Package: COA is updated to 0.4.0, cli-table to 0.3.0
+
 24.01.2014, Version 0.7.7 (stable)
 ----------------------------------
-- New roole and less techs 
+- New roole and less techs
 
 20.01.2014, Version 0.7.6 (stable)
 ----------------------------------
@@ -41,7 +46,7 @@ bem-tools changelog
 - css tech correctly generates classes for modifiers without values ([#425](http://github.com/bem/bem-tools/issues/425))
 - Warning is shown when level does not exists or does not contains .bem directory ([#418](http://github.com/bem/bem-tools/issues/418))
 - Ability to specify multiple elems in elem properties in `deps.js` files ([#401](http://github.com/bem/bem-tools/issues/401)):
-  
+
   ```javascript
   ({
     shouldDeps: { block: 'bla', elem: ['e1', 'e2', 'e3'] }
@@ -59,7 +64,7 @@ bem-tools changelog
   })
   ```
 - Shortcut for specifying tech dependencies of the same block ([#413](http://github.com/bem/bem-tools/issues/413)):
-  
+
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
   ```
@@ -111,7 +116,7 @@ bem-tools changelog
   ```
 
   In this case, `other-block` won't be included in bundle with `some-block` automatically. But, if
-  bundle requires both `some-block` and `other-block`, `other-block` will always 
+  bundle requires both `some-block` and `other-block`, `other-block` will always
   be included before `some-block`.
 
 - `--no-colors` option to disable colors in terminal
@@ -124,11 +129,11 @@ bem-tools changelog
 04.09.2013, Version 0.6.16 (stable)
 -----------------------------------
 
-- Update csso within borschik dependency to 1.3.8 
+- Update csso within borschik dependency to 1.3.8
 - deps.js: Fix levels cache validity check
 - Warn on v1 tech module usage, not creation
 - GitLibraryNode: add origin parameter to customise remote name
-- Update borschik dependency to 0.3.5 
+- Update borschik dependency to 0.3.5
 - Version-independent solution for CP#fork (Node.js 0.6+)
 - Add tech name and path to V1 deprecation warning
 - Fix `bem create level` run without prototype (--level opt)
@@ -248,7 +253,7 @@ or set `BEM_NO_DEPRECATION` environment variable to `1`.
 30.06.2013, Version 0.6.4 (stable)
 ----------------------------------
 
-- fixed bugs in new level scanner (see BEM-467) 
+- fixed bugs in new level scanner (see BEM-467)
 
 20.06.2013, Version 0.6.3 (unstable)
 ------------------------------------
@@ -335,7 +340,7 @@ or set `BEM_NO_DEPRECATION` environment variable to `1`.
 
 - new techs API is implemented (see lib/tech/v2.js). It operates with real file paths instead of prefixes.
 This makes build avoid redundant operations and makes it work faster.
-- as the part of new API new level introspection is implemented. In default implementation it just scans dirs/files 
+- as the part of new API new level introspection is implemented. In default implementation it just scans dirs/files
 and checks their validity to being BEM entity using simple string operations (see scan* methods in lib/level.js).
 
 30.05.2013, Version 0.5.33 (stable)
@@ -345,7 +350,7 @@ and checks their validity to being BEM entity using simple string operations (se
 - package: borschik updated to 0.3.1
 - package: xjst updated to 0.4.13
 - package: ometajs updated to 3.2.4
-- package: preferglobal set to false 
+- package: preferglobal set to false
 
 23.05.2013, Version 0.5.32 (stable)
 -----------------------------------
@@ -387,7 +392,7 @@ and checks their validity to being BEM entity using simple string operations (se
 14.02.2013, Version 0.5.25 (stable)
 -----------------------------------
 
-- bem server: windows fixes 
+- bem server: windows fixes
 
 04.02.2013, Version 0.5.24 (stable)
 -----------------------------------
