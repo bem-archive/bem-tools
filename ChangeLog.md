@@ -1,6 +1,13 @@
 bem-tools changelog
 ===================
 
+07.03.2014, Version 0.7.9 (stable)
+----------------------------------
+- Add stylus tech (`v2/styl`)
+- Ability to set `--no-colors` and `--verbosity`
+options with `BEM_MAKE_NO_COLORS` and `BEM_MAKE_VERBOSITY`
+environment variables.
+
 24.01.2014, Version 0.7.8 (stable)
 ----------------------------------
 — bem create: Add possibility to create entities with predefined content
