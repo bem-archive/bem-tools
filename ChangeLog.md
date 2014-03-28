@@ -1,6 +1,13 @@
 bem-tools changelog
 ===================
 
+07.03.2014, Version 0.8.0 (stable)
+----------------------------------
+- Update borschik version to 1.0.0
+- Update npm dependencies
+- Add scss tech (`v2/sass`)
+- Add bemjson.js tech (`v2/bemjson.js`)
+
 07.03.2014, Version 0.7.9 (stable)
 ----------------------------------
 - Add stylus tech (`v2/styl`)
