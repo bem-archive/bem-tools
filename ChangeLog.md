@@ -1,6 +1,11 @@
 bem-tools changelog
 ===================
 
+0.8.1 (stable)
+--------------
+- Updated borschik version to [1.0.4](https://github.com/bem/borschik/blob/master/CHANGELOG.md#104)
+- Improved sass tech
+
 0.8.0 (stable)
 --------------
 - Updated borschik version to [1.0.1](https://github.com/bem/borschik/blob/master/CHANGELOG.md#101)
