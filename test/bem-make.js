@@ -65,7 +65,7 @@ describe('bem', function() {
                         .then(function(newTimestamps){
                             var mismatches = Object.keys(newTimestamps)
                                 .filter(function(ts) {
-                                    return newTimestamps[ts].value !== timestamps[ts].value;
+                                    return newTimestamps[ts].getTime() !== timestamps[ts].getTime();
                                 });
 
                             if (mismatches.length > 0) throw new Error('There are modified files:\n' + mismatches.join('\n'));
