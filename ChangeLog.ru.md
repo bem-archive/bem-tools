@@ -25,9 +25,9 @@
 
 0.7.6 (stable)
 --------------
-- Correctly handle promises reject with no reason in tech modules
-- Check that bundle techs don't have common build suffixes
-- Save build cache data only on successful build
+- Правильно обрабатывается reject без указании причины в promise в модулях технологий
+- Проверять чтобы у технологий бандлов не было общих суффиксов
+- Сохранять кэшированные данные только в случае успешной сборки
 
 0.7.5 (stable)
 --------------
@@ -36,29 +36,28 @@
 0.7.4 (stable)
 --------------
 - Исправлена ошибка, связанная с переходом с underscore на lodash.
-- Откатили: pass Tech#getTechPath() result as bem-create's forceTech argument
-    The change caused level-proto tech to break
-- Тесты: level-proto tech is included into bem make suite
+- Откатили: передача результата Tech#getTechPath() в качестве аргумента forceTech bem-create. Это изменение ломало технологию уровеня level-proto.
+- Тесты: технология level-proto включена в bem make suite
 
 0.7.3 (stable)
 --------------
 - Fix "bem create" as worcker invocation
-- Pass Tech#getTechPath() result as bem-create's forceTech argument
+- Результат Tech#getTechPath() передается в качестве аргумента forceTech bem-create
 
 0.7.2 (stable)
 --------------
-- bem server: fixed encoding problem with files containing non latin characters
+- bem server: исправили проблему с кодировкой файлов, содержащих нелатинские символы
 
 0.7.1 (stable)
 --------------
-- Fixed exception in `bem build`
+- Исправили исключение в  `bem build`
 
 0.7.0 (stable)
 --------------
-- Level scanner no longer fails on symlinks
-- css tech correctly generates classes for modifiers without values ([#425](http://github.com/bem/bem-tools/issues/425))
-- Warning is shown when level does not exists or does not contains .bem directory ([#418](http://github.com/bem/bem-tools/issues/418))
-- Ability to specify multiple elems in elem properties in `deps.js` files ([#401](http://github.com/bem/bem-tools/issues/401)):
+- Сканнер уровней больше не падает на символьных ссылках
+- Технология CSS правильно генерирует классы для модификаторов без значений ([#425](http://github.com/bem/bem-tools/issues/425))
+- Показывается предупреждение, когда уровень не существует или не содержит директорию .bem. ([#418](http://github.com/bem/bem-tools/issues/418))
+- Возможность указывать несколько элементов в свойствах элемента  в файлах `deps.js` ([#401](http://github.com/bem/bem-tools/issues/401)):
 
   ```javascript
   ({
@@ -66,7 +65,7 @@
   })
   ```
 
-  is equivalent to:
+  Равнозначно:
 
   ```javascript
   ({
@@ -76,24 +75,22 @@
         { block: 'bla', elem: 'e3' }
   })
   ```
-- Shortcut for specifying tech dependencies of the same block ([#413](http://github.com/bem/bem-tools/issues/413)):
+- Краткая форма для указывания технических зависимостей одного и того же блока ([#413](http://github.com/bem/bem-tools/issues/413)):
 
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
   ```
 
-  is equivalent to:
+  равнозначно:
 
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { block: 'b', tech: 'bemhtml' }  }
   ```
 
-- build command for `bem bench` is customizable via `bem-bench-build`
-  script in project's `package.json`
-- GitLibraryNode specifies git dir explicitly with git commands ([#355](http://github.com/bem/bem-tools/issues/355))
-- Base tech is selected according to child's `API_VER`. Error is thrown when
-  base and child techs have different `API_VER` ([#416](http://github.com/bem/bem-tools/issues/416))
-- It is possible to write tech module as a function ([#363](http://github.com/bem/bem-tools/issues/363)):
+- команду для сборки `bem bench` можно изменить в скрипте `bem-bench-build` в файле `package.json` проекта
+- GitLibraryNode указывает git dir напрямую командами git ([#355](http://github.com/bem/bem-tools/issues/355))
+- Технология base выбирается в соответствии с `API_VER` дочернего элемента. Если у базовых и дочерних технологий разные `API_VER`, выбрасывается ошибка ([#416](http://github.com/bem/bem-tools/issues/416))
+- Добавлена возможность писать технологию module как функцию ([#363](http://github.com/bem/bem-tools/issues/363)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -103,7 +100,7 @@
   }
   ```
 
-- It is possible to write level config as a function ([#364](http://github.com/bem/bem-tools/issues/364)):
+- Добавлена возможность писать конфиги для уровня как функцию ([#364](http://github.com/bem/bem-tools/issues/364)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -113,10 +110,10 @@
   }
   ```
 
-- `baseLevelName` property can be used in level config to specify `simple` or
-  `project` level by name ([#367](http://github.com/bem/bem-tools/issues/367))
-- scanner of simple level doesn't ignore dirs like name.tech
-- deps: possibility to declare dependence without explicitly including item ([#459](http://github.com/bem/bem-tools/issues/459)):
+- свойство `baseLevelName`  можно использовать в конфиге уровня, чтобы указать уровень `simple` или уровень
+  `project` по имени  ([#367](http://github.com/bem/bem-tools/issues/367))
+- сканнер уровня simple не игнорирует директории с именами типа name.tech
+- deps: возможность объявить зависимость без прямого включения сущности ([#459](http://github.com/bem/bem-tools/issues/459)):
 
   ```javascript
   {
@@ -128,15 +125,12 @@
 
   ```
 
-  In this case, `other-block` won't be included in bundle with `some-block` automatically. But, if
-  bundle requires both `some-block` and `other-block`, `other-block` will always
-  be included before `some-block`.
-
-- `--no-colors` option to disable colors in terminal
-- `v1` tech warning shows link to migration instructions
-- `q-fs` and `q-http` libraries replaced with `q-io`
-- `underscore` library replaced with `lodash` ([#94](http://github.com/bem/bem-tools/issues/94))
-- benchmarks can be built on multiple bundle levels
+  В данном случае  `other-block` не будет автоматически включен в пакет `some-block`. Но если пакету требуется и `some-block`, и `other-block`, `other-block` всегда будет включен перед `some-block`.
+- опция `--no-colors` позволяет отключить цвета в терминале
+- в предупреждение технологии `v1` добавлена ссылка на инструкции по миграции
+- библиотеки `q-fs` и `q-http` заменены на `q-io`
+- библиотека `underscore` заменена на `lodash` ([#94](http://github.com/bem/bem-tools/issues/94))
+- для разноуровненых бандлов могут быть заданы контрольные точки
 
 
 0.6.16 (stable)
