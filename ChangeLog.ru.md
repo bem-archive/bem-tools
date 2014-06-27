@@ -1,64 +1,63 @@
 История изменений
 =================
 
-0.8.0 (stable)
+0.8.0 (стабильная)
 --------------
 - Обновили версию borschik до [1.0.1](https://github.com/bem/borschik/blob/master/CHANGELOG.ru.md#101).
 - Обновили npm-зависимости.
 - Добавили технологию scss (`v2/sass`).
 - Добавили технологию bemjson.js (`v2/bemjson.js`).
 
-0.7.9 (stable)
+0.7.9 (стабильная)
 --------------
 - Добавили технологию stylus (`v2/styl`).
 - Возможность устанавливать опции `--no-colors` и `--verbosity`
 через переменные окружения `BEM_MAKE_NO_COLORS` и `BEM_MAKE_VERBOSITY` соответственно.
 
-0.7.8 (stable)
+0.7.8 (стабильная)
 --------------
-— bem create: Добавили возможность создавать сущности с переданным содержанием.
-- npm: Обновили COA до 0.4.0, cli-table до 0.3.0.
+- bem create: добавили возможность создавать сущности с переданным содержанием.
+- npm: обновили COA до 0.4.0, cli-table до 0.3.0.
 
-0.7.7 (stable)
+0.7.7 (стабильная)
 --------------
 - Добавили технологии roole и less.
 
-0.7.6 (stable)
+0.7.6 (стабильная)
 --------------
-- Correctly handle promises reject with no reason in tech modules
-- Check that bundle techs don't have common build suffixes
-- Save build cache data only on successful build
+- Правильно обрабатывается reject без указании причины в promise в модулях технологий.
+- Добавлена проверка, чтобы у технологий бандлов не было общих суффиксов.
+- Кэшированные данные сохраняются только в случае успешной сборки.
 
-0.7.5 (stable)
+0.7.5 (стабильная)
 --------------
 - npm: borschik обновлен до 0.4.27.
 
-0.7.4 (stable)
+0.7.4 (стабильная)
 --------------
 - Исправлена ошибка, связанная с переходом с underscore на lodash.
-- Откатили: pass Tech#getTechPath() result as bem-create's forceTech argument
-    The change caused level-proto tech to break
-- Тесты: level-proto tech is included into bem make suite
+- Откатили: передача результата Tech#getTechPath() в качестве аргумента forceTech bem-create. Это изменение ломало технологию уровеня `level-proto`.
+- Тесты: технология `level-proto` включена в bem make suite.
 
-0.7.3 (stable)
+0.7.3 (стабильная)
 --------------
-- Fix "bem create" as worcker invocation
-- Pass Tech#getTechPath() result as bem-create's forceTech argument
+- Исправление `bem create` как вызов воркера.
+- Результат `Tech#getTechPath()` передается в качестве аргумента `forceTech` в `bem-create`.
 
-0.7.2 (stable)
+0.7.2 (стабильная)
 --------------
-- bem server: fixed encoding problem with files containing non latin characters
+- bem server: исправили проблему с кодировкой файлов, содержащих кириллические символы.
 
-0.7.1 (stable)
+0.7.1 (стабильная)
 --------------
-- Fixed exception in `bem build`
+- Исправили исключение в `bem build`.
 
-0.7.0 (stable)
+0.7.0 (стабильная)
 --------------
-- Level scanner no longer fails on symlinks
-- css tech correctly generates classes for modifiers without values ([#425](http://github.com/bem/bem-tools/issues/425))
-- Warning is shown when level does not exists or does not contains .bem directory ([#418](http://github.com/bem/bem-tools/issues/418))
-- Ability to specify multiple elems in elem properties in `deps.js` files ([#401](http://github.com/bem/bem-tools/issues/401)):
+- Сканер уровней больше не падает на символьных ссылках.
+- Технология CSS правильно генерирует классы для модификаторов без значений ([#425](http://github.com/bem/bem-tools/issues/425)).
+- Показывается предупреждение, когда уровень не существует или не содержит директорию .bem. ([#418](http://github.com/bem/bem-tools/issues/418)).
+- Возможность указывать несколько элементов в свойствах элемента в файлах `deps.js` ([#401](http://github.com/bem/bem-tools/issues/401)):
 
   ```javascript
   ({
@@ -66,7 +65,7 @@
   })
   ```
 
-  is equivalent to:
+  Равнозначно:
 
   ```javascript
   ({
@@ -76,24 +75,22 @@
         { block: 'bla', elem: 'e3' }
   })
   ```
-- Shortcut for specifying tech dependencies of the same block ([#413](http://github.com/bem/bem-tools/issues/413)):
+- Краткая форма для указывания зависимостей по технологиям одного и того же блока ([#413](http://github.com/bem/bem-tools/issues/413)):
 
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
   ```
 
-  is equivalent to:
+  равнозначно:
 
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { block: 'b', tech: 'bemhtml' }  }
   ```
 
-- build command for `bem bench` is customizable via `bem-bench-build`
-  script in project's `package.json`
-- GitLibraryNode specifies git dir explicitly with git commands ([#355](http://github.com/bem/bem-tools/issues/355))
-- Base tech is selected according to child's `API_VER`. Error is thrown when
-  base and child techs have different `API_VER` ([#416](http://github.com/bem/bem-tools/issues/416))
-- It is possible to write tech module as a function ([#363](http://github.com/bem/bem-tools/issues/363)):
+- Команду для сборки `bem bench` можно изменить в скрипте `bem-bench-build` в файле `package.json` проекта.
+- `GitLibraryNode` указывает `git dir` напрямую командами `git` ([#355](http://github.com/bem/bem-tools/issues/355)).
+- Технология `base` выбирается в соответствии с `API_VER` дочернего элемента. Если у базовых и дочерних технологий разные `API_VER`, выбрасывается ошибка ([#416](http://github.com/bem/bem-tools/issues/416)).
+- Добавлена возможность писать технологию module как функцию ([#363](http://github.com/bem/bem-tools/issues/363)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -103,7 +100,7 @@
   }
   ```
 
-- It is possible to write level config as a function ([#364](http://github.com/bem/bem-tools/issues/364)):
+- Добавлена возможность писать конфиги для уровня как функцию ([#364](http://github.com/bem/bem-tools/issues/364)):
 
   ```javascript
   module.exports = function(BEM) {
@@ -113,10 +110,10 @@
   }
   ```
 
-- `baseLevelName` property can be used in level config to specify `simple` or
-  `project` level by name ([#367](http://github.com/bem/bem-tools/issues/367))
-- scanner of simple level doesn't ignore dirs like name.tech
-- deps: possibility to declare dependence without explicitly including item ([#459](http://github.com/bem/bem-tools/issues/459)):
+- Свойство `baseLevelName`  можно использовать в конфиге уровня, чтобы указать уровень `simple` или уровень
+  `project` по имени  ([#367](http://github.com/bem/bem-tools/issues/367)).
+- Сканер уровня simple не игнорирует директории с именами типа `name.tech`.
+- deps: возможность объявить зависимость без прямого включения сущности ([#459](http://github.com/bem/bem-tools/issues/459)):
 
   ```javascript
   {
@@ -128,58 +125,53 @@
 
   ```
 
-  In this case, `other-block` won't be included in bundle with `some-block` automatically. But, if
-  bundle requires both `some-block` and `other-block`, `other-block` will always
-  be included before `some-block`.
-
-- `--no-colors` option to disable colors in terminal
-- `v1` tech warning shows link to migration instructions
-- `q-fs` and `q-http` libraries replaced with `q-io`
-- `underscore` library replaced with `lodash` ([#94](http://github.com/bem/bem-tools/issues/94))
-- benchmarks can be built on multiple bundle levels
+  В данном случае  `other-block` не будет автоматически включен в пакет `some-block`. Но если пакету требуется и `some-block`, и `other-block`, `other-block` всегда будет включен перед `some-block`.
+- Опция `--no-colors` позволяет отключить цвета в терминале.
+- В предупреждении технологии `v1` добавлена ссылка на инструкции по миграции.
+- Библиотеки `q-fs` и `q-http` заменены на `q-io`.
+- Библиотека `underscore` заменена на `lodash` ([#94](http://github.com/bem/bem-tools/issues/94)).
+- Можно собирать бенчмарки на нескольких уровнях переопределения.
 
 
-0.6.16 (stable)
+0.6.16 (стабильная)
 ---------------
 
-- Update csso within borschik dependency to 1.3.8
-- deps.js: Fix levels cache validity check
-- Warn on v1 tech module usage, not creation
-- GitLibraryNode: add origin parameter to customise remote name
-- Update borschik dependency to 0.3.5
-- Version-independent solution for CP#fork (Node.js 0.6+)
-- Add tech name and path to V1 deprecation warning
-- Fix `bem create level` run without prototype (--level opt)
-- LibraryNode: create the leading directories before checkout
-- bemdecl.js: Traverse through all fields, not only `mix` and `content`
+- Обновили `CSSO` в зависимостях `borschik` до версии `1.3.8`.
+- deps.js: исправлена проверка валидности кэша уровней.
+- Предупреждение при использовании модуля технологии `v1`, а не при его создании.
+- GitLibraryNode: добавили параметр `origin` для кастомизации удаленного имени.
+- Обновили зависимость `borschik` до `0.3.5`.
+- Независимое от версии решение для `CP#fork` (Node.js 0.6+).
+- Добавили имя технологии и путь к предупреждению о депрекации `V1`. 
+- Исправили запуск `bem create level` без прототипа (`--level opt`).
+- LibraryNode: создаются ведущие директории перед checkout.
+- bemdecl.js: пробегает по всем полям, а не только  `mix` и `content`.
 
-0.6.15 (stable)
+0.6.15 (стабильная)
 ---------------
 
-- API: `getBuildResultChunk()` should've been passed source suffix, not destination, and that was fixed.
-  Check your tech modules that they do not broke.
+- API: в `getBuildResultChunk()` должен был передаваться суффикс источника, а не цели, что и было исправлено. Рекомендуем проверить модули технологий на возможность поломки.
 
-0.6.14 (stable)
+0.6.14 (стабильная)
 ---------------
 
-- bem: Fix bug in `bem create level` that prevented from using level prototype from module installed in `node_modules`
-  folder on the project level
-- bem: Throw an error when unable to resolve tech by name specified in `baseTechName` property of tech module
+- bem: исправлен баг в `bem create level`, который не позволял использовать прототип уровня из модуля, установленного в папке `node_modules` на уровне project.
+- bem: выбрасывается ошибка, когда нет возможности выполнить технологию с помощью имени, указанного в свойстве `baseTechName` в модуле технологии.
 
-0.6.13 (stable)
+0.6.13 (стабильная)
 ---------------
 
-- tech/v2: `transformBuildDecl()` is reborn and used in `buildByDecl()`
-- level scanner: use proper suffix for folders representing block with mod and val
-- level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
-- deps.js v2: invalidate when declaration modified date is later than deps.js
+- tech/v2: `transformBuildDecl()` переписан и используется в `buildByDecl()`.
+- level scanner: используются корректные суффиксы для папок, представляющих блоки с `mod` и `val`.
+- level scanner: не игнорируются папки типа `block/elem/elem.tech` и `block/mod/mod.tech`.
+- deps.js v2: валидация не проходит, если измененная дата декларации позже, чем `deps.js`.
 
-0.6.12 (stable)
+0.6.12 (стабильная)
 ---------------
 
-- bem: Add `level-proto` tech that creates levels based on prototypes in `.bem/levels/*.js` on project level
+- bem: добавлена технология `level-proto`, которая создает уровни на основе прототипов в `.bem/levels/*.js` на уровне project.
 
-  Example usage (`.bem/level.js`):
+  Пример использования (`.bem/level.js`):
 
   ```js
   exports.getTechs = function() {
@@ -190,15 +182,12 @@
   };
   ```
 
-- bem: Fix bug in `bem create level` that prevented from creating level without prototype
-- bem make: Fix bug in `BemCreateNode` that was causing error when using single tech on different names
-  (e.g. `level-proto`)
-- bem make: `require()` in `.bem/make.js` configs behaves more correctly now (try to require any dependency
-  of your project from your `.bem/make.js`)
-- bem make: `level` property in `BlockNode` now initialized on the first access; this helps to deal with levels being
-  created during the `bem make` build process
-- API: Export `logger` and `template` from `bem` module
-- API: Add `Node.create()` static method to simplify creation of nodes, see example
+- bem: исправлен баг в `bem create level`, который не позволял создавать уровень без прототипа.
+- bem make: исправлен баг в `BemCreateNode`, который вызывал ошибку во время использовании одной технологии на разных именах (например, `level-proto`).
+- bem make: `require()` в конфигах `.bem/make.js` теперь ведет себя более корректно (попробуйте указать любую зависимость  проекта из `.bem/make.js`).
+- bem make: свойство `level` в `BlockNode` сейчас инициализируется при первом доступе, что помогает спавиться с созданием уровней во время сборки `bem make`.
+- API: из модуля `bem` экспортируются `logger` и `template`.
+- API: добавлен статический метод `Node.create()` для упрощения создания нод, см. пример.
 
   ```js
   var opts = {
@@ -209,91 +198,86 @@
           .create(opts);
   ```
 
-0.6.11 (stable)
+0.6.11 (стабильная)
 ---------------
 
-- tech v2: Fix cache. Two technologies with the same target name don't
-  overwrite each other's metadata cache anymore
-- bem make: Stop using bem create {block,mod,val} commands in make process
+- tech v2: исправлено кэширование. Две технологии с одним целевым именем не переписывают кэш метаданных друг друга.
+- bem make: прекращено использование команд {block,mod,val} в процессе `make`.
 
-0.6.10 (stable)
+0.6.10 (стабильная)
 ---------------
 
-- API: Recommend to use tech V2 API instead of V1
-- API: Deprecate `LegacyTech` API
-- API: Deprecate `bem create block`, `bem create elem` and `bem create mod` commands,
-  use `bem create` command with options instead
+- API: рекомендуется использовать API технологий `V2` вместо `V1`.
+- API: больше не используется API `LegacyTech`.
+- API: больше не используются команды `bem create block`, `bem create elem` и `bem create mod`. Используйте команду `bem create` с опциями.
 
-To disable deprecation warnings set `util.deprecate.silence` value to `false`
-or set `BEM_NO_DEPRECATION` environment variable to `1`.
+Чтобы отключить предупреждения о депрекации указанных выше команд, выставьте значение `false` для `util.deprecate.silence` или значение `1` для переменной окружения `BEM_NO_DEPRECATION`.
 
-0.6.9 (stable)
+0.6.9 (стабильная)
 --------------
 
-- bem bench: Add ability to test [bh](https://github.com/enb-make/bh) templates and compare them with bemhtml
+- bem bench: добавлена возможность тестировать скорость выполнения [BH](https://github.com/enb-make/bh) шаблонов и сравнивать их с BEMHTML.
 
-  You should run `bem bench -t bh [...other opts...]` to launch `bh` tests only or just `bem bench`
-  to run both if they exist.
+  Вам нужно запустить `bem bench -t bh [...other opts...]` для тестов `BH` или `bem bench` для запуска обеих команд, если это возможно.
 
-  See docs for more info.
+  См. подробности в документации.
 
-0.6.8 (stable)
+0.6.8 (стабильная)
 --------------
 
-- deps.js: Correct unique items in `forEach` in case of deps by techs
+- deps.js: Корректные уникальные элементы в `forEach` в случае зависимостей от технологий.
 
-0.6.7 (stable)
+0.6.7 (стабильная)
 --------------
 
-- level: Add `opts.noCache` support to `level.createLevel()` to force level creation without cache use
-- API: Ability to specify source techs for `BundlesLevelNode` (via `getBundleSourceTechs()`)
-- code: fixed jshint warnings
+- level: добавлена поддержка `opts.noCache` в `level.createLevel()` для создания новых уровней без задействования кэша.
+- API: возможность указывать исходные технологии для `BundlesLevelNode` (через `getBundleSourceTechs()`).
+- code: исправлены предупреждения от `jshint`.
 
-0.6.6 (stable)
+0.6.6 (стабильная)
 --------------
 
-- package: Downgrade q from 0.9.6 to 0.9.5 because former is buggy on node 0.10
-- level: Show warning when failed to load a tech during level scan, not fail.
-- level: Fix level scanner to find block.tech dirs within mods
-- API: Fix `util.isFileP()` and mark it as deprecated
+- package: перешли с более поздней версии `q` 0.9.6  на более раннюю 0.9.5, так 0.9.6 некорректно работала на node 0.10.
+- level: показывать предупреждение, когда не удается загрузить технологию во время сканирования уровней.
+- level: исправлен сканнер уровней для поиска `block.tech dir` внутри `mods`.
+- API: исправлен `util.isFileP()` и помечен как более неиспользуемый.
 
-0.6.5 (stable)
+0.6.5 (стабильная)
 --------------
 
-- API: Add `util.bemParseKey()` helper to parse BEM entity key into BEM entity object
-  (fixes `bem bench` execution error)
+- API: добавлен хелпер `util.bemParseKey()`, чтобы парсить ключ сущности `BEM key` в объект БЭМ-сущности.
+  (исправляет ошибку выполнения `bem bench`).
 
-0.6.4 (stable)
+0.6.4 (стабильная)
 --------------
 
-- fixed bugs in new level scanner (see BEM-467)
+- Исправлены баги в новом сканере уровней (см. BEM-467).
 
-0.6.3 (unstable)
+0.6.3 (нестабильная)
 ----------------
 
-- bem bench: Run `npm install` before `bem make` after revision export
+- bem bench: запустите `npm install` перед `bem make` после экспорта ревизии.
 
-0.6.2 (unstable)
+0.6.2 (нестабильная)
 ----------------
 
-- bem bench: Disable verbose mode for `rsync` to stop output buffer overflow
-- bem bench: Disable double error output on `rsync`
+- bem bench: отключить режим verbose для `rsync`, чтобы остановить переполнение буфера.
+- bem bench: отключить вывод двойной ошибки на `rsync`.
 
-0.6.1 (unstable)
+0.6.1 (нестабильная)
 ----------------
 
-- bem: Add `bem bench` command see [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md)
-  (in russian) for more info
+- bem: добавлена команда `bem bench`, детали см. в  [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md).
 
-- bem: Add ability to create level prototypes (js files) using `bem create level` command. See example:
+- bem: добавлена возможность создавать прототипы уровней (js-файлы) с помощью `bem create level`. См. пример:
 
   ```
   bem create level -l simple .bem/levels/docs.js
   ```
 
-- bem: Add `project` tech and `project` level prototype:
+- bem: добавлены технология `project` и  прототип уровня `project`:
 
-  This command will create `my` project:
+  Эта команда создаст проект `my`:
 
   ```
   bem create -b my -T project
@@ -316,9 +300,9 @@ or set `BEM_NO_DEPRECATION` environment variable to `1`.
       └── bem/ -> symplink/to/globally/installed/bem (module)
   ```
 
-- bem: Add `docs` tech and `docs` level prototype.
+- bem: добавлена технология `docs` и прототип уровня `docs`.
 
-  This command will create new level based on `docs`:
+  Эта команда создаст новый уровень на основе `docs`:
 
   ```
   bem create level -l docs docs
@@ -330,7 +314,7 @@ or set `BEM_NO_DEPRECATION` environment variable to `1`.
       └── level.js
     ```
 
-  This command will create `docs` tech for block `button`:
+  Эта команда создаст технологию `docs` для блока `button`:
 
   ```
   bem create -b button -T docs
@@ -344,359 +328,352 @@ or set `BEM_NO_DEPRECATION` environment variable to `1`.
   └── ...
   ```
 
-- bem: Add `tech-docs` tech and `tech-docs` level prototype.
+- bem: добавлена технология `tech-docs` и прототип уровня `tech-docs`.
 
-- API: Introduce `util.findLevel(path, [types])` function
+- API: появилась функция `util.findLevel(path, [types])`.
 
-0.6.0 (unstable)
+0.6.0 (нестабильная)
 ----------------
 
-- new techs API is implemented (see lib/tech/v2.js). It operates with real file paths instead of prefixes.
-This makes build avoid redundant operations and makes it work faster.
-- as the part of new API new level introspection is implemented. In default implementation it just scans dirs/files
-and checks their validity to being BEM entity using simple string operations (see scan* methods in lib/level.js).
+- Реализована новая технология API (см. `lib/tech/v2.js`). Она работает с реальными путями файлов вместо префиксов. Это ускоряет сборку за счет избавления от лишних операций.
+- В качестве части нового API была реализована интроспекция новых уровней. По умолчанию директории/файлы просто сканируются на предмет их валидности и соответствия сущности БЭМ с помощью простых строковых операций (смотри методы scan* в lib/level.js).
 
-0.5.33 (stable)
+0.5.33 (стабильная)
 ---------------
 
-- package: q updated to 0.8.12
-- package: borschik updated to 0.3.1
-- package: xjst updated to 0.4.13
-- package: ometajs updated to 3.2.4
-- package: preferglobal set to false
+- package: `q` обновлен до 0.8.12.
+- package: `borschik` обновлен до 0.3.1.
+- package: `xjst` обновлен до 0.4.13.
+- package: `ometajs` обновлен 3.2.4.
+- package: для `preferglobal` выставлено `false`.
 
-0.5.32 (stable)
+0.5.32 (стабильная)
 ---------------
 
-- bem: Fix `bem create level` on Node 0.10.x (Closes #372)
-- bem make: Create parent directory for `SymlinkLibraryNode` if it doesn't exists (Closes #342)
+- bem: исправлен `bem create level` на Node 0.10.x (#372).
+- bem make: создается родительская директория для `SymlinkLibraryNode`, если таковая не существует (#342).
 
-0.5.31 (stable)
+0.5.31 (стабильная)
 ---------------
 
-- bem: Add additional techs and levels from abandoned introspect branch
-- API: Add mkdrip wrapper to util.js
-- bem: ie.css tech should pass absolute path for its chunks
-- bem make: Fix for "Coud not call for method of undefined" when using nodes from API
+- bem: добавлены дополнительные технологии и уровни из ветки `introspect`.
+- API: в util.js добавлена обертка для `mkdrip`.
+- bem: технология ie.css должна передавать абсолютные пути.
+- bem make: исправлено "Could not call for method of undefined" во время использования нод из API.
 
-0.5.30 (stable)
+0.5.30 (стабильная)
 ---------------
 
-- bem make: Add ability to customize build rules more flexibly by providing Arch.createCustomNode() method
-- bem make: Add match*() methods to `simple` level prototype, add tests (Closes #282)
+- bem make: добавлена возможность более гибкой кастомизации правил сборки за счет метода `Arch.createCustomNode()`.
+- bem make: добавлены методы match*() для прототипа уровня `simple`, добавлены тесты (#282).
 
-0.5.29 (stable)
+0.5.29 (стабильная)
 ---------------
 
-- bem make: don't update git library form upstream when working copy state satisfies to configured one. git update commands chain altered (no git reset for now) (Closes #335)
+- bem make: не обновляет git library из upstream, если текущая копия работает. Изменились команды `git update` (`git reset` сейчас нет) (#335).
 
-0.5.27 (stable)
+0.5.27 (стабильная)
 ---------------
 
-- bem make: fixed to work on node 0.10 (Closes #357)
-- bem make: some performance boost achieved (#250)
+- bem make: исправлено для работы на node 0.10 (#357).
+- bem make: улучшен перформанс (#250).
 
-0.5.26 (stable)
+0.5.26 (стабильная)
 ---------------
 
-- bem make: Magic nodes doesn't link the nodes it creates with parent magic nodes (Closes #306)
-- deps.js: don't swallow parsing errors (Closes #353)
+- bem make: Magic nodes не связывают ноды, которые создают, с родительскими magic-нодами (#306).
+- deps.js: показываются ошибки парсинга (#353).
 
-0.5.25 (stable)
+0.5.25 (стабильная)
 ---------------
 
-- bem server: windows fixes
+- bem server: исправления для работы в Windows.
 
-0.5.24 (stable)
+0.5.24 (стабильная)
 ---------------
 
-- bem server: Add error handling for server.listen() (Closes #315)
-- bem server: Fix server message about serving address to have real host name it is listening on (Closes #334)
-- bem server: Add socket-only option to make bem server listen only unix socket (Closes #316)
-- bem server: Add a check for specified tcp port value to be a number
-- bem make: Fix recursion error when build target name contain trailing slash (Closes #252)
-- bem make: Use tech.getSuffixes() in MetaNode to build dependencies list (Closes #320)
-- bem make: Git library checkout fixed to work with commit hashes (close #302)
-- bem make: Git library branch parameter is added to specify branch name. Use treeish parameter to specify commit or tag.
-- ie6.css tech: Don't include bundle.css
+- bem server: добавлен обработка ошибок для `server.listen()` (#315).
+- bem server: исправлено сообщение сервера о том, чтобы serving address имел реальное имя хоста, который он «слушает» (#334).
+- bem server: добавлена опция socket-only, чтобы bem server «слушал» только сокеты unix (#316).
+- bem server: добавлена проверка на то, чтобы указанное значение port tcp было числом.
+- bem make: исправлена ошибка рекурсии, которая возникала во время построения целевого имени, содержащего завершающий слэш (#252).
+- bem make: используйте tech.getSuffixes() в MetaNode для построения списка зависимостей (#320).
+- bem make: git library checkout работает с хэшами (#302).
+- bem make: добавлен параметр Git library branch для того, чтобы указывать имя ветки. Используйте параметр `treeish` для указания коммита или тэга.
+- ie6.css tech: не включается bundle.css.
 
-0.5.21 (stable)
+0.5.21 (стабильная)
 ---------------
 
-- Update `borschik` to `0.2.3`
+- `borschik` обновлен до `0.2.3`
 
-0.5.20 (stable)
+0.5.20 (стабильная)
 ---------------
 
-- bem make: Fixed `npmPackages` check in `LibraryNode` (Closes #300)
-- bem make: Install production dependencies in `LibraryNode` by default (Closes #310)
-- Update `csso` to `1.3.5`
-- Update `q` to `0.8.10`
+- bem make: Исправлена проверка `npmPackages` в `LibraryNode` (#300).
+- bem make: Установлены дефолтные зависимости продакшна в `LibraryNode` (#310).
+- Обновили `csso` до `1.3.5`.
+- Обновили `q` до `0.8.10`.
 
-0.5.19 (stable)
+0.5.19 (стабильная)
 ---------------
 
-- Freeze dependencies using `npm shrinkwrap` to fix problems with `q 0.8.10` release
+- Для исправления проблем с релизом `q 0.8.10` с помощью `npm shrinkwrap` заморожены зависимости.
 
-0.5.18 (stable)
+0.5.18 (стабильная)
 ---------------
 
-- Dummy release
+- Dummy-релиз.
 
-0.5.17 (stable)
+0.5.17 (стабильная)
 ---------------
 
-- bem: Make content read of deps.js files of block to be synchronous to gain some speed boost (PR #261)
-- bem make: Provide a more convenient way to configure the list of bundles and blocks levels to build (Closes #260)
-- bem make: Change signature of `getLevels()` method of `BundleNode` to `getLevels(tech)` to add ability
-  to configure the list of levels more precisely
-- docs: Small JSDoc improvements in `BundleNode` class
-- docs: Correct links in README (@banzalik)
+- bem: сделать чтение файлов deps.js блока синхронным для улучшения скорости работы (#261).
+- bem make: более удобный способ конфигурации списка бандлов и уровней блоков для сборки (#260).
+- bem make: изменить подпись метода `getLevels()` в `BundleNode` на `getLevels(tech)` для того, чтобы добавить возможность более точно конфигурировать списки уровней.
+- docs: небольшие улучшения JSDoc в классе `BundleNode`.
+- docs: корректные ссылки в README (@banzalik).
 
-0.5.16 (stable)
+0.5.16 (стабильная)
 ---------------
 
-- bem: Require errors in .bem/level.js were masked (Closes #223)
-- bem: Add `.git` to ignorable paths during introspection
-- bem: Skip `blocks/` level directory during introspection in `nested` level
-- bem: Introduce `bem decl intersect` command (Closes #219)
-- bem make: Install library dependencies after checkout (Closes #224)
-- bem make: Do not install dependencies when `npmPackages = false` (Closes #229)
-- bem make: Ability to configure list of techs to optimize, see `BundleNode.getOptimizerTechs()` (Closes #231)
-- bem make: `Rename bemhtml.js` tech to `bemhtml`, fix this in your `.bem/make.js` files
-- bem make: Use non interactive mode for `svn` commands in `SvnLibraryNode` (Closes #221)
-- bem make: Store `*.meta.js` files in `<project-root>/.bem/cache/` directory (Closes #232)
-- bem make: Fixed bug in the inspector preventing it to work properly in FF (Closes #240)
-- docs: Translate into english chapter about level.js (Closes #38)
-- docs: Updated english docs in installation topic (@fliptheweb, #225)
-- docs: Add `CONTRIBUTING.md`
-- docs: Add `LICENSE` (we use MIT)
+- bem: cкрыты ошибки require в .bem/level.js (#223)
+- bem: добавлен `.git` для игнорируемых путей во время интроспекции
+- bem: пропускается директория уровня `blocks/` во время интроспекции в уровне `nested`
+- bem: появилась команда `bem decl intersect` (#219)
+- bem make: после checkout устанавливаются зависимости библиотек (#224)
+- bem make: не устанавливать зависимости, если `npmPackages = false` (#229)
+- bem make: возможность сконфигурировать список технологий для оптимизации, см. `BundleNode.getOptimizerTechs()` (#231)
+- bem make: технология `bemhtml.js` переименована в `bemhtml`, исправьте это в своих файлах `.bem/make.js`
+- bem make: используется неинтерактивный режим для команд `svn` в `SvnLibraryNode` (#221)
+- bem make: файлы `*.meta.js` хранятся в директории `<project-root>/.bem/cache/` (#232)
+- bem make: исправлен баг в инспекторе, не позволявший корректную работу в FF (#240)
+- docs: глава о level.js переведена на английский язык (#38)
+- docs: обновлены англоязычные документы в теме установки (@fliptheweb, #225)
+- docs: добавлен `CONTRIBUTING.md`
+- docs: добавлен `LICENSE` (мы используем MIT)
 - API: Expose `__filename` and `__dirname` vars in `.bem/make.js` files
-- API: Add `util.exec()` promised function to execute commands
-- API: Remove `relative()` function from `lib/path.js` in favor of that in node 0.6+ (Closes #226)
-- API: Refactor introspection logic (Pull #237)
-  - Add `createIntrospector()` method to `Level` class to create custom introspectors (see jsdoc)
-  - Refactor `getDeclByIntrospection()` to use `createIntrospector()`
-  - Add `getItemsByIntrospection()` method to `Level` class, that returns array of BEM entities in techs
-- API: Refactor `LevelNode` (Pull #238)
-  - Lazy level object creation
-  - Use `getItemsByIntrospection()` to collect BEM items to build
-  - Unify actualization of blocks and elems in `BundleLevelNode`
-- tests: Cover introspection logic
-- tests: Cover `deps.intersect()` and `deps.subtract()`
-- tests: Cover building of bundles-as-elements
-- package: Support node 0.8.x (Closes #220)
+- API: добавлена функция-promise `util.exec()`для выполнения команд
+- API: убрана функция `relative()` из `lib/path.js` и используется эквивалент из node 0.6+ (#226)
+- API: рефакторинг логики интроспекции (Pull #237)
+  - К классу `Level` добавлен метод `createIntrospector()` для создания уникальных интроспекторов (see jsdoc)
+  - Отрефакторен `getDeclByIntrospection()` для использования `createIntrospector()`
+  - К классу `Level` добавлен метод `getItemsByIntrospection()`, который возвращает массив сущностей BEM в технологиях 
+- API: рефакторинг `LevelNode` (Pull #238)
+  - Отложенное создание объектов уровней
+  - Используется `getItemsByIntrospection()` для сборки BEM элементов
+  - Унифицирована актуализация blocks и elems в `BundleLevelNode`
+- tests: покрыта логика интроспекции
+- tests: покрыты `deps.intersect()` и `deps.subtract()`
+- tests: покрыта сборка bundles-as-elements
+- package: поддержка node 0.8.x (#220)
 
-0.5.15 (stable)
+0.5.15 (стабильная)
 ---------------
 
-- bem: Add `;` after each include in js-based techs (`js` and `js-i`) (Closes #210)
-- bem make: Bugfix: Use `Q.when()` to call base `alterArch()` method in `BundlesLevelNode` (Closes #216)
-- docs: Add russian and english docs for `bem make` / `bem server` feature
-- docs: Add more info on `--chdir`, `-C` option on `bem create *` commands (See #204)
-- docs: Add `BEM.create()` docs: russian and english (Closes #192)
-- docs: Document API changes in `BEM.build()` (Closes #193)
-- docs: Document extensions in tech modules API (Closes #194)
-- docs: Add russian docs for `.bem/level.js` config (See #38)
-- API: Implement `include()` in `.bem/make.js` files (Closes #209)
-- package: Depends on `csso ~1.2.17` (some critical bug fixes)
+- bem: добавлены `;` после каждого include в js технологиях (`js` и `js-i`) (#210)
+- bem make: багфикс: используется `Q.when()` для вызова базового метода `alterArch()` в `BundlesLevelNode` (#216)
+- docs: добавлена русскоязычная и англоязычная документация для `bem make` / `bem server`
+- docs: добавлено больше информации об опции `--chdir`, `-C` в командах `bem create *` (см. #204)
+- docs: добавлена англоязычная и русскоязычная документация для `BEM.create()` (#192)
+- docs: задокументированы изменения API в `BEM.build()` (#193)
+- docs: задокументированы расширения в API модулей технологий (#194)
+- docs: добавлена русскоязычная документация для конфига `.bem/level.js` (см. #38)
+- API: реализован `include()` в файлах `.bem/make.js` (#209)
+- package: зависимость от `csso ~1.2.17` (некоторые критические багфиксы)
 
-0.5.14 (unstable)
+0.5.14 (нестабильная)
 -----------------
 
-- bem: Get rid of `Q` deprecation warnings (Closes #200)
-- bem make: Node of type `MergedBundle` depends on all nodes of type `BundleNode` on the same level (Closes #206)
-- package: Depend on `q ~0.8.8` and `apw ~0.3.6`
+- bem: убраны предупреждения о депрекации `Q` (#200)
+- bem make: нода типа `MergedBundle` зависит от всех нод типа `BundleNode` на том же уровне (#206)
+- package: зависимость от `q ~0.8.8` и `apw ~0.3.6`
 
-0.5.13 (unstable)
+0.5.13 (нестабильная)
 -----------------
 
-- bem make: Create directory `.bem/snapshots` if it doesn't exist before writting a snapshot (Closes #201)
-- bem make: Implement `clean()` method of `BemCreateNode`
-- bem make: `getLevels()` method of `BundleNode` fixed to avoid putting undefined level into the resulting
-  array (Closes #203)
-- API: Add `getLevelPath()` helper method to `BlockNode` and `LevelNode` classes (Closes #190)
+- bem make: перед слепком создается директория `.bem/snapshots`, если таковая не существует (#201)
+- bem make: реализован метод `clean()` в `BemCreateNode`
+- bem make: исправлен метод `getLevels()` в `BundleNode`: неопределенный уровень не помещается в конечный массив (#203)
+- API: добавлен метод-хелпер `getLevelPath()` в классы `BlockNode` и `LevelNode` (#190)
 
-0.5.12 (unstable)
+0.5.12 (нестабильная)
 -----------------
 
-- bem make: Forward errors from `borschik` with prefix `borschik: ` in `BorschikNode`
-- bem make: Store output file name in `this.output` property to use later in the logs in `BorschikNode`
-- package: Depends on `borschik ~0.0.11`
+- bem make: перенаправлять ошибки из `borschik` с префиксом `borschik: ` в `BorschikNode`
+- bem make: хранить выводимое имя файлов output в свойстве `this.output` для дальнейшего использования в логах в `BorschikNode`
+- package: зависимость от `borschik ~0.0.11`
 
-0.5.11 (unstable)
+0.5.11 (нестабильная)
 -----------------
 
-- bem: Implement various strategies for mass IO operations in `Tech.filterPrefixes()` and `BemBuildNode.isValid()` (Closes #167)
-- bem: Fix referencing techs by name
-- bem: Allow use of `module.exports = ...` in files read by `util.readDecl()`
-- bem: `util.getBemTechPath()` returns full tech path now, with extension
-- bem: Add `-T` option as an alias for `-t`, `--tech` for `bem build` command
-- bem: Add `--output-level` and `--block`, `--elem`, `--mod`, `--val` options for `bem build` command to build BEM
-  entities on bundle levels
-- bem: Allow using `require()` in decl-like files (Closes #172)
-- bem: Add inspector server feature to `bem make` and `bem server` commands
-- bem: Do not create new class from `LegacyTech` and legacy tech module content mixin in `getTechClass()` (potential bug fix)
-- bem: Bugfix: `bem decl subtract` creates empty `*.deps.js` file (Closes #170)
-- deps.js tech: Fix serializing of empty deps
-- deps.js tech: Fix twice expansion of deps (Closes #163)
-- bem make: Allow build triggering using final file names in case when tech produces many files (Closes #172)
-- bem make: When `BEM_IO_STRATEGY === 'callback'` and `meta` was empty promise would never resolve
-- bem make: Add merged bundle support
-- bem server: Listen on file socket on `--socket` option, configure socket path using `--socket-path` option
-  and socket permissions using `--socket-mode` option (Closes #166)
-- docs: Document API changes in `BEM.create.block()`, `BEM.create.elem()` and `BEM.create.mod()` of version 0.5.x (Closes #161)
-- docs: Declare dependency on NodeJS 0.6+
-- API: Add third `level` optional argument to `getTechClass()` function of `tech` method
-- API: Add third `level` optional argument to `createTech()` function of `tech` method
-- API: Add `getCreateSuffixes()` and `getBuildSuffixes()` to `Tech` class to let build system to deal with techs like
-  `bemhtml` more correct
-- API: Add `util.removePath(path)` function to remove file and dir paths, but not recursively
-- API: Add `util.readJsonJs(path)` function to read and eval JSON-JS files
-- API: Add `util.symbolicLink(link, target, force)` function
-- API: Add `util.lpad()` alias to `util.pad()`, add `util.rsplit(string, sep, maxsplit)` function
-- API: Add `getContext()` method to `LegacyTech` class as a proxy to `this.techObj.getContext()`
-- API: Add `getBuildResultChunk()` method to `LegacyTech` class as a proxy to `this.techObj.outFile()`
-- API: Wait for `opts.declaration` to load before call to `this.techObj.build()` in `LegacyTech` class
-- tests: Add tests for serializing empty deps in `deps.js tech`
-- tests: Use `bem-bl` as git submodule for tests data (Closes #176)
-- tests: Add tests that additionally build `i18n` and `i18n.js` techs for bundles
-- tests: Add tests for merged bundle build
-- tests: Add tests for `getTechClass()` function of `tech` module
-- package: Add `dom-js` dependency for i18n tests (Closes #172)
-- package: Add `clean` target to `GNUmakefile`
-- package: Depend on `coverjs >= 0.0.7-aplha` (Closes #191)
+- bem: реализованы различные стратегии для массовых операций IO в `Tech.filterPrefixes()` и `BemBuildNode.isValid()` (#167)
+- bem: исправлено указание на технологии по имени
+- bem: разрешено использование `module.exports = ...` в файлах, которые читает `util.readDecl()`
+- bem: `util.getBemTechPath()` возвращает полный путь с расширением к технологии
+- bem: добавлена опция `-T` в качестве алиаса для `-t`, `--tech` для команды `bem build`
+- bem: добавлены опции `--output-level` and `--block`, `--elem`, `--mod`, `--val` для команды `bem build` для сборки сущностей BEM на уровнях бандлов
+- bem: разрешено использование `require()` в файлах типа decl-like (#172)
+- bem: в команды `bem make` и `bem server` добавлена inspector server feature
+- bem: не создается новый класс из`LegacyTech` и tech module content mixin модуля технологии legacy в `getTechClass()` (исправление потенциального бага)
+- bem: багфикс: `bem decl subtract` создает пустой файл `*.deps.js` (#170)
+- deps.js tech: исправлена сериализация пустых зависимостей
+- deps.js tech: fix twice expansion of deps (#163)
+- bem make: разрешено начинать сборку используя конечные имена файлов в случае, когда технология производит несколько файлов (#172)
+- bem make: когда `BEM_IO_STRATEGY === 'callback'` и `meta` было пустым, promise никогда не становился resolve
+- bem make: добавлена поддержка для смердженных бандлов
+- bem server: listen on file socket on `--socket` option, configure socket path using `--socket-path` option
+  and socket permissions using `--socket-mode` option (#166)
+- docs: задокументированы изменения API в `BEM.create.block()`, `BEM.create.elem()` и `BEM.create.mod()` в версии 0.5.x (#161)
+- docs: объявлена зависимость от NodeJS 0.6+
+- API: добавлен третий опциональный аргумент `level` в функцию `getTechClass()` метода `tech`
+- API: добавлен третий опциональный аргумент `level` в функцию `createTech()` метода `tech`
+- API: добавлены `getCreateSuffixes()` и `getBuildSuffixes()` в класс `Tech`, чтобы позволить системе сборки корректно обрабатывать технологии, такие как `bemhtml`
+- API: добавлена функция `util.removePath(path)`, удаляющая пути к файлам и директориям, но не рекурсивно 
+- API: добавлена функция `util.readJsonJs(path)` для чтения и eval файлов JSON-JS
+- API: добавлена функция `util.symbolicLink(link, target, force)`
+- API: добавлен алиас `util.lpad()` в `util.pad()`, добавлена функция `util.rsplit(string, sep, maxsplit)`
+- API: в класс `LegacyTech` добавлен метод `getContext()` в качестве прокси `this.techObj.getContext()`
+- API: в класс `LegacyTech` добавлен метод `getBuildResultChunk()` в качестве прокси `this.techObj.outFile()`
+- API: ждать загрузки `opts.declaration` перед вызовом `this.techObj.build()` в классе `LegacyTech` 
+- tests: добавлены тесты для сериализации пустых зависимостей в `deps.js tech`
+- tests: использовать `bem-bl` в качестве суб-модуля git для данных тестов (#176)
+- tests: добавлены тесты, которые дополнительно собирают технологии `i18n` и `i18n.js` для бандлов
+- tests: добавлены тесты для сборки смердженного бандла
+- tests: добавлены тесты для функции `getTechClass()` модуля `tech` module
+- package: добавлена зависимость `dom-js` для тестов i18n (#172)
+- package: добавлена цель `clean` для `GNUmakefile`
+- package: зависимость от `coverjs >= 0.0.7-aplha` (#191)
 
-0.5.10 (unstable)
+0.5.10 (нестабильная)
 -----------------
 
-- bem: Use synchronous file existence check in `filterPrefixes()` instance method in `Tech` class
-- bem: Fix bug with `--chdir` option for `bem create level` command (Closes #151)
-- deps.js tech: More precisely report problems in blocks `*.deps.js` files
-- deps.js tech: Read every block `*.deps.js` file only once
-- bem make: Checks for target dir to exist before executing `svn info` in `SvnLibraryNode` (Closes #154)
-- bem make: Output collected logs in case of fail in `Node` (Closes #155)
-- bem make: Fix exception during build of `*.meta.js` files in `BemBuildMetaNode` (Closes #153)
-- bem make: Sync mtime checks in `isValid()` instance method of `BemBuildNode` class (Closes #157)
-- API: Add `util.readDecl()` promised function
-- tests: Add legacy `Makefile` "tests" for `bem decl merge` command
-- package: Depend on `coa ~0.3.5`
-- package: Depend on `apw ~0.3.4`
+- bem: использовать синхронную проверку существования файлов в методе `filterPrefixes()` экземпляра в классе `Tech`.
+- bem: исправлен баг с опцией `--chdir` для команды `bem create level` (#151).
+- deps.js tech: более точно репортить проблемы в файлах `*.deps.js` блоков.
+- deps.js tech: читать файл `*.deps.js` каждого блока только один раз.
+- bem make: проверять целевую директорию перед выполнением `svn info` в `SvnLibraryNode` (#154).
+- bem make: выводить собранные логи в случае фэйла в `Node` (#155).
+- bem make: исправлено исключение во время сборки файлов `*.meta.js` в `BemBuildMetaNode` (#153).
+- bem make: синхронизированы проверки `mtime` в методе `isValid()`класса `BemBuildNode` (#157).
+- API: добавлена функция-promise `util.readDecl()`.
+- tests: в `Makefile` в цель `tests` добавлены тесты для команды `bem decl merge`.
+- package: зависимость от `coa ~0.3.5`.
+- package: зависимость от `apw ~0.3.4`.
 
-0.5.9 (unstable)
+0.5.9 (нестабильная)
 ----------------
 
-- bem make: Build minimized versions of `*.bemhtml.js` files
-- bem make: Check for svn revision in `SvnLibraryNode.isValid()`
+- bem make: собирать минифицированные версии файлов `*.bemhtml.js`.
+- bem make: проверять ревизии svn в `SvnLibraryNode.isValid()`.
 
-0.5.8 (unstable)
+0.5.8 (нестабильная)
 ----------------
 
-- bem make: `SvnLibraryNode` extends `ScmLibraryNode`
+- bem make: `SvnLibraryNode` extends `ScmLibraryNode`.
 
-0.5.7 (unstable)
+0.5.7 (нестабильная)
 ----------------
 
-- More fixes on running of `bem make` and `bem server` not in project root
-- bem: Output full stack traces on error
-- bem: Lazy tech paths resolving in `Level` class
-- bem: `bem create *` commands display error when there are no techs specified in command line options
-  and `defaultTechs` in level config is empty
-- bem: Add convenient `bem create` command to create all type of BEM entities
-- bem server: Convert russian lang messages to english
-- bem server: Fix wrong links in directory listings
-- bem server: Strip query string part before accessing a file
-- bem make: Do not checkout `bem-bl` by default
-- bem make: Fix `LibraryNode`
-- bem make: Extend context of `.bem/make.js` using `global`
-- bem make: Conditional build of bundle files based on existance of `*.bemjson.js` and `*.bemdecl.js` on the file system
-- bem make: Resolve tech module paths using level object in `BundleNode`
-- bem make: Use `Level.createTech()` instead of `Level.getTech()` to construct tech objects for `BemBuildNode`
-- bem make: Depend nodes of `BemBuildNode` class only on existing blocks files to increase performance
-- bem make: Run nodes of `BemBuildNode` class forked by default to increase performance
-- bem make: Add more logging to `BundleNode`
-- bem make: Add support for `csso` processing of `*.css` files for production builds in `BorschikNode`
-- bem make: Add support for `uglifyjs` processing of `*.js` files for production builds in `BorschikNode`
-- bem make: Rename `repo` param to `url` in `ScmLibraryNode` and its derivatives
-- bem make: Fix cleaning of obsolete dependencies in `BemBuildNode`
-- bem make: Huge internal refactoring on `BundleNode`
-- bem make: Rename `getCreateDependencies()` instance method to `getDependencies()` in `BemBuildNode` class
-- bem make: Rename `getCreateDependencies()` instance method to `getDependencies()` in `BemCreateNode` class
-- bem make: Add `setFileNode()` and  `setBemCreateNode()` instance methods to `BundleNode` class
-- logging: Log node versions on `debug` verbosity
-- logging: Log profiling info of `bem make`
-- logging: Add more `debug` verbosity logging to `BundleNode`
-- docs: Add jsdoc for `Level` class
-- docs: Update jsdoc for `Tech` class
-- docs: Add docs for `bem create elem` and `bem create mod`
-- docs: Add docs for `bem create`
-- docs: Fix jsdoc for `setBemBuildNode()` instance method of `BundleNode` class
-- docs: Add jsdoc for `Node`, `FileNode`, `MagicNode`, `ScmLibraryNode`
-- API: Export `util` module as `require('bem').util`
-- API: Add `matchAny()` instance method to `Level` class
-- API: Add instance methods-shortcuts to `Level` class: `getPath()`, `getPathByObj()`, `getRelPathByObj()`
-- tests: Add tests for bem make
-- tests: Rewrite all tests to `mocha`
-- package: Add `xjst 0.2.21` to dependency list
-- package: Add `ometajs ~2.1.10` to dependency list
-- package: Bump `q` dependency version to `~0.8.5`
-- package: Bump `apw` dependency version to `~0.3.2`
-- package: Bump `borschik` dependency version to `~0.0.10`
+- Исправлены баги, возникавшие во время запуска `bem make` и `bem server` не из корня проекта.
+- bem: выводить полный стектрейс в случае ошибки.
+- bem: «ленивый» резолв путей в классе `Level`.
+- bem: команды `bem create *` выводят ошибку, если не указаны технологии в опциях в командной строке и `defaultTechs` в конфиге уровня является пустым.
+- bem: добавлена команда `bem create` для создания всех типов сущностей BEM.
+- bem server: русскоязычные сообщения заменены на англоязычные.
+- bem server: исправлены неправильные ссылки в списках директорий.
+- bem server: отбрасывать query string перед обращением к файлу.
+- bem make: не делать checkout `bem-bl` по умолчанию.
+- bem make: исправлен `LibraryNode`.
+- bem make: расширять контекст `.bem/make.js` используя `global`.
+- bem make: сборка файлов бандла при условии существования `*.bemjson.js` и `*.bemdecl.js` на файловой системе.
+- bem make: определять путь к модулям технологий, используя объект `level` в `BundleNode`.
+- bem make: использовать `Level.createTech()` вместо `Level.getTech()` для создания объектов технологий для `BemBuildNode`.
+- bem make: устанавливать зависимость нод от класса `BemBuildNode` только для существующих файлов блоков для улучшения быстродействия.
+- bem make: запускать ноды `BemBuildNode` в субпроцессе по умолчанию для улучшения быстродействия.
+- bem make: добавлено больше логгирования для `BundleNode`.
+- bem make: `BorschikNode` добавлена поддержка для обработки файлов `*.css` с помощью `CSSO` для сборки на продакшн.
+- bem make: в `BorschikNode` добавлена поддержка обработки файлов `*.js` с помощью `uglifyjs` для сборки на продакшн.
+- bem make: параметр `repo` и производные от него переименованы в `url` в `ScmLibraryNode`.
+- bem make: исправлено удаление лишних зависимостей в `BemBuildNode`.
+- bem make: значительный внутренний рефакторинг `BundleNode`.
+- bem make: переименован instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemBuildNode`.
+- bem make: переименован instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemCreateNode`.
+- bem make: добавлены instance методы `setFileNode()` и  `setBemCreateNode()` в класс `BundleNode`.
+- logging: логировать версии node на `debug` verbosity
+- logging: логировать информацию profiling `bem make`
+- logging: добавлено больше логирования `debug` verbosity в `BundleNode`
+- docs: добавлен jsdoc для класса `Level`
+- docs: обновлен jsdoc для класса `Tech`
+- docs: добавлена документация для `bem create elem` и `bem create mod`
+- docs: добавлена документация для `bem create`
+- docs: исправлен jsdoc для  instance метода `setBemBuildNode()` класса `BundleNode`
+- docs: добавлен jsdoc для `Node`, `FileNode`, `MagicNode`, `ScmLibraryNode`
+- API: экспортируется модуль `util` как `require('bem').util`
+- API: добавлен instance метод `matchAny()` в класс `Level`
+- API: добавлены методы-шорткаты экземпляра для класса `Level`: `getPath()`, `getPathByObj()`, `getRelPathByObj()`.
+- tests: добавлены тесты для `bem make`.
+- tests: переписаны все тесты для `mocha`.
+- package: в список зависимостей добавлено `xjst 0.2.21`.
+- package: в список зависимостей добавлено `ometajs ~2.1.10`.
+- package: зависимость `q` обновлена до `~0.8.5`.
+- package: зависимость `apw` обновлена до версии `~0.3.2`.
+- package: зависимость `borschik` обновлена до версии `~0.0.10`.
 
-0.5.6 (unstable)
+0.5.6 (нестабильная)
 ----------------
 
-- docs: Draft of russian docs for `bem make` / `bem server`
-- API: Add `resolvePaths(paths)` and `resolvePath(path)` methods to `Level` class
-- bem make: Add more logging to `BorschikNode`
-- bem make: Use `js-i` tech in `BundleNode` to build bundles `*.js` files by default
-- package: Bump `borschik` dependency to `~0.0.9`
+- docs: черновик русскоязычной версии документации для `bem make` / `bem server`.
+- API: добавлены методы `resolvePaths(paths)` и `resolvePath(path)` для класса `Level`.
+- bem make: добавлено больше логгирования для `BorschikNode`.
+- bem make: в `BundleNode` по дефолту используется технология `js-i` для сборки пакетов файлов `*.js`.
+- package: обновлена зависимость `borschik` до `~0.0.9`.
 
-0.5.5 (unstable)
+0.5.5 (нестабильная)
 ----------------
 
-- Require node 0.6.x
-- deps.js tech: Fix bug with building of `deps.js` files introduced in 0.5.2
-- Fix running of `bem make` and `bem server` not in project root
-- logging: Add `flog()` shorthand function to output formatted log as a replacement for `console.log`
-- logging: Log version number of `bem-tools` on `bem make` and `bem server`
-- bem server: Show http link on server start
-- bem server: Fix current directory output in directory listing
-- bem make: Tune verbosity level for build messages
-- bem make: Log targets to build on build start
-- bem make: Fix validity checks in `LibraryNode` and `BemBuildNode`
-- bem make: Move validity cheks from `FileNode` to `GeneratedFileNode`
-- bem make: Fix `clean()` of `BemBuildMetaNode`
-- bem make: Store relative paths in `*.meta.js` files
-- API: Add `require('bem').version`
-- API: Add `require('bem/lib/util').writeFileIfDiffers(path, content, force)`
+- Зависимость от node версии 0.6.x.
+- deps.js tech: исправлен баг со сборкой файлов `deps.js`, появившихся в 0.5.2.
+- Исправлен запуск `bem make` и `bem server` не из корня проекта.
+- logging: вместо `console.log` добавлена короткая функция `flog()` для вывода отформатированных логов.
+- logging: логировать номер версии `bem-tools` в `bem make` и `bem server`.
+- bem server: показывать ссылку http на старте сервера.
+- bem server: исправлен вывод текущей директории в списке директорий.
+- bem make: подправлен уровень `verbosity` для сообщений сборки.
+- bem make: логировать цели сборки на старте сборки.
+- bem make: исправлены проверки валидности `LibraryNode` и `BemBuildNode`.
+- bem make: проверки валидности перенесены из `FileNode` в `GeneratedFileNode`.
+- bem make: исправлен `clean()` `BemBuildMetaNode`.
+- bem make: относительные пути хранятся в файлах `*.meta.js`.
+- API: добавили `require('bem').version`.
+- API: добавили `require('bem/lib/util').writeFileIfDiffers(path, content, force)`.
 
-0.5.4 (unstable)
+0.5.4 (нестабильная)
 ----------------
 
-- package: Bump `apw` dependency version to `~0.3.0`
+- package: обновили версию зависимости `apw` до `~0.3.0`.
 
-0.5.3 (unstable)
+0.5.3 (нестабильная)
 ----------------
 
-- deps.js tech: Support `deps.js` format as a declaration for `bem build`
+- deps.js tech: поддержка формата `deps.js` в качестве декларации для `bem build`.
 
-0.5.2 (unstable)
+0.5.2 (нестабильная)
 ----------------
 
-- Add `--verbosity` option to `bem make` and `bem server` commands
-- bem make: Add a lot of colorfull logging
-- bem make: A lot of internal refactorings
-- bem make: Fix dependency bug with building `_*.ie.css` files
-- bem make: Fix child process handling in `BorschikNode` and `BemBuildNode`
-- API: Add winston as logging engine
+- В команды `bem make` и `bem server` добавлена опция `--verbosity`.
+- bem make: добавлено разноцветное логгирование.
+- bem make: внутренний рефакторинг.
+- bem make: поправлен баг с зависимостями во время сборки файлов `_*.ie.css`.
+- bem make: исправлена обработка дочерних процессов в `BorschikNode` и `BemBuildNode`.
+- API: добавлен `winston` в качестве движка для логирования.
 
-0.5.1 (unstalbe)
+0.5.1 (нестабильная)
 ----------------
 
-- bem make: Quick fix removing testing code
+- bem make: небольшая правка. Убрали отладочный код.
 
-0.5.0 (unstable)
+0.5.0 (нестабильная)
 ----------------
 
-- bem make / server feature introduction
+- Появились bem make / server.
