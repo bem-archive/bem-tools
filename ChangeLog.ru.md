@@ -155,23 +155,23 @@
 0.6.14 (stable)
 ---------------
 
-- bem: Исправлен баг в `bem create level` , который не позволял использовать прототип уровня из модуля, установленного в папке `node_modules` на уровне project 
+- bem: Исправлен баг в `bem create level`, который не позволял использовать прототип уровня из модуля, установленного в папке `node_modules` на уровне project 
 - bem: Выбрасывать ошибку, когда нет возможности выполнить технологию с помощью имени, указанного в свойстве `baseTechName` в модуле технологии
 
 0.6.13 (stable)
 ---------------
 
 - tech/v2: `transformBuildDecl()` переписан и используется в `buildByDecl()`
-- level scanner: use proper suffix for folders representing block with mod and val
-- level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
-- deps.js v2: invalidate when declaration modified date is later than deps.js
+- level scanner: используются корректные суффиксы для папок, представляющих блоки с mod и val
+- level scanner: не игнорируются папки типа `block/elem/elem.tech` и `block/mod/mod.tech` 
+- deps.js v2: валидация не проходит, если измененная дата declaration позже, чем  deps.js
 
 0.6.12 (stable)
 ---------------
 
-- bem: Add `level-proto` tech that creates levels based on prototypes in `.bem/levels/*.js` on project level
+- bem: Добавлена технология `level-proto`, которая создает уровни на основе прототипов в `.bem/levels/*.js` на уровне project
 
-  Example usage (`.bem/level.js`):
+  Пример использования (`.bem/level.js`):
 
   ```js
   exports.getTechs = function() {
@@ -182,15 +182,12 @@
   };
   ```
 
-- bem: Fix bug in `bem create level` that prevented from creating level without prototype
-- bem make: Fix bug in `BemCreateNode` that was causing error when using single tech on different names
-  (e.g. `level-proto`)
-- bem make: `require()` in `.bem/make.js` configs behaves more correctly now (try to require any dependency
-  of your project from your `.bem/make.js`)
-- bem make: `level` property in `BlockNode` now initialized on the first access; this helps to deal with levels being
-  created during the `bem make` build process
-- API: Export `logger` and `template` from `bem` module
-- API: Add `Node.create()` static method to simplify creation of nodes, see example
+- bem: Исправлен баг в `bem create level`, который не позволял создавать уровень без прототипа
+- bem make: Исправлен баг в `BemCreateNode`, который вызывал ошибку во время использовании одной технологии на разных именах (например, `level-proto`)
+- bem make: `require()` в конфигах `.bem/make.js` теперь ведет себя более корректно (попробуйте указать любую зависимость  проекта из `.bem/make.js`)
+- bem make: свойство `level` в `BlockNode` сейчас инициализируется при первом доступе, что помогает спавиться с созданием уровней во время сборки `bem make`
+- API: Из модуля `bem` экспортируются `logger` и `template` 
+- API: Добавлен статический метод `Node.create()` для упрощения создания нод, см. пример
 
   ```js
   var opts = {
@@ -204,56 +201,54 @@
 0.6.11 (stable)
 ---------------
 
-- tech v2: Fix cache. Two technologies with the same target name don't
-  overwrite each other's metadata cache anymore
-- bem make: Stop using bem create {block,mod,val} commands in make process
+- tech v2: Исправлено кэширование. Две технологии с одним целевым именем не переписывают кэш метаданных друг друга
+- bem make: Прекращено использование команд {block,mod,val} в процессе make
 
 0.6.10 (stable)
 ---------------
 
-- API: Recommend to use tech V2 API instead of V1
-- API: Deprecate `LegacyTech` API
-- API: Deprecate `bem create block`, `bem create elem` and `bem create mod` commands,
-  use `bem create` command with options instead
+- API: Рекомендуется использовать API технологии V2  вместо V1
+- API: Больше не используется API `LegacyTech` 
+- API: Больше не используются команды `bem create block`, `bem create elem` и `bem create mod`, используйте команду `bem create` с опциями
 
-To disable deprecation warnings set `util.deprecate.silence` value to `false`
-or set `BEM_NO_DEPRECATION` environment variable to `1`.
+Чтобы отключить предупреждения о депрекации вышеуказанных команд, выставьте значние `false` для `util.deprecate.silence`.
+или выставьте значение `1` переменной окружения `BEM_NO_DEPRECATION`.
 
 0.6.9 (stable)
 --------------
 
-- bem bench: Add ability to test [bh](https://github.com/enb-make/bh) templates and compare them with bemhtml
+- bem bench: Добавлена возможность тестирования шаблонов [bh](https://github.com/enb-make/bh) и сравнивать их с bemhtml
 
   You should run `bem bench -t bh [...other opts...]` to launch `bh` tests only or just `bem bench`
   to run both if they exist.
 
-  See docs for more info.
+  См. подробности в документации
 
 0.6.8 (stable)
 --------------
 
-- deps.js: Correct unique items in `forEach` in case of deps by techs
+- deps.js: Корректные уникальные элементы в `forEach` в случае зависимостей от технологий
 
 0.6.7 (stable)
 --------------
 
-- level: Add `opts.noCache` support to `level.createLevel()` to force level creation without cache use
-- API: Ability to specify source techs for `BundlesLevelNode` (via `getBundleSourceTechs()`)
-- code: fixed jshint warnings
+- level: Добавлена поддержка `opts.noCache` в `level.createLevel()`для создания новых уровней без задействования кэша 
+- API: Возможность указывать исходные технологии для `BundlesLevelNode` (через `getBundleSourceTechs()`)
+- code: Исправлены предупреждения от jshint
 
 0.6.6 (stable)
 --------------
 
-- package: Downgrade q from 0.9.6 to 0.9.5 because former is buggy on node 0.10
-- level: Show warning when failed to load a tech during level scan, not fail.
-- level: Fix level scanner to find block.tech dirs within mods
-- API: Fix `util.isFileP()` and mark it as deprecated
+- package: Перешли с более поздней версии q 0.9.6  на более раннюю 0.9.5, так 0.9.6 некорректно работала на node 0.10
+- level: Показывать предупреждение, когда не удается загрузить технологию во время сканирования уровней
+- level: Исправлен сканнер уровней для поиска block.tech dir внутри mods
+- API: Исправлен `util.isFileP()` и помечен как более неиспользуемый
 
 0.6.5 (stable)
 --------------
 
-- API: Add `util.bemParseKey()` helper to parse BEM entity key into BEM entity object
-  (fixes `bem bench` execution error)
+- API: Добавлен хелпер `util.bemParseKey()`, чтобы парсить ключ сущности BEM key в объект сущности BEM.
+  (исправляет ошибку выполнения `bem bench`)
 
 0.6.4 (stable)
 --------------
