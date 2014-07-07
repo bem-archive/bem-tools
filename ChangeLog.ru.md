@@ -253,34 +253,33 @@
 0.6.4 (stable)
 --------------
 
-- fixed bugs in new level scanner (see BEM-467)
+- исправлены баги в новом сканере уровней (см. BEM-467)
 
 0.6.3 (unstable)
 ----------------
 
-- bem bench: Run `npm install` before `bem make` after revision export
+- bem bench: Запустите `npm install` перед `bem make` после экспорта ревизии
 
 0.6.2 (unstable)
 ----------------
 
-- bem bench: Disable verbose mode for `rsync` to stop output buffer overflow
-- bem bench: Disable double error output on `rsync`
+- bem bench: Отключить режим verbose для `rsync`, чтобы остановить переполнение буфера
+- bem bench: Отключить вывод двойной ошибки на `rsync`
 
 0.6.1 (unstable)
 ----------------
 
-- bem: Add `bem bench` command see [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md)
-  (in russian) for more info
+- bem: Добавлена команда `bem bench`, детали см. в  [docs](https://github.com/bem/bem-tools/blob/master/docs/bem-bench/bem-bench.ru.md)
 
-- bem: Add ability to create level prototypes (js files) using `bem create level` command. See example:
+- bem: Добавлены возможность создавать прототипы уровней (файлы js) с помощью `bem create level`. См. пример
 
   ```
   bem create level -l simple .bem/levels/docs.js
   ```
 
-- bem: Add `project` tech and `project` level prototype:
+- bem: Добавлены технология `project` и  прототип уровня `project`:
 
-  This command will create `my` project:
+  Эта команда создаст проект `my`:
 
   ```
   bem create -b my -T project
@@ -303,9 +302,9 @@
       └── bem/ -> symplink/to/globally/installed/bem (module)
   ```
 
-- bem: Add `docs` tech and `docs` level prototype.
+- bem: Добавлена технология `docs` и прототип уровня `docs`.
 
-  This command will create new level based on `docs`:
+  Эта команда создаст новый уровень на основе `docs`:
 
   ```
   bem create level -l docs docs
@@ -317,7 +316,7 @@
       └── level.js
     ```
 
-  This command will create `docs` tech for block `button`:
+  Эта команда создаст технологию `docs` для блока `button`:
 
   ```
   bem create -b button -T docs
@@ -331,17 +330,15 @@
   └── ...
   ```
 
-- bem: Add `tech-docs` tech and `tech-docs` level prototype.
+- bem: Добавлена технология `tech-docs` и прототип уровня `tech-docs`
 
-- API: Introduce `util.findLevel(path, [types])` function
+- API: Появилась функция `util.findLevel(path, [types])`
 
 0.6.0 (unstable)
 ----------------
 
-- new techs API is implemented (see lib/tech/v2.js). It operates with real file paths instead of prefixes.
-This makes build avoid redundant operations and makes it work faster.
-- as the part of new API new level introspection is implemented. In default implementation it just scans dirs/files
-and checks their validity to being BEM entity using simple string operations (see scan* methods in lib/level.js).
+- Реализована новая технология API (см. lib/tech/v2.js). Она работает с реальными путями файлов вместо префиксов. Это ускоряет сборку за счет избавления от лишних операций.
+- В качестве части нового API была реализована интроспекция новых уровней. По умолчанию директории/файлы просто сканируются на предмет их валидности и соответствия сущности BEM с помощью простых строковых операций (смотри методы scan* в lib/level.js)
 
 0.5.33 (stable)
 ---------------
