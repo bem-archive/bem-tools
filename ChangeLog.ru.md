@@ -343,17 +343,17 @@
 0.5.33 (stable)
 ---------------
 
-- package: q updated to 0.8.12
-- package: borschik updated to 0.3.1
-- package: xjst updated to 0.4.13
-- package: ometajs updated to 3.2.4
-- package: preferglobal set to false
+- package: q обновлен до 0.8.12
+- package: borschik обновлен до 0.3.1
+- package: xjst обновлен до 0.4.13
+- package: ometajs обновлен 3.2.4
+- package: для preferglobal выставлено false
 
 0.5.32 (stable)
 ---------------
 
-- bem: Fix `bem create level` on Node 0.10.x (Closes #372)
-- bem make: Create parent directory for `SymlinkLibraryNode` if it doesn't exists (Closes #342)
+- bem: Исправлен `bem create level` на Node 0.10.x (Closes #372)
+- bem make: Создается родительская директория для `SymlinkLibraryNode`, если таковая не существует (закрыт #342)
 
 0.5.31 (stable)
 ---------------
@@ -648,37 +648,37 @@
 - bem server: Fix current directory output in directory listing
 - bem make: Tune verbosity level for build messages
 - bem make: Log targets to build on build start
-- bem make: Fix validity checks in `LibraryNode` and `BemBuildNode`
-- bem make: Move validity cheks from `FileNode` to `GeneratedFileNode`
-- bem make: Fix `clean()` of `BemBuildMetaNode`
-- bem make: Store relative paths in `*.meta.js` files
-- API: Add `require('bem').version`
-- API: Add `require('bem/lib/util').writeFileIfDiffers(path, content, force)`
+- bem make: Исправлены проверки валидности `LibraryNode` и `BemBuildNode`
+- bem make: Проверки валидности перенесены из `FileNode` в `GeneratedFileNode`
+- bem make: Исправлен `clean()` `BemBuildMetaNode`
+- bem make: Относительные пути хранятся в файлах `*.meta.js`
+- API: Добавили `require('bem').version`
+- API: Добавили `require('bem/lib/util').writeFileIfDiffers(path, content, force)`
 
 0.5.4 (unstable)
 ----------------
 
-- package: Bump `apw` dependency version to `~0.3.0`
+- package: Обновили версию зависимости `apw` до `~0.3.0`
 
 0.5.3 (unstable)
 ----------------
 
-- deps.js tech: Support `deps.js` format as a declaration for `bem build`
+- deps.js tech: Поддержка формата `deps.js` в качестве declaration для `bem build`
 
 0.5.2 (unstable)
 ----------------
 
-- Add `--verbosity` option to `bem make` and `bem server` commands
-- bem make: Add a lot of colorfull logging
-- bem make: A lot of internal refactorings
-- bem make: Fix dependency bug with building `_*.ie.css` files
+- В команды `bem make` и `bem server` добавлена опция `--verbosity`
+- bem make: Добавлено разноцветное логирование
+- bem make: Внутренний рефакторинг
+- bem make: Поправлен баг с зависмостями во время сборки файлов `_*.ie.css`
 - bem make: Fix child process handling in `BorschikNode` and `BemBuildNode`
-- API: Add winston as logging engine
+- API: Добавлен winston в качестве движка дл логирования
 
 0.5.1 (unstalbe)
 ----------------
 
-- bem make: Quick fix removing testing code
+- bem make: небольшая правка: убрали тестировочный код
 
 0.5.0 (unstable)
 ----------------
