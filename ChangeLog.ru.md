@@ -75,7 +75,7 @@
         { block: 'bla', elem: 'e3' }
   })
   ```
-- Краткая форма для указывания технических зависимостей одного и того же блока ([#413](http://github.com/bem/bem-tools/issues/413)):
+- Краткая форма для указывания зависимостей по технологиям одного и того же блока ([#413](http://github.com/bem/bem-tools/issues/413)):
 
   ```javascript
   { block: 'b',  tech: 'js', mustDeps: { tech: 'bemhtml' }  }
@@ -130,40 +130,38 @@
 - в предупреждение технологии `v1` добавлена ссылка на инструкции по миграции
 - библиотеки `q-fs` и `q-http` заменены на `q-io`
 - библиотека `underscore` заменена на `lodash` ([#94](http://github.com/bem/bem-tools/issues/94))
-- для разноуровненых бандлов могут быть заданы контрольные точки
+- можно собирать бенчмарки на нескольких уровнях переопределения
 
 
 0.6.16 (stable)
 ---------------
 
-- Update csso within borschik dependency to 1.3.8
-- deps.js: Fix levels cache validity check
-- Warn on v1 tech module usage, not creation
-- GitLibraryNode: add origin parameter to customise remote name
-- Update borschik dependency to 0.3.5
-- Version-independent solution for CP#fork (Node.js 0.6+)
-- Add tech name and path to V1 deprecation warning
-- Fix `bem create level` run without prototype (--level opt)
-- LibraryNode: create the leading directories before checkout
-- bemdecl.js: Traverse through all fields, not only `mix` and `content`
+- Обновили csso в зависимостях borschik до версии 1.3.8
+- deps.js: Исправлена проверка валидности кэша уровней
+- Предупреждение при использовании модуля технологии v1, а не при его создании
+- GitLibraryNode: добавили параметр origin для кастомизации удаленного имени
+- Обновили зависимость borschik до 0.3.5
+- Независимое от версии решение для CP#fork (Node.js 0.6+)
+- Добавили имя технологии и путь к предупреждению о депрекации V1 
+- Исправили запуск  `bem create level`без прототипа (--level opt)
+- LibraryNode: создаются ведущие директории перед checkout
+- bemdecl.js: пробегает по всем полям, а не только  `mix` и `content`
 
 0.6.15 (stable)
 ---------------
 
-- API: `getBuildResultChunk()` should've been passed source suffix, not destination, and that was fixed.
-  Check your tech modules that they do not broke.
+- API: в `getBuildResultChunk()` должен был передаваться суффикс источника, а не цели, что и было исправлено. Рекомендуем проверить технологии modules на возможность поломки.
 
 0.6.14 (stable)
 ---------------
 
-- bem: Fix bug in `bem create level` that prevented from using level prototype from module installed in `node_modules`
-  folder on the project level
-- bem: Throw an error when unable to resolve tech by name specified in `baseTechName` property of tech module
+- bem: Исправлен баг в `bem create level` , который не позволял использовать прототип уровня из модуля, установленного в папке `node_modules` на уровне project 
+- bem: Выбрасывать ошибку, когда нет возможности выполнить технологию с помощью имени, указанного в свойстве `baseTechName` в модуле технологии
 
 0.6.13 (stable)
 ---------------
 
-- tech/v2: `transformBuildDecl()` is reborn and used in `buildByDecl()`
+- tech/v2: `transformBuildDecl()` переписан и используется в `buildByDecl()`
 - level scanner: use proper suffix for folders representing block with mod and val
 - level scanner: don't ignore `block/elem/elem.tech` and `block/mod/mod.tech` kinds of folders
 - deps.js v2: invalidate when declaration modified date is later than deps.js
