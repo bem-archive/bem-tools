@@ -630,24 +630,24 @@
 0.5.6 (unstable)
 ----------------
 
-- docs: Draft of russian docs for `bem make` / `bem server`
-- API: Add `resolvePaths(paths)` and `resolvePath(path)` methods to `Level` class
-- bem make: Add more logging to `BorschikNode`
-- bem make: Use `js-i` tech in `BundleNode` to build bundles `*.js` files by default
-- package: Bump `borschik` dependency to `~0.0.9`
+- docs: Черновик русскоязычной версии документации для `bem make` / `bem server`
+- API: Добавлены методы `resolvePaths(paths)` и `resolvePath(path)` для класса `Level`
+- bem make: Добавлено больше логгирования для `BorschikNode`
+- bem make: В `BundleNode` по дефолту используется технология `js-i` для сборки пакетов файлов `*.js` 
+- package: Обновлена зависимость `borschik` до `~0.0.9`
 
 0.5.5 (unstable)
 ----------------
 
 - Require node 0.6.x
-- deps.js tech: Fix bug with building of `deps.js` files introduced in 0.5.2
-- Fix running of `bem make` and `bem server` not in project root
-- logging: Add `flog()` shorthand function to output formatted log as a replacement for `console.log`
-- logging: Log version number of `bem-tools` on `bem make` and `bem server`
-- bem server: Show http link on server start
-- bem server: Fix current directory output in directory listing
-- bem make: Tune verbosity level for build messages
-- bem make: Log targets to build on build start
+- deps.js tech: Исправлен баг со сборкой файлов `deps.js`, появившихся в 0.5.2
+- Исправлен запуск `bem make` и `bem server` не в корне проекта
+- logging: Вместо `console.log` добавлена короткая функция `flog()` для вывода отформатированных логов
+- logging: Логировать нормер версии `bem-tools` в `bem make` и `bem server`
+- bem server: Показывать ссылку http на старте сервера
+- bem server: Исправлен вывод текущей директории в списке директорий
+- bem make: Подправлен уровень verbosity для сообщений сборки
+- bem make: Логировать цели сборки на старте сборки
 - bem make: Исправлены проверки валидности `LibraryNode` и `BemBuildNode`
 - bem make: Проверки валидности перенесены из `FileNode` в `GeneratedFileNode`
 - bem make: Исправлен `clean()` `BemBuildMetaNode`
