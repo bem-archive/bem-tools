@@ -358,64 +358,64 @@
 0.5.31 (stable)
 ---------------
 
-- bem: Add additional techs and levels from abandoned introspect branch
-- API: Add mkdrip wrapper to util.js
-- bem: ie.css tech should pass absolute path for its chunks
-- bem make: Fix for "Coud not call for method of undefined" when using nodes from API
+- bem: Добавлены дополнительные технологии и уровни from abandoned introspect branch
+- API: В util.js добавлена обертка для mkdrip
+- bem: Технология ie.css должна передавать абсолютные пути 
+- bem make: Исправлено "Coud not call for method of undefined" во время использования нод из API
 
 0.5.30 (stable)
 ---------------
 
-- bem make: Add ability to customize build rules more flexibly by providing Arch.createCustomNode() method
-- bem make: Add match*() methods to `simple` level prototype, add tests (Closes #282)
+- bem make: Добавлена возможность более гибкой кастомизации правил сборки за счет метода Arch.createCustomNode()
+- bem make: Добавлены методы match*() для прототипа уровня `simple`, добавлены тесты (закрыт #282)
 
 0.5.29 (stable)
 ---------------
 
-- bem make: don't update git library form upstream when working copy state satisfies to configured one. git update commands chain altered (no git reset for now) (Closes #335)
+- bem make: don't update git library form upstream when working copy state satisfies to configured one. git update commands chain altered (git reset сейчас нет) (Closes #335)
 
 0.5.27 (stable)
 ---------------
 
-- bem make: fixed to work on node 0.10 (Closes #357)
-- bem make: some performance boost achieved (#250)
+- bem make: исправлено для работы на node 0.10 (закрыт #357)
+- bem make: улучшен перформанс (#250)
 
 0.5.26 (stable)
 ---------------
 
 - bem make: Magic nodes doesn't link the nodes it creates with parent magic nodes (Closes #306)
-- deps.js: don't swallow parsing errors (Closes #353)
+- deps.js: показываются ошибки парсинга (Closes #353)
 
 0.5.25 (stable)
 ---------------
 
-- bem server: windows fixes
+- bem server: исправления windows 
 
 0.5.24 (stable)
 ---------------
 
-- bem server: Add error handling for server.listen() (Closes #315)
-- bem server: Fix server message about serving address to have real host name it is listening on (Closes #334)
-- bem server: Add socket-only option to make bem server listen only unix socket (Closes #316)
-- bem server: Add a check for specified tcp port value to be a number
-- bem make: Fix recursion error when build target name contain trailing slash (Closes #252)
-- bem make: Use tech.getSuffixes() in MetaNode to build dependencies list (Closes #320)
-- bem make: Git library checkout fixed to work with commit hashes (close #302)
-- bem make: Git library branch parameter is added to specify branch name. Use treeish parameter to specify commit or tag.
-- ie6.css tech: Don't include bundle.css
+- bem server: Добавлен обработка ошибок для server.listen() (закрыт #315)
+- bem server: Исправлено сообщение сервера о том, чтобы serving address имел реальное имя хоста, который он "слушает" (закрыт #334)
+- bem server: Добавлена опция socket-only, чтобы bem server "слушал" только на сокеты unix (закрыт #316)
+- bem server: Добавлена проверка на то, чтобы указанное значение port tcp было числом.
+- bem make: Исправлена ошибка рекурсии, которая возникала во время построения целевого имени содержащего завершающий слэш (закрыт #252)
+- bem make: Используйте tech.getSuffixes() в MetaNode для построения списка зависимостей (Closes #320)
+- bem make: Git library checkout работает с хэшами (close #302)
+- bem make: Добавлен параметр Git library branch для того, чтобы указывать имя ветки. Используйте параметр  Use treeish для указани коммита или тэга.
+- ie6.css tech: не влючается bundle.css
 
 0.5.21 (stable)
 ---------------
 
-- Update `borschik` to `0.2.3`
+- `borschik` обновлен до `0.2.3`
 
 0.5.20 (stable)
 ---------------
 
-- bem make: Fixed `npmPackages` check in `LibraryNode` (Closes #300)
-- bem make: Install production dependencies in `LibraryNode` by default (Closes #310)
-- Update `csso` to `1.3.5`
-- Update `q` to `0.8.10`
+- bem make: Исправлена проверка `npmPackages` в `LibraryNode` (закрыт #300)
+- bem make: Установлены дефолтные зависимости продакшна в `LibraryNode` (закрыт #310)
+- Обновили `csso` до `1.3.5`
+- Обновили `q` до `0.8.10`
 
 0.5.19 (stable)
 ---------------
