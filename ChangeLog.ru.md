@@ -420,7 +420,7 @@
 0.5.19 (stable)
 ---------------
 
-- Freeze dependencies using `npm shrinkwrap` to fix problems with `q 0.8.10` release
+- Заморожены зависимости с помощью `npm shrinkwrap` для исправления проблем с релизом `q 0.8.10`
 
 0.5.18 (stable)
 ---------------
@@ -430,46 +430,45 @@
 0.5.17 (stable)
 ---------------
 
-- bem: Make content read of deps.js files of block to be synchronous to gain some speed boost (PR #261)
-- bem make: Provide a more convenient way to configure the list of bundles and blocks levels to build (Closes #260)
-- bem make: Change signature of `getLevels()` method of `BundleNode` to `getLevels(tech)` to add ability
-  to configure the list of levels more precisely
-- docs: Small JSDoc improvements in `BundleNode` class
-- docs: Correct links in README (@banzalik)
+- bem: Сделать чтение файлов deps.js блока синхронным для улучшения скорости работы (PR #261)
+- bem make: Более удобный способ конфигурации списка бандлов и уровней блоков для сборки a more convenient way to (закрыт #260)
+- bem make: Изменить подпись метода `getLevels()` в `BundleNode` на `getLevels(tech)` для того, чтобы добавить возможность более точно конфигурировать списки уровней
+- docs: Небольшие улучшения JSDoc в классе `BundleNode`
+- docs: Корректные ссылки in README (@banzalik)
 
 0.5.16 (stable)
 ---------------
 
-- bem: Require errors in .bem/level.js were masked (Closes #223)
-- bem: Add `.git` to ignorable paths during introspection
-- bem: Skip `blocks/` level directory during introspection in `nested` level
-- bem: Introduce `bem decl intersect` command (Closes #219)
-- bem make: Install library dependencies after checkout (Closes #224)
-- bem make: Do not install dependencies when `npmPackages = false` (Closes #229)
-- bem make: Ability to configure list of techs to optimize, see `BundleNode.getOptimizerTechs()` (Closes #231)
-- bem make: `Rename bemhtml.js` tech to `bemhtml`, fix this in your `.bem/make.js` files
-- bem make: Use non interactive mode for `svn` commands in `SvnLibraryNode` (Closes #221)
-- bem make: Store `*.meta.js` files in `<project-root>/.bem/cache/` directory (Closes #232)
-- bem make: Fixed bug in the inspector preventing it to work properly in FF (Closes #240)
-- docs: Translate into english chapter about level.js (Closes #38)
-- docs: Updated english docs in installation topic (@fliptheweb, #225)
-- docs: Add `CONTRIBUTING.md`
-- docs: Add `LICENSE` (we use MIT)
+- bem: Скрыты ошибки require в .bem/level.js (закрыт #223)
+- bem: Добавлен `.git` для игнорируемых путей во время интроспеции
+- bem: Пропускается директория уровня `blocks/` во время интроспекции в уровне `nested`
+- bem: Появилась команда `bem decl intersect` (закрыт #219)
+- bem make: после checkout устанавливаются зависимости библиотек (закрыт #224)
+- bem make: Не устанавливать зависимости, если `npmPackages = false` (закрыт #229)
+- bem make: Возможность сконфигурировать список технолоний для оптимизации, см. `BundleNode.getOptimizerTechs()` (закрыт #231)
+- bem make: Технология `bemhtml.js` переименована в `bemhtml`, исправьте это в своих файлах `.bem/make.js`
+- bem make: Используется неинтерактивный режим для команд `svn` в `SvnLibraryNode` (Closes #221)
+- bem make: Файлы `*.meta.js` хранятся в директории `<project-root>/.bem/cache/` (закрыт #232)
+- bem make: Исправлен баг в интроспекторе, не позволявший корректную работу в FF (закрыт #240)
+- docs: Главна в level.js переведена на английский язык (закрыт #38)
+- docs: Обновлены англоязычные документы в теме установки (@fliptheweb, #225)
+- docs: Добавлен `CONTRIBUTING.md`
+- docs: Добавлен `LICENSE` (мы используем MIT)
 - API: Expose `__filename` and `__dirname` vars in `.bem/make.js` files
-- API: Add `util.exec()` promised function to execute commands
-- API: Remove `relative()` function from `lib/path.js` in favor of that in node 0.6+ (Closes #226)
-- API: Refactor introspection logic (Pull #237)
-  - Add `createIntrospector()` method to `Level` class to create custom introspectors (see jsdoc)
-  - Refactor `getDeclByIntrospection()` to use `createIntrospector()`
-  - Add `getItemsByIntrospection()` method to `Level` class, that returns array of BEM entities in techs
-- API: Refactor `LevelNode` (Pull #238)
-  - Lazy level object creation
-  - Use `getItemsByIntrospection()` to collect BEM items to build
-  - Unify actualization of blocks and elems in `BundleLevelNode`
-- tests: Cover introspection logic
-- tests: Cover `deps.intersect()` and `deps.subtract()`
-- tests: Cover building of bundles-as-elements
-- package: Support node 0.8.x (Closes #220)
+- API: Добавлена функция-promise `util.exec()`для выполнения команд
+- API: Убрана функция `relative()` из `lib/path.js` и используется эквивалент из node 0.6+ (Closes #226)
+- API: Рефакторинг логики интроспекции (Pull #237)
+  - К классу `Level` добавлен метод `createIntrospector()` для создания уникальных интроспекторов (see jsdoc)
+  - Отрефакторен `getDeclByIntrospection()` для использования `createIntrospector()`
+  - К классу `Level` добавлен метод `getItemsByIntrospection()`, который возвращает массив сущностей BEM в технологиях 
+- API: Рефакторинг `LevelNode` (Pull #238)
+  - Отложенное создание объектов уровней
+  - Используется `getItemsByIntrospection()` для сборки BEM элементов
+  - Унифицирована актуализация blocks и elems in `BundleLevelNode`
+- tests: Покрыта логика интроспекции
+- tests: Покрыты `deps.intersect()` и `deps.subtract()`
+- tests: Покрыта сборка bundles-as-elements
+- package: Поддержка node 0.8.x (Closes #220)
 
 0.5.15 (stable)
 ---------------
