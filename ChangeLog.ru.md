@@ -617,13 +617,13 @@
 - API: Export `util` module as `require('bem').util`
 - API: Add `matchAny()` instance method to `Level` class
 - API: Add instance methods-shortcuts to `Level` class: `getPath()`, `getPathByObj()`, `getRelPathByObj()`
-- tests: Add tests for bem make
-- tests: Rewrite all tests to `mocha`
-- package: Add `xjst 0.2.21` to dependency list
-- package: Add `ometajs ~2.1.10` to dependency list
-- package: Bump `q` dependency version to `~0.8.5`
-- package: Bump `apw` dependency version to `~0.3.2`
-- package: Bump `borschik` dependency version to `~0.0.10`
+- tests: Добавлены тесты для bem make
+- tests: Переписаны все тесты для `mocha`
+- package: В список зависимостей добавлено `xjst 0.2.21`
+- package: В список зависимостей добавлено `ometajs ~2.1.10`
+- package: Зависимость `q` обновлена до `~0.8.5`
+- package: Зависимость `apw` обновлена до версии `~0.3.2`
+- package: Зависимость `borschik` обновлена до версии `~0.0.10`
 
 0.5.6 (unstable)
 ----------------
