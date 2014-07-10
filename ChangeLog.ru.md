@@ -568,8 +568,8 @@
 0.5.9 (unstable)
 ----------------
 
-- bem make: Build minimized versions of `*.bemhtml.js` files
-- bem make: Check for svn revision in `SvnLibraryNode.isValid()`
+- bem make: Собирать минифицированные версии файлов `*.bemhtml.js`
+- bem make: Проверять ревизии svn в `SvnLibraryNode.isValid()`
 
 0.5.8 (unstable)
 ----------------
