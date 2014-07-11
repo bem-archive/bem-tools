@@ -509,45 +509,43 @@
 0.5.11 (unstable)
 -----------------
 
-- bem: Implement various strategies for mass IO operations in `Tech.filterPrefixes()` and `BemBuildNode.isValid()` (Closes #167)
-- bem: Fix referencing techs by name
-- bem: Allow use of `module.exports = ...` in files read by `util.readDecl()`
-- bem: `util.getBemTechPath()` returns full tech path now, with extension
-- bem: Add `-T` option as an alias for `-t`, `--tech` for `bem build` command
-- bem: Add `--output-level` and `--block`, `--elem`, `--mod`, `--val` options for `bem build` command to build BEM
-  entities on bundle levels
-- bem: Allow using `require()` in decl-like files (Closes #172)
-- bem: Add inspector server feature to `bem make` and `bem server` commands
-- bem: Do not create new class from `LegacyTech` and legacy tech module content mixin in `getTechClass()` (potential bug fix)
-- bem: Bugfix: `bem decl subtract` creates empty `*.deps.js` file (Closes #170)
-- deps.js tech: Fix serializing of empty deps
+- bem: Реализованы различные стратегии для массовых операций IO в `Tech.filterPrefixes()` и `BemBuildNode.isValid()` (закрыт #167)
+- bem: Исправлено указание на технологии по имени
+- bem: Разрешено использование `module.exports = ...` в файлах, которые читает `util.readDecl()`
+- bem: `util.getBemTechPath()` возвращает полный путь с расширением к технологии
+- bem: Добавлена опция `-T` в качестве алиаса для `-t`, `--tech` для команды `bem build`
+- bem: Добавлены опции `--output-level` and `--block`, `--elem`, `--mod`, `--val` для команды `bem build` для сборки сущностей BEM на уровнях бандлов
+- bem: Разрешено использование `require()` в файлах типа decl-like (закрыт #172)
+- bem: В команды `bem make` и `bem server` добавлена inspector server feature
+- bem: Не создается новый класс из`LegacyTech` и tech module content mixin модуля технологии legacy в `getTechClass()` (исправление потенциального бага)
+- bem: Багфикс: `bem decl subtract` создает пустой файл `*.deps.js` (закрыт #170)
+- deps.js tech: Исправлена сериализация пустых зависимостей
 - deps.js tech: Fix twice expansion of deps (Closes #163)
-- bem make: Allow build triggering using final file names in case when tech produces many files (Closes #172)
-- bem make: When `BEM_IO_STRATEGY === 'callback'` and `meta` was empty promise would never resolve
-- bem make: Add merged bundle support
+- bem make: Разрешено начинать сборку используя конечные имена файлов в случае, когда технолония производит несколько файлов (закрыт #172)
+- bem make: Когда `BEM_IO_STRATEGY === 'callback'` и `meta` было пустым promise никогда не становился resolve
+- bem make: Добавлена поддержка для смердженных бандлов
 - bem server: Listen on file socket on `--socket` option, configure socket path using `--socket-path` option
   and socket permissions using `--socket-mode` option (Closes #166)
-- docs: Document API changes in `BEM.create.block()`, `BEM.create.elem()` and `BEM.create.mod()` of version 0.5.x (Closes #161)
-- docs: Declare dependency on NodeJS 0.6+
+- docs: Задокументированы изменения API в `BEM.create.block()`, `BEM.create.elem()` и `BEM.create.mod()` в версии 0.5.x (закрыт #161)
+- docs: Объявлена зависимость от NodeJS 0.6+
 - API: Add third `level` optional argument to `getTechClass()` function of `tech` method
 - API: Add third `level` optional argument to `createTech()` function of `tech` method
-- API: Add `getCreateSuffixes()` and `getBuildSuffixes()` to `Tech` class to let build system to deal with techs like
-  `bemhtml` more correct
-- API: Add `util.removePath(path)` function to remove file and dir paths, but not recursively
-- API: Add `util.readJsonJs(path)` function to read and eval JSON-JS files
-- API: Add `util.symbolicLink(link, target, force)` function
-- API: Add `util.lpad()` alias to `util.pad()`, add `util.rsplit(string, sep, maxsplit)` function
-- API: Add `getContext()` method to `LegacyTech` class as a proxy to `this.techObj.getContext()`
-- API: Add `getBuildResultChunk()` method to `LegacyTech` class as a proxy to `this.techObj.outFile()`
-- API: Wait for `opts.declaration` to load before call to `this.techObj.build()` in `LegacyTech` class
-- tests: Add tests for serializing empty deps in `deps.js tech`
-- tests: Use `bem-bl` as git submodule for tests data (Closes #176)
-- tests: Add tests that additionally build `i18n` and `i18n.js` techs for bundles
-- tests: Add tests for merged bundle build
-- tests: Add tests for `getTechClass()` function of `tech` module
-- package: Add `dom-js` dependency for i18n tests (Closes #172)
-- package: Add `clean` target to `GNUmakefile`
-- package: Depend on `coverjs >= 0.0.7-aplha` (Closes #191)
+- API: Добавлены `getCreateSuffixes()` и `getBuildSuffixes()` в класс `Tech`, чтобы позволить системе сборки корректно обрабатывать технологии, такие как `bemhtml`
+- API: Добавлена функция `util.removePath(path)`, удаляющая пути к файлам и директориям, но не рекурсивно 
+- API: Добавлена функция `util.readJsonJs(path)` для чтения и eval файлов JSON-JS
+- API: Добавлена функция `util.symbolicLink(link, target, force)`
+- API: Добавлен алиас `util.lpad()` в `util.pad()`, добавлена функция `util.rsplit(string, sep, maxsplit)`
+- API: В класс `LegacyTech` добавлен метод `getContext()` в качестве прокси `this.techObj.getContext()`
+- API: В класс `LegacyTech` добавлен метод `getBuildResultChunk()` в качестве прокси `this.techObj.outFile()`
+- API: Ждать загрузки `opts.declaration` перед вызовом `this.techObj.build()` в классе `LegacyTech` 
+- tests: Добавлены тесты для сериализации пустых зависимостей в `deps.js tech`
+- tests: Использовать `bem-bl` в качестве суб-модуля git для данных тестов (Closes #176)
+- tests: Добавлены тесты, которые дополнительно собирают технологии `i18n` и `i18n.js` для бандлов
+- tests: Добавлены тесты для сборки смердженного бандла
+- tests: Добавлены тесты для функции `getTechClass()` модуля `tech` module
+- package: Добавлена зависимость `dom-js` для тестов i18n (закрыт #172)
+- package: Добавлена цель `clean` для `GNUmakefile`
+- package: Зависимость от `coverjs >= 0.0.7-aplha` (закрыт #191)
 
 0.5.10 (unstable)
 -----------------
