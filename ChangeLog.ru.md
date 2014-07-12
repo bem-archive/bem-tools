@@ -551,17 +551,17 @@
 -----------------
 
 - bem: Use synchronous file existence check in `filterPrefixes()` instance method in `Tech` class
-- bem: Fix bug with `--chdir` option for `bem create level` command (Closes #151)
-- deps.js tech: More precisely report problems in blocks `*.deps.js` files
-- deps.js tech: Read every block `*.deps.js` file only once
-- bem make: Checks for target dir to exist before executing `svn info` in `SvnLibraryNode` (Closes #154)
-- bem make: Output collected logs in case of fail in `Node` (Closes #155)
-- bem make: Fix exception during build of `*.meta.js` files in `BemBuildMetaNode` (Closes #153)
-- bem make: Sync mtime checks in `isValid()` instance method of `BemBuildNode` class (Closes #157)
-- API: Add `util.readDecl()` promised function
+- bem: Исправлен баг с опцией `--chdir` для команды `bem create level` (закрыт #151)
+- deps.js tech: Более точно репортить проблемы в файлах `*.deps.js` блоков
+- deps.js tech: Читать файл `*.deps.js` каждого блока только один раз
+- bem make: Проверять целевую директорию перед выполнением `svn info` в `SvnLibraryNode` (закрыт #154)
+- bem make: Выводить собранные логи в случае фэйла в `Node` (закрыт #155)
+- bem make: Исправлено исключение во время сборки файлов `*.meta.js` в `BemBuildMetaNode` (закрыт #153)
+- bem make: Синхронизированы проверки mtime в методе `isValid()`класса `BemBuildNode` (закрыт #157)
+- API: Добавлена функция-promise `util.readDecl()`
 - tests: Add legacy `Makefile` "tests" for `bem decl merge` command
-- package: Depend on `coa ~0.3.5`
-- package: Depend on `apw ~0.3.4`
+- package: зависимость от `coa ~0.3.5`
+- package: зависимость от `apw ~0.3.4`
 
 0.5.9 (unstable)
 ----------------
@@ -577,43 +577,42 @@
 0.5.7 (unstable)
 ----------------
 
-- More fixes on running of `bem make` and `bem server` not in project root
+- Исправлены баги, возникавшие во время запуска `bem make` и `bem server` не из корня проекта
 - bem: Output full stack traces on error
 - bem: Lazy tech paths resolving in `Level` class
-- bem: `bem create *` commands display error when there are no techs specified in command line options
-  and `defaultTechs` in level config is empty
-- bem: Add convenient `bem create` command to create all type of BEM entities
-- bem server: Convert russian lang messages to english
-- bem server: Fix wrong links in directory listings
+- bem: Команды `bem create *` выводят ошибку, если не указаны технологии в опциях в командной строке и `defaultTechs`  в конфиге уровня пустой
+- bem: Добавлена удобная команда `bem create` для создания всех типов сущностей BEM
+- bem server: Русскоязычные сообщения заменены на англоязычные
+- bem server: Исправлены неправильные ссылки в списках директорий
 - bem server: Strip query string part before accessing a file
-- bem make: Do not checkout `bem-bl` by default
-- bem make: Fix `LibraryNode`
+- bem make: Не делать checkout `bem-bl` по умолчанию
+- bem make: Исправлен `LibraryNode`
 - bem make: Extend context of `.bem/make.js` using `global`
-- bem make: Conditional build of bundle files based on existance of `*.bemjson.js` and `*.bemdecl.js` on the file system
+- bem make: Сборка файлов бандла при условии существования `*.bemjson.js` и `*.bemdecl.js` в файловой системе
 - bem make: Resolve tech module paths using level object in `BundleNode`
-- bem make: Use `Level.createTech()` instead of `Level.getTech()` to construct tech objects for `BemBuildNode`
-- bem make: Depend nodes of `BemBuildNode` class only on existing blocks files to increase performance
+- bem make: Использовать `Level.createTech()` вместо `Level.getTech()` для создания объектов технологий для `BemBuildNode`
+- bem make: Устанавливать зависимость нод от класса `BemBuildNode` только для существующих файлов блоков для улучшения перформанса
 - bem make: Run nodes of `BemBuildNode` class forked by default to increase performance
-- bem make: Add more logging to `BundleNode`
-- bem make: Add support for `csso` processing of `*.css` files for production builds in `BorschikNode`
-- bem make: Add support for `uglifyjs` processing of `*.js` files for production builds in `BorschikNode`
-- bem make: Rename `repo` param to `url` in `ScmLibraryNode` and its derivatives
-- bem make: Fix cleaning of obsolete dependencies in `BemBuildNode`
-- bem make: Huge internal refactoring on `BundleNode`
-- bem make: Rename `getCreateDependencies()` instance method to `getDependencies()` in `BemBuildNode` class
-- bem make: Rename `getCreateDependencies()` instance method to `getDependencies()` in `BemCreateNode` class
+- bem make: Добавлено больше логгирования для `BundleNode`
+- bem make: `BorschikNode` добавлена поддержка для обработки файлов `*.css` с помощью `csso` для сборки на production 
+- bem make: В `BorschikNode` Добавлена поддержка обработки файлов `*.js` с помощью `uglifyjs` для сборки на production
+- bem make: Параметр `repo` и производные от него переименован в `url` в `ScmLibraryNode`
+- bem make: Исправлено удаление лишних зависимостей в `BemBuildNode`
+- bem make: Значительный внутренний рефакторинг `BundleNode`
+- bem make: Переименовать instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemBuildNode` 
+- bem make: Переименовать instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemCreateNode`
 - bem make: Add `setFileNode()` and  `setBemCreateNode()` instance methods to `BundleNode` class
-- logging: Log node versions on `debug` verbosity
-- logging: Log profiling info of `bem make`
-- logging: Add more `debug` verbosity logging to `BundleNode`
-- docs: Add jsdoc for `Level` class
-- docs: Update jsdoc for `Tech` class
-- docs: Add docs for `bem create elem` and `bem create mod`
-- docs: Add docs for `bem create`
-- docs: Fix jsdoc for `setBemBuildNode()` instance method of `BundleNode` class
-- docs: Add jsdoc for `Node`, `FileNode`, `MagicNode`, `ScmLibraryNode`
-- API: Export `util` module as `require('bem').util`
-- API: Add `matchAny()` instance method to `Level` class
+- logging: Логировать версии node на `debug` verbosity
+- logging: Догировать информацию profiling `bem make`
+- logging: Добавлено больше логирования `debug` verbosity в `BundleNode`
+- docs: Добавлен jsdoc для класса `Level`
+- docs: Обновлен jsdoc для класса `Tech` class
+- docs: Добавлена документация для `bem create elem` и `bem create mod`
+- docs: Добавлена документация для `bem create`
+- docs: Исправлен jsdoc для  instance метода `setBemBuildNode()` класса `BundleNode`
+- docs: Добавлен jsdoc для `Node`, `FileNode`, `MagicNode`, `ScmLibraryNode`
+- API: Экспортируется модуль `util` как `require('bem').util`
+- API: Добавлен instance метод `matchAny()` в класс `Level`
 - API: Add instance methods-shortcuts to `Level` class: `getPath()`, `getPathByObj()`, `getRelPathByObj()`
 - tests: Добавлены тесты для bem make
 - tests: Переписаны все тесты для `mocha`
