@@ -370,7 +370,7 @@
 0.5.29 (stable)
 ---------------
 
-- bem make: don't update git library form upstream when working copy state satisfies to configured one. git update commands chain altered (git reset сейчас нет) (Closes #335)
+- bem make: не обновляйте git library из upstream,  если текущая копия работает. Изменились команды git update (git reset сейчас нет) (Closes #335)
 
 0.5.27 (stable)
 ---------------
@@ -394,13 +394,13 @@
 
 - bem server: Добавлен обработка ошибок для server.listen() (закрыт #315)
 - bem server: Исправлено сообщение сервера о том, чтобы serving address имел реальное имя хоста, который он "слушает" (закрыт #334)
-- bem server: Добавлена опция socket-only, чтобы bem server "слушал" только на сокеты unix (закрыт #316)
+- bem server: Добавлена опция socket-only, чтобы bem server "слушал" только сокеты unix (закрыт #316)
 - bem server: Добавлена проверка на то, чтобы указанное значение port tcp было числом.
-- bem make: Исправлена ошибка рекурсии, которая возникала во время построения целевого имени содержащего завершающий слэш (закрыт #252)
+- bem make: Исправлена ошибка рекурсии, которая возникала во время построения целевого имени, содержащего завершающий слэш (закрыт #252)
 - bem make: Используйте tech.getSuffixes() в MetaNode для построения списка зависимостей (Closes #320)
 - bem make: Git library checkout работает с хэшами (close #302)
-- bem make: Добавлен параметр Git library branch для того, чтобы указывать имя ветки. Используйте параметр  Use treeish для указани коммита или тэга.
-- ie6.css tech: не влючается bundle.css
+- bem make: Добавлен параметр Git library branch для того, чтобы указывать имя ветки. Используйте параметр  Use treeish для указани коммита или тэга
+- ie6.css tech: не включается bundle.css
 
 0.5.21 (stable)
 ---------------
@@ -418,7 +418,7 @@
 0.5.19 (stable)
 ---------------
 
-- Заморожены зависимости с помощью `npm shrinkwrap` для исправления проблем с релизом `q 0.8.10`
+- Для исправления проблем с релизом `q 0.8.10` с помощью `npm shrinkwrap` заморожены зависимости  
 
 0.5.18 (stable)
 ---------------
@@ -429,7 +429,7 @@
 ---------------
 
 - bem: Сделать чтение файлов deps.js блока синхронным для улучшения скорости работы (PR #261)
-- bem make: Более удобный способ конфигурации списка бандлов и уровней блоков для сборки a more convenient way to (закрыт #260)
+- bem make: Более удобный способ конфигурации списка бандлов и уровней блоков для сборки (закрыт #260)
 - bem make: Изменить подпись метода `getLevels()` в `BundleNode` на `getLevels(tech)` для того, чтобы добавить возможность более точно конфигурировать списки уровней
 - docs: Небольшие улучшения JSDoc в классе `BundleNode`
 - docs: Корректные ссылки in README (@banzalik)
@@ -438,17 +438,17 @@
 ---------------
 
 - bem: Скрыты ошибки require в .bem/level.js (закрыт #223)
-- bem: Добавлен `.git` для игнорируемых путей во время интроспеции
+- bem: Добавлен `.git` для игнорируемых путей во время интроспекции
 - bem: Пропускается директория уровня `blocks/` во время интроспекции в уровне `nested`
 - bem: Появилась команда `bem decl intersect` (закрыт #219)
-- bem make: после checkout устанавливаются зависимости библиотек (закрыт #224)
+- bem make: После checkout устанавливаются зависимости библиотек (закрыт #224)
 - bem make: Не устанавливать зависимости, если `npmPackages = false` (закрыт #229)
-- bem make: Возможность сконфигурировать список технолоний для оптимизации, см. `BundleNode.getOptimizerTechs()` (закрыт #231)
+- bem make: Возможность сконфигурировать список технологий для оптимизации, см. `BundleNode.getOptimizerTechs()` (закрыт #231)
 - bem make: Технология `bemhtml.js` переименована в `bemhtml`, исправьте это в своих файлах `.bem/make.js`
 - bem make: Используется неинтерактивный режим для команд `svn` в `SvnLibraryNode` (Closes #221)
 - bem make: Файлы `*.meta.js` хранятся в директории `<project-root>/.bem/cache/` (закрыт #232)
-- bem make: Исправлен баг в интроспекторе, не позволявший корректную работу в FF (закрыт #240)
-- docs: Главна в level.js переведена на английский язык (закрыт #38)
+- bem make: Исправлен баг в инспекторе, не позволявший корректную работу в FF (закрыт #240)
+- docs: Глава о level.js переведена на английский язык (закрыт #38)
 - docs: Обновлены англоязычные документы в теме установки (@fliptheweb, #225)
 - docs: Добавлен `CONTRIBUTING.md`
 - docs: Добавлен `LICENSE` (мы используем MIT)
@@ -462,7 +462,7 @@
 - API: Рефакторинг `LevelNode` (Pull #238)
   - Отложенное создание объектов уровней
   - Используется `getItemsByIntrospection()` для сборки BEM элементов
-  - Унифицирована актуализация blocks и elems in `BundleLevelNode`
+  - Унифицирована актуализация blocks и elems в `BundleLevelNode`
 - tests: Покрыта логика интроспекции
 - tests: Покрыты `deps.intersect()` и `deps.subtract()`
 - tests: Покрыта сборка bundles-as-elements
@@ -473,9 +473,9 @@
 
 - bem: Добавлены `;` после каждого include в js технологиях (`js` и `js-i`) (закрыт #210)
 - bem make: Багфикс: используется `Q.when()` для вызова базового метода `alterArch()` в `BundlesLevelNode` (закрыт #216)
-- docs: Добавлена русскоязычная и англоязыная документация для `bem make` / `bem server`
+- docs: Добавлена русскоязычная и англоязычная документация для `bem make` / `bem server`
 - docs: Добавлено больше информации об опции `--chdir`, `-C` в командах `bem create *` (см. #204)
-- docs: Добавлена англоязыная и русскоязыная документация для `BEM.create()` (закрыт #192)
+- docs: Добавлена англоязычная и русскоязычная документация для `BEM.create()` (закрыт #192)
 - docs: Задокументированы изменения API в `BEM.build()` (закрыт #193)
 - docs: Задокументированы расширения в API модулей технологий (Closes #194)
 - docs: Добавлена русскоязычная документация для конфига `.bem/level.js` (см. #38)
@@ -486,13 +486,13 @@
 -----------------
 
 - bem: Убраны предупреждения о депрекации `Q` (закрыт #200)
-- bem make: Нода типа `MergedBundle` зависит от все нод типа  `BundleNode` на том же уровне (закрыт #206)
+- bem make: Нода типа `MergedBundle` зависит от всех нод типа `BundleNode` на том же уровне (закрыт #206)
 - package: Зависимость от `q ~0.8.8` и `apw ~0.3.6`
 
 0.5.13 (unstable)
 -----------------
 
-- bem make: Создается директория `.bem/snapshots`, если таковая не существует перед слепком (закрыт #201)
+- bem make: Перед слепком создается директория `.bem/snapshots`, если таковая не существует (закрыт #201)
 - bem make: Реализован метод `clean()` в `BemCreateNode`
 - bem make: Исправлен метод `getLevels()` в `BundleNode`: неопределенный уровень не помещается в конечный массив (закрыт #203)
 - API: Добавлен метод-хелпер `getLevelPath()` в классы `BlockNode` и `LevelNode` (закрыт #190)
@@ -519,8 +519,8 @@
 - bem: Багфикс: `bem decl subtract` создает пустой файл `*.deps.js` (закрыт #170)
 - deps.js tech: Исправлена сериализация пустых зависимостей
 - deps.js tech: Fix twice expansion of deps (Closes #163)
-- bem make: Разрешено начинать сборку используя конечные имена файлов в случае, когда технолония производит несколько файлов (закрыт #172)
-- bem make: Когда `BEM_IO_STRATEGY === 'callback'` и `meta` было пустым promise никогда не становился resolve
+- bem make: Разрешено начинать сборку используя конечные имена файлов в случае, когда технология производит несколько файлов (закрыт #172)
+- bem make: Когда `BEM_IO_STRATEGY === 'callback'` и `meta` было пустым, promise никогда не становился resolve
 - bem make: Добавлена поддержка для смердженных бандлов
 - bem server: Listen on file socket on `--socket` option, configure socket path using `--socket-path` option
   and socket permissions using `--socket-mode` option (Closes #166)
@@ -548,7 +548,7 @@
 0.5.10 (unstable)
 -----------------
 
-- bem: Use synchronous file existence check in `filterPrefixes()` instance method in `Tech` class
+- bem: Использовать синхронную проверку существования файлов в instance методе `filterPrefixes()`в классе `Tech`
 - bem: Исправлен баг с опцией `--chdir` для команды `bem create level` (закрыт #151)
 - deps.js tech: Более точно репортить проблемы в файлах `*.deps.js` блоков
 - deps.js tech: Читать файл `*.deps.js` каждого блока только один раз
@@ -578,8 +578,8 @@
 - Исправлены баги, возникавшие во время запуска `bem make` и `bem server` не из корня проекта
 - bem: Output full stack traces on error
 - bem: Lazy tech paths resolving in `Level` class
-- bem: Команды `bem create *` выводят ошибку, если не указаны технологии в опциях в командной строке и `defaultTechs`  в конфиге уровня пустой
-- bem: Добавлена удобная команда `bem create` для создания всех типов сущностей BEM
+- bem: Команды `bem create *` выводят ошибку, если не указаны технологии в опциях в командной строке и `defaultTechs`  в конфиге уровня является пустым
+- bem: Добавлена команда `bem create` для создания всех типов сущностей BEM
 - bem server: Русскоязычные сообщения заменены на англоязычные
 - bem server: Исправлены неправильные ссылки в списках директорий
 - bem server: Strip query string part before accessing a file
@@ -592,19 +592,19 @@
 - bem make: Устанавливать зависимость нод от класса `BemBuildNode` только для существующих файлов блоков для улучшения перформанса
 - bem make: Run nodes of `BemBuildNode` class forked by default to increase performance
 - bem make: Добавлено больше логгирования для `BundleNode`
-- bem make: `BorschikNode` добавлена поддержка для обработки файлов `*.css` с помощью `csso` для сборки на production 
-- bem make: В `BorschikNode` Добавлена поддержка обработки файлов `*.js` с помощью `uglifyjs` для сборки на production
+- bem make: `BorschikNode` добавлена поддержка для обработки файлов `*.css` с помощью `csso` для сборки на продакшн 
+- bem make: В `BorschikNode` Добавлена поддержка обработки файлов `*.js` с помощью `uglifyjs` для сборки на продакшн
 - bem make: Параметр `repo` и производные от него переименован в `url` в `ScmLibraryNode`
 - bem make: Исправлено удаление лишних зависимостей в `BemBuildNode`
 - bem make: Значительный внутренний рефакторинг `BundleNode`
 - bem make: Переименовать instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemBuildNode` 
 - bem make: Переименовать instance метод `getCreateDependencies()` в `getDependencies()` в классе `BemCreateNode`
-- bem make: Add `setFileNode()` and  `setBemCreateNode()` instance methods to `BundleNode` class
+- bem make: Добавлить instance методы `setFileNode()` и  `setBemCreateNode()` в класс `BundleNode`
 - logging: Логировать версии node на `debug` verbosity
-- logging: Догировать информацию profiling `bem make`
+- logging: Логировать информацию profiling `bem make`
 - logging: Добавлено больше логирования `debug` verbosity в `BundleNode`
 - docs: Добавлен jsdoc для класса `Level`
-- docs: Обновлен jsdoc для класса `Tech` class
+- docs: Обновлен jsdoc для класса `Tech`
 - docs: Добавлена документация для `bem create elem` и `bem create mod`
 - docs: Добавлена документация для `bem create`
 - docs: Исправлен jsdoc для  instance метода `setBemBuildNode()` класса `BundleNode`
@@ -634,9 +634,9 @@
 
 - Require node 0.6.x
 - deps.js tech: Исправлен баг со сборкой файлов `deps.js`, появившихся в 0.5.2
-- Исправлен запуск `bem make` и `bem server` не в корне проекта
+- Исправлен запуск `bem make` и `bem server` не из корня проекта
 - logging: Вместо `console.log` добавлена короткая функция `flog()` для вывода отформатированных логов
-- logging: Логировать нормер версии `bem-tools` в `bem make` и `bem server`
+- logging: Логировать номер версии `bem-tools` в `bem make` и `bem server`
 - bem server: Показывать ссылку http на старте сервера
 - bem server: Исправлен вывод текущей директории в списке директорий
 - bem make: Подправлен уровень verbosity для сообщений сборки
@@ -662,9 +662,9 @@
 ----------------
 
 - В команды `bem make` и `bem server` добавлена опция `--verbosity`
-- bem make: Добавлено разноцветное логирование
+- bem make: Добавлено разноцветное логгирование
 - bem make: Внутренний рефакторинг
-- bem make: Поправлен баг с зависмостями во время сборки файлов `_*.ie.css`
+- bem make: Поправлен баг с зависимостями во время сборки файлов `_*.ie.css`
 - bem make: Fix child process handling in `BorschikNode` and `BemBuildNode`
 - API: Добавлен winston в качестве движка дл логирования
 
