@@ -102,8 +102,7 @@ As all the fields for the current entity can be read from its file name, the fol
 
 To declare dependencies on BEM entities which were missing during a build process, use ``mustDeps`` or ``shouldDeps``. Build system will add these declarations to a deps.js bundle flat list which will be used as a basis to build all technologies on all redefinition levels.
 
-``noDeps`` cancels dependencies on lower redefinition levels, preserving them only to the level the ``noDeps`` property is defined upon.
-For example, if you use two different block libraries which have blocks with the same name, you can cancel a dependency from one block on the current level and add another dependency for the second block on the current and all subsequent levels.
+``noDeps`` cancels dependencies on lower redefinition levels.
 
 ## Build details
 
