@@ -1,6 +1,14 @@
 bem-tools changelog
 ===================
 
+0.9.0 (stable)
+--------------
+- Use clean-css instead of CSSO
+— Update borschik to ~1.2.0
+- Build less and stylus techs to preliminary files
+- Add templates for `bem create`
+- Do not run tests on node.js 0.8
+
 0.8.1 (stable)
 --------------
 - Updated borschik version to [1.0.4](https://github.com/bem/borschik/blob/master/CHANGELOG.md#104)
