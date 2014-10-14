@@ -797,7 +797,7 @@ by a short name (for example `css`, `js`, etc) then the appropriate tech modules
 If such do exist of course. The full list of such techs can be found there [lib/techs](https://github.com/bem/bem-tools/tree/master/lib/techs).
 
 If you try to use a tech which was not defined explicitly and which is not bundled with `bem-tools` - the default tech
-will be used (see [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js)).
+will be used (see [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js)).
 
 The techs defined on the level are used:
 
@@ -831,7 +831,7 @@ exports.getConfig = function() {
 
 #### API
 
-Look for the documentation in the source code [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+Look for the documentation in the source code [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js).
 
 #### Creating tech module
 
@@ -846,7 +846,7 @@ that helps us to organize inheritance here.
 
 You only need to declare regular CommonJS module and export some of its
 functions to redefine them. By default your tech will derive from base `Tech` class
-defined in module [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+defined in module [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js).
 
 ```js
 exports.getCreateResult = function(...) {
