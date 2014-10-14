@@ -830,7 +830,7 @@ level/
 
 Если попытаться использовать технологии, которые явно не задекларированы, и которых при этом не существуют
 в `bem-tools` — будет использоваться реализация технологии по умолчанию
-(см. [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js)).
+(см. [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js)).
 
 Технологии, задекларированные на уровне используются:
 
@@ -865,7 +865,7 @@ exports.getConfig = function() {
 
 #### API
 
-Смотрите документацию в исходном файле [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+Смотрите документацию в исходном файле [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js).
 
 #### Создание модуля технологии
 
@@ -880,7 +880,7 @@ exports.getConfig = function() {
 
 Способ заключается в том, что вы создаёте обычный CommonJS модуль, из
 которого экспортируете несколько функций, которые перекроют методы базового
-класса `Tech` из модуля [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js).
+класса `Tech` из модуля [lib/tech/v1.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js).
 
 ```js
 exports.getCreateResult = function(...) {
