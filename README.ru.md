@@ -830,7 +830,7 @@ level/
 
 Если попытаться использовать технологии, которые явно не задекларированы, и которых при этом не существуют
 в `bem-tools` — будет использоваться реализация технологии по умолчанию
-(см. [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js)).
+(см. [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v1.js)).
 
 Технологии, задекларированные на уровне используются:
 
