@@ -1,16 +1,16 @@
 # Установка
-Вам потребуется [NodeJS 0.6+](http://nodejs.org/) или выше и [npm 1.2.14](http://npmjs.org/) или выше.
-После этого достаточно `npm -g install bem`.
+Для установки `bem-tools` вам потребуются [NodeJS 0.6+](http://nodejs.org/) (или выше) и [npm 1.2.14](http://npmjs.org/) (или выше).
+Для инсталляции пакета достаточно применить команду `npm -g install bem`.
 
- * Установить [nodejs](http://nodejs.org)
+Стандартная процедура установки:
 
-        https://github.com/joyent/node/wiki/Installation
+1. [Установите](https://github.com/joyent/node/wiki/Installation) `NodeJS`.
 
- * Установить [npm](http://npmjs.org)
+2. Установите `npm`:
 
         curl https://npmjs.org/install.sh | sudo sh
 
- * После установки сконфигурируйте `NODE_PATH`:
+3. После установки сконфигурируйте `NODE_PATH`:
 
         echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
 
@@ -18,27 +18,31 @@
 
         echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
- * Установить [bem-tools](https://github.com/bem/bem-tools)
+4. Установите [bem-tools](https://github.com/bem/bem-tools):
 
         sudo npm -g install bem
 
- * Для установки самой последней версии [bem-tools](https://github.com/bem/bem-tools) воспользуйтесь командой
+ * Для установки самой последней версии `bem-tools` воспользуйтесь командой
 
         sudo npm -g install bem@unstable
 
 ## bem-bl
 
-Если вы планируете использовать `bem` вместе с библиотекой блоков
-[bem-bl](https://github.com/bem/bem-bl), установите так же
-[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometa-js).
+Если вы планируете использовать БЭМ в связке с библиотекой блоков
+[bem-bl](http://ru.bem.info/libs/bem-bl/dev/), установите также
+[XJST](https://github.com/veged/xjst) и [OMetaJS](https://github.com/veged/ometa-js).
 
     sudo npm -g install xjst ometajs
 
 # Использование
-Всю информацию о параметрах использования можно получить с помощью `bem --help`.
-Для информации о конкретной команде и подкомманде: `bem COMMAND --help` и `bem COMMAND SUBCOMMAND --help`.
+Всю информацию о параметрах использования можно получить используя команду `bem --help`.
 
-## Shell completion
+Информация о конкретной команде или подкоманде:
+
+* `bem COMMAND --help`
+* `bem COMMAND SUBCOMMAND --help`.
+
+## Автодополнение в командной строке
 
 ### bash
 
@@ -46,14 +50,14 @@
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
-Если вы не используете `bash-completion`, можете добавить вывод `bem completion` себе в `.bashrc`, а затем перезагрузить:
+Если вы не используете `bash-completion`, добавьте вывод `bem completion` себе в `.bashrc` и выполните перезагрузку:
 
     bem completion >> ~/.bashrc
     source ~/.bashrc
 
 ### zsh
 
-Если вы используете `zsh`, можете добавить вывод `bem completion` себе в `.zshrc` и перезагрузите его:
+Если вы используете `zsh`, добавьте вывод `bem completion` себе в `.zshrc` и выполните перезагрузку:
 
     bem completion >> ~/.zshrc
     source ~/.zshrc

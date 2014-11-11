@@ -7,4 +7,3 @@ It allows you:
 * working with build declarations: merge, subtract and intersect them;
 * building the whole project using bem make command;
 * launching development server on the projects source tree using bem server command.
-
