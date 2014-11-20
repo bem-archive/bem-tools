@@ -1,3 +1,4 @@
+
 # deps.js — a technology to declare dependencies in BEM
 
 Building a page in different technologies is based on declaring BEM entities in a BEM tree.
@@ -96,7 +97,7 @@ As all the fields for the current entity can be read from its file name, the fol
 ```
 
 `mustDeps`, `shouldDeps`, and `noDeps` parameters accept these BEM entities as values: `block`, `elem`, `mods`. Alternatively, you can use an extended syntax where elements and modifiers can accept an array:
-  
+
   * `elems` (array) — allows to connect several block elements, as well as the block itself;
   * `mods` (object) — an object with arrays as key values.
 
@@ -106,9 +107,9 @@ To declare dependencies on BEM entities which were missing during a build proces
 
 ## Build details
 
-In BEM methodology, deps.js is a technology and, as such, it conforms to unified technology building rules. 
+In BEM methodology, deps.js is a technology and, as such, it conforms to unified technology building rules.
 
-By default, dependency description file is located in the block folder; its name corresponds to a block name, with an extra ``.deps.js`` extension. 
+By default, dependency description file is located in the block folder; its name corresponds to a block name, with an extra ``.deps.js`` extension.
 
 deps.js allows for defining dependencies on any block, element or modifier, in any technology.
 
@@ -132,7 +133,7 @@ You should only point once to ``{ block: button }`` in a BEM tree for the build 
 
 Building process is the same for any other required technology (e.g. JS, templates, documentation etc.).
 
-Let's assume that the BEM tree is changed in runtime, and in the user's browser, a `desktop.blocks/button` block includes an `e1` element from `common.blocks/button` block. 
+Let's assume that the BEM tree is changed in runtime, and in the user's browser, a `desktop.blocks/button` block includes an `e1` element from `common.blocks/button` block.
 
 Here is how we could define this dependency in `desktop.blocks/button/button.deps.js`:
 ```js

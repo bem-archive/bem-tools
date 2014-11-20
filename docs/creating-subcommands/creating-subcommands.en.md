@@ -23,7 +23,7 @@ module.exports = function() {
 ```
 
 For further examples and API reference of COA, see
-[project documentation](https://github.com/veged/coa/blob/master/README.md).
+[project documentation](https://github.com/veged/coa/tree/support/0.9.x/README.md).
 
 ## Using tpl-bem-command
 
