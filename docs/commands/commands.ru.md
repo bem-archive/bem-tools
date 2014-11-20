@@ -17,7 +17,7 @@
  * соглашения об именовании
  * ссылки на модули технологий
 
-[Пример](https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js) настройки ссылок на модули технологий (уровень `blocks-desktop`
+[Пример](https://github.com/bem/bem-bl/tree/support/0.9.x/blocks-desktop/.bem/level.js) настройки ссылок на модули технологий (уровень `blocks-desktop`
 библиотеки блоков `bem-bl`).
 
 
@@ -70,7 +70,7 @@
 или путь до модуля технологии.
 
 Названия технологий могут быть указаны в файле `.bem/level.js` уровня переопределения.
-[Пример файла](https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js).
+[Пример файла](https://github.com/bem/bem-bl/tree/support/0.9.x/blocks-desktop/.bem/level.js).
 
 Примеры реализации модулей технологий можно увидеть в [репозитории](https://github.com/bem/bem-tools/tree/support/0.9.x/lib/techs/v2).
 

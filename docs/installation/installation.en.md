@@ -1,5 +1,5 @@
 # Installation
-You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
+You need [NodeJS 0.8+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
 Then it's sufficient just to make `npm install bem`.
 
  * Install [nodejs](http://nodejs.org)
@@ -10,7 +10,7 @@ To work with bem-tools on Windows you need to have minimalist unix development e
 
  * Install [bem-tools](https://github.com/bem/bem-tools) globally or locally for particular project (which is preferable). Don't pay attention to WARN messages while installation.
 
-        sudo npm -g install bem
+        npm install bem
 
 or better add bem into ``package.json`` like this:
 
