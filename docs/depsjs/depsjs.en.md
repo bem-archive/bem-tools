@@ -1,3 +1,4 @@
+
 # deps.js — a technology to declare dependencies in BEM
 
 Building a page in different technologies is based on declaring BEM entities in a BEM tree.

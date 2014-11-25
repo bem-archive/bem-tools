@@ -1,5 +1,5 @@
 # Установка
-Для установки `bem-tools` вам потребуются [NodeJS 0.6+](http://nodejs.org/) (или выше) и [npm 1.2.14](http://npmjs.org/) (или выше).
+Для установки `bem-tools` вам потребуются [NodeJS 0.8+](http://nodejs.org/) (или выше) и [npm 1.2.14](http://npmjs.org/) (или выше).
 Для инсталляции пакета достаточно применить команду `npm -g install bem`.
 
 Стандартная процедура установки:
@@ -20,19 +20,11 @@
 
 4. Установите [bem-tools](https://github.com/bem/bem-tools):
 
-        sudo npm -g install bem
+        npm install bem
 
  * Для установки самой последней версии `bem-tools` воспользуйтесь командой
 
-        sudo npm -g install bem@unstable
-
-## bem-bl
-
-Если вы планируете использовать БЭМ в связке с библиотекой блоков
-[bem-bl](http://ru.bem.info/libs/bem-bl/dev/), установите также
-[XJST](https://github.com/veged/xjst) и [OMetaJS](https://github.com/veged/ometa-js).
-
-    sudo npm -g install xjst ometajs
+        npm install bem@unstable
 
 # Использование
 Всю информацию о параметрах использования можно получить используя команду `bem --help`.

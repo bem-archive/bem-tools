@@ -19,7 +19,7 @@ A `.bem` directory holds configuration of a current level:
 An example of technologies' links (this is `blocks-desktop` level of
 `bem-bl` block library):
 
-    https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
+    https://github.com/bem/bem-bl/tree/support/0.9.x/blocks-common/.bem/level.js
 
 #### Create new level of definition named `blocks` under current directory:
 
@@ -49,7 +49,7 @@ By default, a block has several techs: (`BEMHTML`, `CSS`, `JS`).
 
 #### Create a new block using concrete tech
 
-Flags `-t` `(-T)` are to create files of technologies you need:
+Flags `-t` and (`-T`) are to create files of technologies you need:
 
     bem create block -t deps.js b-my-block
         // Creates a block implementation in deps.js technology, ecxept of default techs.
@@ -63,11 +63,11 @@ Flags `-t` `(-T)` are to create files of technologies you need:
 The value of this flag may be either tech's name (e.g `CSS`) or a path to tech module.
 
 Tech names may be listed in `.bem/level.js` file of a level.
-E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
+E.g., https://github.com/bem/bem-bl/tree/support/0.9.x/blocks-common/.bem/level.js
 
 You can find the examples of tech modules in the repo:
 
-    https://github.com/bem/bem-tools/tree/master/lib/techs
+    https://github.com/bem/bem-tools/tree/support/0.9.x/lib/techs/v2
 
 #### Create element
 
@@ -135,7 +135,7 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 You can use either tech's name or a path to its module as a value of `-t` flag. This
 module says how to build a final file from a declaration.
 
-E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
+E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/support/0.9.x/lib/techs/v2/deps.js.js
 
 ### Create deps.js file from bemdecl.js
 
@@ -168,10 +168,7 @@ E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/mast
         -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
         -o pages/index -n index
 
-There is an example how pages are built using `bem build` in our test project that uses
-`bem-bl` block library: https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile
-
-## bem decl
+# bem decl
 
 `bem decl` is to work with declaration files. Thus,
 
@@ -234,7 +231,7 @@ which are affected by your changes will be rebuilt automatically.
 In the case your project has no static pages you can configure your backend server and production environment to retrieve
 the stylesheets and scripts from the bem server. bem server accepts connections via normal TCP socket and via UNIX domain socket.
 
-By default the current directory is considered as the project root. You can change it using the `--project (-r)` option.
+By default the current directory is considered as the project root. You can change it using the `--project` (`-r`) option.
 
 Default TCP port is 8080. You can change it using the `--port (-p)` option.
 

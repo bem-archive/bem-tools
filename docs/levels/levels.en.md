@@ -7,7 +7,7 @@ A level should have `.bem/level.js` configuration file which contains the meta-i
 * the meta-information for the build system;
 
 When the `bem create level` command is used to create a level the empty `.bem/level.js` file will be also created.
-Which means that this level is "standard" one. The logic for standard level is defined in the `Level` class within [lib/level.js](https://github.com/bem/bem-tools/blob/master/lib/level.js).
+Which means that this level is "standard" one. The logic for standard level is defined in the `Level` class within [lib/level.js](https://github.com/bem/bem-tools/tree/support/0.9.x/lib/level.js).
 
 As the `.bem/level.js` file is a CommonJS module it is easy to redefine the level's behavior. `bem-tools` creates a new class inherited from the standard `Level` class using export of this module as a class extention (under the hood the [inherit](https://github.com/dfilatov/node-inherit) module is used).
 
@@ -69,7 +69,7 @@ To define a list of the tech modules used on the level export the `getTechs()` f
 By default there is no any techs defined explicitly on a level. In the case some techs are used within such a level by a short name (for example `css`, `js`, etc) then the appropriate tech modules bundled with `bem-tools` are loaded.
 If such do exist of course. The full list of such techs can be found there [lib/techs](https://github.com/bem/bem-tools/tree/master/lib/techs).
 
-If you try to use a tech which was not defined explicitly and which is not bundled with `bem-tools` - the default tech will be used (see [lib/tech.js](https://github.com/bem/bem-tools/blob/master/lib/tech.js)).
+If you try to use a tech which was not defined explicitly and which is not bundled with `bem-tools` - the default tech will be used (see [lib/tech.js](https://github.com/bem/bem-tools/tree/support/0.9.x/lib/tech.js)).
 
 The techs defined on the level are used:
 
