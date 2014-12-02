@@ -8,7 +8,7 @@ Then it's sufficient just to make `npm install bem`.
 
 To work with bem-tools on Windows you need to have minimalist unix development environment. We recomend to install [git](http://git-scm.com/) which has built-in [MinGW](http://www.mingw.org/) as you'll probably need git in your further work anyway.
 
- * Install [bem-tools](https://github.com/bem/bem-tools) globally or locally for particular project (which is preferable). Don't pay attention to WARN messages while installation.
+ * Install [bem-tools](https://bem.info/tools/bem/bem-tools/) globally or locally for particular project (which is preferable). Don't pay attention to WARN messages while installation.
 
         sudo npm -g install bem
 

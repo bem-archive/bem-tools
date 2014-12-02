@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/bem.png)](http://badge.fury.io/js/bem)
 [![Dependency Status](https://david-dm.org/bem/bem-tools.png)](https://david-dm.org/bem/bem-tools)
 
-bem-tools is a toolkit to work with files based on [BEM methodology](http://bem.info/method/).
+bem-tools is a toolkit to work with files based on [BEM methodology](https://bem.info/method/).
 
 It allows you:
 
@@ -15,11 +15,11 @@ It allows you:
 
 See also:
 
-* [Installation](http://bem.info/tools/bem/installation/)
-* [Commands](http://bem.info/tools/bem/commands/)
-* [Levels](http://bem.info/tools/bem/levels/)
-* [Build customization](http://bem.info/tools/bem/customization/)
-* [Tech modules](http://bem.info/tools/bem/tech-modules/)
-* [Declaration of dependences into deps.js](http://bem.info/tools/bem/depsjs/)
-* [API](http://bem.info/tools/bem/api/)
-* [How to contribute](http://bem.info/tools/bem/contribute/)
+* [Installation](https://bem.info/tools/bem/bem-tools/installation/)
+* [Commands](https://bem.info/tools/bem/bem-tools/commands/)
+* [Levels](https://bem.info/tools/bem/bem-tools/levels/)
+* [Build customization](https://bem.info/tools/bem/bem-tools/customization/)
+* [Tech modules](https://bem.info/tools/bem/bem-tools/tech-modules/)
+* [Declaration of dependences into deps.js](https://bem.info/tools/bem/bem-tools/depsjs/)
+* [API](https://bem.info/tools/bem/bem-tools/api/)
+* [How to contribute](https://bem.info/tools/bem/bem-tools/contribute/)

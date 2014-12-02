@@ -17,10 +17,8 @@
  * соглашения об именовании
  * ссылки на модули технологий
 
-Пример настройки ссылок на модули технологий (уровень `blocks-desktop`
-библиотеки блоков `bem-bl`):
-
-    https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
+Смотрите [пример настройки ссылок на модули технологий](https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js) (уровень `blocks-desktop`
+библиотеки блоков `bem-bl`).
 
 #### Создание уровня переопределения blocks в текущей директории:
 
@@ -66,12 +64,9 @@
 В качестве значения флага может быть указано название технологии (например, `CSS`)
 или путь до модуля технологии.
 
-Названия технологий могут быть указаны в файле `.bem/level.js` уровня переопределения.
-Например, https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js
+Названия технологий могут быть указаны в файле `.bem/level.js` уровня переопределения ([пример](https://github.com/bem/bem-bl/blob/master/blocks-desktop/.bem/level.js))
 
-Примеры реализации модулей технологий можно увидеть в репозитории:
-
-    https://github.com/bem/bem-tools/tree/master/lib/techs
+Примеры реализации модулей технологий можно увидеть в [репозитории](https://github.com/bem/bem-tools/tree/support/0.9.x/lib/techs).
 
 #### Создание элемента блока
 
@@ -140,7 +135,7 @@
 Значением флага `-t` может быть как название технологии, так и полный путь до модуля
 технологии. В этом модуле указано, как именно по декларации собирается конечный файл.
 
-Например, модуль для `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
+Пример: [модуль для deps.js](https://github.com/bem/bem-tools/blob/support/0.9.x/lib/techs/deps.js.js).
 
 ### Создание файла deps.js по bemdecl.js
 
@@ -173,8 +168,7 @@
         -t bem-bl/blocks-desktop/i-bem/bem/techs/bemhtml.js \
         -o pages/index -n index
 
-Пример построения страниц при помощи `bem build` есть в демонстрационном
-проекте на блоках `bem-bl`: https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile
+Пример построения страниц при помощи `bem build` есть в [демонстрационном проекте на блоках bem-bl](https://github.com/toivonen/bem-bl-test/blob/master/GNUmakefile).
 
 ## bem decl
 
@@ -234,7 +228,7 @@
 
 По умолчанию корневым каталогом веб-сервера считается текущая директория. Вы можете указать нужный каталог с помощью
 ключа `--project (-r)`. Таким образом, если в корне есть файл `pages/about/main.css`, то он будет доступен из браузера
-по адресу http://localhost:8080/pages/about/main.css.
+по адресу `http://localhost:8080/pages/about/main.css`.
 
 TCP порт по умолчанию, который слушает сервер - 8080. Вы можете указать другой порт, используя ключ `--port (-p)`.
 
