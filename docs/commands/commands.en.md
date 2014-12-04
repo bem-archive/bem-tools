@@ -16,10 +16,8 @@ A `.bem` directory holds configuration of a current level:
  * naming convention
  * links to the technologies
 
-An example of technologies' links (this is `blocks-desktop` level of
-`bem-bl` block library):
-
-    https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
+An example of technologies' links (it is a [blocks-desktop level](https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js) of
+`bem-bl` block library).
 
 #### Create new level of definition named `blocks` under current directory:
 
@@ -62,12 +60,9 @@ Flags `-t` `(-T)` are to create files of technologies you need:
 
 The value of this flag may be either tech's name (e.g `CSS`) or a path to tech module.
 
-Tech names may be listed in `.bem/level.js` file of a level.
-E.g., https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
+Tech names may be listed in `.bem/level.js` file of a level ([see example](https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js)).
 
-You can find the examples of tech modules in the repo:
-
-    https://github.com/bem/bem-tools/tree/master/lib/techs
+You can find the examples of tech modules in the [repo](https://github.com/bem/bem-tools/tree/support/0.9.x/lib/techs).
 
 #### Create element
 
@@ -133,9 +128,7 @@ Create modifier named `mod` having values `val1` and `val2` for element `elem` o
 `bem build` command builds page files in different techs, according to a page declaration.
 
 You can use either tech's name or a path to its module as a value of `-t` flag. This
-module says how to build a final file from a declaration.
-
-E.g., this is a module for `deps.js`: https://github.com/bem/bem-tools/blob/master/lib/techs/deps.js.js
+module says how to build a final file from a declaration (see [module for deps.js](https://github.com/bem/bem-tools/blob/support/0.9.x/lib/techs/deps.js.js) for example).
 
 ### Create deps.js file from bemdecl.js
 

@@ -2,7 +2,7 @@
 
 ## API
 
-Look for the documentation in the source code [lib/tech/v2.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v2.js) or read [an article on how to write your own techs](http://ru.bem.info/tools/bem/bem-tools/tech-modules/) (Russian only).
+Look for the documentation in the source code [lib/tech/v2.js](https://github.com/bem/bem-tools/blob/support/0.9.x/lib/tech/v2.js) or read an article on [how to write your own techs](https://ru.bem.info/tools/bem/bem-tools/tech-modules/) (Russian only).
 
 ## Creating tech module
 
@@ -17,7 +17,7 @@ that helps us to organize inheritance here.
 
 You only need to declare regular CommonJS module and export some of its
 functions to redefine them. By default your tech will derive from base `Tech` class
-defined in module [lib/tech/v2.js](https://github.com/bem/bem-tools/blob/master/lib/tech/v2.js).
+defined in module [lib/tech/v2.js](https://github.com/bem/bem-tools/blob/support/0.9.x/lib/tech/v2.js).
 
 ```js
 exports.getCreateResult = function(...) {

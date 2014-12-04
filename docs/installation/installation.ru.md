@@ -18,19 +18,19 @@
 
         echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
 
- * Установить [bem-tools](https://github.com/bem/bem-tools)
+ * Установить [bem-tools](https://ru.bem.info/tools/bem/bem-tools/)
 
         sudo npm -g install bem
 
- * Для установки самой последней версии [bem-tools](https://github.com/bem/bem-tools) воспользуйтесь командой
+ * Для установки самой последней версии [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) воспользуйтесь командой
 
         sudo npm -g install bem@unstable
 
 ## bem-bl
 
 Если вы планируете использовать `bem` вместе с библиотекой блоков
-[bem-bl](https://github.com/bem/bem-bl), установите так же
-[xjst](https://github.com/veged/xjst) и [ometajs](https://github.com/veged/ometa-js).
+[bem-bl](https://ru.bem.info/libs/bem-bl/), установите также
+[XJST](http://en.bem.info/tools/templating-engines/xjst/) и [OmetaJS](https://github.com/veged/ometa-js).
 
     sudo npm -g install xjst ometajs
 

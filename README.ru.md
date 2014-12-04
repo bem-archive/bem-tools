@@ -1,6 +1,6 @@
 # bem-tools
 
-bem-tools — это набор инструментов для работы с файлами по [БЭМ-методологии](http://ru.bem.info/method/).
+bem-tools — это набор инструментов для работы с файлами по [БЭМ-методологии](https://ru.bem.info/method/).
 
 Он позволяет:
 
@@ -12,11 +12,11 @@ bem-tools — это набор инструментов для работы с 
 
 See also:
 
-* [Установка](http://ru.bem.info/tools/bem/installation/)
-* [Команды](http://ru.bem.info/tools/bem/commands/)
-* [Уровни переопределения](http://ru.bem.info/tools/bem/levels/)
-* [Кастомизация сборки](http://ru.bem.info/tools/bem/customization/)
-* [Модули технологий](http://ru.bem.info/tools/bem/tech-modules/)
-* [Декларация зависимостей в deps.js](http://ru.bem.info/tools/bem/depsjs/)
-* [API](http://ru.bem.info/tools/bem/api/)
-* [Участие в разработке](http://ru.bem.info/tools/bem/contribute/)
+* [Установка](https://ru.bem.info/tools/bem/bem-tools/installation/)
+* [Команды](https://ru.bem.info/tools/bem/bem-tools/commands/)
+* [Уровни переопределения](https://ru.bem.info/tools/bem/bem-tools/levels/)
+* [Кастомизация сборки](https://ru.bem.info/tools/bem/bem-tools/customization/)
+* [Модули технологий](https://ru.bem.info/tools/bem/bem-tools/tech-modules/)
+* [Декларация зависимостей в deps.js](https://ru.bem.info/tools/bem/bem-tools/depsjs/)
+* [API](https://ru.bem.info/tools/bem/bem-tools/api/)
+* [Участие в разработке](https://ru.bem.info/tools/bem/bem-tools/contribute/)
