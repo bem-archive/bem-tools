@@ -12,4 +12,4 @@ You can check the level of the code coverage by tests using the command:
 
     make test-cover
 
-Then open `coverage.html` file in a browser. Code lines which have not been executed during the tests run will be marked red.
+Then open `coverage.html` file in a browser. Code lines which have not been executed during the tests will be marked red.

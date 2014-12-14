@@ -1,26 +1,30 @@
 # Installation
-You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
-Then it's sufficient just to make `npm install bem`.
+You need [NodeJS 0.8+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
+Then just run `npm install bem`.
 
  * Install [nodejs](http://nodejs.org)
 
         https://github.com/joyent/node/wiki/Installation
 
-To work with bem-tools on Windows you need to have minimalist unix development environment. We recomend to install [git](http://git-scm.com/) which has built-in [MinGW](http://www.mingw.org/) as you'll probably need git in your further work anyway.
+* Install [npm](http://npmjs.org):
 
- * Install [bem-tools](https://bem.info/tools/bem/bem-tools/) globally or locally for particular project (which is preferable). Don't pay attention to WARN messages while installation.
+        curl https://npmjs.org/install.sh | sudo sh
 
-        sudo npm -g install bem
+ * After installation configure `NODE_PATH`:
 
-or better add bem into ``package.json`` like this:
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
 
-````js
-{
-  "dependencies": {
-    "bem": "~0.5.25"
-  }
-}
-````
+    or
+
+        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
+
+ * Install [bem-tools](https://bem.info/tools/bem/bem-tools/):
+
+        npm install bem
+
+ * To install the latest version of `bem-tools` run:
+
+        npm install bem@unstable
 
 ## Usage
 Get the list of commands with `bem --help`.
@@ -32,14 +36,14 @@ For quick start consider to checkout [bem project stub](https://github.com/bem/p
 
 ### bash
 
-To make completions for bem-tools available in your bash, run following
-command (ensure that you have bash-completion installed, first). Run this
+To make completions for `bem-tools` available in your bash, run following
+command (ensure that you have bash-completion installed, first):
 
     bem completion > /path/to/etc/bash_completion.d/bem
 
-and restart bash.
+Restart bash afterwards.
 
-If you aren't using `bash-completion`, you can add `bem completion` to your `.bashrc` and reload:
+If you do not use `bash-completion`, you can add `bem completion` to your `.bashrc` and reload:
 
     bem completion >> ~/.bashrc
     source ~/.bashrc
