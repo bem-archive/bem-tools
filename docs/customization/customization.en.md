@@ -32,24 +32,24 @@ exports.getConfig = function() {
 };
 ```
 
-`getTechs()` returns an object with used techs. Object properties (for example `'bemjson.js'`, `'js'`, `'bemhtml.js'`) define the
-tech names, object values specify the paths to the appropriate tech files (`''`, `'js-i'`, `'../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'`).
-A path can be relative or absolute, it can be empty, or it can specify just a file name. When the latter case is used the
-tech will be considered being standard (bundled with bem-tools) and the file will be looked up in the `[bem]/lib/techs` folder.
+`getTechs()` returns an object with used techs. Object properties (for example, `'bemjson.js'`, `'js'`, `'bemhtml.js'`) define the
+tech names. Object values specify the paths to the appropriate tech files (`''`, `'js-i'`, `'../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js'`).
+A path can be relative or absolute, it can be empty, or it can specify just a file name. In latter case, the
+tech will be considered being standard (bundled with `bem-tools`) and the file will be looked up in the `[bem]/lib/techs` folder.
 
 `getConfig()` function returns an object with the `bundleBuildLevels` property, containing the array of the used block levels.
 
-Another (optional) configuration file is `.bem/make.js` located in the project root. Core of the build system is a graph of nodes, each of which executes own part of the whole build process. `make.js` allows you to adjust nodes behavior and change build graph.
+Another (optional) configuration file is `.bem/make.js` located in the project root. Core of the build system is a graph of nodes, each of which executes its own part of the whole build process. `make.js` allows you to adjust nodes behavior and change build graph.
 
 There are several standard node types:
 
- * `Node` - base node, implements basic functionality. All other nodes are inherited from this one;
- * `LibraryNode` - retrieves external libraries;
- * `LevelNode` - inspects the contents of a level and constructs graph branch accordingly to build the level;
- * `BundlesLevelNode` - inherits from `LevelNode` and builds the bundles levels;
- * `BundleNode` - constructs graph branch for a bundle;
- * `MergedBundleNode` - builds merged bundle (aka common bundle);
- * `BorschikNode` - processes files with the `borschik` utility, `csso` and `uglifyjs`;
+ * `Node` - base node, implements basic functionality. All other nodes are inherited from this one.
+ * `LibraryNode` - retrieves external libraries.
+ * `LevelNode` - inspects the contents of a level and constructs graph branch accordingly, to build the level.
+ * `BundlesLevelNode` - inherits from `LevelNode` and builds the bundles levels.
+ * `BundleNode` - constructs graph branch for a bundle.
+ * `MergedBundleNode` - builds merged bundle (aka common bundle).
+ * `BorschikNode` - processes files with the `borschik` utility, `CSSO` and `UglifyJS`.
  * `Arch` - builds initial graph, which by default consists of `LibraryNode`, `BundlesLevelNode` and `LevelNode` nodes.
 
 To alter build system behavior for your project you need to alter behavior of the nodes. This can be achieved by adding `MAKE.decl()` calls in the `.bem/make` file. `MAKE.decl()` is a helper function which accepts two arguments. First one is the node name which we want to change, second - an object with redefining methods.
@@ -69,7 +69,9 @@ Node classes have some fundamental methods, which take care about the build proc
 
 ## Sample configuration files for some typical tasks
 
-### Build of static HTML, CSS, JS, BEMHTML templates on the level `pages`. BEMJSON file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from `bem-bl`.
+### Build of static HTML, CSS, JS, BEMHTML templates on the pages level
+
+In this case, BEMJSON file is used as a source file. Also blocks level `blocks` are included, as well as `blocks-common` and `blocks-desktop` from `bem-bl`.
 
 `pages/.bem/level.js`
 ```js
@@ -140,7 +142,9 @@ MAKE.decl('BundleNode', {
 ```
 
 
-### Build of CSS, JS, BEMHTML templates on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from `bem-bl`.
+### Build of CSS, JS, BEMHTML templates on the pages level
+
+In this case, `bemdecl` declaration file is used as a source file. Also blocks level `blocks` are included, as well as `blocks-common` and `blocks-desktop` from `bem-bl`.
 
 `pages/.bem/level.js`
 ```js
@@ -206,7 +210,9 @@ MAKE.decl('BundleNode', {
 });
 ```
 
-### Build of localized JS and CSS, BEMHTML templates on the level `pages`. `bemdecl` declaration file is used as a source file. Also using blocks level `blocks`, and also `blocks-common` and `blocks-desktop` from `bem-bl`.
+### Build of localized JS and CSS, BEMHTML templates on the pages level
+
+In this case, `bemdecl` declaration file is used as a source file. Also blocks level `blocks` are included, as well `blocks-common` and `blocks-desktop` from `bem-bl`.
 
 ```js
 // pages/.bem/level.js
@@ -307,15 +313,14 @@ MAKE.decl('Arch', {
 });
 ```
 
-
 Where:
 
 * `'Arch'` - node class name which we want to redefine. Arch builds initial build graph.
-* `getLibraries` - a method of the `Arch` class, which returns the associative array of the used block libraries.
+* `getLibraries` - a method of the `Arch` class which returns the associative array of the used block libraries.
 * `'bem-bl'` — the name of the library and the folder where it will be copied to.
-* `type` - the type of the library source. We use git in the example, so the library will be checked out of a git repository.
-Possible values are: `'git'`, `'svn'`, `'symlink'`. svn works the same as git, but with svn repositories. `symlink` - creates a symbolic link in the project folder to the library folder. The library path is specified by the `relative` property.
-* `url` - URL to the svn/git repository.
+* `type` - the type of the library source. We use `git` in the example, so the library will be checked out of a Git repository.
+Possible values are: `'git'`, `'svn'`, `'symlink'`. `svn` works the same as `git`, but with SVN repositories. `symlink` - creates a symbolic link in the project folder to the library folder. The library path is specified by the `relative` property.
+* `url` - URL to the SVN/Git repository.
 
 Also you can use shorter code:
 
@@ -398,7 +403,7 @@ For every bundle the following target files are built by default:
  * `_*.ie.css`
  * `_*.js`
 
-and the intermediate:
+plus the intermediate files:
 
  * `.bemdecl.js`
  * `.deps.js`
@@ -428,11 +433,11 @@ MAKE.decl('BundleNode', {
 });
 ```
 
-**IMPORTANT:** Techs in the list should be in the order of dependency on each other. Tech B, which depends on A, should go **bellow** A. The source file tech should also be in the list, for example `bemjson.js`.
+**NB** Techs in the list should be in the order of dependency on each other. Tech `B`, which depends on `A`, should go **bellow** `A`. The source file tech should also be in the list, for example `bemjson.js`.
 
 ### The merged bundles
 
-The merged bundle — a bundle which includes the declarations of all bundles on the level. So for example CSS in a merged bundle will contain the styles from all of the bundles.
+The merged bundle is a bundle that includes the declarations of all bundles on the level. For example CSS in a merged bundle will contain the styles from all of the bundles.
 
 The following code will enable the build of the merged bundles for all levels:
 
@@ -458,7 +463,7 @@ MAKE.decl('BundlesLevelNode', {
 });
 ```
 
-The `getLevelPath()` method returns the relative path for the level. We can use it to decide should we enable some special logic for current level or not.
+The `getLevelPath()` method returns the relative path to the level. We can use it to decide whether we should enable some special logic for current level or not.
 
 To change the merged bundle name use the code:
 
@@ -476,10 +481,10 @@ MAKE.decl('BundlesLevelNode', {
 
 By changing the `YENV` environment variable value, you can switch between the production and development builds.
 
-In production mode static files are processed with the `borschik` utility. It expands the include directives and puts the result content in the file with the `_` prefix. For example, `index.css` has the directives to include `blocks/block1.css` and `blocks/block2.css`. `_index.css` will be created with the content of both `block1.css` and `block2.css`. Also the
-`css` files are optimized with the `csso` utility, the `js` files are optimized with `uglifyjs`. In development mode `borschik` is used only, no optimizations take the place.
+In production mode static files are processed with the `borschik` utility. It expands the include directives and puts the result content in the file with the `_` prefix. For example, `index.css` has the directives to include `blocks/block1.css` and `blocks/block2.css`. `_index.css` will be created with the content of both `block1.css` and `block2.css`. Also, the
+CSS files are optimized with the [CSSO](https://bem.info/tools/optimizers/csso/) utility, the JS files are optimized with UglifyJS. In development mode `borschik` is used only, no optimizations take the place.
 
-The default mode is development. To use the production mode set `YENV` to `production`.
+The default mode is `development`. To use the production mode set `YENV` to `production`.
 
 Environment variables can be set in `.bem/make.js`, for example:
 

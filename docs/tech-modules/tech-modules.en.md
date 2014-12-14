@@ -80,7 +80,7 @@ exports.Tech = INHERIT(BaseTech, {
 });
 ```
 
-If you need to base your tech on an existing one written in a simple way use
+If you need to base your tech on an existing one written in a simple way, use
 `getTechClass()` function to get its class. We recommend to use `getTechClass()`
 function all the time to not depend on tech implementation.
 
