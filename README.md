@@ -1197,6 +1197,10 @@ Q.when(
 );
 ```
 
+Notice:  
+If you would like use BEM.build with tech, that extends not default tech, like, for example, browser.js (vanilla.js),
+you should point `outputLevel` with .bem/level.js where all this techs resolved by path in `exports.getTechs` method.
+
 #### BEM.decl
 
 Commands to work with declarations.
