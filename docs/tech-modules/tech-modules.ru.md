@@ -804,7 +804,7 @@ exports.techMixin = {
 
 **Поведение в базовой технологии:** На основании префиксов и суффикса метод создает массив путей собираемых файлов. Проверяет, существуют ли файлы из массива. Запускает для существующих файлов метод `getBuildResultChunk(relPath, path, suffix)`, формирующий фрагмент содержимого бандла для текущего файла. Накапливает результаты выполнения метода `getBuildResultChunk(relPath, path, suffix)` в переменной `res[suffix]` и возвращает ее в виде промиса.
 
-**Пример:** В качестве примера рассмотрим модуль технологии [xml.js](https://github.com/eprev/eprev.github.io/blob/5bc7b59a3f396b4ab05f39b480f46a71879fb32b/.bem/techs/xml.js). Метод `getBuildResult(prefixes, suffix, outputDir, outputName)` переопределен в модуле таким образом, что отдельные фрагменты данных помещаются в конструкцию `<fest:template xmlns:fest="http://fest.mail.ru">` ... `</fest:template>`, задающую пространство имен XML.
+**Пример:** В качестве примера рассмотрим модуль технологии xml.js. Метод `getBuildResult(prefixes, suffix, outputDir, outputName)` переопределен в модуле таким образом, что отдельные фрагменты данных помещаются в конструкцию `<fest:template xmlns:fest="http://fest.mail.ru">` ... `</fest:template>`, задающую пространство имен XML.
 
 ```js
 getBuildResult: function (prefixes, suffix, outputDir, outputName) {
