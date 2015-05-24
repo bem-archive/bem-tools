@@ -1,18 +1,20 @@
 {
   "name": "bem",
   "description": "BEM Tools",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "homepage": "http://github.com/bem/bem-tools",
   "author": "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
   "maintainers": [
-    "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
-    "Sergey Belov <peimei@ya.ru> (http://github.com/arikon)"
+    "Sergey Berezhnoy <veged@mail.ru> (https://github.com/veged)",
+    "Sergey Belov <peimei@ya.ru> (https://github.com/arikon)",
+    "Vladimir Grinenko <i@tadatuta.com> (https://github.com/tadatuta)"
   ],
   "contributors": [
     "Sergey Berezhnoy <veged@mail.ru> (http://github.com/veged)",
     "Sergey Belov <peimei@ya.ru> (http://github.com/arikon)",
     "Varvara Stepanova <toivonen@toivonen.ru> (http://github.com/toivonen)",
-    "Vladimir Alaev <scf2k4@gmail.com> (http://github.com/scf2k)"
+    "Vladimir Alaev <scf2k4@gmail.com> (http://github.com/scf2k)",
+    "Vladimir Grinenko <i@tadatuta.com> (https://github.com/tadatuta)"
   ],
   "bugs": {
     "url": "http://github.com/bem/bem-tools/issues"
@@ -28,24 +30,25 @@
     "bem": "./bin/bem"
   },
   "dependencies": {
-    "coa": "~0.4.0",
-    "q": "~0.9.7",
-    "qq": "~0.3.4",
-    "q-io": "~1.10.3",
-    "mime": "~1.2.5",
-    "lodash": "~2.2.1",
-    "inherit": "~1.0.0",
-    "borschik": "~1.2.0",
-    "borschik-tech-cleancss": "~1.0.0",
     "apw": "~0.3.14",
-    "winston": ">= 0.5.0",
-    "dom-js": "*",
-    "mkdirp": "~0.3.5",
-    "node.extend": "~1.0.0",
-    "colors": "~0.6.0",
     "benchmark": "~1.0.0",
+    "borschik": "~1.3.2",
+    "borschik-tech-cleancss": "~2.0.1",
     "cli-table": "~0.3.0",
-    "reqf": "~1.0.0"
+    "coa": "~1.0.1",
+    "colors": "~0.6.0",
+    "dom-js": "~0.0.9",
+    "enb": "^0.15.0",
+    "inherit": "~1.0.0",
+    "lodash": "~2.2.1",
+    "mime": "~1.2.5",
+    "mkdirp": "~0.5.1",
+    "node.extend": "~1.0.0",
+    "q": "~0.9.7",
+    "q-io": "~1.10.3",
+    "qq": "~0.3.4",
+    "reqf": "~1.0.0",
+    "winston": ">= 0.5.0"
   },
   "devDependencies": {
     "ometajs": "~3.2.4",
