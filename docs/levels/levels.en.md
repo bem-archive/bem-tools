@@ -1,4 +1,4 @@
-# Level (.bem/level.js)
+# Levels
 
 A level should have `.bem/level.js` configuration file which contains the meta-information about the level:
 
