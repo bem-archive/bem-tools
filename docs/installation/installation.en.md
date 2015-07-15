@@ -1,4 +1,5 @@
-# Installation
+# Installation of bem-tools
+
 You need [NodeJS 0.8+](http://nodejs.org/) or later and [npm 1.2.14](http://npmjs.org/) or later.
 Then just run `npm install bem`.
 
