@@ -1,4 +1,4 @@
-# Build customization
+# Customization
 
 There is a default build behavior programmed in the build system. The configuration files allow you to adjust it a little or change it completely.
 To make `bem make` work you should have `.bem/level.js` file within your levels. It should contain the `getTechs()` function, which returns object with the tech definitions used on the level.
