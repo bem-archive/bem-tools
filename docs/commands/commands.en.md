@@ -1,3 +1,5 @@
+# Commands
+
 ## bem create
 
 You can create following entities using `bem create`:
