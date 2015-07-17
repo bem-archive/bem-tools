@@ -2,6 +2,7 @@ bem-tools changelog
 ===================
 
 0.10.0 (stable)
+---------------
 - ENB is used as a fallback for `bem make` and `bem server`
 - Support for native `bem make` config is deprecated and will be removed in next version
 - Updated npm dependencies
