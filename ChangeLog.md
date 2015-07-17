@@ -1,6 +1,12 @@
 bem-tools changelog
 ===================
 
+0.10.0 (stable)
+- ENB is used as a fallback for `bem make` and `bem server`
+- Support for native `bem make` config is deprecated and will be removed in next version
+- Updated npm dependencies
+- Run tests on node.js 0.12 and io.js
+
 0.9.0 (stable)
 --------------
 - Use clean-css instead of CSSO

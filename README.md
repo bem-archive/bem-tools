@@ -2,40 +2,9 @@
 Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
-You need [NodeJS 0.6+](http://nodejs.org/) or later and [npm 1.x](http://npmjs.org/).
-After this it suffices `npm -g install bem`.
+You need [NodeJS 0.10+](http://nodejs.org/) or later and [npm 2.x+](http://npmjs.org/).
 
- * Install [nodejs](http://nodejs.org)
-
-        https://github.com/joyent/node/wiki/Installation
-
- * Install [npm](http://npmjs.org)
-
-        curl http://npmjs.org/install.sh | sudo sh
-
- * After installation configure `NODE_PATH`:
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.bashrc && . ~/.bashrc
-
-    or
-
-        echo 'export NODE_PATH="'$(npm root -g)'"'>> ~/.zshrc && . ~/.zshrc
-
- * Install [bem-tools](https://github.com/bem/bem-tools)
-
-        sudo npm -g install bem
-
- * Use this command [bem-tools](https://github.com/bem/bem-tools) to install the development version
-
-        sudo npm -g install bem@unstable
-
-### bem-bl
-
-If you are going to use `bem` with
-[bem-bl](https://github.com/bem/bem-bl) block library, you should also install
-[XJST](https://github.com/veged/xjst) and [OmetaJS](https://github.com/veged/ometa-js).
-
-    sudo npm -g install xjst ometajs
+Run `npm install bem` to install `bem-tools` locally.
 
 ## Usage
 Get the list of commands with `bem --help`.
@@ -280,6 +249,8 @@ You may use it to create a bundle that you request by application.
 ##### bem make
 `make` command implements the build process of the BEM projects. You don't have to write your own scripts or makefiles (for GNU make or other build system) to build your BEM project.
 
+Since `0.10.0` `bem make` also supports `enb make` under the hood which is recomended way to build your projects.
+
 During the build `bem make`
 
  * fetches the block libraries
@@ -310,7 +281,13 @@ When requested URL is mapped to a directory, the server will check if there is a
 In the case one of these is true the content of the file will be returned to browser. The directory content listing will be returned
 otherwise.
 
+Since `0.10.0` `bem server` also supports `enb server` under the hood which is recomended way to build your projects.
+
 #### Build configuration
+
+Since `0.10.0` `bem make` and `bem server` also supports `ENB` under the hood which is recomended way to build your projects. So for build configuration please refer [ENB documentation](https://github.com/enb-make/enb).
+
+The info about configuration bellow is deprecated and will be removed in the next version.
 
 There is a default build behavior programmed in the build system. The configuration files allow to adjust it a little or change it completely.
 To make `bem make` work you should have `.bem/level.js` file within your levels. It should contain the `getTechs()` function, 
