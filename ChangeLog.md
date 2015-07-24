@@ -5,6 +5,7 @@ bem-tools changelog
 ---------------
 - ENB is used as a fallback for `bem make` and `bem server`
 - Support for native `bem make` config is deprecated and will be removed in next version
+- Support for `require` in BEMJSON
 - Updated npm dependencies
 - Run tests on node.js 0.12 and io.js
 
