@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+0.10.1 (stable)
+---------------
+- Updated `enb` to ^0.17.2
+
 0.10.0 (stable)
 ---------------
 - ENB is used as a fallback for `bem make` and `bem server`
