@@ -46,7 +46,7 @@
 
 ### zsh
 
-Если вы используете `zsh`, добавьте вывод `bem completion` себе в `.zshrc` и перезагрузить его:
+Если вы используете `zsh`, добавьте вывод `bem completion` себе в `.zshrc` и перезагрузите его:
 
     bem completion >> ~/.zshrc
     source ~/.zshrc
