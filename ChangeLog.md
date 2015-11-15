@@ -1,6 +1,10 @@
 bem-tools changelog
 ===================
 
+0.10.2 (stable)
+---------------
+- Updated `enb` to ^1.1.0
+
 0.10.1 (stable)
 ---------------
 - Updated `enb` to ^0.17.2
