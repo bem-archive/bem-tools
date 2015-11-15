@@ -1,6 +1,6 @@
 {
   "name": "bem",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "dependencies": {
     "apw": {
       "version": "0.3.14",
