@@ -38,7 +38,7 @@
     "coa": "~1.0.1",
     "colors": "~0.6.0",
     "dom-js": "~0.0.9",
-    "enb": "^0.17.2",
+    "enb": "^1.1.0",
     "inherit": "~1.0.0",
     "lodash": "~2.2.1",
     "mime": "~1.2.5",
@@ -68,7 +68,7 @@
     "test-cover": "make test-cover"
   },
   "engines": {
-    "node": ">= 0.6.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.2.32"
   },
   "npm2debian": {
