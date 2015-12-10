@@ -32,6 +32,11 @@ config.plugins.forEach(function(plugin) {
 });
 
 bem.cmd().name('install').apply(require('./commands/install')).end();
+bem.act(function(opts, args) {
+    if (!Object.keys(opts).length && !Object.keys(args).length) {
+        return this.usage();
+    }
+})
 
 bem.run(process.argv.slice(2));
 
