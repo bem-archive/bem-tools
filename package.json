@@ -1,0 +1,17 @@
+{
+  "name": "bem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coa": "^1.0.1",
+    "find-config": "^0.3.0",
+    "npm": "^2.14.14",
+    "os-homedir": "^1.0.1"
+  }
+}
