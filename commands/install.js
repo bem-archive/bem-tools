@@ -8,13 +8,18 @@ module.exports = function() {
             .name('name').title('Name')
             .end()
         .act(function(opts, args) {
-            var self = this;
+            var self = this,
+                name = args.name;
 
-            install(args.name, function(err, data) {
+            install(name, function(err, data) {
                 // TODO: reject
                 if (err) return console.log(err);
 
-                extendConfig.installPlugin(args.name);
+                extendConfig.installPlugin(name.indexOf('/') < 0 ?
+                    name : {
+                        name: name.replace(/\/$/, '').split('/').pop().replace(/^bem-tools-/, ''),
+                        path: name
+                    });
             });
         })
         .end();
