@@ -1,5 +1,8 @@
+const PLUGIN_PREFIX = 'bem-tools-';
+
 var path = require('path'),
-    bemConf = require('bem-config');
+    npmls = require('npmls'),
+    uniq = require('lodash').uniq;
 
 var bem = require('coa').Cmd()
     .name(process.argv[1])
@@ -16,44 +19,22 @@ var bem = require('coa').Cmd()
         })
         .end();
 
-var config = bemConf().extended;
-config.plugins || (config.plugins = []);
+var plugins = uniq(npmls(true).concat(npmls()).filter(function(module) {
+    return module.indexOf(PLUGIN_PREFIX) === 0;
+}));
 
-config.plugins.forEach(function(plugin) {
-    if (typeof plugin === 'string') {
-        try {
-            plugin = {
-                name: plugin,
-                path: require.resolve(path.join('bem-tools-' + plugin, 'cli'))
-            };
-        } catch(err) {
-            console.log(err);
-            console.error('WARN: Plugin `' + plugin + '` not found');
-            return;
-        }
-    }
-
-    if (plugin.path.indexOf('cli.js') < 0) {
-        plugin.path = path.join(plugin.path, 'cli');
-    }
-
-    var pluginModule;
+plugins.forEach(function(plugin) {
+    var commandName = plugin.replace(PLUGIN_PREFIX, '');
 
     try {
-        pluginModule = require(plugin.path);
-    } catch(err) {
-        console.error('WARN: Plugin `' + plugin.name + '` not found');
-        return;
+        var pluginModule = require(path.join(plugin, 'cli'));
+        bem.cmd().name(commandName).apply(pluginModule).end();
+    } catch (err) {
+        console.error(err);
     }
-
-    bem.cmd().name(plugin.name).apply(pluginModule).end();
 });
 
-['install', 'uninstall'].forEach(function(cmd) {
-    bem.cmd().name(cmd).apply(require('./commands/' + cmd)).end();
-});
-
-bem.act(function(opts, args) {
+dfsdfbem.act(function(opts, args) {
     if (!Object.keys(opts).length && !Object.keys(args).length) {
         return this.usage();
     }
