@@ -16,7 +16,10 @@ var bem = require('coa').Cmd()
         })
         .end();
 
-bemConf().extended.plugins.forEach(function(plugin) {
+var config = bemConf().extended;
+config.plugins || (config.plugins = []);
+
+config.plugins.forEach(function(plugin) {
     if (typeof plugin === 'string') {
         try {
             plugin = {
