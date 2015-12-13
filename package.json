@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bem-config": "bem-incubator/bem-config",
     "coa": "^1.0.1",
     "find-config": "^0.3.0",
     "npm": "^2.14.14",

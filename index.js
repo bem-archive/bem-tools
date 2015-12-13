@@ -1,5 +1,5 @@
 var path = require('path'),
-    config = require('./lib/get-config');
+    bemConf = require('bem-config');
 
 var bem = require('coa').Cmd()
     .name(process.argv[1])
@@ -16,11 +16,11 @@ var bem = require('coa').Cmd()
         })
         .end();
 
-config.plugins.forEach(function(plugin) {
+bemConf().extended.plugins.forEach(function(plugin) {
     if (typeof plugin === 'string') {
         plugin = {
             name: plugin,
-            path: require.resolve('bem-tools-' + plugin)
+            path: require.resolve(path.join('bem-tools-' + plugin, 'cli'))
         };
     }
 
@@ -31,7 +31,10 @@ config.plugins.forEach(function(plugin) {
     bem.cmd().name(plugin.name).apply(require(plugin.path)).end();
 });
 
-bem.cmd().name('install').apply(require('./commands/install')).end();
+['install', 'uninstall'].forEach(function(cmd) {
+    bem.cmd().name(cmd).apply(require('./commands/' + cmd)).end();
+});
+
 bem.act(function(opts, args) {
     if (!Object.keys(opts).length && !Object.keys(args).length) {
         return this.usage();
