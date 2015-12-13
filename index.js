@@ -4,7 +4,7 @@ var path = require('path'),
 var bem = require('coa').Cmd()
     .name(process.argv[1])
     .title(['Tools to work with files written using the BEM methodology.', '' +
-        'See https://bem.info for more info.'].join('\n'))
+        'See https://bem.info for more info.', ''].join('\n'))
     .helpful()
     .opt()
         .name('version').title('Version')
