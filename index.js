@@ -18,17 +18,32 @@ var bem = require('coa').Cmd()
 
 bemConf().extended.plugins.forEach(function(plugin) {
     if (typeof plugin === 'string') {
-        plugin = {
-            name: plugin,
-            path: require.resolve(path.join('bem-tools-' + plugin, 'cli'))
-        };
+        try {
+            plugin = {
+                name: plugin,
+                path: require.resolve(path.join('bem-tools-' + plugin, 'cli'))
+            };
+        } catch(err) {
+            console.log(err);
+            console.error('WARN: Plugin `' + plugin + '` not found');
+            return;
+        }
     }
 
-    if (!plugin.name) {
-        plugin.name = require(plugin.path).name;
+    if (plugin.path.indexOf('cli.js') < 0) {
+        plugin.path = path.join(plugin.path, 'cli');
     }
 
-    bem.cmd().name(plugin.name).apply(require(plugin.path)).end();
+    var pluginModule;
+
+    try {
+        pluginModule = require(plugin.path);
+    } catch(err) {
+        console.error('WARN: Plugin `' + plugin.name + '` not found');
+        return;
+    }
+
+    bem.cmd().name(plugin.name).apply(pluginModule).end();
 });
 
 ['install', 'uninstall'].forEach(function(cmd) {
