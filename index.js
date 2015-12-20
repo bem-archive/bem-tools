@@ -34,7 +34,7 @@ plugins.forEach(function(plugin) {
     }
 });
 
-dfsdfbem.act(function(opts, args) {
+bem.act(function(opts, args) {
     if (!Object.keys(opts).length && !Object.keys(args).length) {
         return this.usage();
     }
