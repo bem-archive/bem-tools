@@ -15,7 +15,7 @@ var bem = require('coa').Cmd()
         .flag()
         .only()
         .act(function() {
-            return require('../package.json').version;
+            return require('./package').version;
         })
         .end();
 
