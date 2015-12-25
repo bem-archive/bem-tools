@@ -19,7 +19,22 @@ var bem = require('coa').Cmd()
         })
         .end();
 
-var plugins = uniq(npmls(true).concat(npmls()).filter(function(module) {
+var globalModules = [],
+    localModules = [];
+
+try {
+    globalModules = npmls(true);
+} catch (err) {
+    if (err.code !== 'ENOENT') throw new Error(err);
+}
+
+try {
+    localModules = npmls();
+} catch (err) {
+    if (err.code !== 'ENOENT') throw new Error(err);
+}
+
+var plugins = uniq(globalModules.concat(localModules).filter(function(module) {
     return module.indexOf(PLUGIN_PREFIX) === 0;
 }));
 
@@ -38,7 +53,7 @@ bem.act(function(opts, args) {
     if (!Object.keys(opts).length && !Object.keys(args).length) {
         return this.usage();
     }
-})
+});
 
 bem.run(process.argv.slice(2));
 
