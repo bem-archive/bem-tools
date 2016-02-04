@@ -1,8 +1,8 @@
 # BEM Tools [![Build Status](https://secure.travis-ci.org/bem/bem-tools.png?branch=nodejs)](http://travis-ci.org/bem/bem-tools)
-Toolkit to work with files based on [BEM methodology](http://bem.github.com/bem-method/pages/beginning/beginning.en.html).
+Toolkit to work with files based on [BEM methodology](http://bem.github.io/bem-method/pages/beginning/beginning.en.html).
 
 ## Installation
-You need [NodeJS 0.10+](http://nodejs.org/) or later and [npm 2.x+](http://npmjs.org/).
+You need [NodeJS 0.10+](http://nodejs.org/) or later and [npm 2.x+](https://www.npmjs.com/).
 
 Run `npm install bem` to install `bem-tools` locally.
 
@@ -712,7 +712,7 @@ Which means that this level is «standard» one. The logic for standard level is
 
 As the `.bem/level.js` file is a CommonJS module it's easy to override the level's behavior. `bem-tools` creates a new
 class inherited from the standard `Level` class using export of this module as a class extention (under the hood the 
-[inherit](https://github.com/dfilatov/node-inherit) module is used).
+[inherit](https://github.com/dfilatov/inherit) module is used).
 
 In the example bellow the `getTechs()` method is overriden.
 
