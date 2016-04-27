@@ -1,13 +1,13 @@
-const PLUGIN_PREFIX = 'bem-tools-';
+var PLUGIN_PREFIX = 'bem-tools-';
 
-var path = require('path'),
+var fs = require('fs'),
+    path = require('path'),
     npmls = require('npmls'),
-    fs = require('fs'),
-    uniq = require('lodash').uniq;
+    uniq = require('lodash.uniq');
 
 var bem = require('coa').Cmd()
     .name(process.argv[1])
-    .title(['Tools to work with files written using the BEM methodology.', '' +
+    .title(['BEM plugins CLI runned.', '' +
         'See https://bem.info for more info.', ''].join('\n'))
     .helpful()
     .opt()
@@ -35,27 +35,19 @@ try {
     if (err.code !== 'ENOENT') throw new Error(err);
 }
 
-var plugins = uniq(globalModules.concat(localModules).filter(function(module) {
+var plugins = uniq(localModules.concat(globalModules).filter(function(module) {
     return module.indexOf(PLUGIN_PREFIX) === 0;
 }));
 
 plugins.forEach(function(plugin) {
-    var commandName = plugin.replace(PLUGIN_PREFIX, '');
+    var commandName = plugin.replace(PLUGIN_PREFIX, ''),
+        pluginPath = path.join(path.dirname(require.resolve(plugin)), 'cli'),
+        pluginModule;
 
-    var globalPrefix = process.env.APPDATA
-        ? path.join(process.env.APPDATA, 'npm')
-        : path.dirname(process.execPath);
-
-    var localDir = path.join('node_modules', plugin);
-    var globalDir = path.join(globalPrefix, 'node_modules', plugin);
-    var pluginModule = null;
-
-    if (fs.existsSync(localDir)) {
-        pluginModule = require(path.resolve(path.join(globalDir, 'cli')));
-    } else if (globalDir) {
-        pluginModule = require(path.resolve(path.join(localDir, 'cli')));
-    } else {
-        throw 'Can\'t find module ' + plugin;
+    try {
+        pluginModule = require(pluginPath);
+    } catch(err) {
+        throw new Error('Cannot find module', plugin);
     }
 
     pluginModule && bem.cmd().name(commandName).apply(pluginModule).end();
