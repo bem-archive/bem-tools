@@ -51,9 +51,9 @@ plugins.forEach(function(plugin) {
     var pluginModule = null;
 
     if (fs.existsSync(localDir)) {
-        pluginModule = require(path.resolve(path.join(globalDir, 'cli')));
-    } else if (globalDir) {
         pluginModule = require(path.resolve(path.join(localDir, 'cli')));
+    } else if (fs.existsSync(globalDir)) {
+        pluginModule = require(path.resolve(path.join(globalDir, 'cli')));
     } else {
         throw 'Can\'t find module ' + plugin;
     }
