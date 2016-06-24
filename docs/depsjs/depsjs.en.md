@@ -13,7 +13,7 @@ When forming a dynamic page, we have no BEM tree on the project build phase; tha
 
 In both cases, `deps.js` files are used to specify explicit dependencies on other blocks, elements, modifiers and technologies.
 
-Let the `b1.bemhtml` template contain the following code:
+Let the `b1.bemhtml.js` template contain the following code:
 ```js
 block b1, content: [
     {
