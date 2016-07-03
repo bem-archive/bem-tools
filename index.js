@@ -3,6 +3,7 @@ var PLUGIN_PREFIX = 'bem-tools-';
 var fs = require('fs'),
     path = require('path'),
     npmls = require('npmls'),
+    npmRootPath = require('global-modules');
     uniq = require('lodash.uniq');
 
 var bem = require('coa').Cmd()
@@ -41,9 +42,10 @@ var plugins = uniq(localModules.concat(globalModules).filter(function(module) {
 
 plugins.forEach(function(plugin) {
     var commandName = plugin.replace(PLUGIN_PREFIX, ''),
-        pluginPath = path.join(path.dirname(require.resolve(plugin)), 'cli'),
-        pluginModule;
-
+        localPluginDir = path.join('node_modules', plugin),
+        globalPluginDir = path.join(npmRootPath, plugin);
+        pluginPath = path.resolve(path.join(fs.existsSync(localPluginDir) ? localPluginDir: globalPluginDir, 'cli')),
+        pluginModule = null;
     try {
         pluginModule = require(pluginPath);
     } catch(err) {
