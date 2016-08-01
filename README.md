@@ -38,14 +38,14 @@ If you use `zsh`, you can add `bem completion` to your `.zshrc` and reload:
 
 You can create following entities using `bem create`:
 
- * levels of defenition
+ * levels of definition
  * blocks
  * elements
  * modifiers
 
-##### Level of defenition
+##### Level of definition
 
-Level of defenition is a directory that holds blocks and an utility directiry `.bem`.
+Level of definition is a directory that holds blocks and an utility directiry `.bem`.
 
 A `.bem` directory holds configuration of a current level:
 
@@ -57,14 +57,14 @@ An example of technologies' links (this is `blocks-desktop` level of
 
     https://github.com/bem/bem-bl/blob/master/blocks-common/.bem/level.js
 
-###### Create new level of defenition named `blocks` under current directory:
+###### Create new level of definition named `blocks` under current directory:
 
     bem create level blocks
 
 ###### Create a level for pages
 
 In `bem-tools` terms pages are blocks as well and a directory which holds pages is a level of
-defenition itself. To create such a directory run this:
+definition itself. To create such a directory run this:
 
     bem create level pages
 
@@ -941,7 +941,7 @@ Commands to create BEM entities.
 
 ##### BEM.create.level()
 
-Creates a level of defenition.
+Creates a level of definition.
 
 ###### Options
 
