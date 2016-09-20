@@ -63,7 +63,8 @@ Full declaration of a deps-entity looks like this:
     tech  : 'techName',
     mustDeps   : [],
     shouldDeps : [],
-    noDeps     : []
+    noDeps     : [],
+    include    : false
 }
 ```
 
