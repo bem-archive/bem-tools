@@ -17,7 +17,6 @@
   ],
   "license": "MPL-2.0",
   "dependencies": {
-    "bem-config": "^1.1.0",
     "coa": "^1.0.1",
     "lodash.uniq": "^4.2.1",
     "npmls": "^3.0.0",
