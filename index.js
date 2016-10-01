@@ -3,7 +3,7 @@ var PLUGIN_PREFIX = 'bem-tools-';
 var fs = require('fs'),
     path = require('path'),
     npmls = require('npmls'),
-    npmRootPath = require('global-modules');
+    npmRootPath = require('global-modules'),
     uniq = require('lodash.uniq');
 
 var bem = require('coa').Cmd()
