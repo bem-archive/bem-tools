@@ -1,7 +1,7 @@
 {
   "name": "bem",
   "version": "2.0.0",
-  "description": "",
+  "description": "bem-tools is a CLI runner for its plugins",
   "main": "index.js",
   "bin": {
     "bem": "./bin/bem"
@@ -9,15 +9,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "keywords": [
+    "bem",
+    "bem tools",
+    "bem plugin",
+    "БЭМ"
+  ],
   "license": "MPL-2.0",
   "dependencies": {
-    "bem-config": "bem-incubator/bem-config",
     "coa": "^1.0.1",
-    "find-config": "^0.3.0",
-    "lodash": "^3.10.1",
-    "npm": "^2.14.14",
+    "lodash.uniq": "^4.2.1",
     "npmls": "^3.0.0",
-    "os-homedir": "^1.0.1"
+    "global-modules": "^0.2.0"
   }
 }
