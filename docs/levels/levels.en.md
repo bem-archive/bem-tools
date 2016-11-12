@@ -2,7 +2,7 @@
 
 A level should have `.bem/level.js` configuration file which contains the meta-information about the level:
 
-* the mapping rules between the BEM entities and the file system
+* the mapping rules between the BEM entities and the file structure
 * the tech modules defined on the level
 * the meta-information for the build system;
 
@@ -40,7 +40,7 @@ It is also possible to create the inherited levels using the command:
 bem create level <your-level-name> --level path/to/base/level.js
 ```
 
-## The mapping rules between BEM entities and the file system
+## The mapping rules between BEM entities and the file structure
 
 By default the following mapping scheme is used (this example is for the `css` tech):
 
@@ -74,7 +74,7 @@ The techs defined on the level are used:
 
 * by the `bem create` command
 * by the `bem build` command
-* by the file system introspection (see the `getLevelByIntrospection()` of the `Level` class)
+* by the file structure introspection (see the `getLevelByIntrospection()` of the `Level` class)
 * during the project build with the `bem make` and `bem build` commands.
 
 It is recommended to define explicitly the used techs.
