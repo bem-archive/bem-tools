@@ -62,7 +62,7 @@ search-form/                      # Директория блока `search-form
 
 В сборку попадут все технологии реализации блоков `input` и `button`.
 
-![Сборка БЭМ-проекта](https://rawgit.com/bem-archive/bem-tools/godfreyd-deps/docs/depsjs/build__decl__search-form.svg)
+![Сборка БЭМ-проекта](https://cdn.rawgit.com/bem-archive/bem-tools/dev/docs/depsjs/build__decl__search-form.svg)
 
 ## Используемые обозначения
 
@@ -168,7 +168,7 @@ search-form/                      # Директория блока `search-form
 
 В сборку попадет только указанная технология реализации.
 
-![Сборка по технологии](https://rawgit.com/bem-archive/bem-tools/godfreyd-deps/docs/depsjs/build__decl__search-form__tech.svg)
+![Сборка по технологии](https://cdn.rawgit.com/bem-archive/bem-tools/dev/docs/depsjs/build__decl__search-form__tech.svg)
 
 ### Поля определяющие зависимость
 
