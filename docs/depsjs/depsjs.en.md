@@ -1,9 +1,9 @@
 # Technology for declaring dependencies
 
-* [Introduction](#Introduction)
-* [Notation](#Notation)
-* [DEPS syntax](#DEPS-syntax)
-* [Examples](#Examples)
+* [Introduction](#introduction)
+* [Notation](#notation)
+* [DEPS syntax](#deps-syntax)
+* [Examples](#examples)
 
 ## Introduction
 

@@ -3,7 +3,7 @@
 * [Introduction](#introduction)
 * [Notation](#notation)
 * [DEPS syntax](#deps-syntax)
-* [DEPS entity fields](#deps-entity-fields)
+* [DEPS entity fields](#fields-of-a-deps-entity)
 * [Syntactic sugar](#syntactic-sugar)
 * [Examples of declarations](#examples-of-declarations)
 
@@ -80,7 +80,7 @@ They can be divided into the following groups:
 
 * Defining the implementation of the BEM entity:
 
-  * [tech](#field-that-defines-the-implementation-technology-for-a-bem-entity)
+  * [tech](#field-that-defines-the-implementation-technology-for-the-bem-entity)
 
 * Defining the dependency:
 
@@ -270,8 +270,6 @@ Type: `Object[]`.
 ```
 
 In this example, dependencies on the `common.blocks` level include a BEM entity that is necessary for implementing the `b1` block. On the `desktop.blocks` level, this dependency is canceled.
-
-> **Note** More information about [redefinition levels in BEM](https://en.bem.info/methodology/key-concepts/#redefinition-level).
 
 ## Syntactic sugar
 
@@ -525,7 +523,7 @@ The examples below specify the accepted data type:
 * [Including an element](#including-an-element)
 * [Including a boolean modifier](#including-a-boolean-modifier)
 * [Including a key-value modifier](#including-a-key-value-modifier)
-* [Including dependencies for a technology](#including-dependencies-for-a-technology)
+* [Including dependencies for a technology](#including-dependencies-for-technology)
 * [elem & elems](#elem--elems)
 * [mod & mods](#mod--mods)
 * [elems & mods](#elems--mods)
@@ -761,7 +759,7 @@ The dependency can be declared as:
   })
   ```
 
-### Including dependencies for technologies
+### Including dependencies for technology
 
 `b1.js → b2.bemhtml` — block `b1` in the JavaScript implementation is dependent on block `b2` in the BEMHTML implementation
 
